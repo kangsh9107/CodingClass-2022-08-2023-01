@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>inline-block.html</title>
+
+<style>
+/* 
+*{
+	margin: 0;
+	padding:0;
+	box-sizing: border-box;
+}
+ */
+/* 기본적인 여백들이 줄어 든다. */
+span{
+	width: 500px;
+}
+/* inline 유형의 태그엔 width, height, margin이 지정되지 않음. 옆에 뭐 올 수 있음. */
+p{
+	width: 100px;
+	background-color: #88f;
+}
+/* block 유형의 태그엔 width, height, margin이 지정될 수 있음. 옆에 뭐 올 수 없음. */
+div{
+	width: 150px;
+	background-color: #f77;
+	display: inline-block;
+}
+/* inline-block 유형의 태그엔 width, height, margin이 지정될 수 있음. 옆에 뭐 올 수 있음. */
+div.none{
+	display: none;
+}
+/* 내용 감춤. 나중에 스크립트 연결해서 클릭하면 한번에 쫙 나오게 하거나 그럴때 사용. */
+</style>
+
+</head>
+<body>
+
+<h2>inline</h2>
+<span>성명</span>
+<span>암호</span>
+
+<h2>block</h2>
+<p>문단1</p>
+<p>문단2</p>
+
+<h2>inline-block</h2>
+<div>DIV1</div>
+<div>DIV2</div>
+
+<h2>none</h2>
+<div class="none">내용 감춤</div>
+<hr/>
+
+</body>
+</html>

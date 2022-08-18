@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>selector1.html</title>
+<style>
+*{
+	border:1px solid #999;
+	padding:5px;
+}
+div>p{ /* div 안에 있는 자손 p */
+	color : #f00;
+}
+div span{ /* div 안에 있는 후손(자손포함) span */
+	font-family : 궁서체;
+	font-style : italic;
+}
+p>span{ /* p 안에 있는 자손 span, id나 class지정 방법도 있음 */
+	background-color : #ffff00;
+}
+</style>
+</head>
+<body>
+	<div>부모
+		<p>자손
+			<span>후손
+			</span>
+		</p>
+		<span>형제
+			<p>P
+			</p>
+		</span>
+	</div>
+</body>
+</html>

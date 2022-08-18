@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="VIEWPORT" content="width=device-width, initial-scale=1.0">
+<title>background.html</title>
+
+<style>
+/* 모든 div에 외각선과 넓이 500px, 높이 300px를 지정 */
+div{
+  border: 1px solid #00f;
+  width: 500px;
+  height: 300px;
+}
+/* .a 영역에 background-image를 사용하여 이미지 추가 */
+div.a{
+  background-image: url(../images/icon1.png);
+}
+/* .b 영역에 background-image를 가로축으로만 반복 */
+div.b{
+  background-image: url(../images/icon1.png);
+  background-repeat: repeat-x;
+}
+/* .c 영역에 background-image를 반복없이 가운데 배치 */
+div.c{
+  background-image: url(../images/icon1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/* .d 영역에 background-image를 영역의 크기 만큼 크게 배치 */
+div.d{
+  background-image: url(../images/icon1.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 20px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="a"></div>
+<div class="b"></div>
+<div class="c"></div>
+<div class="d"></div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name='viewport' content='width=width-device, initial-scale=1.0'>
+<title>p220811.html</title>
+</head>
+<body>
+<form name='frmtest' method='post' action='register.do'>
+<fieldset>
+	<legend><font color='#0000ff' size='5'>회원가입</font></legend>
+	<label>아이디</label>
+	<input type='text' name='id' minlength='2' maxlength='6' size='20' placeholder='한글로 2~6자리 입력'/>
+	<br/><label>비밀번호</label>
+	<input type='password' name='pwd' minlength='8' maxlength='16' size='20'/>
+	<br/><label>비밀번호 재확인</label>
+	<input type='password' name='pwdre' minlength='8' maxlength='16' size='20'/>
+	<hr/><label>이름</label>
+	<input type='search' name='name' size='10'/>
+	<br/><label>생년월일</label>
+	<input type='date' name='calendar'/>
+	<br/><label>태어난 시간</label>
+	<input type='time' name='time'/>
+	<br/><label>성별</label>
+	<label><input type='radio' name='gender' value='m' checked/>남자</label>
+	<label><input type='radio' name='gender' value='f'/>여자</label>
+	<br/><label>키</label>
+	<input type='number' name='height' min='0' max='300' step='1' value='150'/>
+	<br/><label>비밀번호 찾기 질문</label>
+	<select name='pwdq'>
+		<option value='q1'>나의 보물 1호는?</option>
+		<option value='q2'>내가 졸업한 초등학교 이름은?</option>
+		<option value='q3'>내가 가장 좋아하는 가수는?</option>
+	</select>
+	<br/><label>자기소개</label>
+	<textarea name='introduce' cols=50 rows='3'></textarea>
+	<br/><label>Persnal color</label>
+	<input type='color' name='color'/>
+	<br/><label>사진첨부</label>
+	<input type='file' name='photo' accept='image/*' multiple/>
+	<br/><label>만족도</label>
+	<progress max='100' value='80'></progress>
+	<br/><label>기대감</label>
+	<meter min='0' max='100' value='80'></meter>
+	<br/><label>문제) 다음 3x3 표에서 ?에 들어갈 숫자는?</label>
+	<table border='3' width='150px' height='80px'>
+		<tr><th>4</th><th>9</th><th>2</th>
+		<tr><th>3</th><th>5</th><th><font color='#ff0000'>?</font></th>
+		<tr><th>8</th><th>1</th><th>6</th>
+	</table>
+	<label>정답</label>
+	<input type='text' name='answer' size='5'>
+	<br/><details>
+		<summary>협력사</summary>
+		<ol type='1' start='1'>
+			<li><a href='https://www.naver.com' target='_blank' title='1번 협력사'>네이버</a>
+			<li><a href='https://www.youtube.com' target='_blank' title='2번 협력사'>유튜브</a>
+		</ol>
+	</details>
+	<br/><label>선호하는 협력사</label>
+	<select>
+		<optgroup label='1.검색'>
+			<option value='c1'>네이버</option>
+		</optgroup>
+		<optgroup label='2.동영상'>
+			<option value='c2'>유튜브</option>
+		</optgroup>
+	</select>
+	<br/><label>회사 테마곡</label>
+	<audio src='audio/audiotest1.mp3' controls loop></audio>
+	<br/><label>회사 홍보영상</label>
+	<video src='video/videotest1.mp4' width='200px' height='150px' controls loop poster='images/cat1.png'></video>
+	<hr/><input type='reset' value='초기화 후 다시작성'/><input type='submit' value='완료'/><input type='button' value='취소'/>
+	<br/><output><font color='#ff0000' size='2'>잘못된 정보가 있는지 다시 한번 확인해주세요.</font></output>
+</fieldset>
+</form>
+</body>
+</html>

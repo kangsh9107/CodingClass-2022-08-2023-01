@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>position.html</title>
+
+<style>
+/* .first의 넓이와 높이를 300x300으로 지정하고 외각선을 표시 */
+.first, .second{
+	width: 300px;
+	height: 300px;
+	border: 3px solid #000;
+	margin: 100px;
+	position: relative;
+}
+/* .first 안에 있는 div의 넓이와 높이를 100x100, 각각 바탕색을 다르게 */
+.first>div{
+	width: 100px;
+	height: 100px;
+	position: absolute;
+}
+.first>div:nth-child(1){
+	background-color: #9f9;
+}
+.first>div:nth-child(2){
+	background-color: #f99;
+	left: 100px;
+}
+.first>div:nth-child(3){
+	background-color: #999;
+	top: 100px;
+}
+.first>div:nth-child(4){
+	background-color: #ff9;
+	/* left: 100px;
+	top: 100px; */
+	right: 0px;
+	bottom: 0px;
+}
+.second>div{
+	position: relative;
+	width: 100px;
+	height: 100px;
+	border: 1px solid #f00;
+}
+.second>div:nth-child(2){
+	left: 100px;
+	top: -100px;
+}
+.second>div:nth-child(3){
+	top: -100px;
+}
+.second>div:nth-child(4){
+	top: -200px;
+	left: 100px;
+}
+.fixed>img{
+	position: fixed;
+	top:250px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="first">
+	<div>A</div>
+	<div>B</div>
+	<div>C</div>
+	<div>D</div>
+</div>
+<div class="second">
+	<div>A</div>
+	<div>B</div>
+	<div>C</div>
+	<div>D</div>
+</div>
+<div class="fixed">
+	<img src="../images/cat1.png" width=100px height=150px/>
+</div>
+
+</body>
+</html>
+
+

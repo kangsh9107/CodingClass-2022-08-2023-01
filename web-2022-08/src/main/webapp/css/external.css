@@ -1,0 +1,14 @@
+@charset "UTF-8";
+/* 바탕색을 노랑색 */
+body{
+	background-color : #808080;
+}
+/* 가독성 좋게 띄어쓰기 넣었음 */
+div#abc{
+	border  :3px solid #ffff00;
+	padding :20px;
+	width   :300px;
+	height  :200px;
+	margin  :20px auto;
+	box-sizing:border-box;
+}
