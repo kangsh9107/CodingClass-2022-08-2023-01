@@ -1,0 +1,191 @@
+@charset "UTF-8";
+*{
+	box-sizing: border-box;
+}
+
+
+/* student_input_form.jsp */
+
+
+form{
+	position: relative;
+	padding: 10px;
+	margin: 20px auto;
+	width: 800px;
+}
+form h2{
+	margin-left: 120px;
+	display: inline-block;
+}
+form span{
+	padding: 2px;
+	margin-right: 13px;
+	width: 200px;
+	height: 15px;
+	display: inline-block;
+	text-align: right;
+}
+form label{
+	display: inline-block;
+}
+form input{
+	display: inline-block;
+	margin-left: 0px;
+}
+form .post-number{
+	margin-left: -6px;
+}
+form .empty{
+	position: absolute;
+	right: 467px;
+}
+form ul{
+	list-style: none;
+	display: inline-block;
+}
+form li{
+	display: inline-block;
+}
+form a{
+	border: 1px solid #000;
+	background-color: #eee;
+	border-radius: 3px;
+	padding: 2px;
+	color: #000;
+	text-align: center;
+	width: 45px;
+	display: inline-block;
+}
+a{
+	text-decoration: none;
+	display: inline-block;
+}
+a:hover{
+	background-color: #ccc;
+}
+
+
+/* student_list.jsp */
+
+
+.student-list{
+	position: relative;
+	padding: 0px;
+	margin: 20px auto;
+	width: 1300px;
+}
+div.student-list{
+	display: inline-block;
+	padding: 0px;
+	margin: 0px;
+	font-size: x-large;
+	font-weight: bolder;
+}
+nav.student-list-nav{
+	display: inline-block;
+	position: absolute;
+	right: 0px;
+}
+nav.student-list-nav span{
+	border: 1px solid #000;
+	background-color: #eee;
+	border-radius: 3px;
+	padding: 2px;
+	color: #000;
+	text-align: center;
+	width: 43px;
+	height: 22px;
+	display: inline-block;
+	font-size: small;
+}
+nav.student-list-nav span:hover{
+	background-color: #ccc;
+}
+nav.student-list-nav a{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+.student-list ul{
+	list-style: none;
+}
+.student-list li{
+	text-align: left;
+	display: inline-block;
+}
+.student-list-header{
+	width: 100%;
+	background-color: #66f;
+	display: inline-block;
+	margin-top: 30px;
+	padding: 0px;
+	height: 30px;
+	line-height: 0px;
+}
+li.student-list1{
+	margin-right: 10px;
+	margin-left: 100px;
+	width: 30px;
+	text-align: right;
+}
+li.student-list2{
+	margin-right: 30px;
+	width: 50px;
+	text-align: left;
+}
+li.student-list3{
+	margin-right: 20px;
+	width: 70px;
+	text-align: left;
+}
+li.student-list4{
+	margin-right: 20px;
+	width: 40px;
+	text-align: left;
+}
+li.student-list5{
+	margin-right: 20px;
+	width: 130px;
+	text-align: left;
+}
+li.student-list6{
+	margin-right: 40px;
+	width: 240px;
+	text-align: left;
+}
+li.student-list7{
+	margin-right: 40px;
+	width: 150px;
+	text-align: left;
+}
+li.student-list8{
+	margin-right: 20px;
+	width: 80px;
+	text-align: left;
+}
+.student-list-footer{
+	text-align: center;
+}
+.student-list-footer div{
+	background-color: #bbb;
+	display: inline-block;
+	width: 20px;
+	text-align: center;
+	border-radius: 20px;
+}
+
+
+/* student_modify.jsp */
+
+
+div.student-info-modify{
+	display: inline-block;
+	padding: 0px;
+	margin-left: 125px;
+	font-size: x-large;
+	font-weight: bolder;
+}
+form .empty-modify{
+	position: absolute;
+	left: 170px;
+}

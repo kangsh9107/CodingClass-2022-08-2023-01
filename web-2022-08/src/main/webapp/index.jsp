@@ -14,9 +14,10 @@
 <div class='login'>로그인/로그아웃</div>
 <header>
 	<img class='logo' src='images/logo1.png' alt='logo'/>
+	<div class='corp-name'>Web Project</div>
 	<nav>
 		<ul>
-			<li><a href='#'>회원관리</a></li>
+			<li><a href='student/student_list.jsp' title='학생정보 조회'>학생관리</a></li>
 			<li><a href='#'>생산관리</a></li>
 			<li><a href='#'>품질관리</a></li>
 			<li><a href='#'>방명록</a></li>

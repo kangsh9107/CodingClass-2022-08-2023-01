@@ -15,6 +15,7 @@ div.login{
 	padding: 5px;
 	margin: 0px;
 	width: 100%;
+	text-align: right;
 }
 header{
 	border: 3px solid #00f;
@@ -26,6 +27,10 @@ header{
 	background-size: 100% 100%;
 	position: relative;
 }
+div.corp-name{
+	font-weight: bolder;
+	font-family: Times New Roman;
+}
 nav{
 	padding: 5px;
 	margin: 0px;
@@ -36,9 +41,11 @@ nav{
 }
 nav ul{
 	list-style: none;
-	padding: 0px;
+	padding: 8px;
 	margin: 0px;
-	background-color: #0f0;
+	background-color: #fff;
+	opacity: 0.5;
+	border-radius: 10px;
 }
 nav li{
 	display: inline-block;
@@ -48,10 +55,13 @@ nav a{
 	display: inline-block;
 	transition: transform 1s ease 0s;
 	text-align: center;
+	color: #000;
+	font-weight: bold;
 }
 nav a:hover{
 	background-color: #fff;
-	transform: scale(1.5,1.5);
+	transform: scale(1.8,1.8);
+	border-radius: 8px;
 }
 div.content-main{
 	border: 3px solid #00f;
