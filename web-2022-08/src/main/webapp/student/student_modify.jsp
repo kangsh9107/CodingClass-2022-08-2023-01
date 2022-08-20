@@ -25,9 +25,9 @@
 <span>이메일</span><input type='search' name='mail' size='40'/><br/><br/>
 <span class='empty-modify'>
 <ul>
-	<li><a href='#'>저장</a></li>
+	<li><a href='#' title='준비중 입니다.'>저장</a></li>
 	<li><a href='student_list.jsp' title='취소하고 목록으로'>취소</a></li>
-	<li><a href='#'>삭제</a></li>
+	<li><a href='#' title='준비중 입니다.'>삭제</a></li>
 </ul>
 </span>
 </form>
