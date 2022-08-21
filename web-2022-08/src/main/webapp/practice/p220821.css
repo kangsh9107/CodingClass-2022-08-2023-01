@@ -1,0 +1,25 @@
+@charset "UTF-8";
+*{
+	box-sizing: border-box;
+}
+form.student-input{
+	margin: 60px auto;
+	width: 1200px;
+	position: relative;
+}
+div.student-input-title{
+	display: inline-block;
+	font-size: x-large;
+	font-weight: bolder;
+	margin-left: 15px;
+}
+form.student-input span{
+	margin-right: 5px;
+	width: 70px;
+	height: 25px;
+	display: inline-block;
+	text-align: right;
+}
+form.student-input label{
+	display: inline-block;
+}
