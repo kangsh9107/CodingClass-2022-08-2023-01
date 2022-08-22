@@ -7,6 +7,7 @@
 <body>
 
 <script>
+/* 
 a = 20;
 b = 30;
 c = 50;
@@ -15,29 +16,35 @@ if (a < b) {
 }
 document.write("<h3>if문 처리 결과</h3>");
 document.write("c = " + c);
+ */
 // 결과 예측 : c = 10 출력. 변수 값이나 조건을 바꾸면서 연습해보기.
 /*
 평균이 avg에 저장되어 있다.
 avg>=60 이면 "Pass"를 출력하고 60미만이면 아무것도 출력되지 않도록 if문을 작성하시오.
  */
+/* 
 avg = 50; // 변수는 되도록 let으로 선언하자.
 if (avg >= 60) {
 	document.write("<br/>Pass"); // 줄 바꿈 하려면 "<br/>Pass"
 }
+ */
 /*
 수량과 단가가 각각 ea, price에 저장되어 있다. 금액=수량*단가를 사용하여
 금액을 계산하고 금액이 100000원 이상이면 "사은품 증정"을 화면에 출력하시오.
  */
+/* 
 let ea = 100;
 let price2 = 5000;
 let total2 = ea * price2;
 if (total2 >= 100000) {
 	document.write("<br/>사은품 증정");
 }
+ */
 /*
 키와 몸무게가 h, w에 저장되어 있을 때 키가 200이하이고, 몸무게가 100이하 일때
 "탑승가능"을 출력하시오.
  */
+/* 
 let h = 190;
 let w = 80;
 if (h <= 200) { // && 같은 논리 연산자를 관계 연산자와 같이 사용 가능하다.
@@ -45,6 +52,7 @@ if (h <= 200) { // && 같은 논리 연산자를 관계 연산자와 같이 사�
 		document.write("<br/>탑승가능");
 	}
 }
+ */
 /*
 강사님 코드
 var h=180;
@@ -58,6 +66,7 @@ if( h<=200 && w<=100){
 금액을 계산하고, 구역이 "시외"라면 금액에 할증료 10%를 추가하여 그 결과를
 화면에 출력하시오.
  */
+ /* 
 let zone = "시외";
 let km = 10;
 let price = 6000;
@@ -67,6 +76,57 @@ if (zone == "시외") {
 	document.write("<hr/>시외이기 때문에 금액에 할증료 10%가 추가 됩니다.")
 }
 document.write("<br/>총 금액은 " + total + "원 입니다.");
+ */
+/* 
+document.write('<hr/>'); // <hr/>은 html코드라 script에서 혼자 못씀.
+let zone;
+let km;
+var price;
+var amt;
+var tax = 0; // 할증액
+
+zone = prompt("시내? 시외?", "시외");
+km = prompt("주행 거리는 ?", 20);
+price = prompt("기본 단가 ?", 2000);
+amt = km * price;
+
+if(zone=='시외'){
+	document.write('<li>zone :' + zone);
+	document.write('<li>Km :' + km);
+	document.write('<li>Price :' + price);
+	document.write('<br/>시외는 10% 할증료가 추가 됩니다.');
+	document.write('<br/>총 금액은 ' + (amt *=1.1) + '입니다.'); // amt *=1.1;
+}else{
+	document.write('<li>zone :' + zone);
+	document.write('<li>Km :' + km);
+	document.write('<li>Price :' + price);
+	document.write('<br/>총 금액은 ' + amt + '입니다.');
+}
+ */
+document.write('<hr/>'); // <hr/>은 html코드라 script에서 혼자 못씀.
+let zone;
+let km;
+var price;
+var amt;
+var tax = 0; // 할증액
+var tot = 0; // 토탈
+
+zone = prompt("시내? 시외?", "시외");
+km = prompt("주행 거리는 ?", 20);
+price = prompt("기본 단가 ?", 2000);
+amt = km * price;
+
+if(zone=='시외'){
+	tax = amt * 0.1;
+}
+tot = amt + tax;
+
+document.write('<li>zone :' + zone);
+document.write('<li>Km :' + km);
+document.write('<li>Price :' + price);
+document.write('<li>amt :' + amt);
+document.write('<li>tax :' + tax);
+document.write('<li>tot :' + tot);
 </script>
 
 </body>

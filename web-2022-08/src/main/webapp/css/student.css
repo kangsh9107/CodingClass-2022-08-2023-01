@@ -19,8 +19,8 @@ form h2{
 }
 form span{
 	padding: 2px;
-	margin-right: 13px;
-	width: 200px;
+	margin-right: 5px;
+	width: 210px;
 	height: 15px;
 	display: inline-block;
 	text-align: right;
@@ -28,16 +28,9 @@ form span{
 form label{
 	display: inline-block;
 }
-form input{
-	display: inline-block;
-	margin-left: 0px;
-}
-form .post-number{
-	margin-left: -6px;
-}
 form .empty{
 	position: absolute;
-	right: 467px;
+	left: 117px;
 }
 form ul{
 	list-style: none;

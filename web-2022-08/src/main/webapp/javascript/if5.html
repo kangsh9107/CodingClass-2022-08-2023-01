@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>if5.html</title>
+</head>
+<body>
+<p>
+	구입 금액에 따른 사은품이 아래와 같이 지급되도록 프로그램 하시오.
+	<ul>
+		<li>만원 이상 : 비누</li>
+		<li>십만원 이상 : 화장지</li>
+		<li>오십만원 이상 : 어린이 자전거</li>
+		<li>백만원 이상 : 성인 자전거</li>
+	</ul>
+</p>
+<span>구입금액</span>
+<input type='text' id='amt' size='5' value='1000000'/><br/>
+<span>사은품</span>
+<output id='gift'></output><br/>
+<input type='button' id='btn' value='실행'/>
+<script>
+	let amt = document.querySelector('#amt');
+	let btn = document.querySelector('#btn');
+	let gift = document.querySelector('#gift');
+	
+	btn.onclick = function(){
+		let a = Number(amt.value);
+		let b;
+		if(a >= 1000000){
+			b = '성인 자전거';
+		}else if(a >= 500000){
+			b = '어린이 자전거';
+		}else if(a >= 100000){
+			b = '화장지';
+		}else if(a >= 10000){
+			b = '비누';
+		}else{
+			b = '사은품이 없습니다.';
+		}
+		gift.innerHTML = b;
+	}
+</script>
+
+</body>
+</html>
+
+

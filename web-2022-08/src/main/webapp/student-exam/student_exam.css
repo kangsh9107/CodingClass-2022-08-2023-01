@@ -1,0 +1,105 @@
+@charset "UTF-8";
+*{
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+}
+a{
+	text-decoration: none;
+}
+
+/* 
+input
+ */
+
+#std_input{
+	border: 3px solid #000;
+	border-radius: 20px;
+	box-shadow: 8px 8px 3px #888;
+	padding: 20px;
+	margin: 20px auto;
+	width: 450px;
+}
+#std_input>form h2{
+	text-align: center;
+}
+#std_input>form span{
+	display: inline-block;
+	width: 80px;
+	text-align: right;
+}
+
+/* 
+list
+ */
+
+#std_list{
+	border: 3px solid #000;
+	border-radius: 20px;
+	box-shadow: 8px 8px 3px #888;
+	padding: 20px;
+	margin: 20px auto;
+	width: 1100px;
+}
+#std_list>h2{
+	text-align: center;
+}
+#std_list>form{
+	text-align: right;
+}
+#std_list>ul{
+	list-style: none;
+	margin-top: 5px;
+}
+#std_list li.title{
+	background-color: #444;
+	border-radius: 10px;
+	color: #fff;
+}
+#std_list li>span{
+	display: inline-block;
+}
+#std_list li>span.no{
+	width: 80px;
+	text-align: right;
+	margin-right: 20px;
+}
+#std_list li>span.id{
+	width: 100px;
+}
+#std_list li>span.mName{
+	width: 100px;
+}
+#std_list li>span.gender{
+	width: 50px;
+}
+#std_list li>span.phone{
+	width: 130px;
+}
+#std_list li>span.addr{
+	width: 180px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#std_list li>span.email{
+	width: 190px;
+}
+#std_list li>span.post{
+	width: 80px;
+}
+#std_list li.btnPage{
+	text-align: center;
+	margin-top: 5px;
+	padding-top: 5px;
+	border-top: 2px dotted #aaa;
+}
+#std_list li.btnPage>input{
+	border-radius: 10px;
+	border: 1px solid #aaa;
+	padding: 2px 4px;
+}
+#std_list li.btnPage>input:hover{
+	background-color: #44f;
+	color: #fff;
+}
