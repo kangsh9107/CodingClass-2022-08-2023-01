@@ -128,28 +128,30 @@ btn.onclick = function(){
 	result.innerHTML = c;
 }
  */
-let tot2 = Number(kor) + Number(eng) + Number(mat);
-let avg2 = Number(tot) / Number(3.0);
-let grade2;
-
-let kor = document.querySelector('#kor');
-let eng = document.querySelector('#eng');
-let mat = document.querySelector('#mat');
 let btn = document.querySelector('#btn');
-let tot = document.querySelector('#tot');
-let avg = document.querySelector('#avg');
-let grade = document.querySelector('#grade');
+
 btn.onclick = function(){
-	if(avg > 90){
-		grade = 'A';
-	}else if(avg > 80){
-		grade = 'B';
-	}else if(avg > 70){
-		grade = 'C';
-	}else if(avg > 60){
-		grade = 'D';
+	let kor = document.querySelector('#kor');
+	let eng = document.querySelector('#eng');
+	let mat = document.querySelector('#mat');
+	let tot = document.querySelector('#tot');
+	let avg = document.querySelector('#avg');
+	let grade = document.querySelector('#grade');
+	
+	let tot2 = Number(kor.vlaue) + Number(eng.value) + Number(mat.value);
+	let avg2 = Number(tot) / Number(3.0);
+	let grade2;
+	
+	if(avg2 > 90){
+		grade2 = 'A';
+	}else if(avg2 > 80){
+		grade2 = 'B';
+	}else if(avg2 > 70){
+		grade2 = 'C';
+	}else if(avg2 > 60){
+		grade2 = 'D';
 	}else{
-		grade = 'F';
+		grade2 = 'F';
 	}
 	tot.innerHTML = tot2;
 	avg.innerHTML = avg2;

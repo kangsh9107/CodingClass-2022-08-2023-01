@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>for1.html</title>
+
+<style>
+*{
+	box-sizing: border-box;
+}
+div#p1{
+	border: 2px solid #66f;
+	border-radius: 10px;
+	background-color: #000;
+	color: #fff;
+	padding: 5px;
+	margin: 5px;
+}
+form{
+	border: 2px solid #66f;
+	border-radius: 10px;
+	background-color: #ff6;
+	padding: 5px;
+	margin: 5px;
+}
+</style>
+
+</head>
+<body>
+
+<div id='p1'>
+	구구단을 intput로 입력받아 output 영역에 해당 구구단을 출력하시오.
+</div>
+<form name='frm'>
+	<span>구구단</span>
+	<input type='text' name='dan' value='3' id='dan' size='1'/>
+	<input type='button' name='btn' value='단 보기'/>
+	<br/>
+	<output id='result'></output>
+</form>
+
+<script>
+let frm = document.frm;
+
+frm.btn.onclick = function(){
+	console.log("버튼을 클릭했습니다.");
+	let dan = Number(document.getElementById('dan').value);
+	let r = document.querySelector('#result');
+	let str="";
+	
+	for(let i=1 ; i<10 ; i++){
+		str += (dan + "*" + i + " = " + (dan*i));
+		str += ("<br/>");
+	}
+	r.innerHTML = str;
+}
+
+// 10 9 8 7 6 ... 1
+/* 
+for(var i=10 ; i>=1; i--){
+	document.write(i+" ");
+}
+ */
+
+// 구구단 5단 출력
+/* 
+let dan = 9;
+for(let i=1 ; i<10 ; i++){
+	document.write(dan + "*" + i + " = " + (dan*i));
+	document.write("<br/>");
+}
+ */
+</script>
+
+</body>
+</html>

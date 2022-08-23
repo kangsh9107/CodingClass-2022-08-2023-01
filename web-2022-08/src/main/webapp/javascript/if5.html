@@ -20,20 +20,19 @@
 <output id='gift'></output><br/>
 <input type='button' id='btn' value='실행'/>
 <script>
-	let amt = document.querySelector('#amt');
+	let amt = Number(document.querySelector('#amt').value);
 	let btn = document.querySelector('#btn');
 	let gift = document.querySelector('#gift');
 	
 	btn.onclick = function(){
-		let a = Number(amt.value);
 		let b;
-		if(a >= 1000000){
+		if(amt >= 1000000){
 			b = '성인 자전거';
-		}else if(a >= 500000){
+		}else if(amt >= 500000){
 			b = '어린이 자전거';
-		}else if(a >= 100000){
+		}else if(amt >= 100000){
 			b = '화장지';
-		}else if(a >= 10000){
+		}else if(amt >= 10000){
 			b = '비누';
 		}else{
 			b = '사은품이 없습니다.';

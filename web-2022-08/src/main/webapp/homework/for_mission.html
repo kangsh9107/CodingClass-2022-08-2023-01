@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>for_mission.html</title>
+
+<style>
+*{
+	box-sizing: border-box;
+	padding: 5px;
+	margin: 5px;
+}
+div#title1{
+	font-size: large;
+	font-family: Times New Roman;
+}
+main{
+	border: 3px solid #00f;
+	border-radius: 10px;
+	box-shadow: 8px 8px 8px #aaa;
+	background-color: #ff5;
+	width: 410px;
+	height: 710px;
+}
+div#title2{
+	font-size: xx-large;
+	font-weight: bolder;
+	text-align: center;
+}
+header{
+	display: inline-block;
+}
+header>span{
+	display: inline-block;
+	margin-left: 25px;
+}
+#content{
+	width: 100%;
+	margin: 15px;
+	text-align: left;
+}
+#content>output{
+	display: inline-block;
+	border: 3px dashed #888;
+	width: 105px;
+	height: 230px;
+}
+</style>
+
+</head>
+<body>
+
+<div id='title1'>[과제] for_mission.html</div>
+<main>
+	<div id='title2'>x~y까지 구구단 출력</div>
+	<header>
+		<span>단X</span>
+		<input type='text' value='2' id='X' size='2'/>
+		<br/>
+		<span>단Y</span>
+		<input type='text' value='7' id='Y' size='2'/>
+		<input type='button' value='실행' id='btn'/>
+		<br/>
+	</header>
+	<div id='content'>
+		<output id='r1'></output>
+		<output id='r2'></output>
+		<output id='r3'></output>
+		<output id='r4'></output>
+		<output id='r5'></output>
+		<output id='r6'></output>
+	</div>
+</main>
+
+<script>
+let btn = document.querySelector('#btn');
+
+btn.onclick = function(){
+	let X = Number(document.getElementById('X').value);  // 단X 입력상자
+	let Y = Number(document.getElementById('Y').value);  // 단Y 입력상자
+	let r1 = document.getElementById('r1');  // 좌측 상단 출력상자
+	let r2 = document.getElementById('r2');
+	let r3 = document.getElementById('r3');
+	let r4 = document.getElementById('r4');
+	let r5 = document.getElementById('r5');
+	let r6 = document.getElementById('r6');  // 우측 하단 출력상자
+	let gugudan = '';  // 몇단 출력
+	let str = '';      // 구구단 내용 출력
+	
+	for(let i=X ; X<=Y ; X++){
+		for(let k=1 ; k<=9 ; k++){
+			str += (X + '*' + k + ' = ' + (X*k));
+			str += ('<br/>');
+			if(X==(Y-5)){
+				gugudan = X + '단';
+				r1.innerHTML = gugudan + '<br/>' + str;
+			}else if(X==(Y-4)){
+				gugudan = X + '단';
+				r2.innerHTML = gugudan + '<br/>' + str;
+			}else if(X==(Y-3)){
+				gugudan = X + '단';
+				r3.innerHTML = gugudan + '<br/>' + str;
+			}else if(X==(Y-2)){
+				gugudan = X + '단';
+				r4.innerHTML = gugudan + '<br/>' + str;
+			}else if(X==(Y-1)){
+				gugudan = X + '단';
+				r5.innerHTML = gugudan + '<br/>' + str;
+			}else{
+				gugudan = X + '단';
+				r6.innerHTML = gugudan + '<br/>' + str;
+			}
+		}
+	}
+}
+</script>
+
+</body>
+</html>
+
+
