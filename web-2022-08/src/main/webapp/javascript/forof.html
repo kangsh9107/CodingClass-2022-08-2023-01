@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="VIEWPORT" content="width=device-width, initial-scale=1.0">
+<title>forof.html</title>
+<link rel="stylesheet" href="#">
+</head>
+<body>
+
+<h2>for~of 와 for~in 차이</h2>
+<form name='frm'>
+	<label><input type='checkbox' name='hobby' value='A1'/>축구</label>
+	<label><input type='checkbox' name='hobby' value='A2'/>농구</label>
+	<label><input type='checkbox' name='hobby' value='A3'/>야구</label>
+	<label><input type='checkbox' name='hobby' value='A4'/>배구</label>
+	<br/>
+	<input type='button' value='for of' onclick='run()'/>
+	<input type='button' value='for in' onclick='run2()'/>
+</form>
+<div id='result'></div>
+
+<script>
+	let frm = document.frm;
+	let result = document.querySelector('#result');
+	function run(){
+		let h = frm.hobby;
+		let str='<ul>';
+		for(v of h){        // v는 <input/>태그 전체를 의미
+			if(v.checked){  // v.checked==true로 적는게 더 정확
+				str += '<li>' + v.value + '</li>'  // 출력 str
+			}
+		}
+		str += '<ul>';
+		result.innerHTML = str;
+	}
+	function run2(){
+		let h = frm.hobby;
+		let str = '';
+		for(v in h){        // v는 index 값이 된다.
+			if(h[v].checked){
+				str += '<li>' + h[v].value + '</li>';
+			}
+		}
+		result.innerHTML = str;
+	}
+</script>
+
+</body>
+</html>
+
+

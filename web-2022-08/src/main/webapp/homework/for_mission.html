@@ -84,31 +84,31 @@ btn.onclick = function(){
 	let r4 = document.getElementById('r4');
 	let r5 = document.getElementById('r5');
 	let r6 = document.getElementById('r6');  // 우측 하단 출력상자
-	let gugudan = '';  // 몇단 출력
-	let str = '';      // 구구단 내용 출력
+	let dan = '';  // 몇단 출력
+	let str = '';  // 구구단 내용 출력
 	
-	for(let i=X ; X<=Y ; X++){
-		for(let k=1 ; k<=9 ; k++){
-			str += (X + '*' + k + ' = ' + (X*k));
-			str += ('<br/>');
+	for(var i=X ; X<=Y ; i++){  // str을 초기화 시키는 방향
+		for(var k=1 ; k<=9 ; k++){
 			if(X==(Y-5)){
-				gugudan = X + '단';
-				r1.innerHTML = gugudan + '<br/>' + str;
+				str += (X + '*' + k + ' = ' + (X*k));
+				str += ('<br/>');
+				dan = X + '단';
+				r1.innerHTML = dan + '<br/>' + str;
 			}else if(X==(Y-4)){
-				gugudan = X + '단';
-				r2.innerHTML = gugudan + '<br/>' + str;
+				dan = X + '단';
+				r2.innerHTML = dan + '<br/>' + str;				
 			}else if(X==(Y-3)){
-				gugudan = X + '단';
-				r3.innerHTML = gugudan + '<br/>' + str;
+				dan = X + '단';
+				r3.innerHTML = dan + '<br/>' + str;				
 			}else if(X==(Y-2)){
-				gugudan = X + '단';
-				r4.innerHTML = gugudan + '<br/>' + str;
+				dan = X + '단';
+				r4.innerHTML = dan + '<br/>' + str;				
 			}else if(X==(Y-1)){
-				gugudan = X + '단';
-				r5.innerHTML = gugudan + '<br/>' + str;
+				dan = X + '단';
+				r5.innerHTML = dan + '<br/>' + str;				
 			}else{
-				gugudan = X + '단';
-				r6.innerHTML = gugudan + '<br/>' + str;
+				dan = X + '단';
+				r6.innerHTML = dan + '<br/>' + str;				
 			}
 		}
 	}

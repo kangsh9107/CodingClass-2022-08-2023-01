@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>for_mission_teacher.html</title>
+<style>
+.zone{
+	border: 2px solid #aaa;
+	padding: 10px;
+	display: inline-block;
+	width: 130px;
+}
+</style>
+</head>
+<body>
+
+<!--  단X가 더 클 때 역순으로 출력
+단X나 단Y나 뭐가 크던 상관없이 출력
+짝수 진한파랑, 홀수 연한파랑
+ -->
+
+<h2>X~Y까지 구구단 출력</h2>
+<span>단 X</span>
+<input type='text' size='4' id='x' value='2'/><br/>
+<span>단 Y</span>
+<input type='text' size='4' id='y' value='7'/>
+<input type='button' value='실행' id='btn'/>
+<hr/>
+<div id='result'></div>
+
+<script>
+let btn = document.querySelector('#btn');
+let result = document.querySelector('#result');
+btn.onclick = function(){
+	let str = '';
+	// 함수 밖에 쓰면 웹페이지 뜨는 순간 처리되어 아무것도 없는 값이 들어감.
+	// value에 미리 안넣어 놨기 때문.
+	// 그리고 단 바꿔서 실행 눌러도 누를 때마다 값이 들어가지 않기 때문에 계속 처음 값이 나옴.
+	let x = Number(document.querySelector('#x').value);
+	let y = Number(document.querySelector('#y').value);
+	for(let dan=x ; dan<=y ; dan++){
+		str += "<div class='zone'>"  // 가독성을 위해 줄을 바꿈.
+			+	   dan + " 단<br/>";
+		
+		for(var i=1; i<=9 ; i++){
+			str += dan + " * " + i + " = " + (dan*i) + "<br/>";
+		}
+		
+		str += "</div>";
+		
+	}
+	result.innerHTML = str;
+};
+
+</script>
+
+</body>
+</html>
