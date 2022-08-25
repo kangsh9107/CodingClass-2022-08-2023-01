@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>func_test4.html</title>
+</head>
+<body>
+
+<div>
+1. 아이디와 암호를 매개변수로 전달받아 회원이면 "PASS", 회원이 아니면 "FAIL"
+을 리턴하는 함수 Login을 작성하시오.(a001/1111인 경우 회원)
+<br/>
+2. 아이디를 전달받아 아이디가 있으면 암호를 리턴하는 함수 SearchPwd를 작성하시오.
+(a001->1111을 리턴)
+<br/>
+3. 이메일과 암호를 매개변수로 전달받아 존재하면 회원의 아이디를 리턴하는
+함수 SearchId를 작성하시오.(a001@korea.com/1111 -> a001)
+<br/>
+4. Login, SearchPwd, SearchId를 테스트 코드를 작성.
+</div>
+<hr/>
+<script>
+let id = 'a001';
+let pwd = '1111';
+let email = 'a001@korea.com';
+
+function Login(id,pwd){             // 아이디와 암호를 매개변수로 받는다
+	                                // 만약 Login(x,y){ }를 하면
+	let r = 'PASS';
+	if(id!='a001' || pwd!='1111'){  // 여기의 id가 함수 밖의 id와 같아진다. 전역변수보다 지역변수가 우선이다.
+		r = 'FAIL';
+	}
+	return r;
+}
+let k = Login(id,pwd);
+document.write(k);
+document.write('<br/>');
+
+function SearchPwd(id){
+	let r2 = pwd;
+	if(id!='a001'){
+		r2 = '아이디를 다시 확인해주세요.';
+	}
+	return r2;
+}
+let k2 = SearchPwd(id);
+document.write(k2);
+document.write('<br/>');
+
+function SearchId(email,pwd){
+	let r3 = id;
+	if(email!='a001@korea.com' || pwd!='1111'){
+		r3 = '이메일과 암호를 다시 확인해주세요.';
+	}
+	return r3;
+}
+let k3 = SearchId(email,pwd);
+document.write(k3);
+</script>
+
+</body>
+</html>
+
+

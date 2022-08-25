@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>num_mission_teacher.html</title>
+</head>
+<body>
+<p>
+	수량, 단가를 입력받아 금액, 부가세10%를 계산하여 합계를 출력하시오.
+	단, 소숫점이하는 절삭처리.(toFixed 또는 parseInt)
+	<li>총액은 부가세 10%가 포함된 금액으로 수정
+</p>
+<form name='frm'>
+	<span>수량</span>
+	<input type='text' name='ea' value='1'/><br/>
+	<span>단가</span>
+	<input type='text' name='price' value='7000'/><br/>
+	<span>금액</span>
+	<output name='amt'></output><br/>
+	<span>부가세</span>
+	<output name='tax'></output><br/>
+	<span>총액</span>
+	<output name='total'></output><br/>
+	<span></span>
+	<input type='button' value='계산' name='btn'/>
+</form>
+<script>
+/* 
+function test(){ // 함수 선언
+	let amt = 12345.6789;
+	console.log( parseInt(amt) );     // 소숫점 이하가 **절삭**
+	console.log( parseInt(amt+0.5) ); // 소숫점 이하가 반올림
+	console.log( parseInt(((amt*0.1)+0.5)) *10 );  // parseInt만 사용해 12350으로 표시하려면?
+	console.log( parseInt(((amt/100)+0.5)) *100 ); // 12300
+	console.log('-------------');     // 소숫점 이하가 반올림
+	
+	console.log( amt.toFixed(0) );    // 소숫점 첫째 자리에서 반올림 12346
+	console.log( amt.toFixed(1) );    // 소숫점 둘째 자리에서 반올림 12345.7
+}
+test();          // 함수 호출
+ */
+let frm = document.frm;
+frm.btn.onclick = function(){
+	let ea = Number(frm.ea.value);
+	let price = Number(frm.price.value);
+	let amt = frm.amt;     // amt 태그를 가져옴
+	let tax = frm.tax;     // tax 태그를 가져옴
+	let total = frm.total; // total 태그를 가져옴
+	
+	let v = (10/11)*(ea*price);  // 총액에 부가세 포함.
+	// let t = parseInt(v/10);
+	let t = v/10;  // toFixed는 숫자를 계산 후 문자로 반환. 총액에 부가세가 포함이면 소숫점 살려야 함.
+	
+	amt.value = v.toLocaleString();  // 좌변은 상수가 아닌 변수여야 한다. 위에서 let amt = frm.amt.value로 선언했다면 amt.value가 상수가 되어 오류.
+	tax.value = t.toLocaleString();  // toLocaleString() 괄호 안에 국가 코드 넣으면 해당 국가 단위로 나옴.
+	total.value = (v+t).toLocaleString();
+}
+
+/* 내 코드
+	let frm = document.frm;
+	frm.btn.onclick = function(){
+		let ea = Number(frm.ea.value);
+		let price = Number(frm.price.value);
+		let amt = ea*price;
+		let tax = amt*0.1;
+		let total = amt+tax;
+		
+		frm.amt.innerHTML = amt.toFixed(0) + ' 원';
+		frm.tax.innerHTML = tax.toFixed(0) + ' 원';
+		frm.total.innerHTML = total.toFixed(0) + ' 원';
+	}
+ */
+</script>
+</body>
+</html>
+
+

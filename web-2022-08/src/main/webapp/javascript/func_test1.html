@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>func_test1</title>
+</head>
+<body>
+
+<script>
+// 함수식(선언적 함수): 호출이 필요함.
+
+// 1) 매개변수 x, 반환형 x
+function MyName(){
+	console.log('강수형');
+}
+MyName();                // 함수는 Hoisting되기 때문에 함수 선언보다 호출이 윗줄에 있어도 괜찮다.
+let m = new MyName();    // 함수 MyName이 객체로 생성되어 변수 m에 대입된다.
+                         // let m = new MyName(); <-> let m = MyName();
+
+// 2) 매개변수 x, 반환값 o
+function MyAddress(){
+	return "대한민국";
+}
+let address = MyAddress();
+console.log(address);
+
+// 3) 매개변수 o, 반환값 x
+function Sum(x,y){
+	let s = x + y;
+	console.log('s=', s);
+}
+Sum(10,20);
+Sum(20,100);
+let x = 100;
+let y = 200;
+Sum(x,y);
+
+// 4) 매개변수 o, 반환값 o
+function Avg(x,y){
+	let s = x+y;
+	let a = s/2;
+	return a;
+}
+console.log(Avg(10,20));
+console.log(Avg(100,50));
+</script>
+
+</body>
+</html>
+
+

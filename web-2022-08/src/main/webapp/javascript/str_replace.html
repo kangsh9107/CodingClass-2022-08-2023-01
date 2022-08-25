@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>str_replace</title>
+</head>
+<body>
+<input type='text' size='50' id='source' value='가나다가나다'/><br/>
+<input type='text' size='50' id='target'/><br/>
+<input type='text' size='10' id='word'/>
+<input type='button' value='변환' id='btn'/>
+
+<script>
+let btn = document.querySelector('#btn');
+btn.onclick = function(){
+	let source = document.querySelector('#source');  // 여기에는 .value를 쓰면 밑에 temp에서 source.value -> source로 바꿔야한다.
+	let target = document.querySelector('#target');  // .value를 쓰면 안된다. 변수 선언에서 좌변은 변수여야 한다. 상수x
+	let word = document.querySelector('#word').value;
+	// let temp = source.value.replace(/word/g, ''); // { } 안에 /word/는 word의 값을 찾는게 아니라 word 자체를 찾는다.
+	// target.value = temp;
+	
+	
+	// 변수에 저장되어 있는 문자로 모든 단어를 변경할 때
+	let reg = new RegExp(word, "g");  // /가/g 랑 같은 표현.
+	let temp = source.value.replace(reg, '[관리자가 삭제함]');
+	target.value = temp;
+}
+</script>
+</body>
+</html>
+
+
