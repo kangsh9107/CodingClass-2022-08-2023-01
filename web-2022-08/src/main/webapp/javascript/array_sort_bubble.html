@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>array_sort_bubble.html</title>
+</head>
+<body>
+
+<script>
+// bubble sort
+let s = [9, 1, 5, 3, 8, 2];
+let change = true;
+let last = 1;        // 1회전에 이미 끝에 가장 큰 값이 들어가니까 for문 조건 수정을 위해 추가.
+console.log(s);      // 원본
+while(change){       // 바뀜? 그럼 해
+	change = false;
+	for(i=0; i<s.length-last; i++){  // i=0,1,2,3,4
+		if(s[i]>s[i+1]){
+			min = s[i+1];
+			s[i+1] = s[i];
+			s[i] = min;
+			change = true;
+		}
+	}
+	last++;
+	console.log(s);  // bubble sort 완료
+}
+
+</script>
+
+</body>
+</html>
+
+

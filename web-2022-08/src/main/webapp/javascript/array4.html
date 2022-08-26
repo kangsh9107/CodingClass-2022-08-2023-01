@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>array4.html</title>
+</head>
+<body>
+
+<script>
+let m = ['백두산', '금강산', '설악산', '한라산'];
+let r = ['두만강', '낙동강', '한강'];
+console.log(m);
+console.log(m[1]);
+console.log(r);
+console.log(r[2]);
+
+let k = m.concat(r);
+console.log(k);
+let k2 = r.concat(m);
+console.log(k2);
+console.log(k2[5]);
+
+let k3 = m.join('-->>');
+document.write(k3);
+
+let k4 = r.reverse();
+document.write('<br/>' + k4);
+
+m.push('산산산산');
+console.log(m);
+m.shift();
+console.log(m);
+m.pop();
+console.log(m);
+
+console.log('-------------');
+m.splice(1,2);
+console.log(m);
+
+console.log(r);
+console.log(r.slice(1));
+console.log(r);  // slice는 몇 번을 사용해도 원본 배열이 바뀌지 않는다.
+</script>
+
+</body>
+</html>
+
+

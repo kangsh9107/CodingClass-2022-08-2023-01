@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>func_search_id.html</title>
+</head>
+<body>
+<p>
+	3. 이메일과 암호를 매개변수로 전달받아 존재하면 회원의 아이디를 리턴하는
+	함수 SearchId를 작성하시오.(a001@korea.com/1111 -> a001)
+</p>
+<form name='frm'>
+	<span>이메일</span>
+	<input type='text' name='email' value='a001@korea.com'/><br/>
+	<span>비밀번호</span>
+	<input type='password' name='pwd'/><br/>
+	<input type='button' name='btn' value='아아디 찾기' onclick='Chk()'>
+</form>
+<script>
+/* 
+	let frm = document.frm;
+	function Chk(){
+		let email = frm.email.value;
+		let pwd = frm.pwd.value;
+		let id = CheckId(email,pwd);
+		alert('조회하신 아이디는' + id + ' 입니다.');
+	}
+	function CheckId(em,pw){
+		let id = '이메일과 비밀번호를 확인해주세요.';
+		if(em=='a001@korea.com' && pw=='1111'){
+			id = 'a001';
+		}
+		return id;
+	}
+ */ 
+let frm = document.frm;
+function Chk(){
+	let email = frm.email.value;
+	let pwd = frm.pwd.value;
+	let c = CheckId(email,pwd);
+	alert(c);
+}
+function CheckId(em,pw){
+	let b = '이메일과 비밀번호를 확인해주세요.';
+	if(em=='a001@korea.com' && pw==1111){
+		b = 'a001';
+	}
+	return b;
+}
+
+</script>
+
+</body>
+</html>
+
+
