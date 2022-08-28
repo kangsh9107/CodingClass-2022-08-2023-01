@@ -42,6 +42,36 @@
 </form>
 </div>
 
+<div id='if'>
+<hr/>
+<form name='frm'>
+	<span>키</span>
+	<input type='text' name='height' value='190'/><br/>
+	<span>몸무게</span>
+	<input type='text' name='weight' value='90'/><br/>
+	<span>탑승여부</span>
+	<output name='output'></output><br/>
+	<input type='button' name='btn' value='확인' onclick='Chk()'/>
+</form>
+</div>
+<script>
+let frm = document.frm;
+function Chk(){
+	let height = frm.height.value;
+	let weight = frm.weight.value;
+	let output = frm.output;
+	let c = CheckPass(height,weight);
+	output.innerHTML = c;
+}
+function CheckPass(h,w){
+	let r = ": 탑승 불가능"
+	if(h<=200 && w<=150){
+		r = ": 탑승 가능"
+	}
+	return r;
+}
+</script>
+
 </body>
 </html>
 

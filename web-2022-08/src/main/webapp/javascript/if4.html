@@ -8,7 +8,8 @@
 <body>
 
 <p>
-	3개의 점수를 입력하세요.
+	3개의 성적을 임의의 변수에 대입한 후 총점, 평균을 구하고
+	평균에 따라 학점을 구하여 console에 출력하시오.
 </p>
 <span>국어</span>
 <input type='text' id='kor' size='2' value='100'/><br/>
@@ -24,10 +25,6 @@
 <span>학점</span>
 <output id='grade2'></output><br/>
 <script>
-/* 
- 3개의 성적을 임의의 변수에 대입한 후 총점, 평균을 구하고
- 평균에 따라 학점을 구하여 console에 출력하시오.
- */
 /* 
 let kor = document.querySelector('#kor');
 let eng = document.querySelector('#eng');
@@ -60,7 +57,6 @@ let btn = document.querySelector('#btn');
 let tot2 = document.querySelector('#tot2');
 let avg2 = document.querySelector('#avg2');
 let grade2 = document.querySelector('#grade2');
-
 btn.onclick = function(){
 	console.log('버튼을 클릭했습니다.');
 	let a = Number(kor.value);
