@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>array_some.html</title>
+</head>
+<body>
+
+<script>
+// 배열 값들 중 하나라도 조건을 만족하면 참을 리턴
+// 점수들 중에서 과락이 있는지 판별
+let score = [66, 66, 77, 88, 33];
+let test1 = score.some(function(v){  // score의 값들이 하나씩 v에 들어간다.
+	return v<40;
+});
+console.log(test1);  // 하나라도 40점 미만이면 true가 나오니 true일 때 불합격 출력하도록 프로그래밍.
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>array_forEach.html</title>
+</head>
+<body>
+<div id='result'></div>
+<script>
+let rst = document.getElementById('result');
+// for in, for of, forEach  // forEach는 for in과 for of의 장점을 각각 가지고 있다고 보면 편하다.
+let ary = ['가', '나', '다', '라'];
+let str = '';
+ary.forEach(function(value, index){
+	str += `index=${index} : ${value} <br/>`;
+});
+rst.innerHTML = str;
+
+</script>
+
+</body>
+</html>
+
+

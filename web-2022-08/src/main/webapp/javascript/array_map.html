@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>array_map.html</title>
+</head>
+<body>
+
+<script>
+let arry = [1.2, 0.5, 45.9, 34.01];
+let newArry = arry.map(function(value){
+	return Math.ceil(value);  // value 값을 절상함. 소수점 이하 올림. // Math.floor(); 내림 // Math.round(); 반올림
+});
+console.log(arry);
+console.log(newArry);
+
+let newArry2 = arry.map((value)=>(Math.ceil(value)));  // 에로우 펑션은 기본적으로 리턴.
+console.log(newArry2);
+</script>
+
+</body>
+</html>
+
+

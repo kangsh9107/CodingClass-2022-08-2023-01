@@ -15,7 +15,7 @@ console.log(s);      // 원본
 while(change){       // 바뀜? 그럼 해
 	change = false;
 	for(i=0; i<s.length-last; i++){  // i=0,1,2,3,4
-		if(s[i]>s[i+1]){
+		if(s[i]>s[i+1]){  // <디센딩. 오른쪽부터 비교하게 바꾸면 더 좋다.
 			min = s[i+1];
 			s[i+1] = s[i];
 			s[i] = min;

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>event_add.html</title>
+</head>
+<body>
+<input type='button' value='INLINE' onclick='func1()'/>
+<input type='button' value='ONCLICK' id='btn'/>
+<input type='button' value='LISTENER' id='btn2'/>
+<script>
+function func1(){
+	let ev = window.event;
+	console.log(ev);
+}
+
+let btn = document.querySelector('#btn');
+	btn.onclick = func1;    // () 적지 않는다. 콜백함수를 지정한다.
+//  btn.onclick = func1();  // 함수 func1 의 실행결과가 대입된다.
+//  func1();
+
+let btn2 = document.querySelector('#btn2');
+btn2.addEventListener('click', func1);  // 추천
+</script>
+
+</body>
+</html>
+
+

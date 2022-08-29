@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>array.filter.html</title>
+</head>
+<body>
+
+<script>
+let scores = [
+	{'name' : 'hong', 'score' : 90, 'phone' : '010'},  // '' 안에서 띄어쓰기하면 그것도 값으로 취급. 010을 ''안붙이면 8진수로 인식. x는 16진수.
+	{'name' : 'kim',  'score' : 70, 'phone' : '010'},
+	{'name' : 'lee',  'score' : 50, 'phone' : '017'},
+	{'name' : 'park', 'score' : 40, 'phone' : '018'},
+	{'name' : 'choi', 'score' : 10, 'phone' : '019'}
+];
+// for of
+for(v of scores){
+	console.log(v.name, v.score, v.phone);
+}
+for(v of scores){
+	console.log(v);
+}
+console.log('------------');
+// forEach
+scores.forEach(function(v, index){
+	console.log(index, v.name, v.score, v.phone);
+});
+scores.forEach(function(v, index){
+	console.log(index, v);
+});
+console.log('------------');
+// filter를 사용하여 조건에 맞는 자료를 모아 새로운 배열 생성
+let passArray = scores.filter(function(v){
+	if(v.score>=60) return true;
+	else return false;
+});
+console.log(passArray);
+console.log('------------');
+
+// filter를 사용하여 불합격자 명단을 모아 새로운 배열을 만들고 출력
+let falseArray = scores.filter(function(v){
+	let flag = false;            // return이 여러개면 보기 안좋음. 변수로 표현하면 깔끔.
+	if(v.score<60) flag = true;
+	return flag;
+});
+console.log('fail', falseArray);
+// filter를 사용하여 연락처가 010인 배열을 모아 새로운 배열을 만들고 출력
+let phoneArray = scores.filter(function(v){
+	let flag = false;
+	if(v.phone=='010') flag = true;
+	return flag;
+});
+console.log('010', phoneArray);
+console.log('------------');
+// reduce
+
+</script>
+
+</body>
+</html>
+
+

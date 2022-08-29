@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>member_control.html</title>
+<link rel='stylesheet' href='../css/member_control.css'>
+</head>
+<body>
+<main>
+	<div>
+	회원 정보 CRUD
+	</div>
+	<form name='frm_member'>
+		<span>아이디</span>
+		<input type='text' name='id' value='a001'/><br/>
+		<span>성명</span>
+		<input type='text' name='name' value='hong'/><br/>
+		<span>성별</span>
+		<label><input type='radio' name='gender' value='m'/>남자</label>
+		<label><input type='radio' name='gender' value='f'/>여자</label>
+		<br/>
+		<span>연락처</span>
+		<input type='text' name='phone' value='010-1111-1234'/>
+		<hr/>
+		<input type='button' value='CREATE' name='btnAppend'/>
+		<input type='button' value='UPDATE' name='btnUpdate'/>
+		<input type='button' value='DELETE' name='btnDelete'/>
+	</form>
+	<div id='list'>
+		<div id='title'>
+			<span class='id'>아이디</span>
+			<span class='name'>성명</span>
+			<span class='gender'>성별</span>
+			<span class='phone'>연락처</span>
+		</div>
+		<div id='item'></div>
+	</div>
+</main>
+<script>
+
+</script>
+
+</body>
+</html>
+
+

@@ -9,7 +9,7 @@
 <script>
 let s = [78, 123, 9, 56, 432, 5, 2];
 // console.log(s.sort());  // 문자 상태로 sort
-console.log(s.sort(mysort));  // mysort를 사용해 sort
+console.log(s.sort(mysort));  // mysort(자바스크립트 기본 제공)를 사용해 sort. 아마도 bubble sort일 것이다.
 
 function mysort(x,y){      // 리턴 결과값이 양수이면 x,y자리가 바뀜.
 	return x-y;            // y-x로 바꾸면 Descending(내림차순:높음->낮음)
