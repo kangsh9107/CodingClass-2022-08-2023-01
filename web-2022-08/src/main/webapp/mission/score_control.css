@@ -1,0 +1,86 @@
+@charset "UTF-8";
+*{
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+}
+#score_title{
+	text-align: center;
+	font-size: 25pt;
+	font-weight: bolder;
+	margin: 20px 20px 0px 20px auto;
+	text-shadow: 8px 8px 3px #888;
+	border: 3px solid #000;
+	background: #000;
+	color: #fff;
+	width: 850px;
+}
+main{
+	border: 3px solid #55f;
+	background-color: #ddd;
+	box-shadow: 5px 5px 8px #aaa;
+	width: 850px;
+	margin: 0px 20px 20px 20px auto;
+	padding: 20px;
+	min-height: 450px;
+}
+form{
+	width: 320px;
+	float: left;
+	background-color: #55f;
+	padding: 20px;
+	color: #ff0;
+}
+form span{
+	display: inline-block;
+	margin: 5px;
+}
+form input[type=button]{
+	display: inline-block;
+	margin: 0px 7px 7px 7px;
+	font-weight: bloder;
+	font-size: 12pt;
+	width: 55px;
+	height: 27px;
+}
+form input[type=text]{
+	display: inline-block;
+	width: 90px;
+	height: 27px;
+	font-size: 12pt;
+}
+
+/* 리스트 */
+
+#list{
+	float: right;
+	width: 330px;
+}
+#list>#title{
+	background-color: #55f;
+	color: #ff0;
+	padding: 3px 20px;
+}
+#list span{
+	display: inline-block;
+	margin: 5px;
+}
+#list span.number{ width: 80px;}
+#list span.subject{ width: 80px;}
+#list span.score{ width: 80px;}
+#items{
+	padding: 3px 20px;
+}
+#items>div:last-child{
+	border-bottom: 3px dashed #aaa;
+}
+#items>.item:hover{
+	background-color: #888;
+	cursor: pointer;
+}
+#result{
+	display: inline-block;
+	width: 100%;
+	padding-right: 80px;
+	text-align: right;
+}

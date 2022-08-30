@@ -3,13 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <title>p220829.html</title>
+<style>
+.dan{
+	border: 3px solid #aaa;
+	padding: 10px;
+	display: inline-block;
+	width: 130px;
+}
+</style>
 </head>
 <body>
-
+	<h2>X~Y까지 구구단 출력</h2>
+	<span>단 X</span>
+	<input type='text' size='4' id='x' value='2'/><br/>
+	<span>단 Y</span>
+	<input type='text' size='4' id='y' value='7'/>
+	<input type='button' value='실행' id='btn'/>
+	<hr/>
+	<div id='result'></div>
 <script>
+let btn = document.querySelector('#btn');
+let r = document.querySelector('#result');
+btn.onclick = function(){
+	let x = document.querySelector('#x').value;
+	let y = document.querySelector('#y').value;
+	let str = '';
+	for(x; x<=y; x++){
+		str += '<div class="dan">' + x + '단' + '<br/>';
+		for(let i=1; i<10; i++){
+			str += x + '*' + i + ' = ' + x*i + '<br/>';
+		}
+		str += '</div>';
+	}
+	r.innerHTML = str;
+}
+
 /* score = [60,70,50,70,30] 배열값을 some()을 사용하여 과락이 있는지 판단하고
  * reduce()를 사용하여 합계를 구하여 합계, 평균을 출력하시오.
  * 과락이 없고, 평균이 60 이상이면 "pass", 아니면 "fail"을 출력 */
+/* 
 function M3(){
 	let score = [60, 70, 50, 70, 30];
 	let someScore = score.some(function(v){
@@ -32,18 +64,23 @@ function M3(){
 	}
 }
 M3();
+ */
+ 
 /* su=[1,2,3,4,3,4,5,1] 의 배열에서 각 번호의 발생 빈도를 계산하여 숫자와 함께 출력 */
+/* 
 function M4(){
 	let su = [1, 2, 3, 4, 3, 4, 5, 1];
-	let reduce = su.reduce(function(r, v){
+	let k = su.reduce(function(r, v){
 		r[v] = ++r[v] || 1;
 		return r;
 	},{});
-console.log(reduce);
+	for(x in k){
+		let rate = k[x]/su.length*100;
+		console.log(x, k, rate.toFixed(3));
+	}
 }
 M4();
-
-
+ */
 </script>
 
 </body>
