@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>p220831.html</title>
+</head>
+<body>
+<form name='frm'>
+	<span>이메일</span>
+	<input type='text' name='email' value='a001@korea.com'/><br/>
+	<span>비밀번호</span>
+	<input type='password' name='pwd'/><br/>
+	<input type='button' name='btn' value='아이디 찾기' onclick='Chk()'>
+</form>
+
+<script>
+let frm = document.frm;
+function Chk(){
+	let email = frm.email.value;
+	let pwd = frm.pwd.value;
+	let c = CheckId(email, pwd);
+	alert(c);
+}
+function CheckId(em, pw){
+	let r = '이메일과 비밀번호를 확인해 주세요.';
+	if(em=='a001@korea.com' && pw=='1111'){
+		r = '아이디는 a001 입니다.';
+	}
+	return r;
+}
+/* 
+let frm = document.frm;
+function Chk(){
+	let email = frm.email.value;
+	let pwd = frm.pwd.value;
+	let r = '이메일과 비밀번호를 확인해 주세요.';
+	if(email=='a001@korea.com' && pwd=='1111'){
+		r = '아이디는 a001 입니다.');
+	}
+	alert(r);
+}
+ */
+/* 
+let a = 1;
+
+if(a!=0 || a!=2){
+	console.log(a);
+}
+ */
+/* 
+let data = [
+	{'id' : '1', 'subject' : '국어', 'score' : '100'},
+	{'id' : '1', 'subject' : '영어', 'score' : '90'},
+	{'id' : '2', 'subject' : '역사', 'score' : '95'},
+];
+
+for(v in data){
+	console.log('------ (1) v, data[v]');
+	console.log(v, data[v]);
+	
+	console.log('------ (2) v');
+	console.log(v);
+	
+	console.log('------ (3) data[v]');
+	console.log(data[v])
+	
+	console.log('------ (4) data[0]');
+	console.log(data[0]);
+	
+	console.log('------ (5) data[0].id');
+	console.log(data[0].id);
+}
+ */
+</script>
+
+</body>
+</html>

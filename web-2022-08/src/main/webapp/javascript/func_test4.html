@@ -27,7 +27,7 @@ let email = 'a001@korea.com';
 function Login(id,pwd){             // 아이디와 암호를 매개변수로 받는다
 	                                // 만약 Login(x,y){ }를 하면
 	let r = 'PASS';
-	if(id!='a001' || pwd!='1111'){  // 여기의 id가 함수 밖의 id와 같아진다. 전역변수보다 지역변수가 우선이다.
+	if(id!='a001' || pwd!='1111'){  // 여기의 id가 함수 밖의 id와 같아진다. // 전역변수보다 지역변수가 우선이다.
 		r = 'FAIL';
 	}
 	return r;

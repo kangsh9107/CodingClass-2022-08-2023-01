@@ -36,12 +36,14 @@
 	}
 	function run2(){
 		let h = frm.hobby;
-		let str = '';
+		let str = '<ul>';
 		for(v in h){        // v는 index 값이 된다.
 			if(h[v].checked){
 				str += '<li>' + h[v].value + '</li>';
+				str += h[v] + '<br/>';
 			}
 		}
+		str += '</ul>';
 		result.innerHTML = str;
 	}
 </script>

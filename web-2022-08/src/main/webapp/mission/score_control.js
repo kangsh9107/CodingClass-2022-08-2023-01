@@ -3,26 +3,25 @@
  * 작성일: 2022-08-30
  */
 let data = [
-	{'number' : '1', 'subject' : 'kor', 'score' : '100'},
-	{'number' : '2', 'subject' : 'eng', 'score' : '90'},
-	{'number' : '3', 'subject' : 'his', 'score' : '95'},
-	{'number' : '4', 'subject' : 'kor', 'score' : '65'},
-	{'number' : '5', 'subject' : 'eng', 'score' : '35'},
-	{'number' : '6', 'subject' : 'his', 'score' : '100'}
+	{'number' : '1', 'subject' : '국어', 'score' : '100'},
+	{'number' : '2', 'subject' : '영어', 'score' : '90'},
+	{'number' : '3', 'subject' : '역사', 'score' : '95'},
+	{'number' : '4', 'subject' : '국어', 'score' : '65'},
+	{'number' : '5', 'subject' : '영어', 'score' : '35'},
+	{'number' : '6', 'subject' : '역사', 'score' : '100'}
 ];
-
 let template;
 let frm = document.frm_score;
 function list(){
 	let items = document.querySelector('#items');
 	items.innerHTML = '';
-	for(v of data){
+	for(v in data){
 		template = 
 			`
-			<div class = 'item' onclick = 'view("${v.number}")'>
-				<span class = 'number'>${v.number}</span>
-				<span class = 'subject'>${v.subject}</span>
-				<span class = 'score'>${v.score}</span>
+			<div class = 'item' onclick = 'view("${data[v].number}")'>
+				<span class = 'number'>${data[v].number}</span>
+				<span class = 'subject'>${data[v].subject}</span>
+				<span class = 'score'>${data[v].score}</span>
 			</div>
 			`
 		items.innerHTML += template;
@@ -125,6 +124,3 @@ function deleteFunc(frm){
 	}
 	a();  // 평균 계산 함수 실행
 }
-
-
-
