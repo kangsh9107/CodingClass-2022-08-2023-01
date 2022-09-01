@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>event_cancle.html</title>
+</head>
+<body>
+<form name='frm'>
+	<label for='id'>아이디</label>
+	<input type='text' name='id' id='id'/><br/>
+	<label for='pwd'>비밀번호</label>
+	<input type='password' name='pwd' id='pwd'/><br/>
+	<button onclick='return chk()'>전송</button>  <!-- 기본 값이 submit이다. -->
+	<button onclick='chk2()'>전송2</button>
+	<button type='button' id='btn'>전송3</button>
+</form>
+<script>
+// 이벤트 취소방법1
+function chk(){
+	let frm = document.frm;
+	if(frm.id.value=='' || frm.pwd.value==''){
+		return false;
+	}else{
+		return true;
+	}
+}
+// 이벤트 취소방법2
+function chk2(){
+	let ev = window.event;
+	ev.preventDefault();  // 무조건 취소하게 만든거. 그냥 일부러 if문 사용안함.
+}
+
+// 이벤트 취소방법3
+let btn = document.querySelector('#btn');
+btn.addEventListener('click', func);
+function func(){
+	btn.removeEventListener('click', func);  // 은행같은 경우 한번만 눌러야 해서 1회성으로 사용 하는 곳에서 쓰임.
+	alert('실행안돼');                         // 밖에 적으면 여러번 실행 가능.
+}
+</script>
+
+</body>
+</html>
+
+

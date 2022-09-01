@@ -1,0 +1,32 @@
+@charset "UTF-8";
+/* 
+.ex-midea{
+	max-width: 100%;
+		width: 400px;
+		height: 400px;
+		background-image: url(logo400.png);
+		background-repeat: no-repeat;
+		background-size: contain;
+		padding: 10px;
+}
+@media only screen and (min-width: 401px) {
+	.ex-midea{
+		width: 700px;
+		height: 700px;
+		background-image: url(../test/logo700.png);
+	}
+}
+@media only screen and (min-width: 701px) {
+	.ex-midea{
+		width: 1000px;
+		height: 1000px;
+		background-image: url(../test/logo1000.png);
+	}
+}
+ */
+
+/* 최대 넓이: 600~800px */
+/* 이런식으로 폭에 따라 css를 다르게 만든다. */
+img{
+	width: 300px;
+}

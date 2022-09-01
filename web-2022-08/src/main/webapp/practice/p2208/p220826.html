@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>p220826.html</title>
+</head>
+<body>
+<form name='frm'>
+	<span>이름</span>
+	<input type='text' name='findStr' value='nam'/><br/>
+	<input type='button' name='btn' value='찾기'/>
+	<span>연락처</span>
+	<output name='output'></output>
+</form>
+<script>
+let m = [
+	['kim', '010'],
+	['lee', '012'],
+	['nam', '017'],
+	['han', '018']
+];
+function Find(n){
+	let phone='없음';
+	for(let r=0; r<m.length; r++){
+		if(m[r][0] == n){
+			phone = m[r][1];
+		}
+	}
+	console.log('연락처:', phone);
+	return phone;
+}
+Find('han');
+</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>t220831_1_teacher.html</title>
+
+<link rel="stylesheet" href="t220831_1_teacher.css">
+
+<link rel='stylesheet' href='a_type.css'
+	  media='screen and (min-width:600px) and (max-width:800px)'>
+<link rel='stylesheet' href='b_type.css'
+	  media='screen and (min-width:801px)'>
+<link rel='stylesheet' href='c_type.css'
+	  media='screen and (min-width:1001px)'>
+
+<script>
+	let img = '<img src="kk.png"/>';
+	let r = document.querySelector('#result');
+	for(i=0; i<50; i++){     // 개발자는 최대한 극한의 상황을 가정해서 구현.
+		r.innerHTML += img;
+	}
+</script>
+<!-- 
+<style>
+*{
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+div{
+	border: 3px solid #ccc;
+	overflow: auto;
+	position: relative;
+	width: 600px;
+	padding: 10px;
+	margin: 20px auto;
+}
+div span{
+	float: left;
+	width: 120px;
+	background-color: #000;
+	color: #fff;
+}
+div span.mName{
+	background-color: #ccc;
+}
+div span.id{
+	background-color: #ccc;
+}
+div span.phone{
+	background-color: #ccc;
+}
+div span.email{
+	background-color: #ccc;
+}
+</style>
+ -->
+</head>
+<body>
+
+<div class="ex-midea"></div>
+
+<div id='result'></div>
+
+<!-- 
+<div id='result'>
+	<span>성명</span>
+	<span>아이디</span>
+	<span>연락처</span>
+	<span>이메일</span>
+</div>
+ -->
+<!-- 
+<form name='frm'>
+	<span>x</span>
+	<input type='text' name='x' value='1'/><br/>
+	<span>y</span>
+	<input type='text' name='y' value='100'/><br/>
+	<input type='button' name='btn' value='실행'/>
+</form>
+ -->
+<!-- 
+<form name='frm'>
+	<span>아이디</span>
+	<input type='text' name='id' value='kim'/><br/>
+	<span>암호</span>
+	<input type='password' name='pwd'/><br/>
+	<input type='button' name='btn' value='확인'/>
+</form>
+<div id='result'></div>
+ -->
+<script>
+/* 
+let frm = document.frm;
+let r = document.querySelector('#result');
+frm.btn.onclick = function(){
+	if(frm.id.value=='kim' && frm.pwd.value=='1111'){  // 변수에 대입하지 않고 바로 가져오는 방법도 있으니 상황에 맞게 쓰자.
+		r.innerHTML = 'PASS';
+	}else{
+		r.innerHTML = 'FAIL';
+	}
+}
+ */
+
+/* 
+let frm = document.frm;
+frm.btn.addEventListener('click', function(){
+	let x = Number(frm.x.value);
+	let y = Number(frm.y.value);
+	while(x<=y){
+		if(x%3!=0 && x%5 !=0){
+			console.log(x);
+		}
+		x++
+	}
+});
+ */
+	/* 
+	for(n=x; n<=y; n++){
+		if(n%3!=0 && n%5 !=0){
+			console.log(n);
+		}
+	}
+	 */
+
+/* 강사님 코드
+let ary = [
+	{'name' : 'hong1', 'id' : 'a001', 'phone' : '1234', 'email' : 'a001@'},
+	{'name' : 'hong1', 'id' : 'a001', 'phone' : '1234', 'email' : 'a001@'},
+	{'name' : 'hong1', 'id' : 'a001', 'phone' : '1234', 'email' : 'a001@'},
+	{'name' : 'hong1', 'id' : 'a001', 'phone' : '1234', 'email' : 'a001@'}
+];
+let r = document.querySelector('#result');
+for(x of ary){
+	temp = `<div class='item' '${x}'>
+			<span>${x.name}</span>
+			<span>${x.id}</span>
+			<span>${x.phone}</span>
+			<span>${x.email}</span>
+			</div>`;
+	r.innerHTML += temp;
+}
+ */
+/* 나
+for(v in ary){
+	r.innerHTML += '<br/>' + "<span class='mName'>" + ary[v].name   + "</span>"
+						   + "<span class='id'>"    + ary[v].id     + "</span>"
+						   + "<span class='phone'>" + ary[v].phone  + "</span>"
+						   + "<span class='email'>" + ary[v].email  + "</span>";
+}
+ */
+</script>
+
+</body>
+</html>

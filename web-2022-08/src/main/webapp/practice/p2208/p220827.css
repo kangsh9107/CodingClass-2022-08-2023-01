@@ -1,0 +1,33 @@
+@charset "UTF-8";
+*{
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	background-color: #ccc;
+	text-decoration: underline;
+}
+
+/* std_input */
+
+#std_input{
+	border: 3px solid #000;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px #888;
+	padding: 20px;
+	margin: 20px auto;
+	width: 450px;
+}
+#std_input>form h2{
+	text-align: center;
+}
+#std_input>form span{
+	display: inline-block;
+	text-align: right;
+	width: 120px;
+	margin: 5px;
+}

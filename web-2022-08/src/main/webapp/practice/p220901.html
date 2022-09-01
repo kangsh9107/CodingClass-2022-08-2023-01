@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>p220901.html</title>
+<!-- 
+<style>
+*{
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+div{
+	overflow: auto;
+	position: relative;
+	width: 660px;
+	margin: 20px auto;
+}
+div span{
+	float: left;
+	background-color: #000;
+	color: #fff;
+	padding: 3px;
+	width: 160px;
+}
+div span.mName{
+	background-color: #ccc;
+	color: #000;
+}
+div span.id{
+	background-color: #ccc;
+	color: #000;
+}
+div span.phone{
+	background-color: #ccc;
+	color: #000;
+}
+div span.email{
+	background-color: #ccc;
+	color: #000;
+}
+</style>
+ -->
+</head>
+<body>
+
+<div id='result'>
+	<span>성명</span>
+	<span>아이디</span>
+	<span>연락처</span>
+	<span>이메일</span>
+</div>
+<hr/>
+<form onReset='return rset()'>
+	<input type='text' value='초기화'/>
+	<input type='reset' value='리셋'/>
+</form>
+
+<script>
+let ary = [
+	{"name" : "hong1", "id" : "a001", "phone" : "1234", "email" : "a001@korea.co.kr"},
+	{"name" : "hong1", "id" : "a001", "phone" : "1234", "email" : "a001@korea.co.kr"},
+	{"name" : "hong1", "id" : "a001", "phone" : "1234", "email" : "a001@korea.co.kr"},
+	{"name" : "hong1", "id" : "a001", "phone" : "1234", "email" : "a001@korea.co.kr"}
+];
+let r = document.querySelector("#result");
+
+for(v in ary){
+	r.innerHTML += "<br/>" + "<span class='mName'>" + ary[v].name   + "</span>"
+						   + "<span class='id'>"    + ary[v].id     + "</span>"
+						   + "<span class='phone'>" + ary[v].phone  + "</span>"
+						   + "<span class='email'>" + ary[v].email  + "</span>";
+}
+
+function whatIsThis(){
+	console.log(this);
+}
+whatIsThis();
+
+function rset(){
+	alert('정말 초기화 하시겠습니까?');
+	return false;
+}
+</script>
+
+</body>
+</html>

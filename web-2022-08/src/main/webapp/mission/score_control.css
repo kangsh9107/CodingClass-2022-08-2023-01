@@ -24,8 +24,8 @@ main{
 	margin: 0px 20px 20px 20px auto;
 	padding: 20px;
 	min-height: 450px;
-	overflow: auto;  /* 자식이 칸을 넘어가면 자동으로 늘어남 */
-	position: relative; /* overflow와 같이 사용한다. */
+	overflow: auto;      /* 자식이 칸을 넘어가면 자동으로 늘어남 */
+	position: relative;  /* overflow와 같이 사용한다. */
 }
 form{
 	width: 320px;
@@ -72,8 +72,8 @@ form input[type=text]{
 	display: inline-block;
 	margin: 5px;
 }
-#list span.number{ width: 80px;}
-#list span.subject{ width: 80px;}
+#list span.id{ width: 80px;}
+#list span.sub{ width: 80px;}
 #list span.score{ width: 80px;}
 #items{
 	padding: 3px 20px;

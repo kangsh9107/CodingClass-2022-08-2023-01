@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>p220819.html</title>
+</head>
+<body>
+
+<script>
+/*
+let a = 30;
+let b = 20;
+let c = 0;
+if (a > b) {
+	c = a - b;
+}
+document.write(c);
+*/
+/*
+let avg = 100;
+document.write("평균이 90점 이상이면 Pass 입니다.");
+if (avg >= 90) {
+	document.write('<font color="blue">');
+	document.write("<br/>Pass");
+	document.write('</font>');
+}else{
+	document.write('<font color="red">');
+	document.write("<br/>False");
+	document.write('</font>');
+}
+document.write('<font color="green">' + "<br/>Total" + '</font>');
+*/
+/*
+let ea = 10;            // 수량
+let price = 7000;      // 단가
+let total = ea * price; // 금액
+let present = 0;        // 0이면 사은품 없음. 1이면 사은품 있음.
+if (total >= 100000) {
+	document.write("10만원 이상 구매하셔서 사은품이 있어요. 카운터에서 수령하세요.")
+	present = 1;
+}
+if (present == 1) {
+	document.write('<font color="blue">' + "<br/>사은품 증정");
+	present = 0;
+}
+*/
+/*
+let h = 210;
+let w = 90;
+if (h <= 200 && w <= 100) {
+	document.write("탑승가능");
+}
+*/
+let zone = false; // 시외면 true, 시내면 false
+let km = 10; // 거리
+let price = 7000; // 단가
+let total = km * price; // 금액
+if (zone) {
+	document.write("시외는 10% 할증료가 부가 됩니다.<br/>");
+	total*= 1.1;
+}
+document.write("총 금액은 " + total + "입니다.");
+</script>
+
+</body>
+</html>
+
+

@@ -4,33 +4,33 @@
 <meta charset="UTF-8">
 <title>score_control.html</title>
 <link rel='stylesheet' href='score_control.css'>
-<script defer src='score_control.js'></script>
+<script defer src='score_control_teacher.js'></script>
 </head>
 <body>
 <div id='score_title'>성적 CRUD</div>
 <main>
 	<form name='frm_score'>
 		<span>학번</span>
-		<input type='text' name='number' value='1'/><br/>
+		<input type='text' name='id' value='1'/><br/>
 		<span>과목</span>
-		<input type='text' name='subject' value='국어'/><br/>
+		<input type='text' name='sub' value='국어'/><br/>
 		<span>성적</span>
 		<input type='text' name='score' value='100'/>
 		<hr/><br/>
-		<input type='button' name='btnAppend' value='입력' onclick='add(this.form)'/>
-		<input type='button' name='btnUpdate' value='수정' onclick='update(this.form)'/>
+		<input type='button' name='btnAppend' value='입력' onclick='Add(this.form)'/>
+		<input type='button' name='btnUpdate' value='수정' onclick='Update(this.form)'/>
 		<input type='button' name='btnDelete' value='삭제' onclick='deleteFunc(this.form)'/>
 	</form>
 	<div id='list'>
 		<div id='title'>
-			<span class='number'>학번</span>
-			<span class='subject'>과목</span>
+			<span class='id'>학번</span>
+			<span class='sub'>과목</span>
 			<span class='score'>성적</span>
 		</div>
 		<div id='items'>
 			<div class='item'>  <!-- <div class='item' onclick='view(배열의 인덱스)'>. 값을 적으면 그거 찾고 끝나서 다른걸 눌러도 안찾음. -->
-				<span class='number'>1</span>
-				<span class='subject'>kor</span>
+				<span class='id'>1</span>
+				<span class='sub'>국어</span>
 				<span class='score'>100</span>
 			</div>
 		</div>

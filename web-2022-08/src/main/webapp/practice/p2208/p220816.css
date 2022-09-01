@@ -1,0 +1,55 @@
+@charset "UTF-8";
+*{
+	box-sizing: border-box;
+}
+main{
+	border: 3px solid #00f;
+	margin: 20px auto;
+	width: 1300px;
+	height: 650px;
+	position: relative;
+}
+div.login{
+	border: 3px solid #00f;
+	padding: 5px;
+}
+header{
+	border: 3px solid #00f;
+	padding: 5px;
+	background-image: url(../images/background1.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+}
+nav.navbar{
+	background-color: #0f0;
+	padding: 5px;
+	border-radius: 6px;
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}
+div.content-main{
+	border: 3px solid #00f;
+	padding: 5px;
+	height: 450px;
+}
+footer{
+	border: 3px solid #00f;
+	padding: 5px;
+	text-align: center;
+	background-color: #ccc;
+	position: absolute;
+	width: 100%;
+	bottom: 0px;
+	left: 0px;
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	background-color: #fff;
+	border-radius: 6px
+}
+
+

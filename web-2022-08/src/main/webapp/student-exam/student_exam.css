@@ -56,6 +56,16 @@ list
 	border-radius: 10px;
 	color: #fff;
 }
+#std_list li.item{
+	display: inline-block;
+	padding: 3px;
+	position: relative;
+}
+#std_list li.item:hover{
+	background-color: #ccc;
+	border-radius: 10px;
+	cursor: pointer;
+}
 #std_list li>span{
 	display: inline-block;
 }
@@ -81,6 +91,7 @@ list
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	margin: 0px;
 }
 #std_list li>span.email{
 	width: 190px;

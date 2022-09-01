@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>p220828.html</title>
+</head>
+<body>
+<!-- 
+<form name='frm'>
+	<span>입사년도</span>
+	<input type='text' name='hireDate' value='2012'/><br/>
+	<span>급여</span>
+	<input type='text' name='pay' value='3200'/><br/>
+	<span>보너스액</span>
+	<output name='bonus'></output><br/>
+	<span>총액</span>
+	<output name='total'></output><br/>
+	<input type='button' name='btn' value='확인' onclick='Chk()'/>
+</form>
+ -->
+<!-- 
+<form name='frm'>
+	<span>성적</span>
+	<input type='text' name='score' value='100'/><br/>
+	<input type='button' name='btn' value='학점구하기'/>
+</form>
+<div id='result'></div>
+ -->
+<form name='frm'>
+	<span>구구단</span>
+	<input type='text' name='dan' value='3' id='dan' size='1'/>
+	<input type='button' name='btn' value='단 보기'/>
+	<br/>
+	<output id='result'></output>
+</form>
+<script>
+let frm = document.frm;
+frm.btn.onclick = function(){
+	let dan = Number(frm.dan.value);
+	let r = document.querySelector('#result');
+	let str = dan + '단' + '<br/>';
+	for(i=1; i<10; i++){
+		str += dan + ' * ' + i + ' = ' + dan*i + '<br/>';
+	}
+	r.innerHTML = str;
+}
+/* 
+let frm = document.frm;
+frm.btn.onclick = function(){
+	let score = Number(frm.score.value);
+	let result = document.getElementById('result');
+	let grade = '';
+	switch(true){
+	case score>=90 : grade='A'; break;
+	case score>=80 : grade='B'; break;
+	case score>=70 : grade='C'; break;
+	case score>=60 : grade='D'; break;
+	default : grade='F'; break;
+	}
+	result.innerHTML = grade;
+	
+	let color = (score<60) ? '#faa' : '#aaf';
+	result.style.backgroundColor = color;
+}
+ */
+/* 
+let frm = document.frm;
+function Chk(){
+	let hireDate = frm.hireDate.value;
+	let pay = Number(frm.pay.value);
+	let bonus = frm.bonus;
+	let total = frm.total;
+	let b = CheckBonus(hireDate, pay);
+	let r = CheckTotal(hireDate, pay);
+	bonus.innerHTML = b;
+	total.innerHTML = r;
+}
+function CheckBonus(h, p){
+	let b = 0;
+	let hireDate = frm.hireDate.value;
+	let pay = Number(frm.pay.value);
+	let y = 2022 - Number(hireDate);
+	if(y<=2){
+		b = pay * 1.0;
+	}else if(y<=4){
+		b = pay * 1.5;
+	}else if(y<=9){
+		b = pay * 2.0;
+	}else{
+		b = pay * 3.0;
+	}
+	return b;
+}
+function CheckTotal(h, p){
+	let t = 0;
+	let hireDate = frm.hireDate.value;
+	let pay = Number(frm.pay.value);
+	let y = 2022 - Number(hireDate);
+	if(y<=2){
+		t = pay * 2.0;
+	}else if(y<=4){
+		t = pay * 2.5;
+	}else if(y<=9){
+		t = pay * 3.0;
+	}else{
+		t = pay * 4.0;
+	}
+	return t;
+}
+ */
+document.write('<hr/>');
+for(i=2; i<3; i++){
+    let str = '';
+    for(k=1; k<10; k++){
+        str += i + ' * ' + k + ' = ' + i*k + '<br/>';
+    }
+    document.write(str);
+}
+</script>
+
+</body>
+</html>
+
+
