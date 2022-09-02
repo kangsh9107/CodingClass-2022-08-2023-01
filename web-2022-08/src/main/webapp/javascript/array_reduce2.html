@@ -35,6 +35,13 @@ console.log('------------');
 gp['1'].forEach(function(v){
 	console.log('name:', v.name, 'grade:', v.grade);
 });
+
+let array5 = [1,3,7,12,35,73,1,3,37];
+let reduce5 = array5.reduce(function(cur, now){
+	cur[now] = ++cur[now] || 1;
+	return cur;
+}, {});
+console.log(reduce5);
 </script>
 
 </body>

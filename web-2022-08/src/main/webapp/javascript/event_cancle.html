@@ -10,13 +10,13 @@
 	<input type='text' name='id' id='id'/><br/>
 	<label for='pwd'>비밀번호</label>
 	<input type='password' name='pwd' id='pwd'/><br/>
-	<button onclick='return chk()'>전송</button>  <!-- 기본 값이 submit이다. -->
-	<button onclick='chk2()'>전송2</button>
-	<button type='button' id='btn'>전송3</button>
+	<button onclick='return chk1()'>전송 취소1</button>  <!-- 기본 값이 submit이다. -->
+	<button onclick='chk2()'>전송 취소2</button>
+	<button type='button' id='btn'>전송 취소3</button>
 </form>
 <script>
 // 이벤트 취소방법1
-function chk(){
+function chk1(){
 	let frm = document.frm;
 	if(frm.id.value=='' || frm.pwd.value==''){
 		return false;

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>watch.html</title>
+<style>
+*{
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+main{
+	border: 3px solid #000;
+	border-radius: 20px;
+	padding: 10px;
+	margin: 20px auto;
+	width: 500px;
+	height: 250px;
+	background-color: #000;
+}
+main div#border{
+	border: 3px solid #000;
+	border-radius: 20px;
+	padding: 10px;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to right top, #861657, #ffa69e);
+	position: relative;
+}
+main div#nal{
+	display: inline-block;
+	font-size: 20pt;
+	font-weight: bolder;
+	text-shadow: 3px 3px 3px #444;
+	font-family: Digital Dismay;
+}
+main div#time{
+	display: inline-block;
+	font-size: 60pt;
+	font-weight: bolder;
+	text-align: center;
+	text-shadow: 3px 3px 3px #444;
+	font-family: Digital Dismay;
+	position: absolute;
+	margin-left: 13%;
+	top: 25%;
+}
+</style>
+</head>
+<body>
+
+<main>
+	<div id='border'>
+		<div id='nal'></div><br/>
+		<div id='time'></div>
+	</div>
+</main>
+<script>
+let week = ['일', '월', '화', '수', '목', '금', '토'];
+let nal = document.querySelector('#nal');
+let time = document.querySelector('#time');
+setInterval(createDate, 1000);
+
+// nal, time
+function createDate(){
+	let now = new Date();
+	let nalStr = now.toISOString().substr(0,10);
+	nalStr += '(' + week[now.getDay()] + ')';
+	nal.innerHTML = nalStr;
+	
+	// 화살표 함수
+	let num1 = now.getHours();
+	if(num1<10) ( num1=>('0'+num1) );
+	else        ( num1=>num1 );
+	
+	let num2 = now.getMinutes();
+	if(num2<10) ( num2=>('0'+num2) );
+	else        ( num2=>num2 );
+	
+	let num3 = now.getSeconds();
+	if(num3<10) ( num3=>('0'+num3) );
+	else        ( num3=>num3 );
+	let timeStr = num1 + ':' + num2 + ':' + num3;
+	/* 
+	let timeStr =    Zero( now.getHours()   ) + ':'
+				   + Zero( now.getMinutes() ) + ':'
+				   + Zero( now.getSeconds() );
+	 */	 
+	time.innerHTML = timeStr;
+}
+
+// 1의 자리수 앞에 0 추가
+/* 
+function Zero(num){
+	// 3항 연산자
+	num = num<10 ? '0'+num : num;
+	return num;
+	
+	// if else
+	let z = num;
+	if(num<10){
+		z = '0' + num;
+		return z;
+	}else{
+		return z;
+	}	
+}
+ */
+</script>
+
+</body>
+</html>

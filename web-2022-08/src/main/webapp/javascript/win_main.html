@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>win_main.html</title>
+</head>
+<body>
+
+<input type='button' value='브라우져 열기' onclick='openWin()'/>
+<br/>
+<span>송신자료 : </span>
+<input type='text' id='text1'/>
+<input type='button' value='송신' id='btnSend'/><br/>
+
+<span>수신자료 : </span><input type='text' id='text2'/>
+<input type='button' value='수신' id='btnReceive'/>
+
+<script>
+// 이 html입장에서 얘는 win, win입장에서 이 html은 opener. // 21행에 있는 win
+function openWin(){
+	win = window.open('win_sub.html', 'win', 'width=400px', height='300px');
+}
+
+let btnSend = document.querySelector('#btnSend');
+let btnReceive = document.querySelector('#btnReceive');
+// 송신 버튼 클릭 이벤트
+btnSend.addEventListener('click', function(){
+	let source = document.querySelector('#text1');  // 전송할 문자열이 있는 박스
+	let target = win.document.querySelector('#target');  // 21행 win에 있는 #target
+	target.value = source.value;
+});
+// 수신 버튼 클릭 이벤트
+btnReceive.addEventListener('click', function(){
+	let source = document.querySelector('#text2');
+	let target = win.document.querySelector('#target');
+	source.value = target.value;
+});
+</script>
+
+</body>
+</html>
+
+

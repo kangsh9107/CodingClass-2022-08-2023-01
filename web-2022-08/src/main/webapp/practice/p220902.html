@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>p220902.html</title>
+<link rel='stylesheet' href='p220902.css'>
+<script defer src='p220902.js'></script>
+</head>
+<body>
+<main>
+	<div class='main_title'>
+		성적 정보 CRUD
+	</div>
+	
+	<form name='frm_score'>
+		<span>학번</span>
+		<input type='text' name='id' value='a001'/><br/>
+		<span>과목</span>
+		<input type='text' name='subject' value='hong'/><br/>
+		<span>성적</span>
+		<input type='text' name='score' value='99'/>
+		<hr/>
+		<span></span>
+		<input type='button' value='CREATE' name='btnAppend' onclick='add(this.form)'/>
+		<input type='button' value='UPDATE' name='btnUpdate' onclick='update(this.form)'/>
+		<input type='button' value='DELETE' name='btnDelete' onclick='deleteFunc(this.form)'/>
+	</form>
+	
+	<div id='list'>
+		<div id='title'>
+			<span class='id'>학번</span>
+			<span class='subject'>과목</span>
+			<span class='score'>성적</span>
+		</div>
+		<div id='items'>
+			<div class='item' onclick='view(100)'>
+				<span class='id'>학번</span>
+				<span class='subject'>과목</span>
+				<span class='score'>성적</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class='status'>화이팅~</div>
+</main>
+
+<!--  
+//피보나치 수열
+let ary = [1, 1];
+let sum = 0;
+for(let i=2; i<10; i++){
+	sum = ary[i-2] + ary[i-1];
+	ary.push(sum);
+}
+console.log(ary);
+
+let d = new Date().toISOString().substring(0, 10);
+console.log(d);
+let ran = parseInt(Math.random()*11);
+console.log(ran);
+console.log(ran);
+console.log(ran);
+
+let x = -10.3;
+let y = Math.round(x);
+console.log('y=', y);
+ -->
+</body>
+</html>

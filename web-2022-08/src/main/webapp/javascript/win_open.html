@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>win_opener.html</title>
+<script src='//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js'></script>
+</head>
+<body>
+
+<form name='frm'>
+	<span>우편번호</span>
+	<input type='text' size='5' name='zipcode' readOnly/>
+	<input type='button' value='우편번호 검색' name='btnFindZip'/><br/>
+	<span>주소</span>
+	<input type='text' size='60' name='address' readOnly/><br/>
+	<span>상세주소</span>
+	<input type='text' size='60' name='address2'/>
+</form>
+<script>
+let frm = document.frm;
+frm.btnFindZip.addEventListener('click', function(){  // 버튼 클릭 이벤트
+	new daum.Postcode({                               // 우편번호 API 실행 기본 틀. P 대문자 주의.
+		oncomplete : function(data){                  // 검색한 주소 클릭하면 data라는 매개변수 타고 들어옴
+			frm.address.value = data.address;         // 선택한 주소 address 텍스트박스에 입력
+			frm.zipcode.value = data.zonecode;        // 선택한 주소 우편번호 zipcode 텍스트 박스에 입력
+		}
+	}).open();
+});
+</script>
+
+</body>
+</html>
+
+
