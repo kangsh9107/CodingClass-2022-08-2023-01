@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="VIEWPORT" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+}
+#content{
+	box-shadow: 8px 8px 8px #666;
+	background-color: #000;
+	padding: 5px;
+	margin: 20px 20px auto;
+	overflow: auto;
+	position: relative;
+	display: inline-block;
+	min-width: 720px;
+}
+#content>#title{
+	background-color: #df6b6b;
+	color: #fff;
+}
+#item>#items{
+	background-color: #b187f4;
+}
+#title span{
+	display: inline-block;
+	padding: 3px;
+}
+#title span.id{ width: 130px; }
+#title span.name{ width: 130px; }
+#title span.phone{ width: 200px; }
+#title span.email{ width: 250px; }
+</style>
+
+<title>p220903.html</title>
+</head>
+<body>
+
+<div id='content'>
+	<div id='title'>
+		<span class='id'>아이디</span>
+		<span class='name'>이름</span>
+		<span class='phone'>핸드폰</span>
+		<span class='email'>이메일</span>
+	</div>
+	<div id='item'>	
+		<div id='items'>
+			<span class='id'></span>
+			<span class='name'></span>
+			<span class='phone'></span>
+			<span class='email'></span>
+		</div>
+	</div>
+</div>
+<script>
+let data = [
+	{'id' : 'a001', 'name' : 'kim', 'phone' : '010-1111-2222', 'email' : 'korea@naver.com'},
+	{'id' : 'a001', 'name' : 'kim', 'phone' : '010-1111-2222', 'email' : 'korea@naver.com'},
+	{'id' : 'a001', 'name' : 'kim', 'phone' : '010-1111-2222', 'email' : 'korea@naver.com'},
+	{'id' : 'a001', 'name' : 'kim', 'phone' : '010-1111-2222', 'email' : 'korea@naver.com'},
+	{'id' : 'a001', 'name' : 'kim', 'phone' : '010-1111-2222', 'email' : 'korea@naver.com'}
+];
+
+let items = document.querySelector('#items');
+let template = '';
+let str = '';
+for(index in data){
+	v = data[index];
+	template = 
+		`
+		<div id='item'>${v}
+			<span class='id'>${v.id}</span>
+			<span class='name'>${v.name}</span>
+			<span class='phone'>${v.phone}</span>
+			<span class='email'>${v.email}</span>
+		</div>
+		`;
+	str += template;
+}
+items.innerHTML = str;
+
+</script>
+
+</body>
+</html>
+
+
