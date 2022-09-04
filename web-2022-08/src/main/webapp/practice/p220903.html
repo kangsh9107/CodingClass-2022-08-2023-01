@@ -23,9 +23,13 @@
 #content>#title{
 	background-color: #df6b6b;
 	color: #fff;
+	padding: 3px;
+	font-weight: bold;
 }
 #item>#items{
 	background-color: #b187f4;
+	padding: 3px;
+	font-weight: bold;
 }
 #title span{
 	display: inline-block;
@@ -35,6 +39,14 @@
 #title span.name{ width: 130px; }
 #title span.phone{ width: 200px; }
 #title span.email{ width: 250px; }
+#items span{
+	display: inline-block;
+	padding: 3px;
+}
+#items span.id{ width: 130px; }
+#items span.name{ width: 130px; }
+#items span.phone{ width: 200px; }
+#items span.email{ width: 250px; }
 </style>
 
 <title>p220903.html</title>
@@ -48,13 +60,7 @@
 		<span class='phone'>핸드폰</span>
 		<span class='email'>이메일</span>
 	</div>
-	<div id='item'>	
-		<div id='items'>
-			<span class='id'></span>
-			<span class='name'></span>
-			<span class='phone'></span>
-			<span class='email'></span>
-		</div>
+	<div id='item'>
 	</div>
 </div>
 <script>
@@ -66,23 +72,17 @@ let data = [
 	{'id' : 'a001', 'name' : 'kim', 'phone' : '010-1111-2222', 'email' : 'korea@naver.com'}
 ];
 
-let items = document.querySelector('#items');
-let template = '';
-let str = '';
-for(index in data){
-	v = data[index];
-	template = 
-		`
-		<div id='item'>${v}
-			<span class='id'>${v.id}</span>
-			<span class='name'>${v.name}</span>
-			<span class='phone'>${v.phone}</span>
-			<span class='email'>${v.email}</span>
-		</div>
-		`;
-	str += template;
+let item = document.querySelector('#item');
+
+for(var v of data){
+	let template = `<div id='items'>
+						<span class='id'>${v.id}</span>
+						<span class='name'>${v.name}</span>
+						<span class='phone'>${v.phone}</span>
+						<span class='email'>${v.email}</span>
+					</div>`;
+	item.innerHTML += template;
 }
-items.innerHTML = str;
 
 </script>
 
