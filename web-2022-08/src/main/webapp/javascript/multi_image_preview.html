@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>multi_image_preview.html</title>
+
+<style>
+#photos {
+	min-height: 120px;
+	border: 2px solid #999;
+	padding: 10px;
+}
+.sub_item {
+	display: inline-block;
+	border: 2px solid #00f;
+	width: 120px;
+	height: 150px;
+	position: relative;
+}
+.sub_item>div {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	right: 3px;
+	bottom: 3px;
+	background-color: #eee;
+	border-radius: 5px;
+}
+.sub_item>div:hover {
+	cursor: pointer;
+}
+.sub_item>img {
+	width: 120px;
+	height: 150px;
+}
+.sub_item>div {
+	display: inline-block;
+	color: #f00;
+	font-size: 20pt;
+	text-align: center;
+	line-height: 25px;
+	opacity: 0.5;
+}
+.sub_item>div:hover {
+	background-color: #eee;
+	opacity: 1;
+}
+</style>
+
+</head>
+<body>
+
+<h2>갤러리에 올릴 사진들을 선택하세요.</h2>
+<input type='file' id='btnUpload' multiple/>
+<div id='photos'>
+
+</div>
+
+<script>
+let photos = document.querySelector('#photos');
+let btnUpload = document.querySelector('#btnUpload');
+
+btnUpload.onchange = function(ev){
+	let files = ev.srcElement.files;  // 선택한 파일들
+	if(files.length<=0) return;       // 파일선택을 완료하지 않고 취소해서 아무것도 선택되지 않은 경우.
+	
+	let fileArray = Array.prototype.slice.call(files);  // Array:객체이름, prototype:생성하지 않고 그냥 실행하겠다.
+	                                                    // 엄청 많은걸 쪼개서 배열로 만들겠다.
+	for(f of fileArray){  // 이미지와 취소버튼이 들어갈 영역 생성. 파일 개수만큼 생성.
+		let div = document.createElement('div');
+		let img = document.createElement('img');
+		let chk = document.createElement('div');
+		div.setAttribute('class', 'sub_item');
+		loadImage(img, f);
+		div.appendChild(img);
+		div.appendChild(chk);
+		chk.innerHTML = 'x';
+		
+		photos.appendChild(div);
+		
+		chk.onclick = function(ev){
+			let ele = ev.srcElement;      // 이벤트가 발생한 태그를 변수 선언.
+			let parent = ele.parentNode;  // ele를 포함한 부모 태그.
+			photos.removeChild(parent);
+		}
+	}
+}
+
+function loadImage(img, file){
+	let reader = new FileReader();
+	reader.readAsDataURL(file);
+	reader.onload = function(fev){
+		let tempImage = new Image();
+		tempImage.src = this.result;
+		img.src = tempImage.src;
+	}
+}
+
+/* 
+function readMultipleImage(input){
+	let multipleContainer = document.querySelector('photos');
+	
+	// 인풋 태그에 파일들이 있는 경우
+	if(input.files){
+		// 이미지 파일 검사(생략)
+		console.log(input.files);
+		
+		// 유사배열을 배열로 변환 (forEach문으로 처리하기 위해서)
+		let fileArr = Array.from(input.files);
+		
+		let $colsDiv1 = document.createElement('div');
+		let $colsDiv2 = document.createElement('div');
+		$colsDiv1.classList.add('column');
+		$colsDIv2.classList.add(;column');
+		
+		fileArr.forEach(file, index)=>{
+			let reader = new FileReader();
+			
+			let $imgDiv = document.createElement('div');
+			let $img = document.createElement('img');
+			$img.classList.add('image');
+			
+			let $label = document.createElement('label');
+			$label.classList.add('image-label');
+			$label.textContent = file.name;
+			
+			$imgDiv.appendChild($img);
+			$imgDiv.appendChild($label);
+			
+			reader.onload = e=>{
+				$img.src = e.target.result;
+				
+				$imgDiv.style.width = ($img.naturalWidth) * 0.2 + 'px';
+				$imgDiv.style.height = ($img.naturalHeight) * 0.2 + 'px';
+			}
+			
+			console.log(file.name);
+			if(index%2==0){
+				$colDiv1.appendChild($imgDiv);
+			}else{
+				$colDIv2.appendChild($imgDiv);
+			}
+			reader.readAsDataURL(file);
+		}
+		photos.appendChild($colsDiv1);
+		photos.appendChild($colsDiv2);
+	}
+}
+ */
+</script>
+
+</body>
+</html>
+
+

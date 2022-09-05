@@ -1,6 +1,6 @@
 @charset "UTF-8";
 *{
-	box-sizing: border-box;  /* padding 줘도 전체 크기가 늘어나지 않음 */
+	box-sizing: border-box;  /* padding 줘도 전체 크기는 그대로 */
 	padding: 0px;
 	margin: 0px;
 	font-weight: bold;
@@ -78,6 +78,7 @@ form input[type=text]{
 #list span.id{ width: 80px;}
 #list span.sub{ width: 80px;}
 #list span.score{ width: 80px;}
+
 #items{
 	padding: 3px 20px;
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>p.html</title>
+</head>
+<body>
+
+<h2>키우고 싶은 애완동물을 고르시오.</h2>
+<form name='frm' method='post'>
+	<textarea name='result' rows='10' cols='30'></textarea><br/>
+	<label><input type='checkbox' name='chk' value='강아지'/>강아지</label><br/>
+	<label><input type='checkbox' name='chk' value='고양이'/>고양이</label><br/>
+	<label><input type='checkbox' name='chk' value='앵무새'/>앵무새</label><br/>
+	<label><input type='checkbox' name='chk' value='물고기'/>물고기</label><br/>
+	<label><input type='checkbox' name='chk' value='거북이'/>거북이</label><br/>
+	<input type='button' name='btn' value='선택완료' onclick='btnClick(this.form)'/>
+	<input type='reset' value='초기화'>
+</form>
+
+<script>
+let chks = ['강아지', '고양이', '물고기'];
+console.log('chks: ', chks);
+let splitChks = chks.split(',');
+console.log('splitChks: ', splitChks);
+/* PDF p89 코드인데 오류남. 오타인가
+function preview(ev){
+	let event = ev || window.event;
+	let file = event.srcElement.files[0];
+	
+	let reader = new FileReader();
+	reader.onload = function(fev){
+		let pre_img = document.querySelector('#photo');
+		let img = new Image();
+		img.src = reader.result;
+		pre_img.src = img.src;
+	}
+	reader.readAsDataURL(file);
+}
+ */
+</script>
+
+</body>
+</html>
+
+
+
+
+

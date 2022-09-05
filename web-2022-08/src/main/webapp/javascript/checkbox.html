@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>checkbox.html</title>
+</head>
+<body>
+
+<h2>키우고 싶은 애완동물을 고르시오.</h2>
+<form name='frm' method='post'>
+	<textarea name='result' rows='10' cols='30'></textarea><br/>
+	<label><input type='checkbox' name='chk' value='강아지'/>강아지</label><br/>
+	<label><input type='checkbox' name='chk' value='고양이'/>고양이</label><br/>
+	<label><input type='checkbox' name='chk' value='앵무새'/>앵무새</label><br/>
+	<label><input type='checkbox' name='chk' value='물고기'/>물고기</label><br/>
+	<label><input type='checkbox' name='chk' value='거북이'/>거북이</label><br/>
+	<input type='button' name='btn' value='선택완료' onclick='btnClick(this.form)'/>
+	<input type='reset' value='초기화'/>
+</form>
+
+<script>
+// 강사님 코드
+let str  = '';            // str 변수 선언.
+let chks = [];            // storage에 저장될 값이나 저장한 값을 저장하는 배열 선언.
+
+let temp = sessionStorage.getItem('chks');  // sessionStorage에 있는 값을 사용하여 현재 페이지의 초기값으로 설정.
+if(temp!=null){
+	chks = temp.split(',');      // sessionStorage에는 문자열로 나열되어 저장되기 때문에 스플릿으로 쪼개서 다시 배열로 만든다.
+	for(v of chks){
+		for(tag of frm.chk){     // frm.chk의 태그를 하나씩 가져와서 tag라는 변수에 대입.
+			if(tag.value == v){  // 강아지를 체크했다면 강아지가 배열에 저장되고 그 배열이 session에 저장된다.
+				                 // session에는 문자열로 나열되어 저장된다.
+				                 // 그래서 새로고침하고 session에 저장된 값을 페이지의 초기값으로 불러올때
+				                 // 스플릿으로 쪼개서 다시 배열로 만들고 만약 강아지가 배열에 있다면
+				                 // 체크박스에서 강아지가 몇번째인지 모르니까 이거로 강아지가 몇번째인지 확인.
+				tag.checked = true;
+				str += tag.value + '\n';    // textarea에 session에 저장된 value를 출력.
+				break;    // 가장 가까운 반복문을 빠져나가고 함수 차례대로 처리.
+			}
+		}
+	}
+	frm.result.value = str;
+}
+
+function btnClick(frm){
+	str  = '';            // str 초기화. 누적 연산할 때는 초기화 해주는게 정석.
+	chks = [];            // 이번 회차에 선택한 것만 배열에 들어가게 하기 위해 초기화. 배열을 초기화 하지 않으면 버튼을 여러번 눌렀을 때 계속 누적.
+	for(tag of frm.chk){  // frm.chk의 태그를 하나씩 가져와서 tag라는 변수에 대입.
+		if(tag.checked){
+		str += tag.value + '\n';  // '<br/>'등 태그는 textarea에서는 처리가 되지 않고 그대로 출력.
+		chks.push(tag.value);
+		}
+	}
+	frm.result.value = str;
+	sessionStorage.setItem('chks', chks);  // 배열이 아니라 문자열로 들어감.
+	console.log(chks);    // 체크된게 배열로 들어가는걸 콘솔창으로 확인.
+}
+
+/* 내 코드
+function btnClick(frm){
+	var l = frm.chk.length;
+	frm.result.value = '';
+	for(i=0; i<l; i++){
+		if(frm.chk[i].checked){
+			frm.result.value = frm.result.value + frm.chk[i].value + '\n';
+		}
+	}
+}
+
+let frm = document.frm;
+
+frm.btn.addEventListener('click', function(){
+	for(tag of frm.chk){
+		if(tag.checked){
+			frm.result.value = tag.value;
+			sessionStorage.setItem('select', tag.value);
+			break;
+		}
+	}
+});
+
+let select = sessionStorage.getItem('select');
+
+if(select != null){
+	frm.result.value = select;
+	for(index in frm.chk){
+		var tag = frm.chk[index];
+		if(tag.value == select){
+			frm.chk[index].checked = true;
+		}
+	}
+}
+ */
+</script>
+
+</body>
+</html>

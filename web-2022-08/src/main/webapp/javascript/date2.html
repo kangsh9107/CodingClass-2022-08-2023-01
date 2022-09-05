@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>date2.html</title>
+</head>
+<body>
+
+<form name='frm'>
+	<span>아이디</span>
+	<input type='text' name='id' value='hong'/><br/>
+	<span>가입일자</span>
+	<input type='date' name='nal'/><br/>
+	<span>생일</span>
+	<input type='date' name='birth'/><br/>
+</form>
+
+<script>
+let frm = document.frm;
+// Date type  ->  date tag
+frm.nal.valueAsDate = new Date();  // value는 오류. valueAsDate해야 오늘 날짜 들어감.
+
+// String typ  ->  date tag
+let d = '2022-01-15';
+frm.birth.valueAsDate = new Date(Date.parse(d));  // 설정되어 있는 값으로 설정하려면 이런식으로 써야 한다.
+
+
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>select.html</title>
+</head>
+<body>
+
+<h2>select를 이용한 바탕색 바꾸기</h2>
+<form name='frm'>
+	<input type='text' name='view'/>
+	<select name='select' onChange='change(this.form)'>
+		<option value='#000'>검은색
+		<option value='#060'>녹색
+		<option value='#0f0'>연두색
+		<option value='#f00'>빨간색
+		<option value='#ff0'>노란색
+	</select>
+	<input type='button' name='btn' value='white' onClick='mclick(this.form, "white")'/>
+</form>
+
+<script>
+// sessionStorage에 있는 값을 사용하여 현재 페이지의 초기값으로 설정.
+let bg;
+bg = sessionStorage.getItem('bg');
+if(bg!=null){
+	let frm = document.frm;
+	for(tag of frm.select){
+		if(tag.value == bg){
+			frm.select.value = bg;
+			frm.view.style.backgroundColor = bg;
+		}
+	}
+}
+
+function mclick(frm, c){
+	frm.view.style.backgroundColor = c;
+	save('#fff');
+}
+
+function change(frm){
+	let color = frm.select.options[frm.select.selectedIndex].value;
+	frm.view.style.backgroundColor = color;
+	frm.view.style.backgroundColor = frm.select.options[frm.select.options.selectedIndex].value;
+	save(color);
+}
+
+function save(bg){
+	sessionStorage.setItem('bg', bg);
+}
+
+/* 
+내 코드
+function mclick(frm, c){
+	frm.view.style.backgroundColor = c;
+}
+
+function change(frm){
+	frm.view.style.backgroundColor = frm.select.options[frm.select.options.selectedIndex].value;
+}
+
+let frm = document.frm;
+
+frm.btn.onclick = function(){
+	for(tag of frm.select){
+		if(tag.selected){
+			frm.view.style.backgroundColor = tag.value;
+			sessionStorage.setItem('color', tag.value);
+			break;
+		}
+	}
+}
+
+let color = sessionStorage.getItem('color');
+
+if(color != null){
+	frm.view.style.backgroundColor = color;
+	for(index in frm.select){
+		var tag = frm.selet[index];
+		if(tag.value == color){
+			frm.select[index].selected = true;
+		}
+	}
+}
+ */
+</script>
+
+</body>
+</html>

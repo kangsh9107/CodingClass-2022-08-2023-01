@@ -23,7 +23,7 @@ let frm = document.frm;
 
 // 페이지를 새로고침한 경우에도 마지막으로 선택한 색상이 유지가 되도록
 let bg = sessionStorage.getItem('bg');
-if(bg != null){
+if(bg != null){  // null이 아니라면. 즉 있다면
 	frm.target.style.backgroundColor = bg;
 	for(index in frm.chk){
 		var tag = frm.chk[index];
@@ -36,23 +36,21 @@ if(bg != null){
 let id = sessionStorage.getItem('i');
 if(id!=null) frm.id.value = id;
 
-frm.btn.onclick = function(){
-  //for(i=0; i<frm.chk.length; i++){    ==  for(tag of frm.chk){
+frm.btn.onclick = function(){  // addEventListener에서 Listener는 interface개념.
+//for(i=0; i<frm.chk.length; i++){    ==  for(tag of frm.chk){
 	for(tag of frm.chk){
 		if(tag.checked){  // tag.checked==true
 			frm.target.style.backgroundColor = tag.value;
 			sessionStorage.setItem('bg', tag.value);  // 브라우져의 저장 공간에 저장해서 새로고침해도 데이터가 사라지지 않음.
-			                                          // 단점은 브라우져끼리 저장된 정보가 호환 안된다. 쿠키는 가능.
-			                                          // localStorage는 브라우져를 다시 시작해도 데이터가 사라지지 않음.
+			                                          // storage의 단점은 브라우져끼리 저장된 정보가 호환이 되지 않는다는 것이다. 쿠키는 가능.
+			                                          // localStorage는 브라우져를 꺼도 데이터가 사라지지 않음.
 			                                          // html은 보여주기만 하지 저장의 개념이 없다.
 			                                          // 그래서 스토리지, 서버세션, 쿠키 등을 사용.
-			sessionStorage.setItem('i', frm.id.value);
+			sessionStorage.setItem('i', frm.id.value);// 설정할 때는 setItem, 가져올 때는 getItem
 			break;        // 안써도 작동하지만 써야 좀 더 반응이 빠르다.
 		}
 	}
 }
-
-
 </script>
 </body>
 </html>
