@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>score_crud.html</title>
+  <link rel='stylesheet' href='score_crud.css'>
+  <script defer src='score_crud.js'></script>
+</head>
+<body>
+  <main>
+    <div id='left'>
+      <h2>성적관리 CRUD (II)</h2>
+      <form name='frm'>
+        <span>SERIAL</span>
+        <input type='text' name='serial' autocomplete="off"/>
+        <input type='button' name='findSerial' value='검색'/>
+        <br/>
+        <span>학번</span>
+        <input type='text' name='id' autocomplete="off"/>
+        <br/>
+        <span>과목</span>
+        <select name='subject'>
+          
+        </select>
+        <br/>
+        <span>성적</span>
+        <input type='text' name='score' autocomplete="off"/>
+        <hr/>
+        <input type='button' name='btnSave' value='저장'/>
+        <input type='button' name='btnUpdate' value='수정'/>
+        <input type='button' name='btnDelete' value= '삭제'/>
+        <br/>
+      </form>
+    </div>
+    <div id='right'>
+      <h2>성적현황 LIST</h2>
+      <div class="title">
+        <span class="serial">SERIAL</span>
+        <span class="id">학번</span>
+        <span class="subject">과목</span>
+        <span class="score">성적</span>
+      </div>
+      <div class="items">
+
+      </div>
+    </div>
+  </main>
+</body>
+</html>

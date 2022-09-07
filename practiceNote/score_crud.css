@@ -1,0 +1,114 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  padding: 20px;
+  margin: 20px 20px auto;
+  justify-content: space-between;
+  width: 540px;
+  min-height: 250px;
+  overflow: auto;
+  position: relative;
+  background-image: url(star.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 15px;
+  color: #fff;
+  box-shadow: 8px 8px 3px #888;
+  text-shadow: 5px 5px 3px #888;
+  border: 2px solid #fff;
+}
+
+main>#left {
+  display: inline-block;
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  margin-top: -3px;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+form>span {
+  display: inline-block;
+  width: 50px;
+  text-align: right;
+}
+
+main>#right {
+  float: right;
+  margin-top: -10px;
+  width: 240px;
+}
+
+#right>div {
+  margin-bottom: 4px;
+}
+
+#right>div.title {
+  border-bottom: 1px solid #fff;
+}
+
+div.title:last-child {
+  border-bottom: 1.5px dotted #fff;
+}
+
+#right span {
+  display: inline-block;
+  width: 55px;
+  font-size: 12pt;
+  font-weight: 400;
+}
+
+#right span.subject {
+  width: 75px;
+}
+
+#right span.score {
+  width: 35px;
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  display: inline-block;
+  width: 100px;
+  height: 23px;
+  text-align: right;
+  padding: 2px;
+  margin-bottom: 3px;
+  font-weight: 600;
+  font-size: 10pt;
+}
+
+input[type="button"] {
+  display: inline-block;
+  width: 46px;
+  height: 23px;
+  margin-top: 5px;
+  font-weight: 600;
+  font-size: 10pt;
+}
+
+input[name="btnSave"] {
+  margin-left: 6px;
+}
+
+select {
+  display: inline-block;
+  width: 100px;
+  height: 23px;
+  margin-bottom: 3px;
+  font-weight: 600;
+  font-size: 10pt;
+  text-align: right;
+}
