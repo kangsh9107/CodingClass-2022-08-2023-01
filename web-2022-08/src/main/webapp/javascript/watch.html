@@ -68,6 +68,7 @@ function createDate(){
 	nalStr += '(' + week[now.getDay()] + ')';
 	nal.innerHTML = nalStr;
 	
+	/* 
 	// 화살표 함수
 	let num1 = now.getHours();
 	if(num1<10) ( num1=>('0'+num1) );
@@ -81,21 +82,22 @@ function createDate(){
 	if(num3<10) ( num3=>('0'+num3) );
 	else        ( num3=>num3 );
 	let timeStr = num1 + ':' + num2 + ':' + num3;
-	/* 
+	 */
+
 	let timeStr =    Zero( now.getHours()   ) + ':'
 				   + Zero( now.getMinutes() ) + ':'
 				   + Zero( now.getSeconds() );
-	 */	 
+				   
 	time.innerHTML = timeStr;
 }
 
 // 1의 자리수 앞에 0 추가
-/* 
 function Zero(num){
 	// 3항 연산자
 	num = num<10 ? '0'+num : num;
 	return num;
 	
+	/* 
 	// if else
 	let z = num;
 	if(num<10){
@@ -103,9 +105,9 @@ function Zero(num){
 		return z;
 	}else{
 		return z;
-	}	
+	}
+	 */
 }
- */
 </script>
 
 </body>

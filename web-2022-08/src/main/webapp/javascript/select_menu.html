@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>select_menu.html</title>
+
+<style>
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+form {
+	border: 2px solid #ffc835;
+	border-radius: 15px;
+	background-color: #000;
+	box-shadow: 8px 8px 3px #888;
+	color: #fff;
+	display: inline-block;
+	min-width: 703px;
+	min-height: 200px;
+	overflow: auto;
+	position: relative;
+	padding: 10px;
+	margin: 20px 20px auto;
+}
+form span {
+	display: inline-block;
+	font-size: 13pt;
+	margin-bottom: 5px;
+	color: #ff8418;
+}
+form select {
+	display: inline-block;
+	width: 130px;
+	min-height: 183px;
+	margin-right: 5px;
+}
+form input[type=text] {
+	display: inline-block;
+	width: 110px;
+	height: 30px;
+	font-size: 10pt;
+	text-align: center;
+}
+form input[type=date] {
+	display: inline-block;
+	width: 110px;
+	height: 30px;
+	font-size: 10pt;
+	font-weight: bold;
+}
+form input[type=time] {
+	display: inline-block;
+	width: 110px;
+	height: 30px;
+	font-size: 10pt;
+	font-weight: bold;
+}
+form input[type=button] {
+	display: inline-block;
+	width: 113px;
+	height: 30px;
+	font-size: 13pt;
+	font-weight: bolder;
+	background-color: #aaa;
+	border-radius: 3px;
+	margin-left: -2px;
+	position: absolute;
+	bottom: 9px;
+}
+form input[type=button]:hover {
+	background-color: #444;
+}
+form div {
+	display: inline-block;
+}
+form>div#zm {
+	display: inline-block;
+	padding: 10px;
+	border: 2px solid #ffc835;
+    border-radius: 10px;
+    margin-right: 3px;
+    height: 230px;
+}
+form>div#pdt {
+	border: 2px solid #ffc835;
+    border-radius: 10px;
+    padding: 11px;
+    width: 135px;
+    height: 230px;
+    position: absolute;
+    margin: 5px;
+    top: 5px;
+}
+form>div#result {
+	border: 2px solid #ffc835;
+	border-radius: 10px;
+	text-align: center;
+	min-width: 230px;
+	height: 230px;
+	float: right;
+	padding: 10px;
+	font-size: 13pt;
+	color: #ff8418;
+	right: 8px;
+	position: absolute;
+}
+div#result>span {
+	width: 56px;
+	text-align: right;
+	margin: 7px;
+}
+div#result>div {
+	width: 130px;
+	text-align: left;
+	border-bottom: 1px solid #fff;
+	color: #fff;
+	text-align: center;
+}
+</style>
+
+</head>
+<body>
+
+<form name='frm'>
+	<div id='zm'>
+		<span>지역<br/>
+		<select size='10' name='zone'>
+		</select>
+		</span>
+		<span>메뉴<br/>
+		<select size='10' name='menu'>
+		</select>
+		</span>
+	</div>
+	<div id='pdt'>
+		<span>인원수<br/>
+		<input type='text' name='people'/>
+		</span><br/>
+		<span>날짜<br/>
+		<input type='date' name='date'/>
+		</span><br/>
+		<span>시간<br/>
+		<input type='time' name='time'/>
+		</span><br/>
+		<input type='button' name='btn' value='확인'/>
+	</div>
+	<div id='result'>예약확인서
+		<br/>
+		<span>지역: </span>
+		<div id='result_zone'></div><br/>
+		<span>메뉴: </span>
+		<div id='result_menu'></div><br/>
+		<span>인원수: </span>
+		<div id='result_people'></div><br/>
+		<span>날짜: </span>
+		<div id='result_date'></div><br/>
+		<span>시간: </span>
+		<div id='result_time'></div>
+	</div>
+</form>
+
+<script>
+let frm = document.frm;
+let now = new Date();
+let data = {
+	'서울' : ['국밥', '돈까스', '초밥', '치킨', '피자', '갈치구이', '오므라이스'],
+	'부산' : ['냉면', '삼겹살', '한우투쁠', '설렁탕', '소고기뭇국', '뚝배기불고기', '비빔밥', '갈비찜'],
+	'인천' : ['제육덮밥', '피카츄돈까스', '햄버거', '샌드위치', '쌈밥', '갈비탕', '꼬리곰탕', '삼계탕'],
+	'대구' : ['순대', '곱창', '된장찌개', '김치찌개', '순두부찌개', '해물탕', '샤브샤브', '탕수육', '팔보채'],
+	'제주' : ['연돈', '감귤초콜렛', '만한전석', '나베', '감자탕', '치즈닭갈비', '오삼불고기'],
+	'나가사키' : ['나가사키짬뽕', '라멘', '규동'],
+	'파리' : ['크레페', '브레스트', '스테이크 프리츠', '크로와상'],
+	'뉴욕' : ['핫도그', '베이글'],
+	'뉴델리' : ['커리']
+};
+
+// 날짜와 시간을 설정 -----------------------------
+frm.date.valueAsDate = now;
+frm.time.value = now.getHours() + ':' + now.getMinutes();
+
+// 지역 설정 ------------------------------
+let keys = Object.keys(data);  // {}형태의 자료에서 key만 가져옴.
+// 1) html을 사용하여 태그를 만들어서 추가
+let html;
+for(k of keys){
+	html += `<option value='${k}'>${k}</option>`;
+}
+frm.zone.innerHTML = html;
+// 2) option 객체를 생성하여 추가
+/* 
+frm.zone.length = 0;  // 셀렉트 박스를 초기화 한다.
+for(k of keys){
+	let op = new Option(k, k);
+	frm.zone.options.add(op);
+}
+ */
+
+// 메뉴 설정 ------------------------------
+frm.zone.onchange = function(){
+	let k = frm.zone.value;
+	let menu = data[k];
+	console.log(menu);  // 작동 확인
+	
+	let index;
+	let m;
+	for(index of menu){
+		m += `<option value='${index}'>${index}</option>`;
+	}
+	frm.menu.innerHTML = m;
+	/* 강사님 코드
+	frm.menu.length = 0;
+	for(m of menu){
+		let op = new Option(m,m);
+		frm.menu.options.add(op);
+	}
+	 */
+}
+ 
+// 값 출력
+frm.btn.addEventListener('click', function(ev){
+	let rz = document.querySelector('#result_zone');
+	let rm = document.querySelector('#result_menu');
+	let rp = document.querySelector('#result_people');
+	let rd = document.querySelector('#result_date');
+	let rt = document.querySelector('#result_time');
+	
+	let t = frm.time.value;
+	let t1 = t.substring(0,2);
+	let t2 = t.substring(3,5);
+	console.log(t1);
+	if(t1>12){
+		t1 = '오후 ' + '0' + (t1-12);
+	}else if(t1<=9){
+		t1 = '오전 ' + t1;
+	}else{
+		t1 = '오전 ' + '0' + t1;
+	}
+	
+	rz.innerHTML = frm.zone.value;
+	rm.innerHTML = frm.menu.value;
+	rp.innerHTML = frm.people.value + ' 명';
+	rd.innerHTML = frm.date.value;
+	rt.innerHTML = t1 + ' : ' + t2;
+});
+</script>
+
+</body>
+</html>
+
+

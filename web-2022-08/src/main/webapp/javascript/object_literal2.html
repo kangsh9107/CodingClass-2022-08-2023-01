@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>object_literal2.html</title>
+</head>
+<body>
+
+<strong>아래의 내용으로 MyMath 리터럴을 작성하시오.</strong><br/>
+<div>1) max(x,y) 큰값 리턴</div>
+<div>2) min(x,y) 작은값 리턴</div>
+<div>3) sum(x,y) x~y까지의 합계를 계산하여 리턴</div>
+<div>4) even(x) x가 짝수면 true, 홀수면 false 리턴</div>
+<div>5) swap(x,y) x,y값을 교환</div>
+<script>
+let MyMath = {};
+
+MyMath.swap = function(x,y){
+	let empty = x;
+	x = y;
+	y = empty;
+	let str = x + ',' + y;
+	return (str);
+}
+console.log('swap: ',MyMath.swap(1,2));
+
+MyMath.max = function(x,y){
+	if(x>y){ return x }
+	else   { return y }
+}
+console.log(MyMath.max(10,20));
+
+MyMath.max2 = function(x,y){
+	this.x = x;  // 함수 밖에서 x출력가능.
+	this.y = y;
+	return (x>y) ? x : y;
+}
+console.log(MyMath.max2(10,20));
+console.log(MyMath.x);  // MyMath 안에 x가 있다.
+
+/* 
+MyMath.min = function(x,y){
+	if(x>y){ return y }
+	else   { return x }
+}
+console.log(MyMath.min(10,20));
+
+MyMath.sum = function(x,y){
+	let sum = 0;
+	for(i=x; i<=y; i++){
+		sum += i;
+	}
+	return sum;
+}
+console.log(MyMath.sum(10,11));
+
+MyMath.even = function(x){
+	if(x%2==0){ return true }
+	else      { return false}
+}
+console.log(MyMath.even(4));
+*/
+// 이런방법도 있다.
+let m = {
+	max : function(x,y){
+		this.x = x;
+		this.y = y;
+		return (x>y) ? x:y }
+}
+console.log(m.max(10,20));
+console.log(m.x)
+</script>
+
+</body>
+</html>
+
+
+
+

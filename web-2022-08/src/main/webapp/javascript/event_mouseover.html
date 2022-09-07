@@ -6,16 +6,16 @@
 </head>
 <body>
 
-<img src='../images/cat1.png' name='first'
+<img src='../images/puz.png' name='first'
 	 width='500px' height='400px' alt='cat'/>
 <br/>
-<img src='../images/cat1.png'
+<img src='../images/puz.png'
 	 width='200px' height='200px' onmouseover='mover(0)'/>
-<img src='../images/cat2.jpg'
+<img src='../images/star.png'
 	 width='200px' height='200px' onmouseover='mover(1)'/>
-<img src='../images/cat3.jpg'
+<img src='../images/tri.png'
 	 width='200px' height='200px' onmouseover='mover(2)'/>
-<img src='../images/logo1.png'
+<img src='../images/uni.png'
 	 width='200px' height='200px' onmouseover='mover(3)'/>
 
 <script>
@@ -24,10 +24,10 @@ let arry = [];
 for(i=0; i<4; i++){
 	arry[i] = new Image();
 }
-arry[0].src='../images/cat1.png';
-arry[1].src='../images/cat2.jpg';
-arry[2].src='../images/cat3.jpg';
-arry[3].src='../images/logo1.png';
+arry[0].src='../images/puz.png';
+arry[1].src='../images/star.png';
+arry[2].src='../images/tri.png';
+arry[3].src='../images/uni.png';
 
 function mover(n){
 	target.src = arry[n].src;

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>object_new.html</title>
+</head>
+<body>
+
+<script>
+// Object를 사용한 객체선언
+let obj1 = new Object();  // Object는 가장 위에 있는 조상이다. 모든 객체는 이걸 상속한다.
+obj1.x = 100;
+obj1.y = 200;
+obj1.sum = function(){
+	this.s = this.x + this.y;
+	return this.s;
+}
+obj1.avg = function(){
+	this.a = this.s/2;
+	return this.a;
+}
+console.log('obj1.sum : ', obj1.sum());
+console.log('obj1.avg : ', obj1.avg());
+console.log('obj1.s : ', obj1.s);
+console.log('obj1.a : ', obj1.a);
+console.log('------------------------------');
+
+let ary = [1,2,3,4,5];
+console.table(ary);
+console.log('------------------------------');
+
+let a = [
+	{'id' : 'a001'},
+	{'id' : 'a020'},
+	{'id' : 'a300'}
+];
+console.table(a);
+console.log(a[0]);
+console.log('------------------------------');
+
+let b = {
+		'부산' : [1,2,3,4,5],      // 키값이 배열이다. 함수가 들어갈 수도 있다.
+		'서울' : [11,22,33,44,55]
+}
+console.table(b);
+console.log(b[0]);
+console.log(b.부산[0]);  // 키값이 부산이면 인덱스0번의 밸류가 1.
+                        // 키값이 서울이면 인덱스0번의 밸류가 11.
+</script>
+
+</body>
+</html>
+
+
+
+

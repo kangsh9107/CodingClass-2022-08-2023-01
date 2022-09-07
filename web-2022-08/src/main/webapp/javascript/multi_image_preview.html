@@ -51,102 +51,75 @@
 <body>
 
 <h2>갤러리에 올릴 사진들을 선택하세요.</h2>
-<input type='file' id='btnUpload' multiple/>
+<input type='file' id='btnUpload' multiple='multiple'/>
 <div id='photos'>
 
 </div>
-
 <script>
-let photos = document.querySelector('#photos');
-let btnUpload = document.querySelector('#btnUpload');
+let fileList = [];
+let dt = new DataTransfer();          // file tag의 정보를 수정하기 위한 객체.
+let photos = document.querySelector('#photos');         // 미리보기 이미지들 wrap.
+let btnUpload = document.querySelector('#btnUpload');   // 파일 업로드 버튼.
 
 btnUpload.onchange = function(ev){
-	let files = ev.srcElement.files;  // 선택한 파일들
+	let files = ev.srcElement.files;  // 선택한 파일들.
 	if(files.length<=0) return;       // 파일선택을 완료하지 않고 취소해서 아무것도 선택되지 않은 경우.
 	
-	let fileArray = Array.prototype.slice.call(files);  // Array:객체이름, prototype:생성하지 않고 그냥 실행하겠다.
+//	console.log('files: ', files);
+//	console.log(`files: ${files}`);   // ${}은 문자로 반환
+	
+	let fileArray = Array.prototype.slice.call(files);  // Array:객체이름
 	                                                    // 엄청 많은걸 쪼개서 배열로 만들겠다.
 	for(f of fileArray){  // 이미지와 취소버튼이 들어갈 영역 생성. 파일 개수만큼 생성.
-		let div = document.createElement('div');
+		fileList.push(f);
+		
+		let div = document.createElement('div');        // 자바스크립트에서 Element, node는 태그를 나타낸다. 둘은 약간 늬앙스가 다르다.
 		let img = document.createElement('img');
 		let chk = document.createElement('div');
-		div.setAttribute('class', 'sub_item');
+		div.setAttribute('class', 'sub_item');          // <div class='sub_item'></div>
 		loadImage(img, f);
 		div.appendChild(img);
 		div.appendChild(chk);
 		chk.innerHTML = 'x';
+		chk.setAttribute('file', f.name); // chk에 파일이라는 속성에 파일이 가진 이름.
 		
 		photos.appendChild(div);
 		
 		chk.onclick = function(ev){
 			let ele = ev.srcElement;      // 이벤트가 발생한 태그를 변수 선언.
 			let parent = ele.parentNode;  // ele를 포함한 부모 태그.
+			let delFile = chk.getAttribute('file');  // setAttribute의 f.name을 delFile에 대입.
+			
+			for(i in fileList){
+				if(fileList[i].name == delFile){
+					fileList.splice(i,1);
+					break;
+				}
+			}
 			photos.removeChild(parent);
+			changeFileTag(btnUpload);
 		}
-	}
-}
+	}// end of for
+	changeFileTag(this);
+}// end of onchange
 
-function loadImage(img, file){
+function loadImage(img, file){      // img 태그와 업로드될 파일.
 	let reader = new FileReader();
 	reader.readAsDataURL(file);
 	reader.onload = function(fev){
-		let tempImage = new Image();
-		tempImage.src = this.result;
-		img.src = tempImage.src;
+		let tempImg = new Image();
+		tempImg.src = this.result;
+		img.src = tempImg.src;
 	}
 }
 
-/* 
-function readMultipleImage(input){
-	let multipleContainer = document.querySelector('photos');
-	
-	// 인풋 태그에 파일들이 있는 경우
-	if(input.files){
-		// 이미지 파일 검사(생략)
-		console.log(input.files);
-		
-		// 유사배열을 배열로 변환 (forEach문으로 처리하기 위해서)
-		let fileArr = Array.from(input.files);
-		
-		let $colsDiv1 = document.createElement('div');
-		let $colsDiv2 = document.createElement('div');
-		$colsDiv1.classList.add('column');
-		$colsDIv2.classList.add(;column');
-		
-		fileArr.forEach(file, index)=>{
-			let reader = new FileReader();
-			
-			let $imgDiv = document.createElement('div');
-			let $img = document.createElement('img');
-			$img.classList.add('image');
-			
-			let $label = document.createElement('label');
-			$label.classList.add('image-label');
-			$label.textContent = file.name;
-			
-			$imgDiv.appendChild($img);
-			$imgDiv.appendChild($label);
-			
-			reader.onload = e=>{
-				$img.src = e.target.result;
-				
-				$imgDiv.style.width = ($img.naturalWidth) * 0.2 + 'px';
-				$imgDiv.style.height = ($img.naturalHeight) * 0.2 + 'px';
-			}
-			
-			console.log(file.name);
-			if(index%2==0){
-				$colDiv1.appendChild($imgDiv);
-			}else{
-				$colDIv2.appendChild($imgDiv);
-			}
-			reader.readAsDataURL(file);
-		}
-		photos.appendChild($colsDiv1);
-		photos.appendChild($colsDiv2);
+function changeFileTag(fileTag){
+	dt = new DataTransfer();
+	for(f of fileList){
+		dt.items.add(f);
 	}
+	fileTag.files = dt.files;       // file tag 정보를 갱신.
 }
- */
 </script>
 
 </body>
