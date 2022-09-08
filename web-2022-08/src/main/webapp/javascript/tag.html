@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>tag.html</title>
+
+<style>
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+div#here {
+	border: 3px solid #888;
+	margin: 80px 80px auto;
+	padding: 10px;
+	display: inline-block;
+	text-align: center;
+}
+</style>
+
+</head>
+<body>
+
+<div id='dom'>
+	<h1>태그 추가하기</h1>
+	<div id='here'>
+		<button type='button'>그냥버튼</button>
+	</div>
+</div>
+
+<div id='del'>삭제될 항목</div>
+<button type='button' onclick='delDiv()'>div 삭제</button>
+<br/>
+<select id='sel'>
+	<option value='강아지'>강아지</option>
+	<option value='고양이'>고양이</option>
+	<option value='앵무새'>앵무새</option>
+</select>
+<button type='button' onclick='delOption()'>option 삭제</button>
+
+<hr/><br/>
+<div id='parent'>
+	<button type='button' class='previous' value='pervious'>왼쪽 형제</button>
+	<button type='button' class='me' value='me'>나</button>
+	<button type='button' class='next'>오른쪽 형제</button>
+</div>
+
+<script>
+let here = document.getElementById('here');
+
+let btnAppend = document.createElement('input');
+btnAppend.setAttribute('type', 'button');
+btnAppend.setAttribute('value', 'Append');
+here.append(btnAppend);
+
+let btnPrepend = document.createElement('input');
+btnPrepend.setAttribute('type', 'button');
+btnPrepend.setAttribute('value', 'Prepend');
+here.prepend(btnPrepend);
+
+let btnBefore = document.createElement('input');
+btnBefore.setAttribute('type', 'button');
+btnBefore.setAttribute('value', 'Before');
+here.before(btnBefore);
+
+let btnAfter = document.createElement('input');
+btnAfter.setAttribute('type', 'button');
+btnAfter.setAttribute('value', 'After');
+here.after(btnAfter);
+
+function delDiv(){
+	let div = document.querySelector('#del');
+	div.remove();
+}
+
+function delOption(){
+	let sel = document.querySelector('#sel');
+	sel.removeChild(sel[0]);
+}
+
+let me = document.querySelector('.me');
+
+let parent = me.parentElement;
+let btnLeft = me.prevuousElementSibling;
+let btnRight = me.nextElementSibling;
+
+console.log('parent : ', parent.id);
+
+let childs = parent.children;
+console.log('child cnt: ', childs.length);
+console.log(childs[0].value);
+console.table(childs);
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

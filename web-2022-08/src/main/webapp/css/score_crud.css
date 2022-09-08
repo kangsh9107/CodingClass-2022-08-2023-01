@@ -42,14 +42,26 @@ form>span {
 }
 
 main>#right {
-  display: inline-block;
   float: right;
   margin-top: -10px;
-  width: 250px;
+  width: 240px;
 }
 
 #right>div {
   margin-bottom: 4px;
+}
+
+#right>div.title {
+  border-bottom: 1px solid #fff;
+}
+
+.items>.item:hover {
+  cursor: pointer;
+  background-color: #888;
+}
+
+div.title:last-child {
+  border-bottom: 1.5px dotted #fff;
 }
 
 #right span {
@@ -57,6 +69,14 @@ main>#right {
   width: 55px;
   font-size: 12pt;
   font-weight: 400;
+}
+
+#right span.subject {
+  width: 75px;
+}
+
+#right span.score {
+  width: 35px;
 }
 
 hr {
@@ -74,6 +94,7 @@ input[type="text"] {
   font-weight: 600;
   font-size: 10pt;
 }
+
 input[type="button"] {
   display: inline-block;
   width: 46px;
@@ -85,4 +106,28 @@ input[type="button"] {
 
 input[name="btnSave"] {
   margin-left: 6px;
+}
+
+select {
+  display: inline-block;
+  width: 100px;
+  height: 23px;
+  margin-bottom: 3px;
+  font-weight: 600;
+  font-size: 10pt;
+  text-align: right;
+}
+
+main>footer {
+  position: absolute;
+  border-radius: 0px 0px 15px 15px;
+  bottom: 0;
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  text-shadow: 0 0 0 #fff;
+  font-size: 11pt;
 }
