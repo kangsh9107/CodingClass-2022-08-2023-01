@@ -7,9 +7,52 @@
   <title>Document</title>
 </head>
 <body>
+  <form name='frm' id='frm' method='post'>
+    <label>아이디</label>
+    <input type='text' name='id' value='a001'><br/>
+    <label>성명</label>
+    <input type='text' name='name' value='길동이'><br/>
+    <label>성별</label>
+    <label><input type='radio' name='gender' value='남자' checked>남자</label>
+    <label><input type='radio' name='gender' value='여자'>여자</label>
+    <br/>
+    <label>취미</label>
+    <label><input type='checkbox' name='hobby' value='스포츠' checked>스포츠</label>
+    <label><input type='checkbox' name='hobby' value='여행'>여행</label>
+    <label><input type='checkbox' name='hobby' value='독서'>독서</label>
+    <label><input type='checkbox' name='hobby' value='명상'>명상</label>
+    <p/>
+    <input type='button' id='btnSend' value='전송' />
+    </form>
+    <hr/>
+    <div id='result'></div>
   <script>
-    let subject = ["HTML", "CSS", "JavaScript", "Java", "python"];
-    console.log(subject);
+    var ff = document.frm;
+    var rs = document.getElementById('result');
+    ff.btnSend.onclick = function(){
+    var g = '';
+    var h = [];
+    if(ff.gender[0].checked){
+      g = ff.gender[0].value;
+    }else{
+      g = ff.gender[1].value;
+    }
+    for(var i=0 ; i<ff.hobby.length ; i++){
+      if(ff.hobby[i].checked){
+        h.push(ff.hobby[i].value);
+      }
+    }
+    var json = {
+    id : ff.id.value,
+    name : ff.name.value,
+    gender : g,
+    hobby : h
+    };
+    console.log(json);
+    var data = JSON.stringify(json);
+    rs.innerHTML = data;
+    console.log(data);
+    }
   </script>
 </body>
 </html>
