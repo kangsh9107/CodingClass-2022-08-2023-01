@@ -4,7 +4,7 @@
 // added in ES 5
 // use this for Vanilla JavaScript
 
-// 2. Variable
+// 2. Variable, rw(read/write)
 // let (added in ES6)
 // let globalName = 'global name';
 // {
@@ -31,7 +31,9 @@
 // }
 // console.log(age2);
 
-// 3. Contants
+// 3. Contant, r(read only)
+// use const whenever possibel.
+// favor immutable data type always for a few reasons:
 // favor immutable data type always for a few reasons:
 // - security
 // - thread safety
