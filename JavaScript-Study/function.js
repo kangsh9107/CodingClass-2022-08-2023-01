@@ -152,9 +152,56 @@
 
 // Arrow function
 // always anonymous
-const simplePrint = function () {
-  console.log("simplePrint!");
-};
+// const simplePrint = function () {
+//   console.log("simplePrint!");
+// };
 
-const simplePrint2 = () => console.log("simplePrint!2");
-const add = (a, b) => a + b;
+// const simplePrint2 = () => console.log("simplePrint!2");
+// const add = (a, b) => a + b;
+// const simpleMultiply = (a, b) => {
+//   // do something more
+//   return a * b;
+// };
+
+// // IIFE: Immediately Invoked Function Expression
+// (function hello() {
+//   console.log("IIFE");
+// })();
+
+// Fun quiz time
+// function calculate(command, a, b)
+// command: add, substract, divide, multiply, remainder
+
+function calculate(command, a, b) {
+  if(command == Add) {
+    console.log(Add(a, b));
+  } else if(command == Substract) {
+    console.log(Substract(a, b));
+  } else if(command == Divide) {
+    console.log(Divide(a, b));
+  } else if(command == Multiply) {
+    console.log(Multiply(a, b));
+  } else if(command == Remainder) {
+    console.log(Remainder(a, b));
+  }
+}
+function Add(x, y) {
+  return x + y;
+}
+function Substract(x, y) {
+  return x - y;
+}
+function Divide(x, y) {
+  return x / y;
+}
+function Multiply(x, y) {
+  return x * y;
+}
+function Remainder(x, y) {
+  return x % y;
+}
+calculate(Add, 6, 2);
+calculate(Substract, 6, 2);
+calculate(Divide, 6, 2);
+calculate(Multiply, 6, 2);
+calculate(Remainder, 6, 2);
