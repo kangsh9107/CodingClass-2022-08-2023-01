@@ -15,10 +15,10 @@
       <form name="frm">
         <span>SERIAL</span>
         <input type="text" name="serial" autocomplete="off"/>
-        <input type="button" name="findSerial" value="검색"/>
+        <input type="button" name="btnFindSerial" value="검색"/>
         <br/>
         <span>학번</span>
-        <input type="text" name="id" placeholder="영어랑 숫자만" autocomplete="off"/>
+        <input type="text" name="id" autocomplete="off"/>
         <br/>
         <span>과목</span>
         <select name="subject">
@@ -36,8 +36,9 @@
     </div>
     <div id="right">
       <h2 id="h2_right">성적현황 LIST</h2>
-      <input type="text" name="findText" placeholder="공백으로 구분 ex)a001 HTML"/>
-      <input type="button" name="findList" value="검색"/>
+      <input type="text" name="findText" id="findText" placeholder="공백으로 구분 ex) 1 J"/>
+      <input type="button" name="btnFilter" id="btnFilter" value="필터"/>
+      <input type="button" name="btnFilterClear" id="btnFilterClear" value="해제"/>
       <div class="title">
         <span class="serial">SERIAL</span>
         <span class="id">학번</span>
