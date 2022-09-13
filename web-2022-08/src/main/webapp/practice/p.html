@@ -7,14 +7,13 @@
 <body>
 
 <script>
-let array = [ "축구", "야구", "배구", "농구", "족구"]
-let select = document.createElement("select");
-select.setAttribute("name", "hobby");
-
-for(h of array){
-	var opt = new Option(h, h);
-	select.appendChild(opt);
+let a;
+function Run() {
+	a = 10;
+	console.log(a);
 }
+Run();
+console.log(a);
 </script>
 
 </body>

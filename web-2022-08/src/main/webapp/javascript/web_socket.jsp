@@ -19,15 +19,15 @@
 }
 
 #result {
-	width: 500px;
-	height: 600px;
+	width: 300px;
+	height: 400px;
 	border: 2px solid #aaa;
 	padding: 20px;
 	overflow: auto;
 }
 
 #msg {
-	width: 500px;
+	width: 300px;
 }
 </style>
 
