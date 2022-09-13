@@ -35,6 +35,10 @@ h2 {
   margin-bottom: 10px;
 }
 
+h2#h2_right {
+  margin-bottom: 7px;
+}
+
 form>span {
   display: inline-block;
   width: 50px;
@@ -53,6 +57,10 @@ main>#right {
 
 #right>div.title {
   border-bottom: 1px solid #fff;
+}
+
+.items:last-child {
+  padding-bottom: 10px;
 }
 
 .items>.item:hover {
@@ -95,13 +103,37 @@ input[type="text"] {
   font-size: 10pt;
 }
 
+input[name="findText"] {
+  width: 138px;
+  text-align: left;
+}
+
 input[type="button"] {
   display: inline-block;
   width: 46px;
-  height: 23px;
+  height: 22.5px;
   margin-top: 5px;
   font-weight: 600;
   font-size: 10pt;
+}
+
+input[name="btnFindSerial"] {
+  margin-top: 10px;
+  position: absolute;
+  left: 159px;
+  top: 33.5px;
+}
+
+input[name="btnFilter"] {
+  position: absolute;
+  left: 418px;
+  top: 45.5px;
+}
+
+input[name="btnFilterClear"] {
+  position: absolute;
+  left: 468px;
+  top: 45.5px;
 }
 
 input[name="btnSave"] {
@@ -120,9 +152,9 @@ select {
 
 main>footer {
   position: absolute;
-  border-radius: 0px 0px 15px 15px;
   bottom: 0;
   background-color: #000;
+  border-radius: 0 0 15px 15px;
   color: #fff;
   padding: 5px;
   width: 100%;
