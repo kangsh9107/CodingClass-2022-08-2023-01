@@ -17,11 +17,13 @@
 	<div class='corpname'>Web Project</div>
 	<nav>
 		<ul>
-		  <li><a href='student/student_list.jsp' title='학생정보 조회'>학생관리</a></li>
-		  <li><a href='#'>생산관리</a></li>
-		  <li><a href='#'>품질관리</a></li>
-		  <li><a href='#'>방명록</a></li>
-		  <li><a href='#'>게시판</a></li>
+			<li><a href='student/student_list.jsp' title='학생정보 조회'>학생관리</a></li>
+			<li><a href='javascript/score_crud.html'>성적관리</a></li>
+			<li><a href='javascript/member_control.html'>회원관리</a></li>
+			<li><a href='#'>제품관리</a></li>
+			<li><a href='#'>생산관리</a></li>
+			<li><a href='#'>방명록</a></li>
+			<li><a href='#'>게시판</a></li>
 		</ul>
 	</nav>
 </header>

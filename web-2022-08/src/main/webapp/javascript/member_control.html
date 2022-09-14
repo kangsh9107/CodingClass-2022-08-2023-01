@@ -12,22 +12,28 @@
 	회원 정보 CRUD
 	</div>
 	<form name='frm_member'>
-		<span>아이디</span>
-		<input type='text' name='id' value='a001'/><br/>
-		<span>성명</span>
-		<input type='text' name='name' value='hong'/><br/>
-		<span>성별</span>
-		<!-- 같은 name이면 DOM구조에서는 배열로 처리된다. -->
-		<label><input type='radio' name='gender' value='m'/>남자</label>
-		<label><input type='radio' name='gender' value='f'/>여자</label>
-		<br/>
-		<span>연락처</span>
-		<input type='text' name='phone' value='010-1111-1234'/>
-		<hr/>
-		<!-- this는 자기 자신. this.form은 form 전체 -->
-		<input type='button' value='CREATE' name='btnAppend' onclick='add(this.form)'/>
-		<input type='button' value='UPDATE' name='btnUpdate' onclick='update(this.form)'/>
-		<input type='button' value='DELETE' name='btnDelete' onclick='deleteFunc(this.form)'/>
+		<div id='left'>
+			<input type='file' id='photo_file'/>
+			<img src='../images/anno1.png' id='photo'/>
+		</div>
+		<div id='right'>
+			<span>아이디</span>
+			<input type='text' name='id' value='a001'/><br/>
+			<span>성명</span>
+			<input type='text' name='name' value='hong'/><br/>
+			<span>성별</span>
+			<!-- 같은 name이면 DOM구조에서는 배열로 처리된다. -->
+			<label><input type='radio' name='gender' value='m'/>남자</label>
+			<label><input type='radio' name='gender' value='f'/>여자</label>
+			<br/>
+			<span>연락처</span>
+			<input type='text' name='phone' value='010-1111-1234'/>
+			<hr/>
+			<!-- this는 자기 자신. this.form은 form 전체 -->
+			<input type='button' value='CREATE' name='btnAppend' onclick='add(this.form)'/>
+			<input type='button' value='UPDATE' name='btnUpdate' onclick='update(this.form)'/>
+			<input type='button' value='DELETE' name='btnDelete' onclick='deleteFunc(this.form)'/>
+		</div>
 	</form>
 	<div id='list'>
 		<div id='title'>

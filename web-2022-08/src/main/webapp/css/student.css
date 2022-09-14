@@ -35,6 +35,7 @@ form .empty{
 form ul{
 	list-style: none;
 	display: inline-block;
+	width: 256px;
 }
 form li{
 	display: inline-block;
@@ -176,15 +177,3 @@ footer.student-list-footer div{
 /* 
 student_modify.jsp
  */
-
-div.student-info-modify{
-	display: inline-block;
-	padding: 0px;
-	margin-left: 125px;
-	font-size: x-large;
-	font-weight: bolder;
-}
-form .empty-modify{
-	position: absolute;
-	left: 170px;
-}

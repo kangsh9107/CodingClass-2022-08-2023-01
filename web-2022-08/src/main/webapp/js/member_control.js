@@ -134,8 +134,37 @@ function deleteFunc(frm){
 	}
 }
 
+// 이미지 미리보기
+let btnFile = document.querySelector('#photo_file');
+let photo = document.querySelector('#photo');
 
+photo.onclick = function() {
+	btnFile.click();
+}
 
+btnFile.onchange = function(ev){
+	let file = ev.srcElement.files[0];
+	let reader = new FileReader();
+	reader.readAsDataURL(file);
+	reader.onload = function(){
+		let tempImg = new Image();
+		tempImg.src = this.result;
+		photo.src = tempImg.src;
+	}
+}
 
+/*function readImage(input) {
+	if(input.files && input.files[0]) {
+		let reader = new FileReader();
+		reader.onload = function(e) {
+			let previewImage = document.querySelector('#photo');
+			previewImage.src = e.target.result;
+		}
+		reader.readAsDataURL(input.files[0]);
+	}
+}
 
-
+let inputImage = document.querySelector('#photo_file');
+inputImage.addEventListener('change', function(e) {
+	readImage(e.target);
+});*/ 

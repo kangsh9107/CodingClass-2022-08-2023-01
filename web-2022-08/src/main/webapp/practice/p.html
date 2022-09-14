@@ -6,14 +6,22 @@
 </head>
 <body>
 
+<div id='here'></div>
 <script>
-let a;
-function Run() {
-	a = 10;
-	console.log(a);
+let select = document.createElement("select");
+select.setAttribute("name", "languages");
+let here = document.querySelector('#here');
+here.append(select);
+
+console.log('1: ',select);
+
+let array = ["JavaScript", "Java"]
+for(h of array){
+	let opt = new Option(h, h);
+	select.appendChild(opt);
 }
-Run();
-console.log(a);
+
+console.log('2: ',select);
 </script>
 
 </body>

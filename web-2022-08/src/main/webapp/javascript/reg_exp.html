@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>reg_exp.html</title>
+</head>
+<body>
+
+<script>
+function msg(reg, str) {
+	let b = reg.test(str);
+	let temp = `<li><b>${reg}</b> : ${str} <font color='red'>${b}</font>`;
+	document.write(temp);
+}
+
+try {
+	let reg;
+	let strAry = ["123" , "123abc123" , "abc"   , "!@#$",
+				  "가나다", "abc123가나다", "Afsfaf", "asdfAadff"];
+	
+	document.write('숫자가 포함되어 있는가');
+	for(v of strAry) {
+		reg = /[0-9]/;
+		msg(reg, v);
+	}
+	document.write('<br/>' + '<br/>' + '숫자만 입력되어 있는가');
+	for(v of strAry) {
+		reg = /^[0-9]+$/;
+		msg(reg, v);
+	}
+	document.write('<br/>' + '<br/>' + '영문자만');
+	for(v of strAry) {
+		reg = /^[a-zA-Z]+$/;
+		msg(reg, v);
+	}
+	document.write('<br/>' + '<br/>' + '영숫자만');
+	for(v of strAry) {
+		reg = /^[\w]+$/;
+		msg(reg, v);
+	}
+	document.write('<br/>' + '<br/>' + '첫글자 대문자');
+	for(v of strAry) {
+		reg = /^[A-Z][\w]+$/;
+		msg(reg, v);
+	}
+	document.write('<br/>' + '<br/>' + '한글만');
+	for(v of strAry) {
+		reg = /^[ㄱ-힣]+$/;
+		msg(reg, v);
+	}
+	
+	let phoneAry = ["02-12-1234"  , "02-123-1234" , "031-123-1234",
+					"010-111-1111", "010-1234-123", "010-1234-1234"];
+	
+	document.write('<br/>' + '<br/>' + '연락처');
+	for(v of phoneAry) {
+		reg = /^\d{2,3}-\d{3,4}-\d{4}$/;
+		msg(reg, v);
+	}
+	
+	let emailAry = ["abc"              , "abc@abc"             , "123abc@abc.kr" ,
+					"abc@abc.com"      , "abc@abc.com,kr"      , "abc@abc.com.kr",
+					"abc@123.com.kr.ko", "abc123@abc.com.kr.co"];
+	
+	document.write('<br/>' + '<br/>' + '이메일');
+	for(v of emailAry) {
+		reg = /^[a-zA-Z]+[\w]+@[a-zA-Z]+(\.[\w]+){1,3}$/;
+		msg(reg, v);
+	}
+} catch(error) {
+	alert(error);
+}
+</script>
+
+</body>
+</html>
+
+
+
+
