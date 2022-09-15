@@ -25,7 +25,7 @@
 	<span>*암호 확인</span>
 	<input type='password' name='pwd2' required size='25'/><br/>
 	<span>*연락처</span>
-	<input type='search' name='phone' required size='15' maxLength='20' autocomplete='off'/><br/>
+	<input type='search' name='phone' required size='15' maxLength='14' autocomplete='off'/><br/>
 	<span>우편번호</span>
 	<input type='search' name='post' size='10' readOnly/>
 	<input type='button' value='우편번호 검색'/><br/>

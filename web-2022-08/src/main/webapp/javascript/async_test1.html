@@ -14,23 +14,23 @@ function a(){
 	return 1;
 }
 function b(){
-	for(i=0; i<9999999; i++){}
+	for(i=0; i<99999; i++){}
 	return 2;
 }
 function c(){
-	for(i=0; i<9999999; i++){}
+	for(i=0; i<999; i++){}
 	return 3;
 }
-a();
-b();
-c();
 // 연산 엄청 많이 걸어 놓으면 다 끝날 때까지 마우스 클릭 안된다.
 // 자바스크립트는 기본적으로 다 동기식.
+
+console.log('a()=', a());
+console.log('b()=', b());
+console.log('c()=', c());
 
 </script>
 
 </body>
 </html>
-
 
 

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>web_worker_main.html</title>
+</head>
+<body>
+
+<script>
+// 멀티 스레드. 쉽게 말해 3차선 고속도로처럼 앞에 똥차가 지나가도 다른 길로 빠르게 갈 수 있다.
+let worker1 = new Worker('web_worker1.js');
+let worker2 = new Worker('web_worker2.js');
+let worker3 = new Worker('web_worker3.js');
+
+// postMessage를 받는 명령어: 객체명.onmessage = function(이벤트 매개변수) {}
+worker1.onmessage = function(ev) {
+	console.log('worker1=', ev.data); // data에 message가 들어간다.
+}
+worker2.onmessage = function(ev) {
+	console.log('worker2=', ev.data);
+}
+worker3.onmessage = function(ev) {
+	console.log('worker3=', ev.data);
+}
+
+// 실행 순서는 1,2,3이지만 처리 과정에 걸리는 시간에 따라 처리 결과가 나오는 순서가 다르다.
+// 또한 비슷한 처리 과정을 거쳤어도 실행할 때마다 순서가 다를 수 있다. 즉 뭐가 먼저 끝날지 모른다.
+// 이렇게 멀티 스레드로 처리하면 화면에 렉을 최소화 한다. 대신 누가 먼저 끝날지 모른다.
+</script>
+
+</body>
+</html>
+
+
