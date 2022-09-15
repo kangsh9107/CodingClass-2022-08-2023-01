@@ -5,32 +5,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>student_input_form</title>
+    <link rel="stylesheet" href="css/student.css">
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
-    <form name="stdInput" method="post">
-        <h2>학생정보 입력</h2>
-        <br/>
-        <span>아이디</span>
-        <input type="search" name="id" maxLength="12" placeholder="영어시작. 영어+숫자가능" autocomplete="off"/>
-        <br/>
-        <span>성명</span>
-        <input type="search" name="mName" placeholder="한글로만 작성" autocomplete="off"/>
-        <br/>
-        <span>성별</span>
-        <label><input type="radio" name="gen" value="m" checked/>남자</label>
-        <label><input type="radio" name="gen" value="f"/>여자</label>
-        <br/>
-        <span>암호</span>
-        <input type="password" name="pwd"/>
-        <br/>
-        <span>암호 확인</span>
-        <input type="password" name="pwd2"/>
-        <br/>
-        <span>연락처</span>
-        <input type="search" name="phone" placeholder="-까지 입력" autocomplete="off"/>
-        <br/>
-        
-    </form>
+    <div id="stdInput">
+        <form name="frmInput" method="post">
+            <h2>학생정보 입력</h2>
+            <br/>
+            <span>*아이디</span>
+            <input type="search" name="id" maxLength="20" placeholder="영어시작. 영어+숫자가능" required autocomplete="off"/>
+            <br/>
+            <span>*성명</span>
+            <input type="search" name="mName" placeholder="한글로만 작성" required autocomplete="off"/>
+            <br/>
+            <span>*성별</span>
+            <label><input type="radio" name="gen" value="m" checked/>남자</label>
+            <label><input type="radio" name="gen" value="f"/>여자</label>
+            <br/>
+            <span>*암호</span>
+            <input type="password" name="pwd" maxLength="20" required/>
+            <br/>
+            <span>*암호 확인</span>
+            <input type="password" name="pwd2" maxLength="20" required/>
+            <br/>
+            <span>*연락처</span>
+            <input type="search" name="phone" placeholder="-까지 입력" maxlength="20" required autocomplete="off"/>
+            <br/>
+            <span>*우편번호</span>
+            <input type="text" name="postalCode" required readOnly/>
+            <input type="button" name="btnFindPostalCode" value="우편번호 검색"/>
+            <br/>
+            <span>*주소</span>
+            <input type="search" name="address" required readOnly/>
+            <br/>
+            <span>*상세주소</span>
+            <input type="search" name="address2" required autocomplete="off"/>
+            <br/>
+            <span>*이메일</span>
+            <input type="email" name="email" required autocomplete="off"/>
+            <br/>
+            <span></span>
+            <input type="submit" name="btnSave" value="저장"/>
+            <input type="button" name="btnCancle" value="취소" onclick="location.href='index.html'"/>
+        </form>
+    </div>
+    <script>
+        let frm = document.frmInput;
+        frm.btnFindPostalCode.addEventListener("click", function() {
+            new daum.Postcode({
+                oncomplete : function(data) {
+                    frm.address.value = data.address;
+                    frm.postalCode.value = data.zonecode;
+                }
+            }).open();
+        });
+    </script>
 </body>
 </html>
