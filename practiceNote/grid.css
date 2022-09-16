@@ -1,0 +1,65 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: minmax(150px, auto);
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.container div {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border: 1px solid #000;
+}
+
+.container .itemColor1 {
+    background-color: #00B8A9;
+}
+
+.container .itemColor2 {
+    background-color: #F8F3D4;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.container .itemColor3 {
+    background-color: #F6416C;
+}
+
+.container .itemColor4 {
+    background-color: #FFDE7D;
+}
+
+.container .itemColor5 {
+    background-color: #B4846C;
+}
+
+.container .itemColor6 {
+    background-color: #00B8A9;
+}
+
+.container .itemColor7 {
+    background-color: #F8F3D4;
+}
+
+.container .itemColor8 {
+    background-color: #F6416C;
+}
+
+.container .itemColor9 {
+    background-color: #FFDE7D;
+}
+
+.container .itemColor10 {
+    background-color: #B4846C;
+}
