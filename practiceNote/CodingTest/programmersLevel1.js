@@ -44,6 +44,16 @@
 //     return answer;
 // }
 
+// let arr = [1,2,3,4];
+// function avg(arr) {
+//     let answer = 0;
+//     let a = arr.reduce(function(cur, now) {
+//         return cur + now;
+//     }, 0);
+//     answer = a / arr.length;
+//     return answer;
+// }
+
 // 5. 정수 제곱근 판별
 // function solution(n) {
 //     let answer = -1;
@@ -55,9 +65,20 @@
 // }
 
 // 6. 자연수 뒤집어 배열로 만들기
-function solution(n) {
-    let answer = [];
-    let a = String(n);
+// function solution(n) {
+//     let answer = [];
+//     let a = String(n);
+//     for(let i=a.length-1; i>=0; i--) {
+//         let b = Number( a.slice(i, i+1) );
+//         answer.push(b);
+//     }
+//     console.log(answer);
+//     return answer;
+// }
+
+// 7. 문자열 내 p와 y의 개수
+function solution(s){
+    let answer = true;
     
     return answer;
 }
