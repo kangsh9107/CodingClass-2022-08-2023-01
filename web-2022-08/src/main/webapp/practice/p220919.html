@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet' href='potato.css'/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
+<title>potato_apoinment.html</title>
+
+</head>
+<body>
+<script>
+function btn(f){
+   let html;
+    out = document.querySelector('.out');
+   html = `
+      <h3>PLAY WITH POTATO</h3>
+      <br/>
+      <span class = 'item1'>PLACE : </span>${frm.zone.value}<br/>
+      <span class = 'item2'>TO DO : </span>${frm.play.value}<br/>
+      <span class = 'item3'>WITH :   </span>${frm.irum.value}<br/>
+       <span class = 'item4'>DATE : </span>${frm.day.value}<br/>
+      <span class = 'item5'>TIME : </span>${frm.time.value}<br/>
+   `
+   out.innerHTML = html;
+}
+
+// 전송하기 누르면 해당값 미니홈피로 전송
+function openWin(){
+    win = window.open('minihome.html', 'win', 'width=400px, height=300'); 
+}
+
+
+
+
+
+/* .out에 입력되어 있는 값은 span등 태그들이기 때문에 .out의 value를 바로 전송 할 수는 없다.
+ * 그래서 .out은 .out대로 그냥 두고 text박스나 select 박스에 입력되어 있는 값을
+ * 전송하도록 하면 해결 가능하다.
+ * 
+ * 더 간단한 방법은 위의 함수btn에서 백틱안에 생성되는 span들의 클래스를 각각 입력하고
+ * 그 span들을 함수 send에서 querySelector.vlaue로 불러와서 target.value에 대입해준다.
+ */
+function send(){
+   out = document.querySelector('.out');
+   item1 = document.querySelector('.item1');
+   let target = win.document.querySelector('#v');
+      target.value = item1.value;
+}
+
+</script>
+
+</body>
+</html>
