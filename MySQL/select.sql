@@ -39,7 +39,7 @@ select * from payments where paymentDate='2004-11-14'; /* 맞는지 확인 */
 
 /* 8. 최대금액을 지불한 고객들의 고객번호를 조회 */
 select * from payments order by amount desc; /* 전체 데이터에서 내림차순으로 한번 확인 */
-select max(amount) from payments; /* 전체 데이터에서 최고 amount 확인. 42,43행처럼 2번 쿼리를 날리면 확인 가능하지만 한번에 해보자. */
+select max(amount) from payments; /* 전체 데이터에서 최고 amount 확인. 42,43행처럼 2번 쿼리를 날리면 확인 가능. */
 
 select customerNumber from payments where amount = (select max(amount) from payments);
 

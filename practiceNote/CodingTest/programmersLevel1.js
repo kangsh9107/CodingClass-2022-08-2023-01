@@ -76,9 +76,12 @@
 //     return answer;
 // }
 
-// 7. 문자열 내 p와 y의 개수
-function solution(s){
-    let answer = true;
-    
+// 7. 정수 내림차순으로 배치하기
+function solution(n) {
+    let answer = 0;
+    let a = String(n);
+    let b = a.split("");
+    console.log(b);
     return answer;
 }
+solution(12345);
