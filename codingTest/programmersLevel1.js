@@ -11,9 +11,9 @@
 // 2. 자릿수 더하기
 // function solution(n) {
 //     let answer = 0;
-//     let a = String(n);
-//     for(let i=0; i<a.length; i++) {
-//         let b = a.slice(i, i+1);
+//     let array = String(n);
+//     for(let i=0; i<array.length; i++) {
+//         let b = array.slice(i, i+1);
 //         answer += Number(b);
 //     }
 //     return answer;
@@ -47,19 +47,19 @@
 // let arr = [1,2,3,4];
 // function avg(arr) {
 //     let answer = 0;
-//     let a = arr.reduce(function(cur, now) {
+//     let array = arr.reduce(function(cur, now) {
 //         return cur + now;
 //     }, 0);
-//     answer = a / arr.length;
+//     answer = array / arr.length;
 //     return answer;
 // }
 
 // 5. 정수 제곱근 판별
 // function solution(n) {
 //     let answer = -1;
-//     let a = Math.sqrt(n);
-//     if(a===parseInt(a)) {
-//         answer = (a+1) * (a+1);
+//     let array = Math.sqrt(n);
+//     if(array===parseInt(array)) {
+//         answer = (array+1) * (array+1);
 //     }
 //     return answer;
 // }
@@ -67,9 +67,9 @@
 // 6. 자연수 뒤집어 배열로 만들기
 // function solution(n) {
 //     let answer = [];
-//     let a = String(n);
-//     for(let i=a.length-1; i>=0; i--) {
-//         let b = Number( a.slice(i, i+1) );
+//     let array = String(n);
+//     for(let i=array.length-1; i>=0; i--) {
+//         let b = Number( array.slice(i, i+1) );
 //         answer.push(b);
 //     }
 //     console.log(answer);
@@ -77,12 +77,12 @@
 // }
 
 // 7. 문자열 내 p와 y의 개수
-// function solution(s){
+// function solution(str){
 //     let answer = true;
-//     let a = s.split("");
+//     let array = str.split("");
 //     let strP = 0;
 //     let strY = 0;
-//     for(v of a) {
+//     for(v of array) {
 //         if(v==="p" || v==="P") {
 //             strP += 1;
 //         } else if(v==="y" || v==="Y") {
@@ -96,15 +96,15 @@
 // }
 
 // // 다른 사람 풀이. 충격적이다.
-// function numPY(s) {
-//     return s.toUpperCase().split("P").length === s.toUpperCase().split("Y").length;
+// function numPY(str) {
+//     return str.toUpperCase().split("P").length === str.toUpperCase().split("Y").length;
 // }
 
 // 8. 하샤드 수
 // function solution(x) {
 //     let answer = true;
-//     let a = String(x).split("");
-//     let b = a.reduce(function(cur, now) {
+//     let array = String(x).split("");
+//     let b = array.reduce(function(cur, now) {
 //         return Number(cur) + Number(now);
 //     });
 //     let c = x % b;
@@ -118,8 +118,8 @@
 // function solution(n) {
 //     let answer = 0;
 //     let str = "";
-//     let a = String(n);
-//     let b = a.split("");
+//     let array = String(n);
+//     let b = array.split("");
 //     let c = b.map(Number);
 //     let d = c.sort(function(x, y) {
 //         return y - x;
@@ -142,11 +142,17 @@
 //     return +newArr; // 숫자로 리턴
 // }
 
-// 10. 문자열 s를 숫자로 변환한 결과를 반환
-function solution(s) {
-    let answer = 0;
-    return answer;
-}
-// console.log( solution(-1234) );
-let s = [-1234];
-console.log( s.indexOf("-") );
+// 10. 문자열을 정수로 바꾸기
+// function solution(str) {
+//     let answer = 0;
+//     let array = str.split("");
+//     let mIndex = array.findIndex( v => v==="-" );
+//     if(mIndex===-1) {
+//         answer = Number(str);
+//     } else {
+//         array.shift();
+//         let newArray = array.join("");
+//         answer = Number(newArray) - (2 * Number(newArray));
+//     }
+//     return answer;
+// }
