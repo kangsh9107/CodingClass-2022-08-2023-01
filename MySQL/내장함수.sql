@@ -1,4 +1,4 @@
-/* ³»Àå ÇÔ¼ö */
+/* ë‚´ì¥ í•¨ìˆ˜ */
 USE mydb;
 SET @a = 10.1;
 SET @b = -10.1;
@@ -7,66 +7,132 @@ SELECT abs(@a), abs(@b), ceil(@a), ceil(@b), floor(@a), floor(@b);
 SELECT round(12345.123456, 3), round(123456, -3), round(12345.123456, 0);
 SELECT round(-12.35, 1);
 
-/********** ¼ıÀÚ °ü·Ã ÇÔ¼ö **********/
-/* 1) ¼ö·®ÀÌ 1234°³ÀÌ°í, ´Ü°¡°¡ 123.4¿ø Á¦Ç°ÀÇ ±İ¾×À» °è»êÇÏ°í,
-		1000¿ø ¹Ì¸¸ÀÇ ±İ¾×Àº Àı»èÇÏ¿© Ç¥½Ã. */
-SELECT (1234*123.4) AS "±İ¾×", floor(1234*123.4) AS "Àı»è", floor(1234*123.4/1000)*1000 AS "100¿ø ´ÜÀ§ ÀÌÇÏ Àı»è";
+/********** ìˆ«ì ê´€ë ¨ í•¨ìˆ˜ **********/
+/* 1) ìˆ˜ëŸ‰ì´ 1234ê°œì´ê³ , ë‹¨ê°€ê°€ 123.4ì› ì œí’ˆì˜ ê¸ˆì•¡ì„ ê³„ì‚°í•˜ê³ ,
+		1000ì› ë¯¸ë§Œì˜ ê¸ˆì•¡ì€ ì ˆì‚­í•˜ì—¬ í‘œì‹œ. */
+SELECT (1234*123.4) AS "ê¸ˆì•¡", floor(1234*123.4) AS "ì ˆì‚­", floor(1234*123.4/1000)*1000 AS "100ì› ë‹¨ìœ„ ì´í•˜ ì ˆì‚­";
 
-/* 2) 12345¿øÀÇ ¿¹±İ¾×¿¡ ÀÌÀÚÀ²À» 25% Àû¿ëÇÏ¿© Áö±Ş¾×À» Á¶È¸.
-		´Ü, ¿ø´ÜÀ§ ÀÌÇÏ, 10¿ø´ÜÀ§ ÀÌÇÏ´Â Àı»ó */
-SELECT (12345*0.25) AS "¿ø·¡", ceil(12345*0.25/100)*100 AS "10¿ø ´ÜÀ§ ÀÌÇÏ Àı»ó";
+/* 2) 12345ì›ì˜ ì˜ˆê¸ˆì•¡ì— ì´ììœ¨ì„ 25% ì ìš©í•˜ì—¬ ì§€ê¸‰ì•¡ì„ ì¡°íšŒ.
+		ë‹¨, ì›ë‹¨ìœ„ ì´í•˜, 10ì›ë‹¨ìœ„ ì´í•˜ëŠ” ì ˆìƒ */
+SELECT (12345*0.25) AS "ì›ë˜", ceil(12345*0.25/100)*100 AS "10ì› ë‹¨ìœ„ ì´í•˜ ì ˆìƒ";
 
-/* 3) 12311¿øÀÇ ¿¹±İ¾×¿¡ ÀÌÀÚÀ²À» 11% Àû¿ëÇÏ¿© Áö±Ş¾×À» Á¶È¸.
-		´Ü, ¿ø´ÜÀ§ ÀÌÇÏ, 10¿ø´ÜÀ§ ÀÌÇÏ´Â ¹İ¿Ã¸² */
-SELECT (12311*0.11) AS "¿ø·¡", round(12311*0.11/100)*100 AS "10¿ø ´ÜÀ§ ÀÌÇÏ ¹İ¿Ã¸²";
+/* 3) 12311ì›ì˜ ì˜ˆê¸ˆì•¡ì— ì´ììœ¨ì„ 11% ì ìš©í•˜ì—¬ ì§€ê¸‰ì•¡ì„ ì¡°íšŒ.
+		ë‹¨, ì›ë‹¨ìœ„ ì´í•˜, 10ì›ë‹¨ìœ„ ì´í•˜ëŠ” ë°˜ì˜¬ë¦¼ */
+SELECT (12311*0.11) AS "ì›ë˜", round(12311*0.11/100)*100 AS "10ì› ë‹¨ìœ„ ì´í•˜ ë°˜ì˜¬ë¦¼";
 
-/* 4) truncate(n, p): pÀÇ ÀÚ¸®¿¡¼­ ¹ö¸² */
+/* 4) truncate(n, p): pì˜ ìë¦¬ì—ì„œ ë²„ë¦¼ */
 SELECT truncate(12345.678, 0), truncate(12345.678, 1), truncate(12345.678, 2), truncate(12345.678, -1), truncate(12345.678, -2);
 
-/* 5) pow(x, y) OR power(x, y): xÀÇ y½Â */
+/* 5) pow(x, y) OR power(x, y): xì˜ yìŠ¹ */
 SELECT power(2, 2);
 
-/* 6) mod(x, y): x¸¦ y·Î ³ª´« ³ª¸ÓÁö */
+/* 6) mod(x, y): xë¥¼ yë¡œ ë‚˜ëˆˆ ë‚˜ë¨¸ì§€ */
 SELECT mod(10, 3);
 
-/* 7) greatest(n1, n2, n3, ...): °¡Àå Å« ¼ö */
+/* 7) greatest(n1, n2, n3, ...): ê°€ì¥ í° ìˆ˜ */
 SELECT greatest(345, 2, 2, 35, 4,
 				68, 6, 78, 3, 53,
-				6, -100, 7, 7, 657) AS "°¡Àå Å« ¼ö";
+				6, -100, 7, 7, 657) AS "ê°€ì¥ í° ìˆ˜";
 
-/* 8) least(n1, n2, n3, ...): °¡Àå ÀÛÀº ¼ö */
+/* 8) least(n1, n2, n3, ...): ê°€ì¥ ì‘ì€ ìˆ˜ */
 SELECT least(345, 2, 2, 35, 4,
 				68, 6, 78, 3, 53,
-				6, -100, 7, 7, 657) AS "°¡Àå ÀÛÀº ¼ö";
+				6, -100, 7, 7, 657) AS "ê°€ì¥ ì‘ì€ ìˆ˜";
 
-/* ºñ±³¿¬»ê */
+/* ë¹„êµì—°ì‚° */
 SET @num = 10;
-SELECT @num = 10; /* TRUE 1¹İÈ¯ */
-SELECT @num = 50; /* FALSE 0¹İÈ¯ */
-SELECT @num := "°¡"; /* @num¿¡ »õ·Î¿î °ª ´ëÀÔ */
+SELECT @num = 10; /* TRUE 1ë°˜í™˜ */
+SELECT @num = 50; /* FALSE 0ë°˜í™˜ */
+SELECT @num := "ê°€"; /* @numì— ìƒˆë¡œìš´ ê°’ ëŒ€ì… */
 SELECT @num;
 
 
 
-/********** ¹®ÀÚ °ü·Ã ÇÔ¼ö **********/
-/* 1) ascii(str): strÀÇ ¾Æ½ºÅ° ÄÚµå°ª */
-SELECT ascii('e'); /* 1±ÛÀÚ¾¿¸¸ °¡´É. */
+/********** ë¬¸ì ê´€ë ¨ í•¨ìˆ˜ **********/
+/* 1) ascii(str): strì˜ ì•„ìŠ¤í‚¤ ì½”ë“œê°’ */
+SELECT ascii('e'); /* 1ê¸€ìì”©ë§Œ ê°€ëŠ¥. */
 SELECT ascii('-');
 SELECT ascii(@k);
 
-/* 2) concat(str1, str2, str3, ...): ¹®ÀÚ¿­ ¿¬°á */
+/* 2) concat(str1, str2, str3, ...): ë¬¸ìì—´ ì—°ê²° */
 SET @k = concat('e','n','t','e','r');
 SELECT @k;
 SELECT concat('enter', ' ', 'key');
+SELECT concat('a', 'b'), 'a'+'b', 'a'||'b', 'a', 'b', 'a'&&'b', 'a'!='b';
 
-/* 3) insert(str, start, length, newStr): str¹®ÀÚ¿­¿¡¼­
-		start¿¡¼­ LENGTH±æÀÌ ¸¸Å­ÀÇ ¹®ÀÚ¿­À» newStr·Î ¹Ù²Ş
-		Ã¹¹øÂ° ÀÚ¸®°¡ 1ÀÌ´Ù. */
+/* 3) insert(str, start, length, newStr): strë¬¸ìì—´ì—ì„œ
+		startì—ì„œ LENGTHê¸¸ì´ ë§Œí¼ì˜ ë¬¸ìì—´ì„ newStrë¡œ ë°”ê¿ˆ
+		ì²«ë²ˆì§¸ ìë¦¬ê°€ 1ì´ë‹¤. */
 SELECT insert('12345', 2, 0, 'abc');
+SELECT insert('abcdef', 2, 1, '123');
+SELECT insert('abcdef', 2, 5, '123');
 
-/* 4) left(str, length): str¿¡¼­ ¿ŞÂÊºÎÅÍ LENGTH¸¸Å­ ÃßÃâ */
-SELECT 
+/* REPLACE */
+SELECT replace('abcdef', 'b', '123'), insert('abcdef', 2, 1, '123');
 
+/* 4) left(str, length): strì—ì„œ ì™¼ìª½ë¶€í„° lengthë§Œí¼ ì¶”ì¶œ */
+SELECT left('12345', 2);
+
+/* 5) right(str, length): strì—ì„œ ì˜¤ë¥¸ìª½ë¶€í„° lengthë§Œí¼ ì¶”ì¶œ */
+SELECT right('12345', 3);
+
+/* 6) mid(str, start, length) OR substring(str, start, length):
+		strì—ì„œ startìœ„ì¹˜ë¶€í„° lengthë§Œí¼ ì¶”ì¶œ */
+SELECT mid('12345', 2, 2);
+
+/* 7) ltrim(str) OR rtrim(str) OR trim(str): ê³µë°± ì œê±° */
+SELECT trim('     12 34 5   '); /* ì–‘ìª½ ê³µë°± ì œê±° */
+SELECT trim(LEADING FROM '      12 34 5     '); /* ì¢Œì¸¡ ì²«ë²ˆì§¸~ë‹¤ë¥¸ë¬¸ìê¹Œì§€ ê³µë°± ì œê±° */
+SELECT trim(LEADING '1' FROM '111  2 34 5     '); /* ì¢Œì¸¡ ì²«ë²ˆì§¸~ë‹¤ë¥¸ë¬¸ìê¹Œì§€ ì§€ì • ë¬¸ì ì œê±° */
+SELECT trim(TRAILING FROM '      12 34 5     '); /* ìš°ì¸¡ ì²«ë²ˆì§¸~ë‹¤ë¥¸ë¬¸ìê¹Œì§€ ê³µë°± ì œê±° */
+SELECT trim(TRAILING '5' FROM '    111  2 34 5555'); /* ìš°ì¸¡ ì²«ë²ˆì§¸~ë‹¤ë¥¸ë¬¸ìê¹Œì§€ ì§€ì • ë¬¸ì ì œê±° */
+
+/* 8) lcase(str) OR lower(str): ëª¨ë‘ ì†Œë¬¸ìë¡œ */
+SELECT lower('asdBSDFsaf');
+SELECT lower(asdBSDFsaf); /* ''ì—†ì–´ì„œ ì˜¤ë¥˜ */
+
+SELECT customerNumber,customerName,contactLastName,contactFirstName,phone,addressLine1,addressLine2,lower(city) AS "city",state,postalcode FROM classicmodels.customers WHERE lower(CITY) = lower('NYC');
+
+/* 9) ucase(str) OR upper(str): ëª¨ë‘ ëŒ€ë¬¸ìë¡œ */
+SELECT upper('asdBSDFsaf');
+
+/* 10) reverse(str): strì„ ë°˜ëŒ€ë¡œ ë‚˜ì—´ */
+SELECT reverse('abcdef12345');
+
+/* 11) format(ìˆ«ì, ì†Œìˆ˜ì  ìë¦¬ìˆ˜): ì²œë‹¨ìœ„ ì†Œìˆ«ì  í‘œì‹œ */
+SELECT format(12.12345, 1);
+SELECT format(12.12345, 10);
+
+SELECT * FROM classicmodels.payments;
+SELECT format(amount, 2) "ê¸ˆì•¡", format(amount*0.1, 2) "ë¶€ê°€ì„¸", format(amount*1.1, 2) "ì´ì•¡"
+FROM classicmodels.payments;
+
+
+
+
+
+/********** ë…¼ë¦¬ í•¨ìˆ˜ **********/
+/* 1) if(ë…¼ë¦¬ì‹, ì°¸ì¼ë•Œ, ê±°ì§“ì¼ë•Œ) */
+SELECT if(1!=1, 't', 'f');
+SELECT if(1=1 && 2=2, 't', 'f');
+SELECT if(1!=1 || 2=2, 't', 'f');
+
+SELECT customerNumber, checkNumber,paymentDate FROM classicmodels.payments;
+SELECT format(amount, 2) "ê¸ˆì•¡",
+	   format(amount*0.1, 2) "ë¶€ê°€ì„¸",
+	   format(amount*1.1, 2) "ì´ì•¡",
+	   if(amount*1.1 >= 50000, 'ìš°ìˆ˜ê³ ê°', null) "ìš°ìˆ˜ê³ ê° ì—¬ë¶€"
+FROM classicmodels.payments
+ORDER BY amount desc;
+
+SELECT if(amount*1.1 >= 50000, concat( format(amount*1.1, 2), ', ', "ìš°ìˆ˜ê³ ê°" ),
+	   format(amount*1.1, 2)) "ì´ì•¡, ìš°ìˆ˜ê³ ê° ì—¬ë¶€"
+FROM classicmodels.payments
+ORDER BY amount desc;
+
+/* 2) ifnull(v1, v2): v1ì´ nullì´ë©´ v2ë¥¼ ë°˜í™˜, ì•„ë‹ˆë©´ v1ì„ ë°˜í™˜ */
+SELECT ifnull(null, 'abc');
+SELECT ifnull('ê°€ë‚˜ë‹¤', 'abc');
 
 
 

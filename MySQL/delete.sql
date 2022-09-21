@@ -1,28 +1,36 @@
 SELECT * FROM cus;
-/* 1) country°¡ USAÀÎ °í°´Á¤º¸¸¦ »èÁ¦ */
+/* 1) countryê°€ USAì¸ ê³ ê°ì •ë³´ë¥¼ ì‚­ì œ */
 SELECT * FROM cus WHERE country = 'USA';
-DELETE FROM cus WHERE country = 'USA'; /* SELECT·Î È®ÀÎÇÏ°í ±×´ë·Î º¹»çÇØ ¿À´Â°Ô ÁÁ´Ù. */
+DELETE FROM cus WHERE country = 'USA'; /* SELECTë¡œ í™•ì¸í•˜ê³  ê·¸ëŒ€ë¡œ ë³µì‚¬í•´ ì˜¤ëŠ”ê²Œ ì¢‹ë‹¤. */
 SELECT * FROM cus WHERE country = 'USA';
 rollback;
 SELECT * FROM cus WHERE country = 'USA';
 
-/* 2) country USAÀÌ°í state°¡ NYÀÎ ÀÚ·á¸¸ »èÁ¦ */
+/* 2) country USAì´ê³  stateê°€ NYì¸ ìžë£Œë§Œ ì‚­ì œ */
 SELECT * FROM cus;
 DELETE FROM cus WHERE country = 'USA' and state = 'NY';
 
-/* 3) customerNumber°¡ 146¹øÀÎ °í°´°ú °°Àº country ÀÚ·á¸¦ »èÁ¦ */
+/* 3) customerNumberê°€ 146ë²ˆì¸ ê³ ê°ê³¼ ê°™ì€ country ìžë£Œë¥¼ ì‚­ì œ */
 SELECT * FROM cus;
 SELECT * FROM cus WHERE country = 
 	( SELECT a.country from
 		( SELECT country FROM cus WHERE customerNumber = '146' ) a
 	);
-	/* ¿À¶óÅ¬ÀÇ °æ¿ì ¼­ºêÄõ¸® ÇÏ³ª·Îµµ Àß ÀÛµ¿ÇÏÁö¸¸ MySQLÀº
-	 * DML ¸í·ÉÀ» Àû¿ëÇÏ·Á´Â Å×ÀÌºíÀ» ¼­ºêÄõ¸®·Î °ªÀ» ²ø¾î ¿Ã ¶§ ¿¡·¯³­´Ù.
-	 * ±×·¡¼­ ¼­ºêÄõ¸® ¹®ÀåÀ» ¼­ºêÄõ¸®·Î °¨½Î Áà¾ß ÇÑ´Ù.
-	 * a°¡ ÇÏ³ªÀÇ °¡»ó Å×ÀÌºíÀÌ¶ó°í »ý°¢ÇÏ¸é ÆíÇÏ´Ù.
+	/* ì˜¤ë¼í´ì˜ ê²½ìš° ì„œë¸Œì¿¼ë¦¬ í•˜ë‚˜ë¡œë„ ìž˜ ìž‘ë™í•˜ì§€ë§Œ MySQLì€
+	 * DML ëª…ë ¹ì„ ì ìš©í•˜ë ¤ëŠ” í…Œì´ë¸”ì„ ì„œë¸Œì¿¼ë¦¬ë¡œ ê°’ì„ ëŒì–´ ì˜¬ ë•Œ ì—ëŸ¬ë‚œë‹¤.
+	 * ê·¸ëž˜ì„œ ì„œë¸Œì¿¼ë¦¬ ë¬¸ìž¥ì„ ì„œë¸Œì¿¼ë¦¬ë¡œ ê°ì‹¸ ì¤˜ì•¼ í•œë‹¤.
+	 * aê°€ í•˜ë‚˜ì˜ ê°€ìƒ í…Œì´ë¸”ì´ë¼ê³  ìƒê°í•˜ë©´ íŽ¸í•˜ë‹¤.
 	 */
 
-/* joinÀ¸·Î ÇØº¸±â */
+/* joinìœ¼ë¡œ í•´ë³´ê¸° */
+/* c1 : customerNumberê°€ 146ë²ˆì¸ ê³ ê°ì˜ ì •ë³´ í…Œì´ë¸”
+   c2 : ê³ ê° ì •ë³´ í…Œì´ë¸” ì´ë¼ê³  ìƒê°í•œë‹¤ë©´ */
+DELETE c2.* FROM cus c1 JOIN cus c2
+ON c1.country = c2.country
+WHERE c1.customerNumber = 146;
+
+SELECT * FROM cus WHERE customerNumber = 146;
+rollback;
 
 
 
