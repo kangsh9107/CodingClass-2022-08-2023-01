@@ -165,3 +165,53 @@ SELECT @cn, @mPhone, @total;
 
 
 
+
+SET @a = 0;
+SET @b = 0;
+SET @c = 0;
+SELECT @a, @b, @c;
+
+/* 함수나 프로시져 안에서 변수를 set할 때는 @를 쓰면 안된다.
+   @를 쓰면 버그가 발생한다. */
+CREATE PROCEDURE test1(IN a int, OUT b int, INOUT c int)
+begin
+	SET @a = 1;
+	SET @b = 2;
+	SET @c = 3;
+end;
+
+CALL test1(@a, @b, @c);
+SELECT @a, @b, @c;
+
+
+CREATE PROCEDURE test2(IN aaa int, OUT bbb int, INOUT ccc int)
+begin
+	SET a = 10;
+	SET b = 20;
+	SET c = 30;
+end;
+
+CALL test2(@a, @b, @c);
+SELECT @a, @b, @c;
+
+
+CREATE PROCEDURE test3(IN a int, OUT b int, INOUT c int)
+begin
+end;
+
+SET @a = 100;
+SET @b = 200;
+SET @c = 300;
+SELECT @a, @b, @c;
+
+CALL test3(@a, @b, @c);
+SELECT @a, @b, @c;
+
+
+
+
+
+
+
+
+
