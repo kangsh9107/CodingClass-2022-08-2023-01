@@ -99,9 +99,72 @@
 // console.log(solution("01033334444"));
 
 // 17. 나누어 떨어지는 숫자 배열
-function solution(arr, divisor) {
+// function solution(arr, divisor) {
+//     let answer = [];
+
+//     for(v of arr) {
+//         if(v%divisor===0) {
+//             answer.push(v);
+//         }
+//     }
+
+//     for(let i=0; i<answer.length-1; i++) {
+//         for(let k=i+1; k<answer.length; k++) {
+//             if(answer[i]>answer[k]) {
+//                 let min = answer[k];
+//                 answer[k] = answer[i];
+//                 answer[i] = min;
+//             }
+//         }
+//     }
+
+//     if(answer.length===0) {
+//         answer.push(-1);
+//     }
+
+//     return answer;
+// }
+// let array = [2, 36, 1, 3];
+// console.log(solution(array, 1));
+
+// 다시 짠 코드
+// function solution(arr, divisor) {
+//     let answer = [ ];
+//     for(v of arr) if(v%divisor===0) answer.push(v);
+//     if(answer.length===0) return answer = [-1];
+//     else                  return answer.sort( (a, b) => a - b );
+// }
+// let array = [2, 36, 1, 3];
+// console.log(solution(array, 1));
+
+// // 다른 사람 풀이
+// function arrDivisor(arr, divisor) {
+//     let answer = arr.filter( v => v%divisor==0 );
+//     return answer.length === 0 ? [-1] : answer.sort( (a, b) => a - b );
+// }
+
+// 18. 제일 작은 수 제거하기
+function solution(arr) {
     let answer = [];
+    let min = 0;
+    if(arr.length<=1) {
+        return answer = [-1];
+    } else {
+        for(v of arr) {
+            min = arr[0];
+            if(min>v) min = v;
+        }
+        return arr.filter(v => v!==min);
+    }
+}
+let array = [8, 50, 22, 15];
+console.log(solution(array));
+
+// 19. 음양 더하기
+function solution(absolutes, signs) {
+    let answer = 123456789;
     return answer;
 }
-let array = [5, 9, 7, 10];
-console.log(solution(array, 5));
+let arr1 = [4, 7, 12];
+let arr2 = [true, false, true];
+console.log(solution(arr1, arr2));
