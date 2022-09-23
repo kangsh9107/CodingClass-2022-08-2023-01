@@ -42,6 +42,7 @@ end;
 CALL cur_test1();
 
 /* 2) 사번을 입력받아 같은 부서 직원의 이름과, 이메일, 직무(jobTitle)을 출력 */
+/* e1은 같은 부서 직원들이 있는 테이블, e2는 찾고자 하는 직원의 사번이 있는 테이블 */
 SELECT * FROM classicmodels.offices;
 SELECT * FROM classicmodels.employees;
 
@@ -77,6 +78,35 @@ begin
 end;
 
 CALL cur_test2(1002);
+
+/* 강사님 */
+DROP PROCEDURE cur_test2_teacher;
+CREATE PROCEDURE cur_test2_teacher(en int)
+begin
+	DECLARE flag INT DEFAULT 0;
+	DECLARE m_lastName varchar(50);
+	DECLARE m_email varchar(50);
+	DECLARE m_jobTitle varchar(50);
+	DECLARE str longtext;
+	
+	DECLARE cur CURSOR for
+		SELECT other.lastName, other.email, other.jobTitle
+		FROM classicmodels.employees other JOIN classicmodels.employees me
+		ON other.officeCode = me.officeCode
+		WHERE me.employeeNumber = en;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET flag = 1;
+	
+	OPEN cur;
+	here : loop
+		FETCH cur INTO m_lastName, m_email, m_jobTitle;
+		IF flag = 1 then
+			LEAVE here;
+		END if;
+		SET str = concat(str, m_lastName, m_email, m_jobTitle);
+	END loop;
+	CLOSE cur;
+	SELECT str;
+end;
 
 /* 3) 고객번호를 입력받아 고객이름, 연락처, 지불액, 우편번호를 출력 */
 SELECT * FROM classicmodels.customers;
@@ -117,6 +147,38 @@ end;
 
 CALL cur_test3(103);
 
+/* 강사님 */
+DROP PROCEDURE cur_test3_teacher;
+CREATE PROCEDURE cur_test3_teacher(cn int)
+begin
+	DECLARE m_customerName varchar(50);
+	DECLARE m_phone        varchar(30);
+	DECLARE m_amount       decimal(10, 2);
+	DECLARE m_postalCode   varchar(30);
+	DECLARE flag           INT DEFAULT 0;
+	
+	DECLARE cur CURSOR for
+		SELECT c.customerName, c.phone, p.amount, c.postalCode
+		FROM   classicmodels.customers c
+		JOIN   classicmodels.payments p
+		ON     c.customerNumber = p.customerNumber
+		WHERE  c.customerNumber = cn;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET flag = 1;
+	
+	OPEN cur;
+	here : loop
+		FETCH cur INTO m_customerName, m_phone, m_amount, m_postalCode;
+		IF flag = 1 then
+			LEAVE here;
+		END if;
+		
+		SELECT m_customerName, m_phone, m_amount, m_postalCode;
+	END loop;
+	CLOSE cur;
+end;
+
+CALL cur_test3_teacher(103);
+
 /* 4) 년도를 입력받아 해당 년도에 고객에게 지불된 지불액과, 고객명, 연락처 출력 */
 SELECT * FROM classicmodels.customers;
 SELECT * FROM classicmodels.payments;
@@ -155,6 +217,40 @@ begin
 end;
 
 CALL cur_test4(2004);
+
+/* 강사님 */
+DROP PROCEDURE cur_test4_teacher;
+CREATE PROCEDURE cur_test4_teacher(Y int)
+begin
+	DECLARE m_amt            varchar(50);
+	DECLARE m_customerNumber int;
+	DECLARE m_customerName   varchar(50);
+	DECLARE m_phone          varchar(50);
+	DECLARE flag             INT;
+	
+	DECLARE cur CURSOR for
+		SELECT customerNumber, amount
+		FROM   classicmodels.payments
+		WHERE  year(paymentDate) = Y;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET flag = 1;
+	
+	OPEN cur;
+	here : loop
+		FETCH cur INTO m_customerNumber, m_amt;
+		IF flag = 1 then
+			LEAVE here;
+		END if;
+		
+		SELECT customerName, phone INTO m_customerName, m_phone
+		FROM   classicmodels.customers
+		WHERE  customerNumber = m_customerNumber;
+		
+		SELECT m_customerNumber, m_customerName, m_phone, m_amt;
+	END loop;
+	CLOSE cur;
+end;
+
+CALL cur_test4_teacher(2004);
 
 /* 5) 신용한도액(creditLimit)과 지불 총액을 비교하여 신용한도액을
 	  초과한 고객의 이름, 신용한도액, 지불총액, 연락처 조회 */
@@ -199,14 +295,140 @@ end;
 
 CALL cur_test5();
 
+/* 강사님 */
+/* 지불 총액을 출력하지 않을 때 */
+SELECT c.customerNumber, c.creditLimit, c.phone
+FROM   classicmodels.customers c
+WHERE  c.creditLimit < (
+	SELECT sum(amount) FROM classicmodels.payments
+	WHERE customerNumber = c.customerNumber
+);
+
+/* 지불 총액을 출력할 때 */
+SELECT c.customerNumber, c.phone, c.creditLimit,
+	   (
+	   SELECT sum(amount) FROM classicmodels.payments
+	   WHERE customerNumber = c.customerNumber
+	   ) "tot"
+FROM   classicmodels.customers c
+WHERE  c.creditLimit < (
+	SELECT sum(amount) FROM classicmodels.payments
+	WHERE customerNumber = c.customerNumber
+);
 
 
-
-
-
-
-
-
-
+DROP PROCEDURE cur_test5_teacher;
+CREATE PROCEDURE cur_test5_teacher()
+begin
+	DECLARE m_customerNumber int;
+	DECLARE m_customerName   varchar(50);
+	DECLARE m_creditLimit    decimal(10, 2);
+	DECLARE m_phone          varchar(50);
+	DECLARE flag             INT DEFAULT 0;
+	DECLARE m_amount         decimal(10, 2);
 	
+	DECLARE cur CURSOR for
+		SELECT customerNumber, customerName, creditLimit, phone
+		FROM   classicmodels.customers;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET flag = 1;
+	
+	OPEN cur;
+	here : loop
+		FETCH cur INTO m_customerNumber, m_customerName, m_creditLimit, m_phone;
+		IF flag = 1 then
+			LEAVE here;
+		END if;
 		
+		SELECT sum(amount) INTO m_amount
+		FROM classicmodels.payments
+		WHERE customerNumber = m_customerNumber;
+		
+		IF m_amount > m_creditLimit then
+			SELECT m_customerName, m_creditLimit, m_amount, m_phone;
+		END if;
+	END loop;
+	CLOSE cur;
+end;
+
+CALL cur_test5_teacher();
+
+
+
+
+
+
+
+
+
+
+
+/* CONCAT 기능 확인 */
+/* cursor는 같은 공간에 여러개가 있으면 에러 난다. */
+SELECT * FROM classicmodels.customers;
+
+DROP PROCEDURE concat_test1;
+CREATE PROCEDURE concat_test1(c varchar(50), INOUT msg longtext)
+begin
+	DECLARE m_number  varchar(200);
+	DECLARE m_phone varchar(30);
+	DECLARE flag1   int;
+	DECLARE flag2   int;
+		
+	DECLARE cur1 CURSOR for
+		SELECT customerNumber
+		FROM classicmodels.customers
+		WHERE city = c;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET flag1 = 1;
+	OPEN cur1;
+	here1 : loop
+		FETCH cur1 INTO m_number;
+		IF flag1 = 1 then
+			LEAVE here1;
+		END if;
+		SET msg = concat(msg, 'numer: ', m_number, '\n');
+	END loop;
+	CLOSE cur1;
+
+	SELECT msg;
+end;
+
+DROP PROCEDURE concat_test2;
+CREATE PROCEDURE concat_test2(cn int, INOUT msg longtext)
+begin
+	DECLARE m_number varchar(200);
+	DECLARE m_amount varchar(30);
+	DECLARE flag1    int;
+	DECLARE flag2    int;
+		
+	DECLARE cur2 CURSOR for
+		SELECT amount
+		FROM classicmodels.payments
+		WHERE customerNumber = cn;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET flag2 = 1;
+	OPEN cur2;
+	here2 : loop
+		FETCH cur2 INTO m_amount;
+		IF flag2 = 1 then
+			LEAVE here2;
+		END if;
+		SET msg = concat(msg, 'amount: ', m_amount, '\n');
+	END loop;
+	CLOSE cur2;
+
+	SELECT msg;
+end;
+
+SET @msg = '';
+CALL concat_test1('Nantes', @msg);
+CALL concat_test2(103, @msg);
+
+SELECT @msg;
+
+
+
+
+
+
+
+
+
