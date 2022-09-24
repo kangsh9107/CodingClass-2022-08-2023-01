@@ -144,27 +144,54 @@
 // }
 
 // 18. 제일 작은 수 제거하기
-function solution(arr) {
-    let answer = [];
-    let min = 0;
-    if(arr.length<=1) {
-        return answer = [-1];
-    } else {
-        for(v of arr) {
-            min = arr[0];
-            if(min>v) min = v;
-        }
-        return arr.filter(v => v!==min);
-    }
-}
-let array = [8, 50, 22, 15];
-console.log(solution(array));
+// function solution(arr) {
+//     let answer = [];
+//     if(arr.length<=1) {
+//         return answer = [-1];
+//     } else {
+//         for(v of arr) {
+//             answer.push(v);
+//         }
+//         let a = answer.sort( (a, b) => (a - b) );
+//         let min = a.shift();
+//         return arr.filter(v => v!==min);
+//     }
+// }
+// let array = [8, 50, 22, 15];
+// console.log(solution(array));
+
+// // 다른 사람 풀이
+// function solution(arr) {
+//     if(arr.length<=1) return [-1];
+//     arr.splice(arr.indexOf(Math.min(...arr)), 1);
+//     return arr;
+// }
+// // ES6/ES2016보다 낮은버전
+// // Math.min.apply(Math, 배열명) 으로 사용한다.
 
 // 19. 음양 더하기
-function solution(absolutes, signs) {
-    let answer = 123456789;
-    return answer;
-}
-let arr1 = [4, 7, 12];
-let arr2 = [true, false, true];
-console.log(solution(arr1, arr2));
+// function solution(absolutes, signs) {
+//     let arr = [];
+//     for(let i=0; i<signs.length; i++) {
+//         if(signs[i]===true) { arr.push(absolutes[i]); }
+//         else { arr.push(absolutes[i]-absolutes[i]*2); }
+//     }
+//     return arr.reduce( (cur, now) => (cur + now) );
+// }
+// let arr1 = [4, 7, 12];
+// let arr2 = [true, false, true];
+// console.log(solution(arr1, arr2));
+
+// 20. 수박수박수박수박수박수?
+// function solution(n) {
+//     let answer = '';
+//     for(let i=1; i<=n; i++) {
+//         if(i%2!==0) { answer += '수'; }
+//         else        { answer += '박'; }
+//     }
+//     return answer;
+// }
+// console.log(solution(3));
+
+// // 다른 사람 코드
+// const waterMelon = n => "수박".repeat(n).slice(0,n);
