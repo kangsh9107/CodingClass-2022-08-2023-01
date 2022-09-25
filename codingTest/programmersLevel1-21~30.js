@@ -46,10 +46,103 @@
 // console.log(solution("Zbcdefg"));
 
 // 25. 문자열 다루기 기본
-function solution(s) {
-    if(s.length<4 || s.length>6) return false;
-    let answer = Number(s);
-    if(isNaN(answer)!==true) return true;
-    else                     return false;
-}
-console.log(solution("1234"));
+// function solution(s) {
+//     if(s.length!==4 && s.length!==6) {
+//         return false;
+//     } else {
+//         return s.split('').every( v => !isNaN(v) );
+//     }
+// }
+// console.log(solution("a234"));
+// console.log(solution("1234"));
+
+// every()는 배열 안의 모든 요소가 주어진 판별함수를 만족하면 true 아니면 false 반환
+
+// 다른 사람 코드
+//function solution(s) {
+//    let reg = /^\d{6}$|^\d{4}$/;
+//    return reg.test(s);
+//}
+
+// 26. 약수의 개수와 덧셈
+// function solution(left, right) {
+//     let answer = 0;
+//     let yak = [1];
+//     for(let i=left; i<=right; i++) {
+//         yak = [1];
+//         for(let k=2; k<=i; k++) {
+//             if(i%k===0) yak.push(k);
+//         }
+//         if(yak.length%2===0) answer += i;
+//         else                 answer -= i;
+//     }
+//     return answer;
+// }
+// let left = 13;
+// let right = 17;
+// console.log(solution(left, right));
+
+// 27. 행렬의 덧셈
+// 다른 사람 풀이
+// function solution(arr1, arr2) {
+//     let answer = [];
+//     for(let i=0; i<arr1.length; i++) {
+//         let temp = [];
+//         for(let k=0; k<arr1[i].length; k++) {
+//             temp.push(arr1[i][k] + arr2[i][k]);
+//         }
+//         answer.push(temp);
+//     }
+//     return answer;
+// }
+// let arr1 = [[1,2], [2,3]];
+// let arr2 = [[3,4], [5,6]];
+// console.log(solution(arr1, arr2));
+
+/*
+0,0 0,1
+0,0+0,0   0,1+0,1
+
+0,0 0,1   1,0 1,1
+0,0+0,0   0,1+0,1
+1,0+1,0   1,1+1,1
+
+0,0 0,1 0,2   1,0 1,1 1,2   2,0 2,1 2,2
+0,0+0,0+0,0   0,1+0,1+0,1   0,2+0,2+0,2
+1,0+1,0+1,0   1,1+1,1+1,1   1,2+1,2+1,2
+2,0+2,0+2,0   2,1+2,1+2,1   2,2+2,2+2,2
+*/
+
+// 28. 부족한 금액 계산하기
+// function solution(price, money, count) {
+//     let answer = 0;
+//     let a = 0;
+//     for(i=1; i<=count; i++) {
+//         a += price * i;
+//     }
+//     if(money-a>=0) return answer;
+//     else           return answer = a - money;
+// }
+// let price = 3;
+// let money = 20;
+// let count = 4;
+// console.log(solution(price, money, count));
+
+// 29. 직사각형 별찍기 //////////////////////////////////////////////////
+// process.stdin.setEncoding('utf8');
+// process.stdin.on('data', data => {
+//     const n = data.split(" ");
+//     const a = Number(n[0]), b = Number(n[1]);
+//     console.log(a);
+//     console.log(b);
+// });
+
+// 30. 최대공약수와 최소공배수 //////////////////////////////////////////////////
+// function solution(n, m) {
+//     let answer = [];
+
+//     return answer;
+// }
+// let n = 3;
+// let m = 12;
+// console.log(solution(n, m));
