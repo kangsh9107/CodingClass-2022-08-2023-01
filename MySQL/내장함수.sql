@@ -91,7 +91,9 @@ SELECT trim(TRAILING '5' FROM '    111  2 34 5555'); /* 우측 첫번째~다른�
 SELECT lower('asdBSDFsaf');
 SELECT lower(asdBSDFsaf); /* ''없어서 오류 */
 
-SELECT customerNumber,customerName,contactLastName,contactFirstName,phone,addressLine1,addressLine2,lower(city) AS "city",state,postalcode FROM classicmodels.customers WHERE lower(CITY) = lower('NYC');
+SELECT customerNumber  , customerName, contactLastName,
+	   contactFirstName, phone       , addressLine1,
+	   addressLine2    , lower(city) AS "city" FROM classicmodels.customers WHERE lower(CITY) = lower('NYC');
 
 /* 9) ucase(str) OR upper(str): 모두 대문자로 */
 SELECT upper('asdBSDFsaf');

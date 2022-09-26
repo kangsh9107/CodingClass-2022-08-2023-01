@@ -14,7 +14,7 @@ CREATE TABLE score(
 	mdate   datetime
 );
 ALTER TABLE score ADD CONSTRAINT score_pk PRIMARY key(serial);
-ALTER TABLE score MODIFY SERIAL INT NOT NULL auto_increment;
+ALTER TABLE score MODIFY SERIAL INT auto_increment;
 SET GLOBAL log_bin_trust_function_creators = 1;
 
 /* 2) id, subject, score를 파라메터로 전달받아 score 테이블에
@@ -24,24 +24,24 @@ DROP FUNCTION scoreInsert;
 CREATE FUNCTION scoreInsert(m_id varchar(30),
 							m_subject varchar(30),
 							m_score decimal(10, 2))
-RETURNS varchar(200)
+RETURNS varchar(10)
 begin
 	INSERT INTO score(id, subject, score, mdate)
 		   values(m_id, m_subject, m_score, sysdate());
-	RETURN 1;
+	RETURN 'success';
 end;
 
-SELECT scoreInsert('c001', 'kor', 100);
+SELECT scoreInsert('c001', 'math', 100);
 SELECT * FROM score;
 
 /* 3) SERIAL 번호를 파라메터로 입력받아 해당 행을 삭제하는
       함수 scoreDelete를 작성 하시오. */
 DROP FUNCTION scoreDelete;
 CREATE FUNCTION scoreDelete(m_serial int)
-RETURNS varchar(100)
+RETURNS varchar(10)
 begin
 	DELETE FROM score WHERE SERIAL = m_serial;
-	RETURN 1;
+	RETURN 'success';
 end;
 
 SELECT scoreDelete(1);
@@ -54,29 +54,40 @@ CREATE FUNCTION scoreUpdate(m_serial int,
 							m_id varchar(30),
 							m_subject varchar(30),
 							m_score decimal(10, 2))
-RETURNS varchar(100)
+RETURNS varchar(10)
 begin
 	UPDATE score SET id = m_id,
 					 SUBJECT = m_subject,
 		   			 score = m_score
 	WHERE SERIAL = m_id;
-	RETURN 1;
+	RETURN 'success';
 end;
 
-SELECT scoreUpdate(2, 'b001', 'eng', 90);
+SELECT scoreUpdate(1, 'b001', 'eng', 100);
 SELECT * FROM score;
 
 /* 5) id를 파라메터로 전달받아 해당 성적 정보를 출력하는
       프로시져 scoreList를 작성하시오. */
+/* SELECT 자체는 묵시적 커서라서 변수에 담아서
+   셀렉트를 다시 해줘야 화면에 보임 */
 DROP PROCEDURE scoreList;
-CREATE PROCEDURE scoreList(m_id varchar(30))
+CREATE PROCEDURE scoreList(m_serial int)
 begin
-	SELECT * FROM score WHERE id = m_id;
+	DECLARE m_id varchar(30);
+	DECLARE m_subject varchar(30);
+	DECLARE m_score decimal(10, 2);
+	DECLARE m_date datetime;
+
+	SELECT id, subject, score, mdate
+	INTO m_id, m_subject, m_score, m_date
+	FROM score
+	WHERE SERIAL = m_serial;
+	
+	SELECT m_serial, m_id, m_subject, m_score, m_date;
 end;
 
-CALL scoreList('b001');
+CALL scoreList(1);
 SELECT * FROM score;
-
 
 
 
