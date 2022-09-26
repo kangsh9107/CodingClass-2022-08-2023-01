@@ -129,20 +129,41 @@
 // console.log(solution(price, money, count));
 
 // 29. 직사각형 별찍기 //////////////////////////////////////////////////
-// process.stdin.setEncoding('utf8');
-// process.stdin.on('data', data => {
-//     const n = data.split(" ");
-//     const a = Number(n[0]), b = Number(n[1]);
-//     console.log(a);
-//     console.log(b);
-// });
+// function solution(n, m) {
+//     let answer = "";
+//     let answer2 = "";
+//     for(let i=1; i<=n; i++) {
+//         answer += "*";
+//     }
+//     answer += "\n";
+//     for(let k=1; k<=m; k++) {
+//         answer2 += answer;
+//     }
+//     return answer2;
+// }
+// console.log(solution(6, 3));
 
 // 30. 최대공약수와 최소공배수 //////////////////////////////////////////////////
-// function solution(n, m) {
-//     let answer = [];
+function solution(n, m) {
+    let answer = [];
+    let nYak = [];
+    let mYak = [];
+    let yak = [];
+    let nGong = [];
+    let mGong = [];
+    let gong = [];
+    
+    for(let i=1; i<=n; i++) {
+        if(n%i===0) nYak.push(i);
+    }
+    for(let k=1; k<=m; k++) {
+        if(m%k===0) mYak.push(k);
+    }
+    for(v of nYak) {
+        if(mYak.indexOf(v)!==-1) yak.push(v);
+    }
 
-//     return answer;
-// }
-// let n = 3;
-// let m = 12;
-// console.log(solution(n, m));
+    console.log(nYak,mYak);
+    return answer = [yak.pop(), gong.shift()];
+}
+console.log(solution(3, 12));
