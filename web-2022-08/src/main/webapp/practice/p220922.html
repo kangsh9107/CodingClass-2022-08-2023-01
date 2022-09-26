@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>p220922.html</title>
+</head>
+<body>
+
+<script>
+// 만약 if문 조건에 a=1이라고 적었다면
+// a에 1이 들어갈 수 있다면 true다.
+function test(a,b,c) {
+	if(a==1) {
+		return 'a';
+	}
+	
+	if(b==1) {
+		return 'b';
+	}
+	
+	if(c==1) {
+		return 'c';
+	}
+	
+	return 'd';
+}
+
+console.log( '1,0,0 : ', test(1,0,0) );
+console.log( '1,1,0 : ', test(1,1,0) );
+console.log( '1,1,1 : ', test(1,1,1) );
+console.log( '0,0,0 : ', test(0,0,0) );
+</script>
+
+</body>
+</html>
