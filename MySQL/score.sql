@@ -20,18 +20,26 @@ SET GLOBAL log_bin_trust_function_creators = 1;
 /* 2) id, subject, score를 파라메터로 전달받아 score 테이블에
       INSERT 하는 함수 scoreInsert를 작성하시오.
       (단, mdate는 SQL 실행되는 시점의 시간을 사용) */
+
 DROP FUNCTION scoreInsert;
-CREATE FUNCTION scoreInsert(m_id varchar(30),
-							m_subject varchar(30),
-							m_score decimal(10, 2))
-RETURNS varchar(10)
+CREATE FUNCTION scoreInsert(a int, b int, inOUT c int)
+RETURNS int
 begin
-	INSERT INTO score(id, subject, score, mdate)
-		   values(m_id, m_subject, m_score, sysdate());
-	RETURN 'success';
+		   
+	SET a = 1;
+	SET b = 2;
+	set c = 3;
+	
+	
+	RETURN SELECT c;
 end;
 
-SELECT scoreInsert('c001', 'math', 100);
+SET @c = 0;
+SET @a = 0;
+SET @b = 0;
+SELECT scoreInsert(@a, @b, @c);
+SELECT @a, @b;
+
 SELECT * FROM score;
 
 /* 3) SERIAL 번호를 파라메터로 입력받아 해당 행을 삭제하는
