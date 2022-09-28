@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* 
+
 .ex-midea{
 	max-width: 100%;
 		width: 400px;
@@ -23,7 +23,7 @@
 		background-image: url(../test/logo1000.png);
 	}
 }
- */
+
 
 /* 최대 넓이: 600~800px */
 /* 이런식으로 폭에 따라 css를 다르게 만든다. */

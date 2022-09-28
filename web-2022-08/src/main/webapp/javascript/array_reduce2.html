@@ -14,11 +14,21 @@ let students = [
 	{name : 'park' , grade : 3},
 	{name : 'choi' , grade : 1}
 ];
+console.log(students);
+// let temp = {};
+// let temp2 = [{}];
+// let temp3 = [];
+// console.log(temp);
+// console.log(temp2);
+// console.log(temp3);
+// temp = [];
+// console.log(temp);
 let groupby = function(array, key){
 	let r = array.reduce(function(data, obj){
 		var k = obj[key];           // array.reduce(function(data, obj){ },{});  // 기본 모양
 		if(!data[k]) data[k] = [];  // 한줄이라 일부러 중괄호 생략함. data[k]라는 키값이 없다면 data[k] = []; 만들어라.
 		                            // data = [{1: obj, obj, ...}], [{2: obj, ojb, ...}], ...
+		console.log(data[k]);
 		data[k].push(obj);
 		return data;
 	},{});

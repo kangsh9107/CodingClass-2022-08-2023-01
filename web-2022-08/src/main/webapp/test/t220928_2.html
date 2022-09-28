@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test2.html</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        div#wrap {
+            margin: 20px 20px auto;
+            padding: 20px;
+            border: 3px solid #FEDB39;
+            width: 244px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 8px 8px 8px #888;
+            background: linear-gradient( to top, blue, green );
+            color: #FEDB39;
+        }
+
+        div#wrap strong {
+            font-size: 1.6rem;
+        }
+
+        div#wrap div {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <strong>지역별 방문자 수</strong>
+        <div id="result">
+
+        </div>
+    </div>
+    <script>
+        let data = [
+            {"city":"부산", "gender" : "m", "age" : 25},
+            {"city":"동해", "gender" : "m", "age" : 35},
+            {"city":"제주", "gender" : "m", "age" : 45},
+            {"city":"독도", "gender" : "m", "age" : 25},
+            {"city":"대전", "gender" : "m", "age" : 35},
+            {"city":"울산", "gender" : "f", "age" : 45},
+            {"city":"독도", "gender" : "f", "age" : 25},
+            {"city":"제주", "gender" : "f", "age" : 35},
+            {"city":"독도", "gender" : "f", "age" : 45},
+            {"city":"제주", "gender" : "f", "age" : 25}
+        ];
+
+        // 키값에 따른 제이슨 구조 생성 모듈
+        let groupby = function(array, key) {
+            let r = array.reduce(function(data, obj) {
+                let k = obj[key];
+                if(!data[k]) data[k] = [];
+                data[k].push(obj);
+                return data;
+            }, {});
+            return r;
+        };
+
+        let result = document.querySelector("#result");
+
+        // city별 제이슨 구조 생성
+        let cityby = groupby(data, "city");
+
+        // 반복 횟수 설정을 위한 cityby 길이
+        let citybyLength = data.map(v=>v.city);
+        let citybyLengthFilter = citybyLength.filter((v, i) => citybyLength.indexOf(v) === i);
+
+        // 결과 출력
+        for(let i=0; i<citybyLengthFilter.length; i++) {
+            result.innerHTML +=   "city : "
+                                + Object.keys(cityby)[i]
+                                + ", cnt : "
+                                + cityby[ citybyLengthFilter[i] ].length
+                                + "\n";
+        }
+    </script>
+
+</body>
+</html>
