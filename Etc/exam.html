@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exam.html</title>
+    <link rel="stylesheet" href="exam.css">
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+<body>
+    <form name="frm" method="post" action="register.do" onchange="saveForm(this)">
+        <strong>회원가입</strong>
+        <br/>
+        <span>*아이디</span>
+        <input type="search" name="id" maxLength="20" required autocomplete="off"
+            placeholder="영어시작. 영어+숫자가능"
+            pattern="^[a-zA-Z][\w]+$"/>
+        <br/>
+        <span>*암호</span>
+        <input type="password" name="pwd" maxLength="24" required
+            placeholder="영숫자,특문 각 1개 이상. 공백X"
+            pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^+\-=])(?=\S+$).*$"/>
+        <br/>
+        <span>*암호 확인</span>
+        <input type="password" name="pwd2" maxLength="24" required
+            pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^+\-=])(?=\S+$).*$"/>
+        <br/>
+        <span>*성별</span>
+        <label><input type="radio" name="gen" value="m" checked/>남자</label>
+        <label><input type="radio" name="gen" value="f"/>여자</label>
+        <br/>
+        <span>*취미</span>
+        <label><input type="checkbox" name="hobby" value="축구"/>축구</label>
+        <label><input type="checkbox" name="hobby" value="배구"/>배구</label>
+        <label><input type="checkbox" name="hobby" value="농구"/>농구</label>
+        <label><input type="checkbox" name="hobby" value="탁구"/>탁구</label>
+        <br/>
+        <span>*우편번호</span>
+        <input type="text" name="postalCode" readOnly required/>
+        <input type="button" name="btnFindPostalCode" value="우편번호 검색"/>
+        <br/>
+        <span>*주소</span>
+        <input type="search" name="address" readOnly required/>
+        <br/>
+        <span>*상세주소</span>
+        <input type="search" name="address2" autocomplete="off" required/>
+        <br/>
+        <span></span>
+        <input type="file" id="photo_file"/>
+        <img id="photo" src="index/images/anno1.png" alt="photo"/>
+        <br/>
+        <span></span>
+        <input type="submit" name="btn" value="확인" onclick="return chkForm(this.form)"/>
+        <br/>
+        <img id="logo" src="index/images/phoenix.png" alt="logo"/>
+    </form>
+
+    <script>
+        // 체크박스 1개 이상 선택 했는지 체크
+        function chkForm(frm) {
+            let check = document.querySelectorAll("[name='hobby']:checked");
+            if(!check.length) {
+                alert("취미를 1개 이상 선택해 주세요.");
+                return false;
+            }
+            return true;
+        }
+
+        // form 입력값 session에 저장
+        
+        function saveForm(frm) {
+            console.log("ok");
+
+            let sId = "";
+            sId = frm.id.value;
+            let temp = sessionStorage.getItem("sId");
+            let temp2 = sessionStorage.setItem("temp");
+
+            console.log(temp2);
+        }
+
+
+        // 우편번호 검색
+        let frm = document.frm;
+        frm.btnFindPostalCode.addEventListener("click", function() {
+            new daum.Postcode({
+                oncomplete : function(data) {
+                    frm.address.value = data.address;
+                    frm.postalCode.value = data.zonecode;
+                }
+            }).open();
+        });
+
+        // 이미지 미리보기
+        let btnFile = document.querySelector('#photo_file');
+        let photo = document.querySelector('#photo');
+
+        photo.onclick = function() {
+            btnFile.click();
+        }
+
+        btnFile.onchange = function(ev) {
+            let file = ev.srcElement.files[0];
+            let reader = new FileReader();
+
+            reader.readAsDataURL(file);
+
+            reader.onload = function() {
+                let tempImg = new Image();
+                tempImg.src = this.result;
+                photo.src = tempImg.src;
+            }
+        }
+    </script>
+</body>
+</html>

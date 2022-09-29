@@ -2,12 +2,13 @@
 /* GROUP BY 연습 */
 SELECT * FROM classicmodels.customers;
 SELECT * FROM classicmodels.payments;
-	SELECT sum(p.amount), c.phone
-	FROM classicmodels.payments p
-	JOIN classicmodels.customers c
-	ON p.customernumber = c.customernumber
-	where c.customernumber = 103
-	group BY c.phone;
+
+SELECT sum(p.amount), c.phone
+FROM classicmodels.payments p
+JOIN classicmodels.customers c
+ON p.customernumber = c.customernumber
+where c.customernumber = 103
+group BY c.phone;
 	
 /* 1) 사원번호와 사원명을 커서를 사용하여 출력 */
 SELECT * FROM classicmodels.offices;
@@ -21,10 +22,10 @@ begin
 	DECLARE m_name varchar(50);
 	DECLARE finished INT DEFAULT 0;
 	
-	DECLARE cur CURSOR for
+	DECLARE cur CURSOR 
 		SELECT employeeNumber, lastName
 		FROM classicmodels.employees;
-	DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+	DECLARE CONTINUE HANDLER  NOT FOUND SET finished = 1;
 	
 	OPEN cur;
 	here : loop
@@ -55,12 +56,12 @@ begin
 	DECLARE finished INT DEFAULT 0;
 	DECLARE msg LONGTEXT DEFAULT '';
 	
-	DECLARE cur CURSOR FOR
+	DECLARE cur CURSOR 
 		SELECT e1.lastName, e1.email, e1.jobTitle
 		FROM classicmodels.employees e1 JOIN classicmodels.employees e2
 		ON e1.officeCode = e2.officeCode
 		WHERE e2.employeeNumber = en;
-	DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+	DECLARE CONTINUE HANDLER  NOT FOUND SET finished = 1;
 	
 	OPEN cur;
 	here : loop
@@ -74,7 +75,7 @@ begin
 	END loop;
 	CLOSE cur;
 	
-	SELECT msg "employeeInformation";
+	SELECT msg "employeeInmation";
 end;
 
 CALL cur_test2(1002);
@@ -89,12 +90,12 @@ begin
 	DECLARE m_jobTitle varchar(50);
 	DECLARE str longtext;
 	
-	DECLARE cur CURSOR for
+	DECLARE cur CURSOR 
 		SELECT other.lastName, other.email, other.jobTitle
 		FROM classicmodels.employees other JOIN classicmodels.employees me
 		ON other.officeCode = me.officeCode
 		WHERE me.employeeNumber = en;
-	DECLARE CONTINUE HANDLER FOR NOT FOUND SET flag = 1;
+	DECLARE CONTINUE HANDLER  NOT FOUND SET flag = 1;
 	
 	OPEN cur;
 	here : loop
@@ -122,12 +123,12 @@ begin
 	DECLARE finished INT DEFAULT 0;
 	DECLARE msg LONGTEXT DEFAULT '';
 	
-	DECLARE cur CURSOR for
+	DECLARE cur CURSOR 
 		SELECT c.customerName, c.phone, p.amount, c.postalCode
 		FROM classicmodels.customers c JOIN classicmodels.payments p
 		ON c.customerNumber = p.customerNumber
 		WHERE p.customerNumber = cn;
-	DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+	DECLARE CONTINUE HANDLER  NOT FOUND SET finished = 1;
 	
 	OPEN cur;
 	here : loop
@@ -142,7 +143,7 @@ begin
 	END loop;
 	CLOSE cur;
 	
-	SELECT msg "customerInformation";
+	SELECT msg "customerInmation";
 end;
 
 CALL cur_test3(103);
@@ -157,13 +158,13 @@ begin
 	DECLARE m_postalCode   varchar(30);
 	DECLARE flag           INT DEFAULT 0;
 	
-	DECLARE cur CURSOR for
+	DECLARE cur CURSOR 
 		SELECT c.customerName, c.phone, p.amount, c.postalCode
 		FROM   classicmodels.customers c
 		JOIN   classicmodels.payments p
 		ON     c.customerNumber = p.customerNumber
 		WHERE  c.customerNumber = cn;
-	DECLARE CONTINUE HANDLER FOR NOT FOUND SET flag = 1;
+	DECLARE CONTINUE HANDLER  NOT FOUND SET flag = 1;
 	
 	OPEN cur;
 	here : loop
@@ -193,12 +194,12 @@ begin
 	DECLARE finished INT DEFAULT 0;
 	DECLARE msg LONGTEXT DEFAULT '';
 	
-	DECLARE cur CURSOR FOR
+	DECLARE cur CURSOR 
 		SELECT c.customerName, p.paymentDate, p.amount, c.phone
 		FROM classicmodels.customers c JOIN classicmodels.payments p
 		ON c.customerNumber = p.customerNumber
 		WHERE year(p.paymentDate) = pd;
-	DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+	DECLARE CONTINUE HANDLER  NOT FOUND SET finished = 1;
 	
 	OPEN cur;
 	here : loop
@@ -213,7 +214,7 @@ begin
 	END loop;
 	CLOSE cur;
 	
-	SELECT msg "customerInformation";
+	SELECT msg "customerInmation";
 end;
 
 CALL cur_test4(2004);
@@ -228,11 +229,11 @@ begin
 	DECLARE m_phone          varchar(50);
 	DECLARE flag             INT;
 	
-	DECLARE cur CURSOR for
+	DECLARE cur CURSOR 
 		SELECT customerNumber, amount
 		FROM   classicmodels.payments
 		WHERE  year(paymentDate) = Y;
-	DECLARE CONTINUE HANDLER FOR NOT FOUND SET flag = 1;
+	DECLARE CONTINUE HANDLER  NOT FOUND SET flag = 1;
 	
 	OPEN cur;
 	here : loop
@@ -267,12 +268,12 @@ begin
 	DECLARE finished INT DEFAULT 0;
 	DECLARE msg LONGTEXT DEFAULT '';
 	
-	DECLARE cur CURSOR for
+	DECLARE cur CURSOR 
 		SELECT customerName, creditLimit, sum(amount), phone
 		FROM classicmodels.customers c JOIN classicmodels.payments p
 		ON c.customerNumber = p.customerNumber
 		GROUP BY c.customerNumber;
-	DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+	DECLARE CONTINUE HANDLER  NOT FOUND SET finished = 1;
 	
 	OPEN cur;
 	here : loop
@@ -290,7 +291,7 @@ begin
 	END loop;
 	CLOSE cur;
 	
-	SELECT msg "creditInformation";
+	SELECT msg "creditInmation";
 end;
 
 CALL cur_test5();
@@ -327,10 +328,10 @@ begin
 	DECLARE flag             INT DEFAULT 0;
 	DECLARE m_amount         decimal(10, 2);
 	
-	DECLARE cur CURSOR for
+	DECLARE cur CURSOR 
 		SELECT customerNumber, customerName, creditLimit, phone
 		FROM   classicmodels.customers;
-	DECLARE CONTINUE HANDLER FOR NOT FOUND SET flag = 1;
+	DECLARE CONTINUE HANDLER  NOT FOUND SET flag = 1;
 	
 	OPEN cur;
 	here : loop
@@ -361,7 +362,6 @@ CALL cur_test5_teacher();
 
 
 
-
 /* CONCAT 기능 확인 */
 /* cursor는 같은 공간에 여러개가 있으면 에러 난다. */
 SELECT * FROM classicmodels.customers;
@@ -374,11 +374,11 @@ begin
 	DECLARE flag1   int;
 	DECLARE flag2   int;
 		
-	DECLARE cur1 CURSOR for
+	DECLARE cur1 CURSOR 
 		SELECT customerNumber
 		FROM classicmodels.customers
 		WHERE city = c;
-	DECLARE CONTINUE HANDLER FOR NOT FOUND SET flag1 = 1;
+	DECLARE CONTINUE HANDLER  NOT FOUND SET flag1 = 1;
 	OPEN cur1;
 	here1 : loop
 		FETCH cur1 INTO m_number;
@@ -400,11 +400,11 @@ begin
 	DECLARE flag1    int;
 	DECLARE flag2    int;
 		
-	DECLARE cur2 CURSOR for
+	DECLARE cur2 CURSOR 
 		SELECT amount
 		FROM classicmodels.payments
 		WHERE customerNumber = cn;
-	DECLARE CONTINUE HANDLER FOR NOT FOUND SET flag2 = 1;
+	DECLARE CONTINUE HANDLER  NOT FOUND SET flag2 = 1;
 	OPEN cur2;
 	here2 : loop
 		FETCH cur2 INTO m_amount;
