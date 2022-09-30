@@ -46,6 +46,46 @@ CALL exam_proc(2004);
    (9) 반복문이 종료되면 커서도 종료되고 프로시져도 종료된다.
    (10) 최종적으로 select한 값이 화면에 출력된다. */
 
+/***** 1번 강사님 *****/
+/* WHERE 절에는 닉네임을 쓸 수 없다. select절보다 where절이 먼저 실행되기 때문이다. */
+CREATE PROCEDURE exam_proc(yy int)
+BEGIN
+	DECLARE hap INT           DEFAULT 0;
+	DECLARE pyu decimal(10,2) DEFAULT 0;
+	DECLARE nal varchar(20)   DEFAULT '';
+	
+	DECLARE flag INT DEFAULT 0;
+	DECLARE cur CURSOR FOR
+		SELECT sum(amount) h, avg(amount) p, date_format(paymentDate, '%Y-%m') nal
+		FROM   payments
+		WHERE   year(paymentDate) = yy
+		GROUP BY date_format(paymentDate, '%Y-%m')
+		ORDER BY nal;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET flag = 1;
+	
+	OPEN cur;
+	here : LOOP
+		FETCH cur INTO hap, pyu, nal;
+		IF flag = 1 THEN
+			LEAVE here;
+		END IF;
+		SELECT hap, pyu, nal;
+	END LOOP;
+	CLOSE cur;
+END;
+/* 
+	SET flag = 1;
+	OPEN cur;
+	here2 : WHILE flag = 0 DO
+		FETCH cur INTO hap, pyu, nal;
+		IF flag = 1 THEN
+			LEAVE here2;
+		END IF;
+		SELECT hap, pyu, nal;
+	END while;
+	CLOSE cur;
+ */
+
 /***** 2번 *****/
 SELECT * FROM employees;
 SELECT * FROM offices;
