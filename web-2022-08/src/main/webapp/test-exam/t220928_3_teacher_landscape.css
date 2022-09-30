@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+/* 가로 모드 */
+body {
+	background-color: #ccf;
+	padding: 0;
+	margin: 0;
+}
+
+#main>.a {
+	width: 50%;
+	height: 100px;
+	background-color: #fdd;
+	float: left;
+}
+
+#main>.b {
+	width: 50%;
+	height: 100px;
+	background-color: #ffd;
+	float: right;
+}
+
+#main>.c {
+	width: 100%;
+	height: 200px;
+	background-color: #888;
+}

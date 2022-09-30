@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/* 세로 모드 */
+body {
+	background-color: #ccf;
+	padding: 0;
+	margin: 0;
+}
+
+#main>.a {
+	background-color: #fdd;
+	border: 1px solid black;
+}
+
+#main>.b {
+	background-color: #ffd;
+	border: 1px solid black;
+}
+
+#main>.c {
+	background-color: #000;
+	color: white;
+	border: 1px solid black;
+}

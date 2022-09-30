@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+/* 핸드폰 세로 */
+@media (orientation: portrait) {
+    div.wrap {
+        background: #AC4425;
+        padding: 10px;
+        margin: 10px 10px auto;
+        border: 2px solid black;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 100px 100px 100px;
+        min-height: 500px;
+    }
+    
+    div.wrap div.item1 {
+        background: #224B0C;
+        padding: 10px;
+        margin: 10px 10px;
+        color: black;
+        font-weight: 600;
+        border: 2px solid rgb(43, 27, 27);
+    }
+    
+    div.wrap div.item2 {
+        background: #C1D5A4;
+        padding: 10px;
+        margin: 10px 10px;
+        color: black;
+        font-weight: 600;
+        border: 2px solid black;
+    }
+    
+    div.wrap div.item3 {
+        background: #F0F2B6;
+        padding: 10px;
+        margin: 10px 10px;
+        color: black;
+        font-weight: 600;
+        border: 2px solid black;
+    }
+}
+
+/* 핸드폰 가로 */
+@media (orientation: landscape) {
+    div.wrap {
+        background: #FD841F;
+        padding: 10px;
+        margin: 10px 10px auto;
+        border: 2px solid black;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 150px 150px;
+        min-height: 500px;
+    }
+    
+    div.wrap div.item1 {
+        background: #E14D2A;
+        padding: 10px;
+        margin: 10px 10px;
+        color: white;
+        font-weight: 600;
+        border: 2px solid rgb(43, 27, 27);
+    }
+    
+    div.wrap div.item2 {
+        background: #CD104D;
+        padding: 10px;
+        margin: 10px 10px;
+        color: white;
+        font-weight: 600;
+        border: 2px solid black;
+    }
+    
+    div.wrap div.item3 {
+        background: #9C2C77;
+        padding: 10px;
+        margin: 10px 10px;
+        color: white;
+        font-weight: 600;
+        border: 2px solid black;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+}
+
+/* 데스크탑 */
+@media (min-width:1000px) {
+    div.wrap {
+        background: #8BBCCC;
+        padding: 10px;
+        margin: 10px 10px auto;
+        border: 2px solid black;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 150px;
+        min-height: 500px;
+    }
+    
+    div.wrap div.item1 {
+        background: #4C6793;
+        padding: 10px;
+        margin: 10px 10px;
+        color: white;
+        font-weight: 600;
+        border: 2px solid rgb(43, 27, 27);
+    }
+    
+    div.wrap div.item2 {
+        background: #5C2E7E;
+        padding: 10px;
+        margin: 10px 10px;
+        color: white;
+        font-weight: 600;
+        border: 2px solid black;
+    }
+    
+    div.wrap div.item3 {
+        background: black;
+        padding: 10px;
+        margin: 10px 10px;
+        color: white;
+        font-weight: 600;
+        border: 2px solid black;
+        grid-column-start: 3;
+        grid-column-end: 3;
+    }
+}

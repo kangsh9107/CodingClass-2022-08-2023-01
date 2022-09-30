@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>t220928_2_teacher.html</title>
+</head>
+<body>
+
+	<div id="result">
+	
+	</div>
+	
+	<script>
+		// 연령대 만들기 ex. 20~29를 20대로 표현하려면
+		// 10으로 나누고 parseInt 씌우고 다시 10 곱한다.
+//		let test = [20, 21, 22, 23, 24,
+//					25, 26, 27, 28, 29];
+//		for(v of test) {
+//			let temp = parseInt(v/10) * 10;
+//			console.log(temp);
+//		}
+		
+		let data = [
+			{"city":"부산", "gender" : "m", "age" : 25},
+			{"city":"동해", "gender" : "m", "age" : 35},
+			{"city":"제주", "gender" : "m", "age" : 45},
+			{"city":"독도", "gender" : "m", "age" : 25},
+			{"city":"대전", "gender" : "m", "age" : 35},
+			{"city":"울산", "gender" : "f", "age" : 45},
+			{"city":"독도", "gender" : "f", "age" : 25},
+			{"city":"제주", "gender" : "f", "age" : 35},
+			{"city":"독도", "gender" : "f", "age" : 45},
+			{"city":"제주", "gender" : "f", "age" : 25}
+		];
+		
+		// [ {"city" : "서울", "cnt" : 1}, ... ]; 이렇게 만들면 편하지 않을까?
+		// [ 1, 7, 3, ...]; 이렇게 만들면 어떤 도시를 카운트 한건지 알기 힘들다.
+		let group = [];
+		
+		for(d of data) {
+			// group 배열에 obj에 있는 city가 존재하는가?
+			let index = group.findIndex(obj => obj.city==d.city);
+			if(index>=0) group[index].cnt++;
+			else         group.push({"city" : d.city, "cnt" : 1});
+		}
+		console.log(group);
+		console.log(group[0]["city"]);
+		console.log(group[0]["cnt"]);
+		console.log(group.length);
+		console.log(data.length);
+		
+		let r = document.querySelector("#result");
+/* 		for(let i=0; i<group.length; i++) {
+			r.innerHTML += "city : "
+						   + group[i]["city"]
+						   + " , "
+						   + "cnt : "
+						   + group[i]["cnt"]
+						   + "<br/>";
+		} */
+		
+		// let str = ""
+		// let str += `<li style="list-style: none">도시명 : ${d.city} => 인구수 : ${d.cnt}`;
+		// for of 밖에 r.innerHTML = str;
+		// 이렇게 작성하면 화면에 여러번 찍지 않고 한번만 찍어서 메모리 아낄 수 있다.
+		for(d of group) {
+			r.innerHTML += `<li style="list-style: none">도시명 : ${d.city} => 인구수 : ${d.cnt}`;
+		}
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
