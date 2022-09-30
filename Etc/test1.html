@@ -5,72 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>test1.html</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        div#wrap {
-            margin: 20px 20px auto;
-            padding: 20px;
-            background-image: url(index/images/back1.jpg);
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            border-radius: 20px;
-            box-shadow: 8px 8px 8px #888;
-            text-align: center;
-            width: 450px;
-        }
-
-        div#wrap h3 {
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            text-shadow: 8px 8px 8px #888;
-            font-size: 25px;
-        }
-
-        div#wrap span {
-            font-size: 15px;
-            font-weight: bold;
-            display: inline-block;
-            vertical-align: center;
-            text-shadow: 8px 8px 8px #888;
-        }
-
-        div#wrap progress {
-            display: inline-block;
-            width: 150px;
-            height: 25px;
-        }
-
-        div#wrap input[type="button"] {
-            display: inline-block;
-            font-size: 15px;
-            font-weight: bolder;
-            height: 30px;
-            width: 200px;
-        }
-    </style>
 </head>
 <body>
+
     <div id="main">
         <div id="wrap">
-            <h3>빅 데이터 분석 결과 시각화</h3><br/>
-            <progress id="graph1" max="10"></progress>
-            <span id="graph1_count"></span><br/>
-            <progress id="graph2" max="10"></progress>
-            <span id="graph2_count"></span><br/>
-            <progress id="graph3" max="10"></progress>
-            <span id="graph3_count"></span><br/>
-            <progress id="graph4" max="10"></progress>
-            <span id="graph4_count"></span><br/>
-            <progress id="graph5" max="10"></progress>
-            <span id="graph5_count"></span><br/>
-            <progress id="graph6" max="10"></progress>
-            <span id="graph6_count"></span><br/><br/>
-            <input type="button" id="btn" value="실행"/>
+            <h3>빅 데이터 분석 결과 시각화</h3>
         </div>
+        <input type="button" id="btn" value="실행"/>
     </div>
 
     <script>
@@ -81,34 +23,33 @@
                     99,88,66
         ];
 
-        // 점수별 인원 맵구조 생성
+        // data 중복 제거 배열. for문 length에 사용. 점수별로 만든 배열과 길이가 같다.
+        let length = data.filter((v, i) => data.indexOf(v) === i)
+
+        // 점수별 인원수 배열
         let rData = data.reduce(function(cur, now) {
             cur[now] = ++cur[now] || 1;
             return cur;
         }, {});
-        
-        // 점수별 인원 시각화
-        document.querySelector("#btn").addEventListener("click", function(e) {
-            // 그래프 표시
-            for(let i=0; i<Object.keys(rData).length; i++) {
-                if     ( Number( Object.keys(rData)[i] ) < 50 )   document.querySelector("#graph1").value = rData[ Object.keys(rData)[i] ];
-                else if( Number( Object.keys(rData)[i] ) < 60 )   document.querySelector("#graph2").value = rData[ Object.keys(rData)[i] ];
-                else if( Number( Object.keys(rData)[i] ) < 70 )   document.querySelector("#graph3").value = rData[ Object.keys(rData)[i] ];
-                else if( Number( Object.keys(rData)[i] ) < 80 )   document.querySelector("#graph4").value = rData[ Object.keys(rData)[i] ];
-                else if( Number( Object.keys(rData)[i] ) < 90 )   document.querySelector("#graph5").value = rData[ Object.keys(rData)[i] ];
-                else if( Number( Object.keys(rData)[i] ) <= 100 ) document.querySelector("#graph6").value = rData[ Object.keys(rData)[i] ];
-            }
+        console.log(rData);
+        console.log(rData["44"]);
 
-            // 인원 표시
-            for(let i=0; i<Object.keys(rData).length; i++) {
-                if     ( Number( Object.keys(rData)[i] ) < 50 )   document.querySelector("#graph1_count").innerHTML = rData[ Object.keys(rData)[i] ];
-                else if( Number( Object.keys(rData)[i] ) < 60 )   document.querySelector("#graph2_count").innerHTML = rData[ Object.keys(rData)[i] ];
-                else if( Number( Object.keys(rData)[i] ) < 70 )   document.querySelector("#graph3_count").innerHTML = rData[ Object.keys(rData)[i] ];
-                else if( Number( Object.keys(rData)[i] ) < 80 )   document.querySelector("#graph4_count").innerHTML = rData[ Object.keys(rData)[i] ];
-                else if( Number( Object.keys(rData)[i] ) < 90 )   document.querySelector("#graph5_count").innerHTML = rData[ Object.keys(rData)[i] ];
-                else if( Number( Object.keys(rData)[i] ) <= 100 ) document.querySelector("#graph6_count").innerHTML = rData[ Object.keys(rData)[i] ];
+        // progress 추가 및 값 설정
+        document.querySelector("#btn").addEventListener("click", function(e) {
+            for(let i=0; i<length.length; i++) {
+                let wrap = document.querySelector("#wrap");
+                let pro = `
+                          <progress id="graph${i}" max="10"></progress>
+                          <span id="graph${i}_count"></span><br/>
+                          `;
+
+                wrap.innerHTML += pro;
+
+                document.querySelector(`#graph${i}`).value = rData[ Object.keys(rData)[i] ];
+                document.querySelector(`#graph${i}_count`).innerHTML = rData[ Object.keys(rData)[i] ];
             }
         });
     </script>
+
 </body>
 </html>
