@@ -4,7 +4,7 @@ import java.io.UnsupportedEncodingException;
 
 public class StringEx {
 	public static void main(String[] args) {
-		String s1 = "홍길동";
+//		String s1 = "홍길동";
 //		String s2 = "홍길동";
 //		System.out.println(s1==s2);
 		/* "홍길동" 이라는 값을 비교하는게 아니라
@@ -45,7 +45,7 @@ public class StringEx {
 		 * 위의 pn을 확인하여 어떤색의 제품인지 출력
 		 */
 		String pn = "123R456";
-		int r = pn.charAt(3);
+//		int r = pn.charAt(3);
 		
 		int pnLength = pn.length();
 		System.out.println(pnLength);

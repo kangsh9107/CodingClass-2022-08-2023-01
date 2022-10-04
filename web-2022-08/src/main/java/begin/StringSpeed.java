@@ -2,8 +2,9 @@ package begin;
 
 public class StringSpeed {
 	
+	String str = "a";
+	
 	public StringSpeed() {
-		String str = "a";
 		long sTime=0, eTime=0, rTime=0, rTime2=0;
 		
 		// 고정 문자열
@@ -28,7 +29,7 @@ public class StringSpeed {
 	}
 	
 	public static void main(String[] args) {
-		StringSpeed ss = new StringSpeed();
+		new StringSpeed();
 	}
 	
 }

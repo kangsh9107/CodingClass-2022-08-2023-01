@@ -1,6 +1,6 @@
 package begin;
 
-import javax.xml.transform.Source;
+// import javax.xml.transform.Source;
 
 /* 메소드 : 접근제한자 반환형 메소드명(매개변수들){} */
 public class StringEx2 {
