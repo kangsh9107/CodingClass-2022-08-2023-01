@@ -3,28 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <title>p.html</title>
+<style>
+	* {
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+	}
+	
+	#main div {
+		display: inline-block;
+	}
+	
+	#main div.flipObj {
+	    width: 100px;
+	    height: 150px;
+	    margin: 0 auto;
+	    border: 2px solid black;
+ 	    perspective: 140px;
+	}
+
+	.flipInner {
+	    position: relative;
+	    width: 100%;
+	    height: 100%;
+	    text-align: center;
+	    transition: transform 0.8s;
+	    transform-style: preserve-3d;
+	}
+	
+	.flipObj.flipped .flipInner {
+	    transform: rotateY(180deg);
+	}
+	
+	.flipFront, .flipBack {
+	    position: absolute;
+	    width: 100%;
+	    height: 100%;
+	    border: 1px solid #333;
+	    backface-visibility: hidden;
+	}
+	
+	.flipBack {
+	    transform: rotateY(180deg);
+	}
+</style>
 </head>
+
 <body>
-
-<div id='here'></div>
+	<input type="button" value="버튼" onclick="flipSetting(5,4)"/>
+	<div id="main" class="background"></div>
+</body>
 <script>
-let select = document.createElement("select");
-select.setAttribute("name", "languages");
-let here = document.querySelector('#here');
-here.append(select);
-
-console.log('1: ',select);
-
-let array = ["JavaScript", "Java"]
-for(h of array){
-	let opt = new Option(h, h);
-	select.appendChild(opt);
-}
-
-console.log('2: ',select);
+	let main = document.querySelector("#main");
+	
+	let flipSetting = ((h, v) => {
+	    main.innerHTML = "";
+	    
+	    for(let i=0; i<h*v; i++) {
+	        let flipObj = document.createElement("div");
+	        let flipInner = document.createElement("div");
+	        let flipFront = document.createElement("div");
+	        let flipBack = document.createElement("div");
+	
+	        flipObj.classList.add("flipObj");
+	        flipInner.classList.add("flipInner");
+	        flipFront.classList.add("flipFront");
+	        flipBack.classList.add("flipBack");
+	
+	        main.appendChild(flipObj);
+	        flipObj.appendChild(flipInner);
+	        flipInner.appendChild(flipFront);
+	        flipInner.appendChild(flipBack);
+	
+	        flipObj.addEventListener("click", () => {
+	            flipObj.classList.toggle("flipped");
+	        });
+	    }
+	});
 </script>
 
-</body>
 </html>
 
 
