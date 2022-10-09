@@ -25,11 +25,21 @@ public class P221008 {
         for(int i=0; i<A; i++) {
         	str = "";
         	for(int j=i; j<A-1; j++) {
-        		for(int k=i; k<A-1; k++) {
-        			str += "*";
-        			System.out.println(str + "*");
-        		}
+    			str += "*";
         	}
+        	System.out.println(str + "*");
+        }
+        
+        int test1 = 5;
+        int test2 = 3;
+        
+        System.out.print((test1 > test2) ? "true" : "false");
+        
+        for(int i=0; i<A; i++) {
+        	for(int k=0; k<=i; k++) {
+        		System.out.print("*");
+        	}
+        	System.out.println();
         }
         
     }
