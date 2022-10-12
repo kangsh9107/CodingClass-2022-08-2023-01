@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 
 public class P221011 {
 	public static void main(String[] args) throws IOException {
+		/*
 		int[] lotto = new int[6];
 		
 		for(int i=0; i<6; i++) {
@@ -43,6 +44,26 @@ public class P221011 {
 		}
 		
 		System.out.print(min + " " + max);
+		*/
+		
+		// --------------------------------------------------
+		System.out.println("-".repeat(50));
+		String S = "baekjoon";
+		char[] abc = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+		int[] arr = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+
+		for(int i=0; i<S.length(); i++) {
+			for(int k=0; k<26; k++) {
+				if( S.charAt(i) == abc[k] && arr[k] == -1 ) {
+					arr[k] = i;
+				}
+			}
+		}
+
+		for(int i=0; i<25; i++) {
+			System.out.print(arr[i] + " ");
+		}
+		System.out.print(arr[25]);
 	}
 }
 
