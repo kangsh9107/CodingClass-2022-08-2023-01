@@ -99,6 +99,7 @@ public class P221013 {
 		System.out.println(r);
 		*/
 		
+		/*
 		int n = 3;
 		double[] arr = {40,80,60};
 
@@ -116,6 +117,17 @@ public class P221013 {
 			sum += arr[i];
 		}
 		System.out.print(sum / n);
+		*/
+		
+		int n = 13;
+		int a = 0;
+		int temp = 2;
+
+		for(int i=1; i<=1000000000; i++) {
+			temp += (i-1) * 6;
+			if(n<temp) a = i; break;
+		}
+		System.out.print(a);
 		
 	}
 	

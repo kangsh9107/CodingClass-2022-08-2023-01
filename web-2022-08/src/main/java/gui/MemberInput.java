@@ -26,7 +26,7 @@ public class MemberInput extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public MemberInput() {
-		super("회원가입", false, false, false, false);
+		super("회원가입", true, true, true, true);
 		setBounds(100, 100, 450, 300);
 		setVisible(true);
 	}
