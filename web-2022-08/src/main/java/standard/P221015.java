@@ -72,6 +72,13 @@ public class P221015 {
         BufferedReader br   = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw   = new BufferedWriter(new OutputStreamWriter(System.out));
         Queue<Integer> temp = new LinkedList<>();
+        
+        int N = 5;
+        int[] arr = {5,4,3,2,1};
+
+		for(int i=N-1; i>=0; i--) {
+			System.out.println(arr[i]);
+		}
 	}
 
 /*
