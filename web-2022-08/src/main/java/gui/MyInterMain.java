@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import collection.ListFrame;
+import collection.SetFrame;
 
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
@@ -32,6 +33,7 @@ public class MyInterMain extends JFrame {
 	private JMenu mnNewMenu_3;
 	private JMenuItem mntmNewMenuItem_4;
 	private JMenuItem mntmNewMenuItem_5;
+	private JMenuItem mntmNewMenuItem_6;
 
 	/**
 	 * Launch the application.
@@ -142,6 +144,7 @@ public class MyInterMain extends JFrame {
 			mnNewMenu_3 = new JMenu("Util");
 			mnNewMenu_3.add(getMntmNewMenuItem_4());
 			mnNewMenu_3.add(getMntmNewMenuItem_5());
+			mnNewMenu_3.add(getMntmNewMenuItem_6());
 		}
 		return mnNewMenu_3;
 	}
@@ -172,5 +175,19 @@ public class MyInterMain extends JFrame {
 			});
 		}
 		return mntmNewMenuItem_5;
+	}
+	public JMenuItem getMntmNewMenuItem_6() {
+		if (mntmNewMenuItem_6 == null) {
+			mntmNewMenuItem_6 = new JMenuItem("Set");
+			mntmNewMenuItem_6.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JInternalFrame sf = new SetFrame();
+					desktopPane.add(sf);
+					desktopPane.updateUI();
+					sf.toFront();
+				}
+			});
+		}
+		return mntmNewMenuItem_6;
 	}
 }
