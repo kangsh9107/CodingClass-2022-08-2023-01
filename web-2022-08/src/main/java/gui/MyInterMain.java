@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class MyInterMain extends JFrame {
+	JInternalFrame mi, ms; // JInternalFrame을 하나씩만 생성하게 처리
 
 	private JPanel contentPane;
 	private JDesktopPane desktopPane;
@@ -98,10 +99,13 @@ public class MyInterMain extends JFrame {
 			mntmNewMenuItem = new JMenuItem("회원가입");
 			mntmNewMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					JInternalFrame mi = new MemberInput(); // 다형성
-					desktopPane.add(mi);
-					desktopPane.updateUI();
-					mi.toFront(); // 가장 위로 보내기 <-> toBack
+					if(mi == null) {
+						mi = new MemberInput(MyInterMain.this); // 다형성. MyInterMain.this를 넘겨서 연결고리 만든다
+																// MyInterMain has a MemberInput
+						desktopPane.add(mi);
+						desktopPane.updateUI();
+						mi.toFront(); // 가장 위로 보내기 <-> toBack
+					}
 				}
 			});
 		}
@@ -136,6 +140,16 @@ public class MyInterMain extends JFrame {
 	public JMenuItem getMntmNewMenuItem_3() {
 		if (mntmNewMenuItem_3 == null) {
 			mntmNewMenuItem_3 = new JMenuItem("회원조회");
+			mntmNewMenuItem_3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(ms == null) {
+						ms = new MemberSearch(MyInterMain.this);
+						desktopPane.add(ms);
+						desktopPane.updateUI();
+						ms.toFront();
+					}
+				}
+			});
 		}
 		return mntmNewMenuItem_3;
 	}

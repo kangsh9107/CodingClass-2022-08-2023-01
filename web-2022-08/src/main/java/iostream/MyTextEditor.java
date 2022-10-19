@@ -34,6 +34,7 @@ public class MyTextEditor extends JFrame {
 	private JMenuItem mntmNewMenuItem_3;
 	
 	protected static Editor get; // 클릭된 프레임이 타겟에 대입된다. 타겟이 된 프레임을 대상으로 저장, 수정 등의 기능 적용
+								 // 정석은 Editor가 아니라 JInternalFrame로 target 설정해야 더 자연스러움
 	private JLabel result;
 
 	/**
@@ -113,8 +114,7 @@ public class MyTextEditor extends JFrame {
 					desktopPane.add(editor);
 					desktopPane.updateUI();
 					editor.toFront();
-					get = (Editor)editor; // 새파일 만들었을 때 자동으로 활성화.
-											 // 정석은 Editor가 아니라 JInternalFrame로 target 설정해야 더 자연스러움
+					get = (Editor)editor; // 새파일 만들었을 때 자동으로 타겟 설정. 마우스로 선택까한 효과까지 있는건 아니다(title 색 변하는거)
 				}
 			});
 		}
@@ -132,12 +132,12 @@ public class MyTextEditor extends JFrame {
 						if(flag == JFileChooser.APPROVE_OPTION) {
 							File f = fc.getSelectedFile();
 							StringBuffer sb = new StringBuffer();
-							int readCnt = 0;
-							byte[] bytes = new byte[4096];
+							int readCnt = -1;
+							byte[] bytes = new byte[4096]; // 4096바이트씩 읽다가 마지막에 1바이트가 남으면 1바이트읽고 남은 4095는 쓰레기가 된다
 							InputStream is = new FileInputStream(f);
 							
 							while( (readCnt=is.read(bytes)) != -1 ) {
-								sb.append(new String(bytes, 0, readCnt));
+								sb.append(new String(bytes, 0, readCnt)); // 4096바이트씩 읽어서 문자열로 만든다
 							}
 							
 							Editor editor = new Editor();
@@ -149,6 +149,7 @@ public class MyTextEditor extends JFrame {
 							editor.toFront();
 							
 							get = editor;
+							// editor.getScrollPane().getTextArea().requestFocus(); // 디버깅 필요. 포커스 주면 마우스로 선택한 효과까지 가능하다.
 						}
 					} catch (Exception ex) {
 						JOptionPane.showMessageDialog(MyTextEditor.this, ex.getMessage());
@@ -163,13 +164,15 @@ public class MyTextEditor extends JFrame {
 			mntmNewMenuItem_2 = new JMenuItem("저장");
 			mntmNewMenuItem_2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+//					System.out.println(this);
+//					System.out.println(MyTextEditor.this);
 					
 					// 파일명 지정여부 체크
 					String fn = get.getFileName();
 					if(fn.equals("noname.txt")) {
 						JFileChooser fc = new JFileChooser(); // 파일열기 버튼 누르면 나오는 파일 선택 창
 						
-						int flag = fc.showSaveDialog(MyTextEditor.this); // 확인, 취소 버튼 누르면 상수값 반환
+						int flag = fc.showSaveDialog(MyTextEditor.this); // 확인, 취소 버튼 누르면 상수값 반환. 파라미터 중심에 창 열림
 						if(flag == JFileChooser.APPROVE_OPTION) {        // APPROVE_OPTION, CANCLE_OPTION
 							File f = fc.getSelectedFile();
 							get.setFileName(f.getPath());
@@ -186,6 +189,18 @@ public class MyTextEditor extends JFrame {
 	public JMenuItem getMntmNewMenuItem_3() {
 		if (mntmNewMenuItem_3 == null) {
 			mntmNewMenuItem_3 = new JMenuItem("다른 이름으로 저장");
+			mntmNewMenuItem_3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JFileChooser fc = new JFileChooser();
+					
+					int flag = fc.showSaveDialog(MyTextEditor.this);
+					if(flag == JFileChooser.APPROVE_OPTION) {
+						File f = fc.getSelectedFile();
+						get.setFileName(f.getPath());
+						fileSave();
+					}
+				}
+			});
 		}
 		return mntmNewMenuItem_3;
 	}
