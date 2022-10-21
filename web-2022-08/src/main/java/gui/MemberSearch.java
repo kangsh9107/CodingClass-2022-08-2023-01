@@ -20,13 +20,16 @@ import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MemberSearch extends JInternalFrame {
 	MyInterMain main;
+	MemberDao dao;
 	
 	private JPanel panel;
 	private JScrollPane scrollPane;
-	private JTextField textField;
+	private JTextField findStr;
 	private JButton btnNewButton;
 	private JTable table;
 
@@ -56,6 +59,7 @@ public class MemberSearch extends JInternalFrame {
 	 */
 	public MemberSearch() {
 		super("회원조회", true, true, true, true);
+		dao = new MemberDao();
 		addInternalFrameListener(new InternalFrameAdapter() {
 			@Override
 			public void internalFrameClosing(InternalFrameEvent e) {
@@ -75,7 +79,7 @@ public class MemberSearch extends JInternalFrame {
 			panel = new JPanel();
 			panel.setPreferredSize(new Dimension(10, 40));
 			panel.setLayout(new BorderLayout(0, 0));
-			panel.add(getTextField(), BorderLayout.CENTER);
+			panel.add(getFindStr(), BorderLayout.CENTER);
 			panel.add(getBtnNewButton(), BorderLayout.EAST);
 		}
 		return panel;
@@ -87,22 +91,42 @@ public class MemberSearch extends JInternalFrame {
 		}
 		return scrollPane;
 	}
-	public JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setColumns(10);
+	public JTextField getFindStr() {
+		if (findStr == null) {
+			findStr = new JTextField();
+			findStr.setColumns(10);
 		}
-		return textField;
+		return findStr;
 	}
 	public JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("검색");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String find = findStr.getText();
+					List<Data> list = dao.read(); // 하나씩 검색 하는 것보다 통째로 읽어 오는 게 더 빠르다. 하드디스크에 있는 것 읽어옴
+					DefaultTableModel model = (DefaultTableModel)table.getModel();
+					model.setRowCount(0); // 기존 데이터 모두 삭제
+					
+					for(Data d : list) {
+						if( d.getId().contains(find)    ||
+							d.getmName().contains(find) ||
+							d.getAddr().contains(find)  ||
+							d.getPhone().contains(find) ) {
+							
+							model.addRow(d.getVector());
+						}
+					}
+					
+					table.updateUI();
+				}
+			});
 		}
 		return btnNewButton;
 	}
 	public JTable getTable() {
 		if (table == null) {
-			MemberDao dao = new MemberDao();
+			//dao = new MemberDao();
 			List<Data> list = dao.read();
 			
 			// List -> Vector<Vector>
@@ -121,17 +145,23 @@ public class MemberSearch extends JInternalFrame {
 			model.setDataVector(vector, header);
 			
 			table = new JTable(model);
+			table.updateUI();
+			
+			/*
+			 * Listtener는 인터페이스다.
+			 * 그래서 new MouseListener라면 쓰지도 않는 메서드까지 전부 재정의해야 하는 불편함이 있다.
+			 * 그래서 제작자가 new MouseAdapter를 만들어서 다른 메서드까지 전부 재정의할 필요 없게 했다.
+			 */
 			table.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					// jtable에서 클릭된 좌표(row, column)
+					// JTable에서 클릭된 좌표(row, column)
 					int row = table.getSelectedRow();
 					int col = table.getSelectedColumn();
 					Object obj = table.getValueAt(row, col);
 					
 					System.out.printf("(%d,%d)=%s\n", row, col, obj);
 					
-					// 클릭된 
 					if(main.mi == null) {
 						main.mi = new MemberInput(main);
 						main.getDesktopPane().add(main.mi);

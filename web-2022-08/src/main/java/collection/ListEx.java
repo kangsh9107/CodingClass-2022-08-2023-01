@@ -112,7 +112,7 @@ public class ListEx {
 	}
 	
 	public static void main(String[] args) {
-		new ListEx().test3();
+		new ListEx().test2();
 	}
 
 }

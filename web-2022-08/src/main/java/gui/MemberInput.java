@@ -180,6 +180,19 @@ public class MemberInput extends JInternalFrame {
 	public JButton getBtnModify() {
 		if (btnModify == null) {
 			btnModify = new JButton("수정");
+			btnModify.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					MemberDao dao = new MemberDao();
+					String id = tfId.getText();
+					String irum = tfIrum.getText();
+					String addr = tfAddr.getText();
+					String phone = tfPhone.getText();
+					int point = Integer.parseInt(tfPoint.getText());
+					
+					Data d = new Data(id, irum, addr, phone, point);
+					dao.modify(d);
+				}
+			});
 			btnModify.setBounds(130, 147, 106, 23);
 		}
 		return btnModify;
@@ -187,6 +200,14 @@ public class MemberInput extends JInternalFrame {
 	public JButton getBtnDelete() {
 		if (btnDelete == null) {
 			btnDelete = new JButton("삭제");
+			btnDelete.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					MemberDao dao = new MemberDao();
+					String id = ((MemberInput)main.mi).getTfId().getText();
+					
+					dao.delete(id);
+				}
+			});
 			btnDelete.setBounds(248, 147, 106, 23);
 		}
 		return btnDelete;

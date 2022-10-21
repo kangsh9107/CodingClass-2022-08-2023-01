@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class MyInterMain extends JFrame {
-	JInternalFrame mi, ms; // JInternalFrame을 하나씩만 생성하게 처리
+	JInternalFrame mi, ms, si, ss; // JInternalFrame을 하나씩만 생성하게 처리
 
 	private JPanel contentPane;
 	private JDesktopPane desktopPane;
@@ -35,6 +35,7 @@ public class MyInterMain extends JFrame {
 	private JMenuItem mntmNewMenuItem_4;
 	private JMenuItem mntmNewMenuItem_5;
 	private JMenuItem mntmNewMenuItem_6;
+	private JMenuItem mntmNewMenuItem_7;
 
 	/**
 	 * Launch the application.
@@ -115,12 +116,23 @@ public class MyInterMain extends JFrame {
 		if (mnNewMenu_1 == null) {
 			mnNewMenu_1 = new JMenu("성적관리");
 			mnNewMenu_1.add(getMntmNewMenuItem_1());
+			mnNewMenu_1.add(getMntmNewMenuItem_7());
 		}
 		return mnNewMenu_1;
 	}
 	public JMenuItem getMntmNewMenuItem_1() {
 		if (mntmNewMenuItem_1 == null) {
-			mntmNewMenuItem_1 = new JMenuItem("New menu item");
+			mntmNewMenuItem_1 = new JMenuItem("성적입력");
+			mntmNewMenuItem_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(si == null) {
+						si = new ScoreInput(MyInterMain.this);
+						desktopPane.add(si);
+						desktopPane.updateUI();
+						si.toFront();
+					}
+				}
+			});
 		}
 		return mntmNewMenuItem_1;
 	}
@@ -203,5 +215,21 @@ public class MyInterMain extends JFrame {
 			});
 		}
 		return mntmNewMenuItem_6;
+	}
+	public JMenuItem getMntmNewMenuItem_7() {
+		if (mntmNewMenuItem_7 == null) {
+			mntmNewMenuItem_7 = new JMenuItem("성적조회");
+			mntmNewMenuItem_7.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(ss == null) {
+						ss = new ScoreSearch(MyInterMain.this); // 매개변수가 아니라 인수
+						desktopPane.add(ss);
+						desktopPane.updateUI();
+						ss.toFront();
+					}
+				}
+			});
+		}
+		return mntmNewMenuItem_7;
 	}
 }

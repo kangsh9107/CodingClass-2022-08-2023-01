@@ -9,6 +9,8 @@ public class Data implements Serializable {
 	String id, mName, addr, phone;
 	int point;
 	
+	public Data() {}
+	
 	public Data(String id, String mName, String addr, String phone,
 				int point) {
 		this.id    = id;
@@ -18,6 +20,7 @@ public class Data implements Serializable {
 		this.point = point;
 	}
 	
+	// JTable의 데이터 속성이 Vector<Vector>
 	public Vector getVector() {
 		Vector v = new Vector();
 		v.add(id);
@@ -29,6 +32,7 @@ public class Data implements Serializable {
 		return v;
 	}
 
+	// 콘솔창 테스트용
 	@Override
 	public String toString() {
 		String temp = "\n----------"
@@ -38,6 +42,23 @@ public class Data implements Serializable {
 					+ "\nphone : "   + this.phone
 					+ "\npoint : "   + this.point;
 		return temp;
+	}
+
+	@Override
+	public int hashCode() {
+		return this.id.hashCode(); // 기본 hashCode : 패키지명.클래스명@자신의hashCode
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		boolean b = false;
+		
+		if(obj instanceof Data) {
+			Data d = (Data)obj;
+			b = d.getId().equals(this.id);
+		}
+		
+		return b;
 	}
 
 	public String getId() {
