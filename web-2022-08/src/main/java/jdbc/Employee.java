@@ -3,6 +3,7 @@ package jdbc;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 
 public class Employee {
 	Connection conn;
@@ -11,23 +12,11 @@ public class Employee {
 		this.conn = new DBConn().getConn();
 	}
 	
-	public static void main(String[] args) {
-		Employee e = new Employee();
-		try {
-			//e.insert();
-			//e.select();
-			//e.update();
-			e.delete();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
-	
 	public void insert() throws Exception {
 		conn = new DBConn().getConn();
-		conn.setAutoCommit(false); // 자동 커밋되어 데이터베이스에 바로 반영되면 문제가 생긴다
+		conn.setAutoCommit(false); // 트랜잭션 수동으로 변경. (자동 커밋되어 데이터베이스에 바로 반영되면 문제가 생길 수 있다.)
 		
-		String sql = "insert into test(id, name) values(?,?)"; // prearedStatement로 쓰지 않으면 ?에 +hong+, +111+, ... 로 값을 쭉 써야한다.
+		String sql = "insert into test(id, name) values(?,?)"; // prearedStatement로 쓰지 않으면 ?에 "+hong+", "+111+", ... 또는 'hong', '111', ... 로 값을 쭉 써야한다.
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, "d001"); // 제로베이스가 아니라 원베이스
 		ps.setString(2, "김씨");  // 인코딩 안하면 한글은 에러.
@@ -97,6 +86,46 @@ public class Employee {
 		
 		ps.close();
 		conn.close();
+	}
+	
+	// ResultSetMetaData
+	public void metaTest() throws Exception {
+		conn = new DBConn().getConn();
+		
+		String sql = "select employeeNumber, lastName, email from employees";
+		//String sql = "select * from employees";
+		//String sql = "select * from payments";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		ResultSetMetaData meta = rs.getMetaData();
+		
+		// select 절에서 선택한 컬럼명
+		for(int i=1; i<=meta.getColumnCount(); i++) {
+			System.out.printf("%-20s", meta.getColumnName(i));
+		}
+		
+		System.out.println();
+		System.out.println("-".repeat(100));
+		while(rs.next()) {
+			for(int i=1; i<=meta.getColumnCount(); i++) {
+				String cn = meta.getColumnName(i);
+				System.out.printf("%-20s", rs.getString(cn));
+			}
+			System.out.println();
+		}
+	}
+	
+	public static void main(String[] args) {
+		Employee e = new Employee();
+		try {
+			//e.insert();
+			//e.select();
+			//e.update();
+			//e.delete();
+			e.metaTest();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 }
 

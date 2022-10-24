@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class MyInterMain extends JFrame {
-	JInternalFrame mi, ms, si, ss; // JInternalFrame을 하나씩만 생성하게 처리
+	JInternalFrame mi, ms, si, ss, mid, msd; // JInternalFrame을 하나씩만 생성하게 처리
 
 	private JPanel contentPane;
 	private JDesktopPane desktopPane;
@@ -36,6 +36,9 @@ public class MyInterMain extends JFrame {
 	private JMenuItem mntmNewMenuItem_5;
 	private JMenuItem mntmNewMenuItem_6;
 	private JMenuItem mntmNewMenuItem_7;
+	private JMenuItem mntmNewMenuItem_8;
+	private JMenuItem mntmNewMenuItem_9;
+	private JMenuItem mntmNewMenuItem_10;
 
 	/**
 	 * Launch the application.
@@ -92,6 +95,8 @@ public class MyInterMain extends JFrame {
 			mnNewMenu = new JMenu("회원관리");
 			mnNewMenu.add(getMntmNewMenuItem());
 			mnNewMenu.add(getMntmNewMenuItem_3());
+			mnNewMenu.add(getMntmNewMenuItem_9());
+			mnNewMenu.add(getMntmNewMenuItem_10());
 		}
 		return mnNewMenu;
 	}
@@ -171,6 +176,7 @@ public class MyInterMain extends JFrame {
 			mnNewMenu_3.add(getMntmNewMenuItem_4());
 			mnNewMenu_3.add(getMntmNewMenuItem_5());
 			mnNewMenu_3.add(getMntmNewMenuItem_6());
+			mnNewMenu_3.add(getMntmNewMenuItem_8());
 		}
 		return mnNewMenu_3;
 	}
@@ -231,5 +237,51 @@ public class MyInterMain extends JFrame {
 			});
 		}
 		return mntmNewMenuItem_7;
+	}
+	public JMenuItem getMntmNewMenuItem_8() {
+		if (mntmNewMenuItem_8 == null) {
+			mntmNewMenuItem_8 = new JMenuItem("SelectBox");
+			mntmNewMenuItem_8.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JInternalFrame sb = new SelectBox();
+					desktopPane.add(sb);
+					desktopPane.updateUI();
+					sb.toFront();
+				}
+			});
+		}
+		return mntmNewMenuItem_8;
+	}
+	public JMenuItem getMntmNewMenuItem_9() {
+		if (mntmNewMenuItem_9 == null) {
+			mntmNewMenuItem_9 = new JMenuItem("회원가입DB");
+			mntmNewMenuItem_9.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(mid == null) {
+						mid = new MemberInputDB(MyInterMain.this);
+						desktopPane.add(mid);
+						desktopPane.updateUI();
+						mid.toFront();
+					}
+				}
+			});
+		}
+		return mntmNewMenuItem_9;
+	}
+	public JMenuItem getMntmNewMenuItem_10() {
+		if (mntmNewMenuItem_10 == null) {
+			mntmNewMenuItem_10 = new JMenuItem("회원조회DB");
+			mntmNewMenuItem_10.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(msd == null) {
+						msd = new MemberSearchDB(MyInterMain.this);
+						desktopPane.add(msd);
+						desktopPane.updateUI();
+						msd.toFront();
+					}
+				}
+			});
+		}
+		return mntmNewMenuItem_10;
 	}
 }
