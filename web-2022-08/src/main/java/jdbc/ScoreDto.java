@@ -5,53 +5,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
-public class MemberDto {
+public class ScoreDto {
 	Connection conn;
 	
-	public int insert(MemberVo vo) {
-		int cnt = 0;
-		
-		conn = new DBConn("mydb").getConn();
-		try {
-			conn.setAutoCommit(false);
-			String sql = "insert into member(id, name, gender, phone, picture, mdate)"
-					   + " values(?,?,?,?,?,now())"; // 공백 하나 넣어야 오류 방지
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, vo.getId());
-			ps.setString(2, vo.getIrum());
-			ps.setString(3, vo.getGender());
-			ps.setString(4, vo.getPhone());
-			ps.setString(5, vo.getPicture());
-			
-			cnt = ps.executeUpdate();
-			if(cnt > 0) conn.commit();
-			else        conn.rollback();
-			
-			ps.close();
-			conn.close();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		
-		return cnt;
-	}
-	
-	public int update(MemberVo vo) {
+	public int insert(ScoreVo vo) {
 		int cnt = 0;
 		
 		try {
 			conn = new DBConn("mydb").getConn();
 			conn.setAutoCommit(false);
 			
-			String sql = "update member set name = ?, gender = ?, "
-					   + "phone = ?, picture = ? "
-					   + "where id = ?";
+			String sql = "insert into score(serial, id, subject, score, mdate) "
+					   + "values(?, ?, ?, ?, now())";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, vo.getIrum());
-			ps.setString(2, vo.getGender());
-			ps.setString(3, vo.getPhone());
-			ps.setString(4, vo.getPicture());
-			ps.setString(5, vo.getId());
+			ps.setInt(1, vo.getSerial());
+			ps.setString(2, vo.getId());
+			ps.setString(3, vo.getSubject());
+			ps.setDouble(4, vo.getScore());
 			
 			cnt = ps.executeUpdate();
 			if(cnt > 0) conn.commit();
@@ -66,20 +36,49 @@ public class MemberDto {
 		return cnt;
 	}
 	
-	public int delete(String id) {
+	public int update(ScoreVo vo) {
 		int cnt = 0;
 		
 		try {
 			conn = new DBConn("mydb").getConn();
 			conn.setAutoCommit(false);
 			
-			String sql = "delete from member where id = ?";
+			String sql = "update score set id = ?, subject = ?, "
+					   + "score = ?, mdate = now() "
+					   + "where serial = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, id);
+			ps.setString(1, vo.getId());
+			ps.setString(2, vo.getSubject());
+			ps.setDouble(3, vo.getScore());
+			ps.setInt(4, vo.getSerial());
 			
 			cnt = ps.executeUpdate();
 			if(cnt > 0) conn.commit();
-			else        conn.commit();
+			else        conn.rollback();
+			
+			ps.close();
+			conn.close();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return cnt;
+	}
+	
+	public int delete(int serial) {
+		int cnt = 0;
+		
+		try {
+			conn = new DBConn("mydb").getConn();
+			conn.setAutoCommit(false);
+			
+			String sql = "delete from score where serial = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, serial);
+			
+			cnt = ps.executeUpdate();
+			if(cnt > 0) conn.commit();
+			else        conn.rollback();
 			
 			ps.close();
 			conn.close();
@@ -96,28 +95,28 @@ public class MemberDto {
 		try {
 			conn = new DBConn("mydb").getConn();
 			
-			String sql = "select * from member " // 띄어쓰기 없으면 memberwhere라는 테이블로 인식
+			String sql = "select * from score "
 					   + "where id like ? "
-					   + "or    name like ? "
-					   + "or    phone like ?";
+					   + "or    subject like ? "
+					   + "or    score like ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			// like '%a%' : a가 포함되어 있는
-			// like 'a%' : a로 시작하는
 			ps.setString(1, "%" + findStr + "%");
 			ps.setString(2, "%" + findStr + "%");
 			ps.setString(3, "%" + findStr + "%");
 			
 			ResultSet rs = ps.executeQuery();
-			
 			while(rs.next()) {
 				Vector v = new Vector();
+				v.add(rs.getInt("serial"));
 				v.add(rs.getString("id"));
-				v.add(rs.getString("name"));
-				v.add(rs.getString("gender"));
-				v.add(rs.getString("phone"));
+				v.add(rs.getString("subject"));
+				v.add(rs.getDouble("score"));
 				v.add(rs.getString("mdate"));
 				list.add(v);
 			}
+			
+			ps.close();
+			conn.close();
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -125,25 +124,27 @@ public class MemberDto {
 		return list;
 	}
 	
-	// 강사님 코드
-	public MemberVo selectOne(String id) {
-		MemberVo vo = new MemberVo();
+	public ScoreVo selectOne(int serial) {
+		ScoreVo vo = new ScoreVo();
 		
 		try {
 			conn = new DBConn("mydb").getConn();
 			
-			String sql = "select * from member where id = ?";
+			String sql = "select * from score where serial = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, id);
+			ps.setInt(1, serial);
 			
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
+				vo.setSerial(rs.getInt("serial"));
 				vo.setId(rs.getString("id"));
-				vo.setIrum(rs.getString("name"));
-				vo.setGender(rs.getString("gender"));
-				vo.setPhone(rs.getString("phone"));
-				vo.setPicture(rs.getString("picture"));
+				vo.setSubject(rs.getString("subject"));
+				vo.setScore(rs.getDouble("score"));
+				vo.setMdate(rs.getString("mdate"));
 			}
+			
+			ps.close();
+			conn.close();
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}

@@ -18,6 +18,7 @@ import javax.swing.event.InternalFrameEvent;
 
 import jdbc.MemberDto;
 import jdbc.MemberVo;
+import javax.swing.JPanel;
 
 public class MemberInputDB extends JInternalFrame {
 	MyInterMain main;
@@ -42,6 +43,7 @@ public class MemberInputDB extends JInternalFrame {
 	private JRadioButton btnGenderM;
 	private JRadioButton btnGenderF;
 	private JButton btnPictureSelect;
+	private JTextField tfResult;
 
 	/**
 	 * Launch the application.
@@ -57,6 +59,17 @@ public class MemberInputDB extends JInternalFrame {
 				}
 			}
 		});
+	}
+	
+	// 강사님 코드(조회에서 테이블 클릭하면 가입화면에 뿌려줌)
+	public void loadData(MemberVo vo) {
+		tfId.setText(vo.getId());
+		tfIrum.setText(vo.getId());
+		tfPhone.setText(vo.getId());
+		tfPicture.setText(vo.getId());
+		
+		if(vo.getGender().equals("m")) btnGenderM.setSelected(true);
+		else btnGenderF.setSelected(true);
 	}
 	
 	public MemberInputDB(MyInterMain main) {
@@ -76,7 +89,7 @@ public class MemberInputDB extends JInternalFrame {
 			}
 		});
 		setVisible(true);
-		setBounds(100, 100, 440, 210);
+		setBounds(100, 100, 440, 233);
 		getContentPane().setLayout(null);
 		getContentPane().add(getLblNewLabel());
 		getContentPane().add(getLblNewLabel_1());
@@ -96,6 +109,7 @@ public class MemberInputDB extends JInternalFrame {
 
 		bg.add(getBtnGenderM());
 		bg.add(getBtnGenderF());
+		getContentPane().add(getTfResult());
 	}
 	public JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
@@ -192,6 +206,24 @@ public class MemberInputDB extends JInternalFrame {
 	public JButton getBtnModify() {
 		if (btnModify == null) {
 			btnModify = new JButton("수정");
+			btnModify.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String id = tfId.getText();
+					String irum = tfIrum.getText();
+					String gender = btnGenderM.isSelected() ? "m" : "f";
+					String phone = tfPhone.getText();
+					String picture = tfPicture.getText();
+					
+					MemberVo vo = new MemberVo(id, irum, gender, phone, picture);
+					MemberDto dto = new MemberDto();
+					int cnt = dto.update(vo);
+					if(cnt > 0) {
+						tfResult.setText("수정완료");
+					} else {
+						tfResult.setText("수정오류");
+					}
+				}
+			});
 			btnModify.setBounds(194, 153, 106, 23);
 		}
 		return btnModify;
@@ -201,6 +233,19 @@ public class MemberInputDB extends JInternalFrame {
 			btnDelete = new JButton("삭제");
 			btnDelete.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					String id = tfId.getText();
+					MemberDto dto = new MemberDto();
+					
+					int cnt = dto.delete(id);
+					if(cnt > 0) {
+						tfResult.setText("삭제완료");
+						tfId.setText("");
+						tfIrum.setText("");
+						tfPhone.setText("");
+						tfPicture.setText("");
+					} else {
+						tfResult.setText("삭제오류");
+					}
 				}
 			});
 			btnDelete.setBounds(312, 153, 106, 23);
@@ -238,5 +283,13 @@ public class MemberInputDB extends JInternalFrame {
 			btnPictureSelect.setBounds(312, 121, 106, 23);
 		}
 		return btnPictureSelect;
+	}
+	public JTextField getTfResult() {
+		if (tfResult == null) {
+			tfResult = new JTextField();
+			tfResult.setBounds(0, 183, 430, 21);
+			tfResult.setColumns(10);
+		}
+		return tfResult;
 	}
 }

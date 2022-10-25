@@ -19,7 +19,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class MyInterMain extends JFrame {
-	JInternalFrame mi, ms, si, ss, mid, msd; // JInternalFrame을 하나씩만 생성하게 처리
+	// JFrame을 하나만 생성하게 처리
+	JInternalFrame mi, ms, si, ss, mid, msd; // 다형성 연습용. 그냥 자식타입으로 만드는게 캐스팅 덜해서 편하다
+	ScoreInputDB sid;
+	ScoreSearchDB ssd;
 
 	private JPanel contentPane;
 	private JDesktopPane desktopPane;
@@ -39,6 +42,8 @@ public class MyInterMain extends JFrame {
 	private JMenuItem mntmNewMenuItem_8;
 	private JMenuItem mntmNewMenuItem_9;
 	private JMenuItem mntmNewMenuItem_10;
+	private JMenuItem mntmNewMenuItem_11;
+	private JMenuItem mntmNewMenuItem_12;
 
 	/**
 	 * Launch the application.
@@ -122,6 +127,8 @@ public class MyInterMain extends JFrame {
 			mnNewMenu_1 = new JMenu("성적관리");
 			mnNewMenu_1.add(getMntmNewMenuItem_1());
 			mnNewMenu_1.add(getMntmNewMenuItem_7());
+			mnNewMenu_1.add(getMntmNewMenuItem_11());
+			mnNewMenu_1.add(getMntmNewMenuItem_12());
 		}
 		return mnNewMenu_1;
 	}
@@ -283,5 +290,37 @@ public class MyInterMain extends JFrame {
 			});
 		}
 		return mntmNewMenuItem_10;
+	}
+	public JMenuItem getMntmNewMenuItem_11() {
+		if (mntmNewMenuItem_11 == null) {
+			mntmNewMenuItem_11 = new JMenuItem("성적입력DB");
+			mntmNewMenuItem_11.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(sid == null) {
+						sid = new ScoreInputDB(MyInterMain.this);
+						desktopPane.add(sid);
+						desktopPane.updateUI();
+						sid.toFront();
+					}
+				}
+			});
+		}
+		return mntmNewMenuItem_11;
+	}
+	public JMenuItem getMntmNewMenuItem_12() {
+		if (mntmNewMenuItem_12 == null) {
+			mntmNewMenuItem_12 = new JMenuItem("성적조회DB");
+			mntmNewMenuItem_12.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(ssd == null) {
+						ssd = new ScoreSearchDB(MyInterMain.this);
+						desktopPane.add(ssd);
+						desktopPane.updateUI();
+						ssd.toFront();
+					}
+				}
+			});
+		}
+		return mntmNewMenuItem_12;
 	}
 }

@@ -203,6 +203,11 @@ public class MemberSearchDB extends JInternalFrame {
 					String irum = (String)table.getValueAt(row, 1);
 					String gender = (String)table.getValueAt(row, 2);
 					String phone = (String)table.getValueAt(row, 3);
+					
+					mid.getTfId().setText(id);
+					mid.getTfIrum().setText(irum);
+					mid.getTfPhone().setText(phone);
+					
 					// picture
 					try {
 						conn = new DBConn("mydb").getConn();
@@ -211,6 +216,7 @@ public class MemberSearchDB extends JInternalFrame {
 								   + "where id = ?";
 						PreparedStatement ps = conn.prepareStatement(sql);
 						ps.setString(1, id);
+						
 						ResultSet rs = ps.executeQuery();
 						String temp = "";
 						while(rs.next()) {
@@ -221,16 +227,12 @@ public class MemberSearchDB extends JInternalFrame {
 						ex.printStackTrace();
 					}
 					
-					
-					
-					mid.getTfId().setText(id);
-					mid.getTfIrum().setText(irum);
+					// radio 버튼 클릭
 					if(gender.equals("m")) {
 						mid.getBtnGenderM().setSelected(true);
 					} else {
 						mid.getBtnGenderF().setSelected(true);
 					}
-					mid.getTfPhone().setText(phone);
 				}
 			});
 		}
