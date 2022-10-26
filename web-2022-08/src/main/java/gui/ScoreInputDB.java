@@ -69,7 +69,7 @@ public class ScoreInputDB extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public ScoreInputDB() {
-		super("성적입력", false, true, true, true);
+		super("성적입력DB", false, true, true, true);
 		setVisible(true);
 		dto = new ScoreDto();
 		addInternalFrameListener(new InternalFrameAdapter() {
@@ -176,14 +176,25 @@ public class ScoreInputDB extends JInternalFrame {
 			btnSave = new JButton("저장");
 			btnSave.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					int serial = Integer.parseInt(tfSerial.getText());
+					// 전처리
 					String id = tfId.getText();
 					String subject = tfSubject.getText();
 					double score = Double.parseDouble(tfScore.getText());
 					String mdate = tfMdate.getText();
 					
-					ScoreVo vo = new ScoreVo(serial, id, subject, score, mdate);
+					// serial이 autoIncreament면 serial 입력값 가져올 필요없이 그냥 명시적으로 0을 작성
+					// 0, id, subject, score, mdate로 작성하기 보단 생성자를 중복작성해서 id, subject, score, mdate를 입력받게 하는 게 정석
+					/*
+					 * 컬럼명 INT AUTO_INCREMENT PRIMARY KEY,
+					 * ALTER TABLE 테이블명 MODIFY 칼럼명 INT NOT NULL AUTO_INCREAMENT PRIMARY KEY FIRST;
+					 * ALTER TABLE 테이블명 MODIFY 칼럼명 INT NOT NULL AUTO_INCREAMENT;
+					 */
+					
+					// 메인
+					ScoreVo vo = new ScoreVo(0, id, subject, score, mdate);
 					int cnt = dto.insert(vo);
+					
+					// 후처리
 					if(cnt > 0) {
 						tfResult.setText("저장완료");
 
@@ -217,8 +228,8 @@ public class ScoreInputDB extends JInternalFrame {
 					String mdate = tfMdate.getText();
 					
 					ScoreVo vo = new ScoreVo(serial, id, subject, score, mdate);
-					
 					int cnt = dto.update(vo);
+					
 					if(cnt > 0) {
 						tfResult.setText("수정완료");
 

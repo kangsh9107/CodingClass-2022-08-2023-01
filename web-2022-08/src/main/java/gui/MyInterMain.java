@@ -20,8 +20,8 @@ import java.awt.event.ActionEvent;
 
 public class MyInterMain extends JFrame {
 	// JFrame을 하나만 생성하게 처리
-	JInternalFrame mi, ms, si, ss, mid, msd; // 다형성 연습용. 그냥 자식타입으로 만드는게 캐스팅 덜해서 편하다
-	ScoreInputDB sid;
+	JInternalFrame mi, ms, si, ss, mid, msd; // 다형성이 있고 유연성이 좋다
+	ScoreInputDB sid; // 자식타입으로 만들면 캐스팅을 덜해서 편하지만 유연성이 떨어진다
 	ScoreSearchDB ssd;
 
 	private JPanel contentPane;
@@ -264,7 +264,7 @@ public class MyInterMain extends JFrame {
 			mntmNewMenuItem_9 = new JMenuItem("회원가입DB");
 			mntmNewMenuItem_9.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					if(mid == null) {
+					if(mid == null) { // MyInterMain.this.mid로 작성하면 명시적 효과 있다
 						mid = new MemberInputDB(MyInterMain.this);
 						desktopPane.add(mid);
 						desktopPane.updateUI();
@@ -280,12 +280,12 @@ public class MyInterMain extends JFrame {
 			mntmNewMenuItem_10 = new JMenuItem("회원조회DB");
 			mntmNewMenuItem_10.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					if(msd == null) {
+					//if(msd == null) {
 						msd = new MemberSearchDB(MyInterMain.this);
 						desktopPane.add(msd);
 						desktopPane.updateUI();
 						msd.toFront();
-					}
+					//}
 				}
 			});
 		}
@@ -300,8 +300,9 @@ public class MyInterMain extends JFrame {
 						sid = new ScoreInputDB(MyInterMain.this);
 						desktopPane.add(sid);
 						desktopPane.updateUI();
-						sid.toFront();
 					}
+					
+					sid.toFront();
 				}
 			});
 		}
@@ -316,8 +317,9 @@ public class MyInterMain extends JFrame {
 						ssd = new ScoreSearchDB(MyInterMain.this);
 						desktopPane.add(ssd);
 						desktopPane.updateUI();
-						ssd.toFront();
 					}
+					
+					ssd.toFront();
 				}
 			});
 		}

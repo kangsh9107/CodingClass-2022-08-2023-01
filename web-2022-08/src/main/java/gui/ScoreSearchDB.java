@@ -9,6 +9,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.StringTokenizer;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -51,14 +52,30 @@ public class ScoreSearchDB extends JInternalFrame {
 	}
 	
 	public void select() {
-		String f = findStr.getText();
-		Vector<Vector> list = dto.select(f);
+		String f = findStr.getText().trim();
 		
+		// 기존 리스트 삭제
 		DefaultTableModel model = (DefaultTableModel)table.getModel();
 		model.setRowCount(0);
 		
-		for(Vector v : list) {
-			model.addRow(v);
+		// 공백으로 단어 구분해서 다중 단어 검색. 특수문자 무시
+		StringTokenizer st = new StringTokenizer(f, 
+							 "!@#$%^&*()-_=+[]{}<>,./`~");
+		while(st.hasMoreTokens()) {
+			Vector<Vector> list = dto.select(st.nextToken().trim());
+			
+			for(Vector v : list) {
+				model.addRow(v);
+			}
+		}
+		
+		// 조회창 처음 열렸을 때 리스트 뿌려줌, 리스트 최신화
+		if(f.equals("")) {
+			Vector<Vector> list = dto.select(f);
+			
+			for(Vector v : list) {
+				model.addRow(v);
+			}
 		}
 	}
 	
@@ -71,7 +88,7 @@ public class ScoreSearchDB extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public ScoreSearchDB() {
-		super("성적조회", true, true, true, true);
+		super("성적조회DB", true, true, true, true);
 		setVisible(true);
 		dto = new ScoreDto();
 		addInternalFrameListener(new InternalFrameAdapter() {
@@ -144,8 +161,9 @@ public class ScoreSearchDB extends JInternalFrame {
 						main.sid = new ScoreInputDB(main);
 						main.getDesktopPane().add(main.sid);
 						main.getDesktopPane().updateUI();
-						main.sid.toFront();
 					}
+					
+					main.sid.toFront();
 					
 					int row = table.getSelectedRow();
 					int serial = (Integer)table.getValueAt(row, 0);

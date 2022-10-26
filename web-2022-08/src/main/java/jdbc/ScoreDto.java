@@ -3,6 +3,7 @@ package jdbc;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashSet;
 import java.util.Vector;
 
 public class ScoreDto {
@@ -15,13 +16,12 @@ public class ScoreDto {
 			conn = new DBConn("mydb").getConn();
 			conn.setAutoCommit(false);
 			
-			String sql = "insert into score(serial, id, subject, score, mdate) "
-					   + "values(?, ?, ?, ?, now())";
+			String sql = "insert into score(id, subject, score, mdate) "
+					   + "values(?, ?, ?, now())";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, vo.getSerial());
-			ps.setString(2, vo.getId());
-			ps.setString(3, vo.getSubject());
-			ps.setDouble(4, vo.getScore());
+			ps.setString(1, vo.getId());
+			ps.setString(2, vo.getSubject());
+			ps.setDouble(3, vo.getScore());
 			
 			cnt = ps.executeUpdate();
 			if(cnt > 0) conn.commit();
@@ -51,7 +51,6 @@ public class ScoreDto {
 			ps.setString(2, vo.getSubject());
 			ps.setDouble(3, vo.getScore());
 			ps.setInt(4, vo.getSerial());
-			
 			cnt = ps.executeUpdate();
 			if(cnt > 0) conn.commit();
 			else        conn.rollback();
@@ -91,6 +90,7 @@ public class ScoreDto {
 	
 	public Vector<Vector> select(String findStr) {
 		Vector<Vector> list = new Vector<>();
+		Vector<Vector> temp = new Vector<>();
 		
 		try {
 			conn = new DBConn("mydb").getConn();
@@ -113,6 +113,14 @@ public class ScoreDto {
 				v.add(rs.getDouble("score"));
 				v.add(rs.getString("mdate"));
 				list.add(v);
+				/*
+				temp.add(v);
+				for(int i=0; i<temp.size(); i++) {
+					if( v.get(0) != Integer.toString(rs.getInt("serial")) ) {
+						list.add(v);
+					}
+				}
+				*/
 			}
 			
 			ps.close();
