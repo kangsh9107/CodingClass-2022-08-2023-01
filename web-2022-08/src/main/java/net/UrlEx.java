@@ -14,6 +14,8 @@ public class UrlEx {
 			URL url = new URL(domain);
 			InputStream is = url.openStream();
 			InputStreamReader isr = new InputStreamReader(is); // byte 스트림에서 character 스트림으로 바뀜
+			// cpu에 비해 주변 장치는 굉장히 느리다.
+			// 그래서 버퍼에 담고 cpu가 다른일도 할 수 있게 해준다.
 			BufferedReader br = new BufferedReader(isr);
 			String data = "";
 			
