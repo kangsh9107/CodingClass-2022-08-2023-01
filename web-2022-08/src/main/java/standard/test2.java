@@ -14,21 +14,20 @@ public class Test2 {
 		list.add("d");
 		
 		int i = 0;
-		int j = 0;
 		for(String s1 : list) {
-			j = 0;
 			System.out.println("i : " + i);
 			System.out.println(list);
-			/*
+			
+			list.remove("a");
+			i++;
+		}
+		
+		/*
 			for(String s2 : list) {
 				System.out.println("s2 : " + list.get(j));
 				j++;
 			}
-			*/
-			
-			list.remove(i);
-			i++;
-		}
+		 */
 	}
 
 }
