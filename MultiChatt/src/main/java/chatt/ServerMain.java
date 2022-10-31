@@ -7,11 +7,15 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.List;
 import java.util.Vector;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -25,15 +29,13 @@ import javax.swing.border.LineBorder;
 
 import org.json.simple.JSONObject;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-
 public class ServerMain extends JInternalFrame {
 	ServerSocket server;
 	ServerThread st;
 	Vector<ServerThread> clients = new Vector<>();
 	boolean flagServer;
-	Vector<String> users = new Vector<>();
+	//Vector<String> users = new Vector<>(); // 여기서 벡터는 시차가 생겨서 오류가 날 때 있고 안 날 때 있다
+	DefaultListModel userListModel = new DefaultListModel<String>();
 	
 	final static int SERVER_START = 1; // command는 이렇게 작성하는게 정석이다
 	final static int SERVER_STOP  = 2; // final로 선언해서 상수화 시킨다. 상수는 대문자로 작성하기때문에 카멜타입이 아니라 _를 사용한다
@@ -41,6 +43,7 @@ public class ServerMain extends JInternalFrame {
 	final static int LOGOUT       = 4;
 	final static int MESSAGE      = 5;
 	final static int USERS        = 6;
+	final static int WHISPER      = 7;
 	
 	private JPanel panel;
 	private JLabel lblNewLabel;
@@ -91,10 +94,11 @@ public class ServerMain extends JInternalFrame {
 						
 						server = new ServerSocket(5555);
 						flagServer = true;
+						
 						while(flagServer) {
 							Socket socket = server.accept();
 							
-							if(flagServer) {
+							if(flagServer) { // stop 눌렀을 때 블록킹모드 풀려고 자기 자신으로 접속 할 때 쓰레드를 만들지 않기 위해 if문 사용
 								st = new ServerThread(socket, ServerMain.this);
 								st.start();
 								clients.add(st);
@@ -111,6 +115,7 @@ public class ServerMain extends JInternalFrame {
 						
 						/* 2) ServerSocket 종료 */
 						server.close();
+						userListModel.clear();
 					} catch(Exception ex) {
 						ex.printStackTrace();
 					}
@@ -127,14 +132,14 @@ public class ServerMain extends JInternalFrame {
 			/* 1) 접속된 모든 클라이언트들에게 서버 중지 통보 */
 			JSONObject jData = new JSONObject();
 			jData.put("user", "server");
-			jData.put("command", "SERVER_STOP"); // jData.put("command", 2); 보다 명시적이다
+			jData.put("command", SERVER_STOP); // jData.put("command", 2); 보다 명시적이다
 			jData.put("message", "서버가 중지되었습니다.");
 			
 			for(ServerThread st : clients) {
 				//String msg = "SERVER_STOP";
 				//st.sendMsg(msg);
 				//System.out.println(jData.toJSONString());
-				st.bw.write(jData.toJSONString()); // {user:server, command:SERVER_STOP, ...} JSON구조가 아니면 파싱 불가능
+				st.bw.write(jData.toJSONString() + "\n"); // {user:server, command:SERVER_STOP, ...} JSON구조가 아니면 파싱 불가능
 				st.bw.flush();
 			}
 		} catch(Exception ex) {
@@ -146,9 +151,11 @@ public class ServerMain extends JInternalFrame {
 		btnStop.setEnabled(false);
 		btnSend.setEnabled(false);
 		btnWhisper.setEnabled(false);
+		userListModel.removeAllElements();
 		
 		/* 4) 서버를 중지하기 위한 가상의 클라이언트로 접속 */
 		flagServer = false;
+		
 		try {
 			Socket tempSocket = new Socket("127.0.0.1", 5555); // 127.0.0.1은 자기 자신이다
 		} catch(Exception ex) {
@@ -158,6 +165,7 @@ public class ServerMain extends JInternalFrame {
 	
 	public void send() {
 		String msg = tfMessage.getText();
+		tfMessage.setText("");
 		
 		JSONObject obj = new JSONObject();
 		obj.put("user", "server");
@@ -169,8 +177,32 @@ public class ServerMain extends JInternalFrame {
 		
 		for(ServerThread st : clients) {
 			try {
-				st.bw.write(obj.toJSONString());
-				st.bw.write("\n");
+				st.bw.write(obj.toJSONString() + "\n");
+				st.bw.flush();
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+	
+	public void sendWhisper() {
+		String msg = tfMessage.getText();
+		
+		JSONObject obj = new JSONObject();
+		obj.put("user", "server");
+		obj.put("command", ServerMain.WHISPER);
+		obj.put("message", msg);
+		
+		textArea.append(msg + "\n");
+		textArea.setCaretPosition(textArea.getText().length());
+		
+		List<String> receiveUsers = getList().getSelectedValuesList();
+		
+		for(ServerThread st : clients) {
+			if(!receiveUsers.contains(st.user)) continue;
+			
+			try {
+				st.bw.write(obj.toJSONString() + "\n");
 				st.bw.flush();
 			} catch(Exception ex) {
 				ex.printStackTrace();
@@ -184,7 +216,7 @@ public class ServerMain extends JInternalFrame {
 	public ServerMain() {
 		super("서버UI", true, true, true, true);
 		setVisible(true);
-		setBounds(100, 100, 600, 600);
+		setBounds(100, 100, 600, 400);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		getContentPane().add(getPanel(), BorderLayout.NORTH);
 		getContentPane().add(getPanel_1(), BorderLayout.SOUTH);
@@ -222,8 +254,7 @@ public class ServerMain extends JInternalFrame {
 			InetAddress ia;
 			try {
 				ia = InetAddress.getLocalHost();
-				String ip = ia.getHostAddress();
-				tfIp.setText(ip);
+				tfIp.setText(ia.getHostAddress());
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -288,7 +319,6 @@ public class ServerMain extends JInternalFrame {
 						//textArea.append(msg + "\n");
 						//st.sendMsgAll(msg);
 						send();
-						tfMessage.setText("");
 					}
 				}
 			});
@@ -307,7 +337,6 @@ public class ServerMain extends JInternalFrame {
 					//textArea.append(msg + "\n");
 					//st.sendMsgAll(msg);
 					send();
-					tfMessage.setText("");
 				}
 			});
 			btnSend.setBackground(new Color(0, 0, 0));
@@ -322,6 +351,11 @@ public class ServerMain extends JInternalFrame {
 	public JButton getBtnNewButton_2_1() {
 		if (btnWhisper == null) {
 			btnWhisper = new JButton("귓속말");
+			btnWhisper.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					sendWhisper();
+				}
+			});
 			btnWhisper.setBackground(new Color(0, 0, 0));
 			btnWhisper.setBorder(new LineBorder(new Color(255, 128, 0), 2));
 			btnWhisper.setForeground(new Color(255, 128, 0));
@@ -345,7 +379,7 @@ public class ServerMain extends JInternalFrame {
 		if (panel_3 == null) {
 			panel_3 = new JPanel();
 			panel_3.setBorder(new LineBorder(new Color(255, 128, 0), 2));
-			panel_3.setBounds(12, 10, 99, 481);
+			panel_3.setBounds(12, 10, 99, 281);
 			panel_3.setLayout(new BorderLayout(0, 0));
 			panel_3.add(getScrollPane(), BorderLayout.CENTER);
 		}
@@ -355,7 +389,7 @@ public class ServerMain extends JInternalFrame {
 		if (panel_4 == null) {
 			panel_4 = new JPanel();
 			panel_4.setBorder(new LineBorder(new Color(255, 128, 0), 2));
-			panel_4.setBounds(123, 10, 455, 481);
+			panel_4.setBounds(123, 10, 455, 281);
 			panel_4.setLayout(new BorderLayout(0, 0));
 			panel_4.add(getScrollPane_1(), BorderLayout.CENTER);
 		}
@@ -379,13 +413,13 @@ public class ServerMain extends JInternalFrame {
 	}
 	public JList getList() {
 		if (list == null) {
-			list = new JList();
+			list = new JList(userListModel);
 		}
 		
 		//users.add("Kim"); // JList에 잘 뜨는지 테스트
 		//users.add("Hong");
 		
-		list.setListData(users);
+		//list.setListData(users);
 		
 		return list;
 	}

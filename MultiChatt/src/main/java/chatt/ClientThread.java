@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.util.HashSet;
+import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -16,7 +16,7 @@ public class ClientThread extends Thread {
 	BufferedWriter bw;
 	BufferedReader br;
 	Socket socket;
-	boolean flag;
+	boolean flag = true;
 	
 	public ClientThread(Socket s, ClientMain m) {
 		this.main = m;
@@ -52,36 +52,49 @@ public class ClientThread extends Thread {
 		}
 		
 		flag = true;
+		
 		while(flag) {
 			try {
 				String msg = br.readLine();
 				//System.out.println("ClientThread : " + msg);
 				
+				if(msg == null) break;
+				String u = "";
+				
 				JSONObject obj = (JSONObject)jParser.parse(msg);
 
-				if(!obj.get("message").equals("")) {
-					main.getTextArea().append(obj.get("message") + "\n");
-				}
+				//if(!obj.get("message").equals("")) {
+				//	main.getTextArea().append(obj.get("message") + "\n");
+				//}
+				main.getTextArea().append(obj.get("user") + " : ");
+				main.getTextArea().append(obj.get("message") + "\n");
 				main.getTextArea()
 					.setCaretPosition(main.getTextArea().getText().length());
 				
 				Long o = (Long)obj.get("command");
+				
 				switch(o.intValue()) {
 				case ServerMain.SERVER_STOP:
 					flag = false;
 					break;
 				case ServerMain.USERS:
 					JSONArray array = (JSONArray)obj.get("data");
-					main.users.clear();
+					if(array == null) break;
+					main.userListModel.clear();
 					for(Object ob : array) {
-						main.users.add((String)ob);
+						main.userListModel.addElement((String)ob);
 					}
-					main.getList().setListData(main.users);
+					//main.getList().setListData(main.users);
 					break;
 				case ServerMain.LOGIN:
-					String u = (String)obj.get("user");
-					main.users.add(u);
-					main.getList().setListData(main.users);
+					u = (String)obj.get("user");
+					//main.users.add(u);
+					//main.getList().setListData(main.users);
+					main.userListModel.addElement(u);
+					break;
+				case ServerMain.LOGOUT:
+					u = (String)obj.get("user");
+					main.userListModel.removeElement(u);
 					break;
 				}
 			} catch(Exception ex) {
@@ -109,6 +122,20 @@ public class ClientThread extends Thread {
 			obj.put("user", main.getTfUser().getText());
 			obj.put("command", ServerMain.MESSAGE);
 			obj.put("message", msg);
+			bw.write(obj.toJSONString() + "\n");
+			bw.flush();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	public void sendWhisper(List<String> users, String msg) {
+		try {
+			JSONObject obj = new JSONObject();
+			obj.put("user", main.getTfUser().getText());
+			obj.put("command", ServerMain.WHISPER);
+			obj.put("message", msg);
+			obj.put("users", users);
 			bw.write(obj.toJSONString() + "\n");
 			bw.flush();
 		} catch(Exception ex) {

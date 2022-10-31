@@ -45,7 +45,7 @@ public class MyMultiChattMain extends JFrame {
 	 */
 	public MyMultiChattMain() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1400, 800);
+		setBounds(100, 100, 1500, 900);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

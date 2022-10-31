@@ -11,8 +11,10 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.List;
 import java.util.Vector;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -28,7 +30,8 @@ import org.json.simple.JSONObject;
 
 public class ClientMain extends JInternalFrame {
 	ClientThread ct;
-	Vector<String> users = new Vector<>();
+	//Vector<String> users = new Vector<>();
+	DefaultListModel userListModel = new DefaultListModel();
 	
 	private JPanel panel;
 	private JLabel lblip;
@@ -92,16 +95,20 @@ public class ClientMain extends JInternalFrame {
 		obj.put("command", ServerMain.LOGOUT);
 		obj.put("message", "난 이제 그만 갈게");
 		
-		ct.sendMsg(obj.toJSONString());
+		//ct.sendMsg(obj.toJSONString());
 		
 		// 2) 자신의 쓰레드인 ct 종료
 		try {
+			ct.bw.write(obj.toJSONString() + "\n");
+			ct.bw.flush();
+			ct.flag = false;
 			ct.br.close();
 			ct.bw.close();
 			ct.socket.close();
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
+		
 		ct = null;
 		
 		// 3) 버튼 상태 변경
@@ -109,6 +116,7 @@ public class ClientMain extends JInternalFrame {
 		btnDisconnect.setEnabled(false);
 		btnSend.setEnabled(false);
 		btnWhisper.setEnabled(false);
+		userListModel.clear();
 	}
 
 	/**
@@ -117,7 +125,7 @@ public class ClientMain extends JInternalFrame {
 	public ClientMain() {
 		super("클라이언트UI", true, true, true, true);
 		setVisible(true);
-		setBounds(100, 100, 600, 600);
+		setBounds(100, 100, 600, 400);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		getContentPane().add(getPanel(), BorderLayout.NORTH);
 		getContentPane().add(getPanel_1(), BorderLayout.SOUTH);
@@ -158,8 +166,7 @@ public class ClientMain extends JInternalFrame {
 			InetAddress ia;
 			try {
 				ia = InetAddress.getLocalHost();
-				String ip = ia.getHostAddress();
-				tfIp.setText(ip);
+				tfIp.setText(ia.getHostAddress());
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -252,6 +259,13 @@ public class ClientMain extends JInternalFrame {
 	public JButton getBtnWhisper() {
 		if (btnWhisper == null) {
 			btnWhisper = new JButton("귓속말");
+			btnWhisper.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String msg = tfMessage.getText();
+					List<String> users = getList().getSelectedValuesList();
+					ct.sendWhisper(users, msg);
+				}
+			});
 			btnWhisper.setBackground(new Color(0, 0, 0));
 			btnWhisper.setForeground(new Color(255, 128, 0));
 			btnWhisper.setBorder(new LineBorder(new Color(255, 128, 0), 2));
@@ -294,7 +308,7 @@ public class ClientMain extends JInternalFrame {
 		if (panel_3 == null) {
 			panel_3 = new JPanel();
 			panel_3.setBorder(new LineBorder(new Color(255, 128, 0), 2));
-			panel_3.setBounds(12, 10, 99, 481);
+			panel_3.setBounds(12, 10, 99, 281);
 			panel_3.setLayout(new BorderLayout(0, 0));
 			panel_3.add(getScrollPane(), BorderLayout.CENTER);
 		}
@@ -310,7 +324,7 @@ public class ClientMain extends JInternalFrame {
 	}
 	public JList getList() {
 		if (list == null) {
-			list = new JList();
+			list = new JList(userListModel);
 		}
 		return list;
 	}
@@ -318,7 +332,7 @@ public class ClientMain extends JInternalFrame {
 		if (panel_4 == null) {
 			panel_4 = new JPanel();
 			panel_4.setBorder(new LineBorder(new Color(255, 128, 0), 2));
-			panel_4.setBounds(123, 10, 455, 481);
+			panel_4.setBounds(123, 10, 455, 281);
 			panel_4.setLayout(new BorderLayout(0, 0));
 			panel_4.add(getScrollPane_1(), BorderLayout.CENTER);
 		}
