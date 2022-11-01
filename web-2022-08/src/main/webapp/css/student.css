@@ -7,38 +7,45 @@
 student_input_form.jsp
  */
 div.stdInputWrap{
-	padding: 10px;
-	height: 500px;
-	margin-left: 24%;
+    height: 390px;
+    width: 505px;
+    margin: auto;
+    margin-top: 25px;
+    border: 2px solid black;
+    background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    border-radius: 30px;
 }
 form.stdInput{
-	position: relative;
-	padding: 10px;
+    position: relative;
+    padding: 0px;
+    border-radius: 50px;
 }
 form h2{
-	margin-left: 120px;
-	display: inline-block;
-	margin-left: 24%;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
 }
 form span{
-	padding: 2px;
-	margin-right: 5px;
-	width: 210px;
-	height: 15px;
-	display: inline-block;
-	text-align: right;
+    padding: 2px;
+    margin-right: 5px;
+    width: 95px;
+    height: 5px;
+    display: inline-block;
+    text-align: right;
 }
 form label{
 	display: inline-block;
 }
 form .empty{
-	position: absolute;
-	left: 117px;
+    position: absolute;
+    width: 92%;
+    text-align: center;
 }
 form ul{
-	list-style: none;
-	display: inline-block;
-	width: 251px;
+    list-style: none;
+    display: inline-block;
+    width: 136px;
 }
 form li{
 	display: inline-block;
@@ -62,8 +69,10 @@ a:hover{
 }
 
 input[name="btnFindZip"] {
-	height: 30px;
-	font-size: 11pt;
+    height: 22px;
+    font-size: 11pt;
+    padding: 0px;
+    vertical-align: bottom;
 }
 
 /* 

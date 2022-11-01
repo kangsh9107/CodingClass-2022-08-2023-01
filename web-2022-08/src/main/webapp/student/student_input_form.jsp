@@ -35,7 +35,7 @@
 		<span>상세 주소</span>
 		<input type='search' name='address2' size='50'/><br/>
 		<span>이메일</span>
-		<input type='search' name='email' size='40' autocomplete='off' onchange='ChkEmail(this.form)'/><br/><br/>
+		<input type='search' name='email' size='40' autocomplete='off' onchange='ChkEmail(this.form)'/><br/>
 		<span class='empty'>
 			<ul>
 			  <li><a href='#' title='준비중 입니다.' onclick='return ChkInput(this.form)'>저장</a></li>

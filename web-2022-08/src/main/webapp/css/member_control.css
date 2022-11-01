@@ -1,30 +1,30 @@
 @charset "UTF-8";
 .main_member_control{
-	width: 1200px;
-	height: 420px;
-	margin: auto;
-	margin-top: 23px;
-	border: 4px outset #aaa;
-	border-radius: 15px;
-	box-shadow: 3px 3px 5px #999;
-	overflow: auto;
-	position: relative;
-	box-sizing: border-box;
+	width: 905px;
+    height: 335px;
+    margin: auto;
+    margin-top: 20px;
+    border: 2px solid cadetblue;
+    border-radius: 15px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    overflow: auto;
+    position: relative;
+    background-color: #EEEEEE;
 }
 .main_title_member_control{
-	font-size: 25pt;
-	font-weight: bolder;
-	text-align: center;
-	margin-bottom: 20px;
+    font-size: 20pt;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 5px;
 }
 .frm_member_control{
-	width: 430px;
+    width: 430px;
     float: left;
-    background-color: #ccc;
+    background-color: #829460;
     border-radius: 10px;
     height: 170px;
     padding-top: 0px;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 #left_member_control{
 	display: inline-block;
@@ -63,24 +63,24 @@ input[name='name']{
 
 #list_member_control{
 	float: right;
-	width: 700px;
-	margin-right: 20px;
+    width: 435px;
+    margin-right: 10px;
 }
 #title_member_control{
-	background-color: #444;
-	color: #fff;
-	padding: 2px 30px;
-	border-radius: 5px;
+    background-color: #674747;
+    color: #fff;
+    padding: 2px;
+    border-radius: 5px;
 }
 #list_member_control span{
 	display: inline-block;
 }
-.span_id_member_control{ width: 120px; }
-.span_name_member_control{ width: 150px; }
-.span_gender_member_control{ width: 100px; }
-.span_phone_member_control{ width: 200px; }
+.span_id_member_control{ width: 90px; margin-left: 10px; }
+.span_name_member_control{ width: 110px; }
+.span_gender_member_control{ width: 50px; }
+.span_phone_member_control{ width: 150px; }
 #items_member_control{
-	padding: 2px 30px;
+	padding: 2px;
 }
 #items_member_control>div:last-child{
 	border-bottom: 2px dotted #aaa;

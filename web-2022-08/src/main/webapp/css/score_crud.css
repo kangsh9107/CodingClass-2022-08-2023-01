@@ -8,7 +8,7 @@
 .main_score_crud {
   padding: 20px;
   margin: auto;
-  margin-top: 80px;
+  margin-top: 20px;
   justify-content: space-between;
   width: 540px;
   min-height: 250px;
@@ -19,7 +19,7 @@
   background-size: 100% 100%;
   border-radius: 15px;
   color: #fff;
-  box-shadow: 8px 8px 3px #888;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   text-shadow: 5px 5px 3px #888;
   border: 2px solid #fff;
 }
