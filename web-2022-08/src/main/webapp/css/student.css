@@ -6,16 +6,19 @@
 /* 
 student_input_form.jsp
  */
-
-form.student-input{
+div.stdInputWrap{
+	padding: 10px;
+	height: 500px;
+	margin-left: 24%;
+}
+form.stdInput{
 	position: relative;
 	padding: 10px;
-	margin: 20px auto;
-	width: 800px;
 }
 form h2{
 	margin-left: 120px;
 	display: inline-block;
+	margin-left: 24%;
 }
 form span{
 	padding: 2px;
@@ -35,7 +38,7 @@ form .empty{
 form ul{
 	list-style: none;
 	display: inline-block;
-	width: 256px;
+	width: 251px;
 }
 form li{
 	display: inline-block;
@@ -51,11 +54,16 @@ form a{
 	display: inline-block;
 }
 a{
-	text-decoration: none;
+	text-decoration: none !important;
 	display: inline-block;
 }
 a:hover{
 	background-color: #ccc;
+}
+
+input[name="btnFindZip"] {
+	height: 30px;
+	font-size: 11pt;
 }
 
 /* 

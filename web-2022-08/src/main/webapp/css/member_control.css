@@ -1,93 +1,98 @@
 @charset "UTF-8";
-body{
-	margin: 0px;
-	padding: 0px;
-	box-sizing: border-box;
-}
-main{
+.main_member_control{
 	width: 1200px;
-	min-height: 250px;
-	margin: 30px auto;
+	height: 420px;
+	margin: auto;
+	margin-top: 23px;
 	border: 4px outset #aaa;
-	padding: 20px;
 	border-radius: 15px;
 	box-shadow: 3px 3px 5px #999;
 	overflow: auto;
 	position: relative;
+	box-sizing: border-box;
 }
-main .main_title{
+.main_title_member_control{
 	font-size: 25pt;
 	font-weight: bolder;
 	text-align: center;
 	margin-bottom: 20px;
 }
-main form{
+.frm_member_control{
 	width: 430px;
     float: left;
     background-color: #ccc;
     border-radius: 10px;
-    padding: 20px;
     height: 170px;
     padding-top: 0px;
+    margin-left: 20px;
 }
-form>#left{
+#left_member_control{
 	display: inline-block;
 }
-form>#right{
+#right_member_control{
 	display: inline-block;
 }
-form span{
+.span_member_control{
 	display: inline-block;
 	width: 80px;
 }
-form input[name='id']{
+input[name='id']{
 	width: 100px;
 }
-form input[name='mName']{
+input[name='name']{
 	width: 120px;
 }
-form input[type='file']{
+#photo_file_member_control{
 	display: none;
 }
-#photo{
-    width: 150px;
+#photo_member_control{
+	width: 150px;
     height: 150px;
     border: 2px solid #fff;
     border-radius: 10px;
-    margin-top: 18px;
-    margin-bottom: -11px;
-    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: -15px;
+    margin-right: 1px;
+    margin-left: 10px;
 }
-#photo:hover{
+#photo_member_control:hover{
 	cursor: pointer;
 }
 
 /* 목록 표시 부분------------ */
 
-#list{
+#list_member_control{
 	float: right;
 	width: 700px;
+	margin-right: 20px;
 }
-#list>#title{
+#title_member_control{
 	background-color: #444;
 	color: #fff;
 	padding: 2px 30px;
 	border-radius: 5px;
 }
-#list span{
+#list_member_control span{
 	display: inline-block;
 }
-#list span.id{ width: 120px; }
-#list span.name{ width: 150px; }
-#list span.gender{ width: 100px; }
-#list span.phone{ width: 200px; }
-#items{
+.span_id_member_control{ width: 120px; }
+.span_name_member_control{ width: 150px; }
+.span_gender_member_control{ width: 100px; }
+.span_phone_member_control{ width: 200px; }
+#items_member_control{
 	padding: 2px 30px;
 }
-#items>div:last-child{
+#items_member_control>div:last-child{
 	border-bottom: 2px dotted #aaa;
 }
-#items>.item:hover{
+#items_member_control>.item_member_control:hover{
 	background-color: #ddd;
 	cursor: pointer;
+}
+a{
+	text-decoration: none !important;
+	display: inline-block;
+}
+a:hover{
+	background-color: #ccc;
 }

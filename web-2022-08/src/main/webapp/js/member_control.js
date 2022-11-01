@@ -9,16 +9,16 @@ let data = [
 ];
 let template;
 function list(){
-	let items = document.querySelector('#items');
+	let items = document.querySelector('#items_member_control');
 	items.innerHTML = '';
 	for(v of data){
 		template = 
 			`
-			<div class='item' onclick='view("${v.id}")'>
-				<span class='id'>${v.id}</span>
-				<span class='name'>${v.name}</span>
-				<span class='gender'>${v.gender}</span>
-				<span class='phone'>${v.phone}</span>
+			<div class='item_member_control' onclick='view("${v.id}")'>
+				<span class='span_id_member_control'>${v.id}</span>
+				<span class='span_name_member_control'>${v.name}</span>
+				<span class='span_gender_member_control'>${v.gender}</span>
+				<span class='span_phone_member_control'>${v.phone}</span>
 			</div>
 			`
 		items.innerHTML += template;
@@ -90,14 +90,15 @@ function add(frm){
 
 	data.push(v);  // 배열 뒤에 추가
 	template = 
-		`
-		<div class='item' onclick='view("${v.id}")'>
-			<span class='id'>${v.id}</span>
-			<span class='name'>${v.name}</span>
-			<span class='gender'>${v.gender}</span>
-			<span class='phone'>${v.phone}</span>
-		</div>
-		`
+			`
+			<div class='item_member_control' onclick='view("${v.id}")'>
+				<span class='span_id_member_control'>${v.id}</span>
+				<span class='span_name_member_control'>${v.name}</span>
+				<span class='span_gender_member_control'>${v.gender}</span>
+				<span class='span_phone_member_control'>${v.phone}</span>
+			</div>
+			`
+	let items = document.querySelector('#items_member_control');
 	items.innerHTML += template;  // 목록화면 뒤에 추가
 }
 // 수정
@@ -135,8 +136,8 @@ function deleteFunc(frm){
 }
 
 // 이미지 미리보기
-let btnFile = document.querySelector('#photo_file');
-let photo = document.querySelector('#photo');
+let btnFile = document.querySelector('#photo_file_member_control');
+let photo = document.querySelector('#photo_member_control');
 
 photo.onclick = function() {
 	btnFile.click();

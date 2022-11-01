@@ -4,15 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>jsp/practice/logoutP221031.jsp</title>
+<title>jsp/dynamic_sub.jsp</title>
 </head>
 <body>
 
 <%
-	
-	session.setAttribute("mId", null);
-	response.sendRedirect("loginP221031.jsp");
+	String url = request.getParameter("irum");
 %>
+<div>
+	나의 이름은 "<%=url %>" 입니다.
+</div>
 
 </body>
 </html>

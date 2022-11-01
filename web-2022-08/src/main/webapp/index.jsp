@@ -9,17 +9,32 @@
 <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+<%
+String inc22 = "temp.html";
+if(request.getParameter("inc") != null) {
+	inc22 = request.getParameter("inc");
+}
 
-<main>
-<div class='login'>로그인/로그아웃</div>
-<header>
+String sessionId = (String)session.getAttribute("sessionId");
+%>
+
+<main class='main_index'>
+<div class='login_index'>
+	<%if(sessionId == null) { %>
+		<a href='index.jsp?inc=member/login.jsp'>로그인</a>
+	<%} else { %>
+		[<%=sessionId %> 님 방가]
+		<a href='member/logout.jsp'>로그아웃</a>
+	<%} %>
+</div>
+<header class='header_index'>
 	<img class='logo' src='images/logo1.png' alt='logo'/>
-	<div class='corpname'>Web Project</div>
-	<nav>
-		<ul>
-			<li><a href='student/student_list.jsp' title='학생정보 조회'>학생관리</a></li>
-			<li><a href='javascript/score_crud.html'>성적관리</a></li>
-			<li><a href='javascript/member_control.html'>회원관리</a></li>
+	<div class='corpname_index'>Web Project</div>
+	<nav class='nav_index'>
+		<ul class='ul_index'>
+			<li><a href='index.jsp?inc=student/student_input_form.jsp' title='학생정보 조회'>학생관리</a></li>
+			<li><a href='index.jsp?inc=javascript/score_crud.html'>성적관리</a></li>
+			<li><a href='index.jsp?inc=member/member_control.html'>회원관리</a></li>
 			<li><a href='#'>제품관리</a></li>
 			<li><a href='#'>생산관리</a></li>
 			<li><a href='#'>방명록</a></li>
@@ -27,10 +42,10 @@
 		</ul>
 	</nav>
 </header>
-<div class='content'>
-	메인 컨텐츠
+<div class='content_index'>
+	<jsp:include page="<%=inc22 %>"/>
 </div>
-<footer>
+<footer class='footer_index'>
 	대한민국
 </footer>
 </main>

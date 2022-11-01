@@ -5,9 +5,10 @@
   margin: 0;
 }
 
-main {
+.main_score_crud {
   padding: 20px;
-  margin: 20px 20px auto;
+  margin: auto;
+  margin-top: 80px;
   justify-content: space-between;
   width: 540px;
   min-height: 250px;
@@ -23,7 +24,7 @@ main {
   border: 2px solid #fff;
 }
 
-main>#left {
+.main_score_crud>#left {
   display: inline-block;
   position: absolute;
   left: 20px;
@@ -31,68 +32,68 @@ main>#left {
   margin-top: -3px;
 }
 
-h2 {
+.main_score_crud h2 {
   margin-bottom: 10px;
 }
 
-h2#h2_right {
+.main_score_crud h2#h2_right {
   margin-bottom: 7px;
 }
 
-form>span {
+.main_score_crud form>span {
   display: inline-block;
   width: 50px;
   text-align: right;
 }
 
-main>#right {
+.main_score_crud>#right {
   float: right;
   margin-top: -10px;
   width: 240px;
 }
 
-#right>div {
+.main_score_crud #right>div {
   margin-bottom: 4px;
 }
 
-#right>div.title {
+.main_score_crud #right>div.title {
   border-bottom: 1px solid #fff;
 }
 
-.items:last-child {
+.main_score_crud .items:last-child {
   padding-bottom: 10px;
 }
 
-.items>.item:hover {
+.main_score_crud .items>.item:hover {
   cursor: pointer;
   background-color: #888;
 }
 
-div.title:last-child {
+.main_score_crud div.title:last-child {
   border-bottom: 1.5px dotted #fff;
 }
 
-#right span {
+.main_score_crud #right span {
   display: inline-block;
   width: 55px;
   font-size: 12pt;
   font-weight: 400;
 }
 
-#right span.subject {
+.main_score_crud #right span.subject {
   width: 75px;
 }
 
-#right span.score {
+.main_score_crud #right span.score {
   width: 35px;
 }
 
-hr {
+.main_score_crud hr {
   margin-top: 10px;
   margin-bottom: 5px;
 }
 
-input[type="text"] {
+.main_score_crud input[type="text"] {
   display: inline-block;
   width: 100px;
   height: 23px;
@@ -103,12 +104,12 @@ input[type="text"] {
   font-size: 10pt;
 }
 
-input[name="findText"] {
+.main_score_crud input[name="findText"] {
   width: 138px;
   text-align: left;
 }
 
-input[type="button"] {
+.main_score_crud input[type="button"] {
   display: inline-block;
   width: 46px;
   height: 22.5px;
@@ -117,30 +118,30 @@ input[type="button"] {
   font-size: 10pt;
 }
 
-input[name="btnFindSerial"] {
+.main_score_crud input[name="btnFindSerial"] {
   margin-top: 10px;
   position: absolute;
   left: 159px;
   top: 33.5px;
 }
 
-input[name="btnFilter"] {
+.main_score_crud input[name="btnFilter"] {
   position: absolute;
   left: 418px;
   top: 45.5px;
 }
 
-input[name="btnFilterClear"] {
+.main_score_crud input[name="btnFilterClear"] {
   position: absolute;
   left: 468px;
   top: 45.5px;
 }
 
-input[name="btnSave"] {
+.main_score_crud input[name="btnSave"] {
   margin-left: 6px;
 }
 
-select {
+.main_score_crud select {
   display: inline-block;
   width: 100px;
   height: 23px;
@@ -150,7 +151,7 @@ select {
   text-align: right;
 }
 
-main>footer {
+.main_score_crud>footer {
   position: absolute;
   bottom: 0;
   background-color: #000;
@@ -162,4 +163,12 @@ main>footer {
   text-align: center;
   text-shadow: 0 0 0 #fff;
   font-size: 11pt;
+}
+
+a{
+	text-decoration: none !important;
+	display: inline-block;
+}
+a:hover{
+	background-color: #ccc;
 }

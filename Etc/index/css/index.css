@@ -12,8 +12,24 @@ a:hover {
     cursor: pointer;
 }
 
+nav {
+    border-radius: 10px;
+}
+
 ul {
     list-style: none;
+}
+
+ul:hover {
+    border-radius: 10px;
+}
+
+ul:first-child:hover {
+    border-radius: 10px;
+}
+
+ul:first-child>a:hover {
+    border-radius: 10px;
 }
 
 li {
@@ -21,13 +37,16 @@ li {
 }
 
 main {
-    margin: 20px 20px auto;
+    margin: 20px auto;
     padding: 5px;
     border: 3px solid #00f;
     width: 1300px;
-    min-height: 450px;
+    min-height: 520px;
     overflow: auto;
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 40px 150px 400px 43px;
 }
 
 main>#login {
@@ -54,6 +73,7 @@ header>#corpName {
     display: inline-block;
     font-size: 20px;
     font-weight: bold;
+    font-family: Times New Roman;
 }
 
 header>nav {
@@ -83,7 +103,7 @@ main>#content {
     border: 3px solid #00f;
     padding: 5px;
     margin-top: 5px;
-    min-height: 201px;
+    min-height: 275px;
 }
 
 main>footer {

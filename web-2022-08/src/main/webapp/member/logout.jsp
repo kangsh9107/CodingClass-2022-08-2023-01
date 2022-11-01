@@ -4,15 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>jsp/practice/logoutP221031.jsp</title>
+<title>member/logout.jsp</title>
 </head>
 <body>
-
 <%
-	
-	session.setAttribute("mId", null);
-	response.sendRedirect("loginP221031.jsp");
+session.setAttribute("sessionId", null);
+response.sendRedirect("../index.jsp");
 %>
-
 </body>
 </html>
