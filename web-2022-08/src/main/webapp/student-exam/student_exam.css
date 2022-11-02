@@ -114,3 +114,6 @@ list
 	background-color: #44f;
 	color: #fff;
 }
+input[name="nowPage"] {
+	display: none;
+}

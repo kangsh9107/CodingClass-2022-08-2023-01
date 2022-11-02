@@ -32,7 +32,7 @@ String sessionId = (String)session.getAttribute("sessionId");
 	<div class='corpname_index'>Web Project</div>
 	<nav class='nav_index'>
 		<ul class='ul_index'>
-			<li><a href='index.jsp?inc=student/student_input_form.jsp' title='학생정보 조회'>학생관리</a></li>
+			<li><a href='index.jsp?inc=student-exam/student_list_exam.jsp' title='학생정보 조회'>학생관리</a></li>
 			<li><a href='index.jsp?inc=javascript/score_crud.html'>성적관리</a></li>
 			<li><a href='index.jsp?inc=member/member_control.html'>회원관리</a></li>
 			<li><a href='#'>제품관리</a></li>

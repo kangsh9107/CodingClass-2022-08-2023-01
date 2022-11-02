@@ -6,14 +6,14 @@
 <meta charset="UTF-8">
 <meta name="VIEWPORT" content="width=device-width, initial-scale=1.0">
 <title>student_list.jsp</title>
-<link rel="stylesheet" href="../css/student.css">
+<link rel="stylesheet" href="css/student.css">
 </head>
 <body>
 
 <main class='student-list'>
 	<div class='student-list-title'>학생정보 조회</div>
 	<nav class='student-list-nav'>
-		<span><a href='student_input_form.jsp' title='학생정보 입력'>입력</a></span>
+		<span><a href='student/student_input_form.jsp' title='학생정보 입력'>입력</a></span>
 		<input type='text' name='student-list' size='30px'/>
 		<span><a href='#' title='준비중 입니다.'>조회</a></span>
 	</nav>
@@ -33,7 +33,7 @@
 	</header>
 	<div class='student-list-content'>
 		<div>
-			<a href='student_modify.jsp'>
+			<a href='student/student_modify.jsp'>
 			<ul>
 			  <li class='student-list-cols1'>1</li>
 			  <li class='student-list-cols2'>a002</li>

@@ -67,18 +67,22 @@ a{
 a:hover{
 	background-color: #ccc;
 }
-
 input[name="btnFindZip"] {
     height: 22px;
     font-size: 11pt;
     padding: 0px;
     vertical-align: bottom;
 }
-
+input[name="findStr"] {
+	display: none;
+}
+input[name="nowPage"] {
+	display: none;
+}
 /* 
 student_list.jsp
  */
-
+/*
 main.student-list{
 	position: relative;
 	padding: 0px;
@@ -190,6 +194,7 @@ footer.student-list-footer div{
 	text-align: center;
 	border-radius: 20px;
 }
+*/
 
 /* 
 student_modify.jsp

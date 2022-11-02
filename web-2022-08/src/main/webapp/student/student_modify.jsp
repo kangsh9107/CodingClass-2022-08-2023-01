@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="VIEWPORT" content="width=device-width, initial-scale=1.0">
 <title>student_modify.jsp</title>
-<link rel="stylesheet" href="../css/student.css">
+<link rel="stylesheet" href="css/student.css">
 <script src='//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js'></script>
 </head>
 <body>
