@@ -39,13 +39,14 @@ form label{
 }
 form .empty{
     position: absolute;
-    width: 92%;
     text-align: center;
 }
 form ul{
-    list-style: none;
+	list-style: none;
     display: inline-block;
-    width: 136px;
+    width: 180px;
+    margin: auto;
+    margin-left: 125px;
 }
 form li{
 	display: inline-block;
@@ -199,3 +200,12 @@ footer.student-list-footer div{
 /* 
 student_modify.jsp
  */
+
+.stdInfoModify {
+	width: 480px;
+	margin: auto;
+    border: 2px solid black;
+    background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    border-radius: 30px;
+}

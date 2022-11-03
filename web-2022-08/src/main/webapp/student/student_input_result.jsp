@@ -24,17 +24,17 @@ if(!b) { %>
 		alert('자료 저장 오류');
 	</script>
 <%} %>
-<script>
-	let frm = document.frm;
-	frm.action = "index.jsp?inc=student/student_list.jsp";
-	frm.submit();
-</script>
 
 <form name='frm' method='post'>
-	<input type='text' name='findStr' value="<%=pageVo.getFindStr() %>"/>
-	<input type='text' name='nowPage' value="<%=pageVo.getNowPage() %>"/>
+	<input type='text' name='findStr' value="<%=pageVo.getFindStr()%>"/>
+	<input type='text' name='nowPage' value="<%=pageVo.getNowPage()%>"/>
 </form>
 
+<script>
+	let frm = document.frm;
+	frm.action = 'index.jsp?inc=student-exam/student_list_exam.jsp';
+	frm.submit();
+</script>
 <!-- 
 <ul>
 	<li>id : <%//=studentVo.getId() %></li>

@@ -75,7 +75,8 @@ content
  */
 
 .content_index{
-	padding: 5px !important;
+	padding-top: 20px !important;
+	padding-bottom: 100px !important;
 	width: 100% !important;
 	min-height: 495px !important;
 	overflow: auto !important;

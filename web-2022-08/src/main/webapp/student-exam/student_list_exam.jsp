@@ -45,7 +45,7 @@ List<StudentVo> list = dao.select(pageVo);
 		<%for(int i=0; i<list.size(); i++) {
 			StudentVo v = list.get(i);
 		%>
-			<li class='item'>
+			<li class='item' onclick="view('<%=v.getId() %>')"> <!-- v.getId()가 문자여서 "" 안에 넣어준다 -->
 				<span class='no'><%=i + 1 %></span>
 				<span class='id'><%=v.getId() %></span>
 				<span class='mName'><%=v.getName() %></span>
@@ -57,16 +57,19 @@ List<StudentVo> list = dao.select(pageVo);
 			</li>
 		<%} %>
 		<li class='btnPage'> <!-- page이동 버튼 -->
-			<input type='button' value='처음'/>
-			<input type='button' value='이전'/>
+			<%if(pageVo.getStartPage() > 1) { %>
+			<input type='button' name='btnStart' value='처음' onclick='movePage(1)'/>
+			<input type='button' name='btnPre' value='이전' onclick='movePage(<%=pageVo.getStartPage()-1 %>)'/>
+			<%} %>
 			
-			<input type='button' value='1'/>
-			<input type='button' value='2'/>
-			<input type='button' value='3'/>
-			<input type='button' value='4'/>
+			<%for(int i=pageVo.getStartPage(); i<=pageVo.getEndPage(); i++) { %>
+				<input type='button' value='<%=i %>' onclick='movePage(<%=i %>)'/>
+			<%} %>
 			
-			<input type='button' value='다음'/>
-			<input type='button' value='맨끝'/>
+			<%if(pageVo.getEndPage() < pageVo.getTotPage()) {%>
+			<input type='button' name='btnNext' value='다음' onclick='movePage(<%=pageVo.getEndPage()+1 %>)'/>
+			<input type='button' name='btnEnd' value='맨끝' onclick='movePage(<%=pageVo.getTotPage() %>)'/>
+			<%} %>
 		</li>
 	</ul>
 </div>

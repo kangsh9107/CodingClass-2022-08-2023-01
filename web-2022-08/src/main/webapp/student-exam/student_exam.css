@@ -39,7 +39,7 @@ list
 	box-shadow: 8px 8px 3px #888;
 	padding: 20px;
 	margin: 20px auto;
-	width: 1100px;
+	width: 995px;
 }
 #std_list>h2{
 	text-align: center;
@@ -70,7 +70,7 @@ list
 	display: inline-block;
 }
 #std_list li>span.no{
-	width: 80px;
+	width: 50px;
 	text-align: right;
 	margin-right: 20px;
 }
@@ -97,7 +97,7 @@ list
 	width: 190px;
 }
 #std_list li>span.post{
-	width: 80px;
+	width: 83px;
 }
 #std_list li.btnPage{
 	text-align: center;
@@ -114,6 +114,8 @@ list
 	background-color: #44f;
 	color: #fff;
 }
+/*
 input[name="nowPage"] {
 	display: none;
 }
+*/

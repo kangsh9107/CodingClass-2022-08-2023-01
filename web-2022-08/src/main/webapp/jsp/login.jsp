@@ -25,7 +25,7 @@
 	// jsp 로그인 구현
 	// 1) 아이디, 암호를 입력
 	// 2) 로그인 전후의 UI
-
+	String test = "테스트";
 	if(request.getMethod().equals("POST")) { // POST는 자바에서 상수기 때문에 대문자로 작성한다
 		String mId = request.getParameter("mId"); // form의 id를 get
 		
@@ -33,9 +33,10 @@
 		boolean b = l.login(mId, "");
 		if(b) {
 			session.setAttribute("mId", mId);
-			session.setMaxInactiveInterval(1); // 초단위로 입력한다. 보통 로그인은 30분, 은행 로그인은 5분마다 로그인 갱신할지 물어보고 안하면 세션 지워짐
+			//session.setMaxInactiveInterval(1); // 초단위로 입력한다. 보통 로그인은 30분, 은행 로그인은 5분마다 로그인 갱신할지 물어보고 안하면 세션 지워짐
 		} else {
 			out.print("<script>alert('저리가')</script>");
+			test = "ok";
 		}
 		
 		//session.setAttribute("mId", mId);
@@ -45,6 +46,7 @@
 %>
 
 <form name="frm_login" method="post">
+	<span><%=test %></span>
 	<%if(sessionId == null) { %>
 	<!-- 로그인 전 -->
 	<span>아이디</span>
