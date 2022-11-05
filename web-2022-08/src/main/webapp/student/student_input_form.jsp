@@ -26,9 +26,9 @@
 		<label>남자<input type='radio' name='gender' value='m' checked/></label>
 		<label>여자<input type='radio' name='gender' value='f'/></label><br/>
 		<span>암호</span>
-		<input type='password' name='pwd' size='30' onchange='ChkPwd(this.form)' value='1111'/><br/>
+		<input type='password' name='pwd' size='30' onchange='ChkPwd(this.form)' value='1111' autocomplete='off'/><br/>
 		<span>암호 확인</span>
-		<input type='password' name='pwd2' size='30' onchange='ChkPwd(this.form)' value='1111'/><br/>
+		<input type='password' name='pwd2' size='30' onchange='ChkPwd(this.form)' value='1111' autocomplete='off'/><br/>
 		<span>연락처</span>
 		<input type='search' name='phone' size='30' placeholder='-까지 입력' autocomplete='off' onchange='ChkPhone(this.form)' value='010-1234-1234'/><br/>
 		<span>우편번호</span>

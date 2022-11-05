@@ -36,9 +36,9 @@ StudentVo vo = dao.view(sVo.getId());
 		<label>남자<input type='radio' name='gender' value='m'/></label>
 		<label>여자<input type='radio' name='gender' value='f'/></label><br/>
 		<span>암호</span>
-		<input type='password' name='pwd'/><br/>
+		<input type='password' name='pwd' autocomplete='off'/><br/>
 		<span>암호확인</span>
-		<input type='password' name='pwd2'/><br/>
+		<input type='password' name='pwd2' autocomplete='off'/><br/>
 		<span>연락처</span>
 		<input type='search' name='phone' value='<%=vo.getPhone()%>' size='30' placeholder='-까지 입력' autocomplete='off' onchange='ChkPhone(this.form)'/><br/>
 		<span>우편번호</span>
