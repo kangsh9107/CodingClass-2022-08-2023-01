@@ -8,13 +8,15 @@
 let frmInput = document.stdInput;
 
 if(frmInput != null) {
+	// Servlet을 직접 호출하지 않고 useBean으로 객체를 만든 후
+	// Servlet을 호출하는 result.jsp를 호출
 	frmInput.btnSave.addEventListener('click', function() {
-		frmInput.action = 'index.jsp?inc=student/student_input_result.jsp';
+		frmInput.action = 'result.jsp?job=insertR';
 		frmInput.submit();
 	});
 	
 	frmInput.btnCancel.addEventListener('click', function() {
-		frmInput.action = 'index.jsp?inc=student-exam/student_list_exam.jsp';
+		frmInput.action = 'student.do?job=select';
 		frmInput.submit();
 	});
 }
@@ -24,25 +26,25 @@ let frmSearch = document.frm_search;
 
 if(frmSearch != null) {
 	frmSearch.btnInsert.addEventListener('click', function() {
-		frmSearch.action = 'index.jsp?inc=student/student_input_form.jsp';
+		frmSearch.action = 'student.do?job=insert';
 		frmSearch.submit();
 	});
 	
 	frmSearch.btnSelect.addEventListener('click', function() {
-		frmSearch.action = 'index.jsp?inc=student-exam/student_list_exam.jsp';
+		frmSearch.action = 'student.do?job=select';
 		frmSearch.nowPage.value = 1; // 어떤 페이지에서 조회를 누르던 1페이지부터 보여주기 위해서.
 		frmSearch.submit();
 	});
 }
 
 function movePage(nowPage) {
-	frmSearch.action = 'index.jsp?inc=student-exam/student_list_exam.jsp';
+	frmSearch.action = 'student.do?job=select';
 	frmSearch.nowPage.value = nowPage;
 	frmSearch.submit();
 }
 
 function view(id) {
-	frmSearch.action = 'index.jsp?inc=student/student_modify.jsp&id=' + id; // 1) get타입
+	frmSearch.action = 'student.do?job=update&id=' + id; // 1) get타입
 	//frmSearch.id.value = id; // 2)
 	frmSearch.submit();
 }
@@ -55,7 +57,7 @@ let btnList = document.querySelector('#btnList');
 if(btnModify != null) {
 	btnModify.addEventListener('click', function() {
 		let frm = document.stdInfoModify;
-		frm.action = 'index.jsp?inc=student/student_modify_result.jsp';
+		frm.action = 'result.jsp?job=updateR';
 		frm.submit();
 	});
 }
@@ -63,7 +65,7 @@ if(btnModify != null) {
 if(btnDelete != null) {
 	btnDelete.addEventListener('click', function() {
 		let frm = document.stdInfoModify;
-		frm.action = 'index.jsp?inc=student/student_delete_result.jsp';
+		frm.action = 'result.jsp?job=deleteR';
 		frm.submit();
 	});
 }
@@ -71,7 +73,7 @@ if(btnDelete != null) {
 if(btnList != null) {
 	btnList.addEventListener('click', function() {
 		let frm = document.stdInfoModify;
-		frm.action = 'index.jsp?inc=student-exam/student_list_exam.jsp';
+		frm.action = 'student.do?job=select';
 		frm.submit();
 	});
 }

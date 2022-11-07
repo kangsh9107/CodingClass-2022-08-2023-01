@@ -34,9 +34,10 @@ set의 scope를 정해주지 않으면 default가 pageScope다
 
 
 <h2>c:out</h2>
-<c:out value="Hello, World!"/><hr/>
-<c:out value="<h2>hi</h2>"/><hr/>
-<c:out value="<h2>hi</h2>" escapeXml="false"/><hr/>
+<c:out value="Hello, World!"/><br/>
+<c:out value="<h3>hi</h3>"/><br/>
+<c:out value="<h3>hi</h3>" escapeXml="false"/>
+<hr/>
 
 
 <h2>c:set</h2>
@@ -51,12 +52,14 @@ out.print(", 원래는 이렇게 쓴다 : " + phone);
 %>
 
 
-<br/>
+<hr/>
+<h2>c:remove</h2>
 <c:remove var='phone' scope='request'/>
 After : ${requestScope.phone }...
 
 
-<br/>
+<hr/>
+<h2>c:if</h2>
 <c:set var='n1' value='100'/>
 <c:set var='n2' value='200'/>
 <li>n1 : <c:out value='${n1 }'/>

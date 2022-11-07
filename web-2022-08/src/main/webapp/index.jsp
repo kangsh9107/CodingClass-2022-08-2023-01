@@ -10,9 +10,9 @@
 </head>
 <body>
 <%
-String inc22 = "temp.html";
+String inc = "temp.html";
 if(request.getParameter("inc") != null) {
-	inc22 = request.getParameter("inc");
+	inc = request.getParameter("inc");
 }
 
 String sessionId = (String)session.getAttribute("sessionId");
@@ -32,7 +32,7 @@ String sessionId = (String)session.getAttribute("sessionId");
 	<div class='corpname_index'>Web Project</div>
 	<nav class='nav_index'>
 		<ul class='ul_index'>
-			<li><a href='index.jsp?inc=student-exam/student_list_exam.jsp' title='학생정보 조회'>학생관리</a></li>
+			<li><a href='student.do'>학생관리</a></li>
 			<li><a href='index.jsp?inc=javascript/score_crud.html'>성적관리</a></li>
 			<li><a href='index.jsp?inc=member/member_control.html'>회원관리</a></li>
 			<li><a href='#'>제품관리</a></li>
@@ -43,7 +43,7 @@ String sessionId = (String)session.getAttribute("sessionId");
 	</nav>
 </header>
 <div class='content_index'>
-	<jsp:include page="<%=inc22 %>"/>
+	<jsp:include page="<%=inc %>"/>
 </div>
 <footer class='footer_index'>
 	대한민국
@@ -52,5 +52,7 @@ String sessionId = (String)session.getAttribute("sessionId");
 
 </body>
 </html>
+
+
 
 
