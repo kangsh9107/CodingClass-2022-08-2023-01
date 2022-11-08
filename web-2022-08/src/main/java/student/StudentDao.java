@@ -9,8 +9,9 @@ import java.util.List;
 import jdbc.DBConn;
 
 public class StudentDao {
-	
 	Connection conn;
+	PreparedStatement ps = null;
+	ResultSet rs = null;
 	
 	public StudentDao() {
 		try {
@@ -19,15 +20,31 @@ public class StudentDao {
 			ex.printStackTrace();
 		}
 	}
+	
+	public void close() { // rs, ps, conn close
+		try {
+			if(rs != null) rs.close();
+			if(ps != null) ps.close();
+			if(conn != null) conn.close();
+			
+			rs = null;
+			ps = null;
+			conn = null;
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+	}
 
 	public boolean insert(StudentVo vo) {
+		if(conn == null) conn = new DBConn("mydb").getConn();
+		
 		boolean b = false;
 		String sql = "insert into student(id, name, gender, pwd, phone, "
 				   + "                    postalCode, address, address2, email) "
 				   + "            values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			conn.setAutoCommit(false);
-			PreparedStatement ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, vo.getId());
 			ps.setString(2, vo.getName());
 			ps.setString(3, vo.getGender());
@@ -46,9 +63,6 @@ public class StudentDao {
 			} else {
 				conn.rollback();
 			}
-			
-			ps.close();
-			conn.close();
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -57,11 +71,10 @@ public class StudentDao {
 	}
 	
 	public List<StudentVo> select(Page pageVo) {
-		List<StudentVo> list = new ArrayList<>();
+		if(conn == null) conn = new DBConn("mydb").getConn();
 		
+		List<StudentVo> list = new ArrayList<>();
 		String sql = "";
-		PreparedStatement ps = null;
-		ResultSet rs = null;
 		
 		try {
 			/* 검색된 전체 건수를 가져온다 */
@@ -124,26 +137,26 @@ public class StudentDao {
 				
 				list.add(vo);
 			}
-			
-			ps.close();
-			conn.close();
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
 		
+		close();
 		return list;
 	}
 	
 	public StudentVo view(String id) {
+		if(conn == null) conn = new DBConn("mydb").getConn();
+		
 		StudentVo vo = new StudentVo();
 		String sql = "select * from student where id = ?";
 		
 		try {
 			conn.setAutoCommit(false);
-			PreparedStatement ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			
-			ResultSet rs = ps.executeQuery();
+			rs = ps.executeQuery();
 			while(rs.next()) {
 				vo.setId(rs.getString("id"));
 				vo.setName(rs.getString("name"));
@@ -158,10 +171,13 @@ public class StudentDao {
 			ex.printStackTrace();
 		}
 		
+		close();
 		return vo;
 	}
 	
 	public boolean modify(StudentVo sVo) {
+		if(conn == null) conn = new DBConn("mydb").getConn();
+		
 		boolean b = false;
 		String sql = "update student set name = ?, gender = ?, phone = ?, "
 				   + "postalCode = ?, address = ?, address2 = ?, email = ? "
@@ -169,7 +185,7 @@ public class StudentDao {
 		
 		try {
 			conn.setAutoCommit(false);
-			PreparedStatement ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, sVo.getName());
 			ps.setString(2, sVo.getGender());
 			ps.setString(3, sVo.getPhone());
@@ -187,9 +203,6 @@ public class StudentDao {
 			} else {
 				conn.rollback();
 			}
-			
-			ps.close();
-			conn.close();
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -198,12 +211,14 @@ public class StudentDao {
 	}
 	
 	public boolean delete(StudentVo sVo) {
+		if(conn == null) conn = new DBConn("mydb").getConn();
+		
 		boolean b = false;
 		String sql = "delete from student where id = ? and pwd = ?";
 		
 		try {
 			conn.setAutoCommit(false);
-			PreparedStatement ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, sVo.getId());
 			ps.setString(2, sVo.getPwd());
 			
@@ -214,9 +229,6 @@ public class StudentDao {
 			} else {
 				conn.rollback();
 			}
-			
-			ps.close();
-			conn.close();
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}

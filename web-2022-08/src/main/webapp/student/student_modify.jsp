@@ -14,42 +14,31 @@
 </head>
 <body>
 
-<jsp:useBean id="pageVo" class="student.Page"/>
-<jsp:setProperty property="*" name="pageVo"/>
-
-<jsp:useBean id="sVo" class="student.StudentVo"/>
-<jsp:setProperty property="*" name="sVo"/>
-
-<%
-StudentDao dao = new StudentDao();
-StudentVo vo = dao.view(sVo.getId());
-%>
-
 <div class='stdInfoModify'>
 	<form name='stdInfoModify' method='post'>
 		<h2>학생정보 수정</h2><br/>
 		<span>아이디</span>
-		<input type='text' name='id' value='<%=vo.getId()%>' size='20' maxlength='12' placeholder='영어시작. 영어+숫자가능' autocomplete='off' onchange='ChkId(this.form)'/><br/>
+		<input type='text' name='id' value='${vo.id }' size='20' maxlength='12' placeholder='영어시작. 영어+숫자가능' autocomplete='off' onchange='ChkId(this.form)'/><br/>
 		<span>성명</span>
-		<input type='text' name='name' value='<%=vo.getName()%>' size='15' placeholder='한글로만 작성' autocomplete='off' onchange='ChkMName(this.form)'/><br/>
+		<input type='text' name='name' value='${vo.name }' size='15' placeholder='한글로만 작성' autocomplete='off' onchange='ChkMName(this.form)'/><br/>
 		<span>성별</span>
-		<label>남자<input type='radio' name='gender' value='m'/></label>
-		<label>여자<input type='radio' name='gender' value='f'/></label><br/>
+		<label>남자<input type='radio' name='gender' value='m' ${(vo.gender eq 'm') ? 'checked' : '' }/></label>
+		<label>여자<input type='radio' name='gender' value='f' ${(vo.gender eq 'f') ? 'checked' : '' }/></label><br/>
 		<span>암호</span>
 		<input type='password' name='pwd' autocomplete='off'/><br/>
 		<span>암호확인</span>
 		<input type='password' name='pwd2' autocomplete='off'/><br/>
 		<span>연락처</span>
-		<input type='search' name='phone' value='<%=vo.getPhone()%>' size='30' placeholder='-까지 입력' autocomplete='off' onchange='ChkPhone(this.form)'/><br/>
+		<input type='search' name='phone' value='${vo.phone }' size='30' placeholder='-까지 입력' autocomplete='off' onchange='ChkPhone(this.form)'/><br/>
 		<span>우편번호</span>
-		<input type='search' name='postalCode' value='<%=vo.getPostalCode()%>' size='10' readOnly/>
+		<input type='search' name='postalCode' value='${vo.postalCode }' size='10' readOnly/>
 		<input type='button' name='btnFindZip' value='우편번호 검색'/><br/>
 		<span>주소</span>
-		<input type='search' name='address' value='<%=vo.getAddress()%>' size='50' readOnly/><br/>
+		<input type='search' name='address' value='${vo.address }' size='50' readOnly/><br/>
 		<span>상세 주소</span>
-		<input type='search' name='address2' value='<%=vo.getAddress2()%>' size='50'/><br/>
+		<input type='search' name='address2' value='${vo.address2 }' size='50'/><br/>
 		<span>이메일</span>
-		<input type='search' name='email' value='<%=vo.getEmail()%>' size='40' autocomplete='off' onchange='ChkEmail(this.form)'/><br/><br/>
+		<input type='search' name='email' value='${vo.email }' size='40' autocomplete='off' onchange='ChkEmail(this.form)'/><br/><br/>
 		<span class='empty'>
 			<ul>
 				<li><input type='button' id='btnModify' value='수정'/></li>
@@ -59,8 +48,8 @@ StudentVo vo = dao.view(sVo.getId());
 		</span>
 		
 		<!-- 수정이나 삭제 후 다시 목록으로 돌아갈 때 보던 페이지를 다시 보여주기 위해 값을 여기에 저장해 둔다. display none으로 안보이게 처리 -->
-		<input type='text' name='findStr' value='<%=pageVo.getFindStr()%>'/>
-		<input type='text' name='nowPage' value='<%=pageVo.getNowPage()%>'/>
+		<input type='text' name='findStr' value='${pageVo.findStr }'/>
+		<input type='text' name='nowPage' value='${pageVo.nowPage }'/>
 	</form>
 	
 	
@@ -68,7 +57,8 @@ StudentVo vo = dao.view(sVo.getId());
 
 <script>
 /* 라디오버튼 체크 */
-checkGender('<%=vo.getGender()%>');
+/*
+checkGender('=vo.getGender()');
 
 function checkGender(g) {
 	let frm = document.stdInfoModify;
@@ -76,6 +66,7 @@ function checkGender(g) {
 	if(g == 'm') frm.gender[0].checked = true;
 	else         frm.gender[1].checked = true;
 }
+*/
 
 /* 우편번호 및 정규식 */
 let frm = document.stdInfoModify;

@@ -12,9 +12,6 @@
 </head>
 <body>
 
-<jsp:useBean id="pageVo" class="student.Page"/>
-<jsp:setProperty property="*" name="pageVo"/>
-
 <div class='stdInputWrap'>
 	<form class='stdInput' name='stdInput' method='post'>
 		<h2>학생정보 입력</h2><br/>
@@ -47,10 +44,11 @@
 			</ul>
 		</span>
 		<!-- Page 빈이 잘 작동하는지 테스트. 나중에 hidden 처리. -->
-		<input type='text' name='findStr' value='<%=pageVo.getFindStr() %>'/>
-		<input type='text' name='nowPage' value='<%=pageVo.getNowPage() %>'/>
+		<input type='text' name='findStr' value='${pageVo.findStr }'/>
+		<input type='text' name='nowPage' value='${pageVo.nowPage }'/>
 	</form>
 </div>
+
 <script>
 let frm = document.stdInput;
 frm.btnFindZip.addEventListener('click', function(){
