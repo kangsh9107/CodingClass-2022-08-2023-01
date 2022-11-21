@@ -94,7 +94,7 @@ public class StudentDao {
 			ps.setString(4, "%" + pageVo.getFindStr() + "%");
 			ps.setString(5, "%" + pageVo.getFindStr() + "%");
 			ps.setString(6, "%" + pageVo.getFindStr() + "%");
-			
+			System.out.println("dao : " + pageVo.getTotSize());
 			rs = ps.executeQuery();
 			rs.next();
 			int totSize = rs.getInt("totSize");

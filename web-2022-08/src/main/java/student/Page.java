@@ -13,7 +13,7 @@ public class Page {
 	public void setDate(int nowPage, int totSize) {
 		this.nowPage = nowPage;
 		this.totSize = totSize;
-		
+
 		compute();
 	}
 	
