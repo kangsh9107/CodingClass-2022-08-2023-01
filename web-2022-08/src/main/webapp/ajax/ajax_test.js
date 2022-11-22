@@ -156,3 +156,20 @@ btnEmployee.addEventListener("click", function() {
 
 
 
+
+
+
+
+let btnTest2 = document.querySelector("#btnTest2");
+
+btnTest2.onclick = function() {
+	let xhr = new XMLHttpRequest();
+	xhr.open("get", "test.html");
+	xhr.onreadystatechange = function() {
+		if(xhr.status == 200 && xhr.readyState == 4) {
+			frm.innerHTML = xhr.responseText;
+		}
+	}
+	xhr.send();
+}
+

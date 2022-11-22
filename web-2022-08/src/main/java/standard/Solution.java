@@ -1,5 +1,6 @@
 package standard;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class Solution {
@@ -11,7 +12,17 @@ public class Solution {
 		// result = {2, 1, 1, 0};
 		
 		HashSet<String> hs = new HashSet<>();
-		
+		hs.addAll(Arrays.asList(report));
+		System.out.println(hs);
 	}
 
 }
+
+
+
+
+
+
+
+
+

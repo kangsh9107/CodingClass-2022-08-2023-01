@@ -47,7 +47,7 @@ span.main {
 	min-height: 60px;
 }
 </style>
-<script defer src="ajax_test.js"></script>
+
 </head>
 <body>
 
@@ -58,6 +58,7 @@ span.main {
 <input type="button" value="Load Json File" id="btnLoadJson"/>
 <input type="button" value="학생정보 조회" id="btnStudent"/>
 <input type="button" value="직원정보 조회" id="btnEmployee"/>
+<input type="button" value="테스트" id="btnTest2"/>
 <hr/>
 <section id="mainSection">
 	<div class="mainDiv" id="text"></div>
@@ -73,7 +74,8 @@ span.main {
 		<span class="main" id="employee_list"></span>
 	</div>
 </section>
-
+<script src="ajax_test.js"></script>
+<script src="test.js"></script>
 </body>
 </html>
 

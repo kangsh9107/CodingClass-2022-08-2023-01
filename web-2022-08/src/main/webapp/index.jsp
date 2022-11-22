@@ -34,7 +34,7 @@ String sessionId = (String)session.getAttribute("sessionId");
 		<ul class='ul_index'>
 			<li><a href='student.do'>학생관리</a></li>
 			<li><a href='index.jsp?inc=javascript/score_crud.html'>성적관리</a></li>
-			<li><a href='index.jsp?inc=member/member_control.html'>회원관리</a></li>
+			<li><a href='index.jsp?inc=member/member_control.jsp'>회원관리</a></li>
 			<li><a href='#'>제품관리</a></li>
 			<li><a href='#'>생산관리</a></li>
 			<li><a href='#'>방명록</a></li>
