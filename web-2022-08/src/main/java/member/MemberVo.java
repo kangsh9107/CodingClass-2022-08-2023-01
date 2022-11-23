@@ -7,6 +7,7 @@ public class MemberVo {
 	String phone   = "";
 	String sysFile = "";
 	String oriFile = "";
+	String delFile = "";
 	
 	public String getId() { return id; }
 	public void setId(String id) { this.id = id; }
@@ -20,5 +21,7 @@ public class MemberVo {
 	public void setSysFile(String sysFile) { this.sysFile = sysFile; }
 	public String getOriFile() { return oriFile; }
 	public void setOriFile(String oriFile) { this.oriFile = oriFile; }
+	public String getDelFile() { return delFile; }
+	public void setDelFile(String delFile) { this.delFile = delFile; }
 	
 }

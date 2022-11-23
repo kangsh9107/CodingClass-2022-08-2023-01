@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.Date;
 
@@ -24,11 +25,26 @@ import member.MemberVo;
 @WebServlet(urlPatterns = {"/memberUpload.do"})
 public class MemberFileUploadServlet extends HttpServlet {
 	// 이클립스에서 upload폴더 우클릭 > 프로퍼티에서 경로 복사 > 이스케이프해주고 마지막에 \\추가
-	String path = "C:\\Users\\K\\eclipse-workspace\\web-2022-08\\src\\main\\webapp\\upload\\";
+	// MemberDao.java update()에서 사용하기 위해 public static으로 선언했는데 현업에서는 이렇게 안쓴다
+	public static String path = "C:\\Users\\K\\eclipse-workspace\\web-2022-08\\src\\main\\webapp\\upload\\";
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("test : " + req.getParameter("id"));
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		String job = req.getParameter("job");
+		
+		switch(job) { // 조건 분기
+		case "create":
+			create(req, resp);
+			break;
+		case "update":
+			update(req, resp);
+			break;    // job이 update일 경우 밑으로 흐르지 않고 메서드 종료
+		}
+	}
+	
+	public void create(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
 		Collection<Part> parts = req.getParts();
 		MemberVo vo = new MemberVo();
 		
@@ -81,6 +97,53 @@ public class MemberFileUploadServlet extends HttpServlet {
 		req.setAttribute("msg", msg);
 		RequestDispatcher rd = req.getRequestDispatcher("member/member_insert_result.jsp");
 		rd.include(req, resp);
+	}
+	
+	public void update(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		Collection<Part> parts = req.getParts();
+		MemberVo vo = new MemberVo();
+		
+		for(Part p : parts) {
+			if(p.getHeader("Content-Disposition").contains("filename=")) { // file일 경우
+				if(p.getSize() > 0) {
+					String sysFile = new Date().getTime() + "-" + p.getSubmittedFileName();
+					String oriFile = p.getSubmittedFileName();
+					vo.setSysFile(sysFile);
+					vo.setOriFile(oriFile);
+					
+					p.write(path + sysFile);
+					p.delete();
+				}
+			} else {
+				String tag = p.getName();
+				String value = req.getParameter(tag);
+				
+				switch(tag) {
+				case "id":
+					vo.setId(value);
+					break;
+				case "name":
+					vo.setName(value);
+					break;
+				case "gender":
+					vo.setGender(value);
+					break;
+				case "phone":
+					vo.setPhone(value);
+					break;
+				case "delFile":
+					vo.setDelFile(value);
+					break;
+				}
+			}
+		}
+		
+		MemberDao dao = new MemberDao();
+		String msg = dao.update(vo);
+		
+		PrintWriter out = resp.getWriter();
+		out.print(msg);
 	}
 
 }
