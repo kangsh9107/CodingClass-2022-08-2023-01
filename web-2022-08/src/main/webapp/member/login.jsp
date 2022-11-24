@@ -6,9 +6,13 @@
 <meta charset="UTF-8">
 <title>member/login.jsp</title>
 <style>
-.login2{
+.login2 {
 	text-align: center;
 	padding-top: 25px;
+}
+
+a {
+	text-decoration: none;
 }
 </style>
 </head>
@@ -21,6 +25,8 @@
 		<span>암호</span>
 		<input type='password' name='pwd' value='1111'/>
 		<input type='submit' value='로그인'/>
+		<hr/>
+		<a href="FindPwd.do">비밀번호 찾기</a>
 	</form>
 </div>
 </body>

@@ -17,7 +17,7 @@
 		<div id='left_member_control'>
 			<input type='file' name="photo" id='photo_file_member_control'/>
 			<img src='images/anno1.png' id='photo_member_control'/>
-			<input type=text name="delFile"/>
+			<input type="hidden" name="delFile"/>
 		</div>
 		<div id='right_member_control'>
 			<span class='span_member_control'>아이디</span>

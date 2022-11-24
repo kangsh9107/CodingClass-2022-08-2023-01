@@ -5,6 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="VIEWPORT" content="width=device-width, initial-scale=1.0">
+
+<style>
+a {
+	text-decoration: none;
+}
+</style>
+
 <title>웹 프로젝트</title>
 <link rel="stylesheet" href="css/index.css">
 </head>
