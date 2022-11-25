@@ -154,12 +154,7 @@ btnEmployee.addEventListener("click", function() {
 	xhr.send();
 });
 
-
-
-
-
-
-
+/* ajax로 삽입한 jsp파일에 js 연결 테스트 */
 let btnTest2 = document.querySelector("#btnTest2");
 
 btnTest2.onclick = function() {
@@ -172,4 +167,100 @@ btnTest2.onclick = function() {
 	}
 	xhr.send();
 }
+
+/* 2022-11-25 노드 동적 추가&삭제 */
+const btnInsert = document.querySelector("#btnInsert");
+
+// 노드 동적 추가
+let cnt = 0;
+btnInsert.addEventListener("click", function() {
+	let appendZone = document.querySelector("#appendZone");
+	cnt++
+	
+	let div = document.createElement("div");
+	div.style.backgroundColor = "#ddd";
+	div.style.padding = "3px";
+	div.style.marginBottom = "2px";
+	
+	let txt = document.createElement("input");
+	txt.setAttribute("type", "text");
+	txt.setAttribute("value", "하이" + cnt);
+	div.appendChild(txt);
+	
+	let btn = document.createElement("input");
+	btn.setAttribute("type", "button");
+	// 노드 동적 하나 삭제
+	btn.setAttribute("value", "삭제" + cnt);
+	div.addEventListener("click", function(ev){
+		let tag = ev.srcElement;
+		let parent = tag.parentNode;
+		appendZone.removeChild(parent);
+	});
+	div.appendChild(btn);
+	
+	appendZone.appendChild(div);
+});
+
+// 노드 동적 전체 삭제
+const btnDelete = document.querySelector("#btnDelete");
+
+btnDelete.addEventListener("click", function() {
+	let appendZone = document.querySelector("#appendZone");
+	appendZone.innerHTML = "";
+	cnt = 0;
+});
+
+/* select 박스 */
+const city = document.querySelector("#city");
+const theater = document.querySelector("#theater");
+const movie = document.querySelector("#movie");
+
+city.onchange = function() {
+	let cityName = city.value;
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open("get", "theater.jsp?city=" + cityName);
+	xhr.send();
+	xhr.onreadystatechange = function() {
+		if(xhr.status == 200 && xhr.readyState == 4) {
+			theater.innerHTML = "";
+			//theater.length = 0;
+			let data = xhr.responseText;
+			let json = JSON.parse(data);
+			for(let i=0; i<json.length; i++) {
+				let option = document.createElement("option");
+				option.setAttribute("value", json[i]);
+				option.innerHTML = json[i];
+				option.style.width = "90px";
+				theater.appendChild(option);
+			}
+		}
+	}
+}
+
+theater.onchange = function() {
+	let theaterName = theater.value;
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open("get", "movie.jsp?theater=" + theaterName);
+	xhr.send();
+	xhr.onreadystatechange = function() {
+		if(xhr.status == 200 && xhr.readyState == 4) {
+			movie.innerHTML = "";
+			let data = xhr.responseText;
+			let json = JSON.parse(data);
+			for(let i=0; i<json.length; i++) {
+				let option = document.createElement("option");
+				option.setAttribute("value", json[i]);
+				option.innerHTML = json[i];
+				option.style.width = "170px";
+				movie.appendChild(option);
+			}
+		}
+	}
+}
+
+
+
+
 

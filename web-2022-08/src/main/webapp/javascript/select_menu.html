@@ -203,7 +203,6 @@ frm.zone.onchange = function(){
 	let menu = data[k];
 	console.log(menu);  // 작동 확인
 	
-	let index;
 	let m;
 	for(index of menu){
 		m += `<option value='${index}'>${index}</option>`;
@@ -229,7 +228,7 @@ frm.btn.addEventListener('click', function(ev){
 	let t = frm.time.value;
 	let t1 = t.substring(0,2);
 	let t2 = t.substring(3,5);
-	console.log(t1);
+	
 /* 	if(t1>12){
 		t1 = '오후 ' + '0' + (t1-12);
 	}else if(t1<=9){

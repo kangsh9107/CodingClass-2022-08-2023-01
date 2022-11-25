@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dom/nodetest.html</title>
+</head>
+<body>
+<div id='abc' class='def'>
+	hi... i am div tag
+	<input type="button" value="버튼"/>
+</div>
+
+<script>
+let div = document.getElementById('abc');
+let str = 'nodeType = ' + div.nodeType
+        + '\nnodeName = ' + div.nodeName
+        + '\nnodeValue = ' + div.nodeValue
+        + '\nparentNode = ' + div.parentNode.nodeName
+        + '\nchildNodes = ' + div.childNodes
+        + '\nownerDocument = ' + div.ownerDocument.nodeName;
+console.log(str)
+
+let st2 = "";
+for(i=0; i<div.childNodes.length; i++) {
+	str2 += "<ul><li> Name : " + div.chliNodes[i].name;
+	str2 += "<li> Value : " + div.chliNodes[i].value;
+	str2 += "<li> Type : " + div.chliNodes[i].type;
+	str2 += "<li> ID : " + div.chliNodes[i].id;
+	str2 += "<li> Class : " + div.chliNodes[i].className;
+	str2 += "<\/ul>";
+}
+console.log("----------");
+console.log(str2);
+</script>
+
+</body>
+</html>

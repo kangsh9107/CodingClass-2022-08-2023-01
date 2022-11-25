@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.Properties;
 
@@ -49,6 +50,7 @@ public class FindPwdServlet extends HttpServlet {
 		String receiver = req.getParameter("receiver");
 		String subject = req.getParameter("subject");
 		String content = "";
+		String msg = "";
 		
 		if(dao == null) dao = new FindPwdDao();
 		
@@ -93,12 +95,16 @@ public class FindPwdServlet extends HttpServlet {
 			
 			// 메일 전송
 			Transport.send(message);
+			msg = "전송 완료";
 		} catch(Exception ex) {
 			ex.printStackTrace();
+			msg = "전송 오류";
 		}
 		
-		rd = req.getRequestDispatcher("index.jsp");
-		rd.forward(req, resp);
+		//rd = req.getRequestDispatcher("index.jsp");
+		//rd.forward(req, resp);
+		PrintWriter out = resp.getWriter();
+		out.print(msg);
 	}
 
 }

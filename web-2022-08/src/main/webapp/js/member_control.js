@@ -77,6 +77,7 @@ function view(id){
 
 /***** 추가 *****/
 function add(frm){
+	/*
 	let index = data.findIndex( d=>d.id==frm.id.value );
 	if(index>=0) {
 		alert('아이디가 중복되었습니다.');
@@ -94,12 +95,14 @@ function add(frm){
 		frm.phone.focus();
 		return;
 	}
+	*/
 	
 	/***** enctype이 있는 form을 multipart 타입으로 변환 *****/
 	let fd = new FormData(frm);
 	let xhr = new XMLHttpRequest();
 	xhr.open("post", "memberUpload.do?job=create");
 	xhr.send(fd);
+	/*
 	xhr.onreadystatechange = function() {
 		if(xhr.status == 200 && xhr.readyState == 4) {
 			msg = xhr.responseText;
@@ -107,6 +110,7 @@ function add(frm){
 			list();
 		}
 	}
+	*/
 }
 
 /***** 수정 *****/

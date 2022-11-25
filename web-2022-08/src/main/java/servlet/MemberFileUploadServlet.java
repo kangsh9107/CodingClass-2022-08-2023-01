@@ -96,7 +96,9 @@ public class MemberFileUploadServlet extends HttpServlet {
 		
 		req.setAttribute("msg", msg);
 		RequestDispatcher rd = req.getRequestDispatcher("member/member_insert_result.jsp");
-		rd.include(req, resp);
+		rd.forward(req, resp);
+		//PrintWriter out = resp.getWriter();
+		//out.print(msg);
 	}
 	
 	public void update(HttpServletRequest req, HttpServletResponse resp)
