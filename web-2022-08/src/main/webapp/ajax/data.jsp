@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	/*
 	int dan = Integer.parseInt(request.getParameter("dan"));
 	String r = "";
 	
@@ -8,6 +9,10 @@
 		String temp = String.format("%d * %d = %d<br/>", dan, i, (dan*i));
 		r += temp;
 	}
+	*/
 	
-	out.print(r);
+	//out.print(r);
+	
+	int number = 10;
+	out.print(number);
 %>

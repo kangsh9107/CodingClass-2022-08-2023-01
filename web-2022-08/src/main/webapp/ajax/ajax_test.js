@@ -37,12 +37,25 @@ btnHtml.addEventListener("click", function() {
 btnJsp.addEventListener("click", function() {
 	let xhr = new XMLHttpRequest();
 	xhr.open("get", "data.jsp?dan=5");
+	//xhr.open("get", "test.jsp", true);
+	//xhr.send("");
+	xhr.send();
 	xhr.onreadystatechange = function() {
 		if(xhr.status == 200 && xhr.readyState == 4) {
-			divJsp.innerHTML = xhr.responseText;
+			//divJsp.innerHTML = xhr.response;
+			console.log(typeof xhr.responseXML);
+			console.log(xhr.responseXML);
+			//let xmlDoc = xhr.response;
+			//let list = xmlDoc.getElementsByTagName("member");
+			//let len = list.length;
+			
+			//for(i=0; i<len; i++) {
+			//	array = list.item(i);
+			//	console.log(typeof array.getElementsByTagName("name").item(0).firstChild.nodeValue);
+			//	console.log(array.getElementsByTagName("name").item(0).firstChild.nodeValue);
+			//}
 		}
 	}
-	xhr.send();
 });
 
 btnJson.addEventListener("click", function() {
