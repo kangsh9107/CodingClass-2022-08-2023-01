@@ -39,7 +39,7 @@ $($r).css({
 $('#load>#btnFull').on('click', function() {
 	$r.load('load_test.jsp');
 });
- 
+
 $('#load>#btnPart1').on('click', function() {
 	$r.load('load_test.jsp #part1');
 });
