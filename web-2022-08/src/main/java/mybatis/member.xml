@@ -5,4 +5,19 @@
 		select * from member where name like '%${_parameter}%'
 		or phone like '%${_parameter}%'
 	</select>
+	
+	<insert id="insert" parameterType="member.MemberVo">
+		insert into member(id, name, gender, phone, oriFile, sysFile)
+		values(#{id}, #{name}, #{gender}, #{phone}, #{oriFile}, #{sysFile})
+	</insert>
+	
+	<update id="update" parameterType="member.MemberVo">
+		update member set name=#{name}, gender=#{gender}, phone=#{phone},
+						  oriFile=#{oriFile}, sysFile=#{sysFile}
+					  where id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete from member where id=#{_parameter}
+	</delete>
 </mapper>
