@@ -9,13 +9,6 @@ public class MybatisPageVo {
 	int    totPage, startPage, endPage;
 	int    startNo, endNo;
 	
-	public void setDate(int nowPage, int totSize) {
-		this.nowPage = nowPage;
-		this.totSize = totSize;
-
-		compute();
-	}
-	
 	public void compute() {
 		totPage = (int)Math.ceil( (double)totSize / listSize );
 		endPage = (int)Math.ceil( (double)nowPage / blockSize ) * blockSize;

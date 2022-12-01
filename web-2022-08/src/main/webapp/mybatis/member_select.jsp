@@ -18,6 +18,7 @@
 		<input type="search" name="findStr" value="${pVo.findStr }" autocomplete="off" style="border-radius: 6px; border: 1px solid rgb(151, 188, 98); position: absolute; right: 68px; bottom: 9px; font-family: Gil Sans;"/>
 		<input type="button" id="btnSearch" class="btn btn-outline-light" value="검색" style="background-color: rgb(151, 188, 98); font-weight: 600; height: 28px; position: absolute; right: 0; bottom: 9px; line-height: 10px; font-family: Gil Sans;">
 		<input type="hidden" name="nowPage" value="${pVo.nowPage }"/>
+		<input type="hidden" name="id"/>
 	</form>
 	<div class="items">
 		<div class="item_title" style="font-family: Gugi; font-weight: 600; border-top: 2px solid rgb(151, 188, 98); border-bottom: 2px solid rgb(151, 188, 98); margin: 10px 0 10px 0;">

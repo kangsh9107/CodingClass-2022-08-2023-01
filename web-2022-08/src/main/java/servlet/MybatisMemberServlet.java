@@ -39,6 +39,9 @@ public class MybatisMemberServlet extends HttpServlet {
 		case "insert":
 			insert(req, resp);
 			break;
+		case "update":
+			update(req, resp);
+			break;
 		case "delete":
 			delete(req, resp);
 			break;
@@ -49,7 +52,7 @@ public class MybatisMemberServlet extends HttpServlet {
 		MybatisPageVo pVo = (MybatisPageVo)req.getAttribute("pVo");
 		MybatisMemberDao dao = new MybatisMemberDao();
 		List<MemberVo> list = dao.select(pVo);
-		//pVo = dao.getpVo();
+		//pVo = dao.getpVo(); //초반에는 필요했지만 나중에 코드 다 작성하고 나서는 필요 없어졌다?
 		
 		req.setAttribute("pVo", pVo);
 		req.setAttribute("list", list);
@@ -69,6 +72,11 @@ public class MybatisMemberServlet extends HttpServlet {
 	
 	public void insert(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("mybatis/member_insert.jsp");
+		rd.include(req, resp);
+	}
+	
+	public void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		RequestDispatcher rd = req.getRequestDispatcher("mybatis/member_update.jsp");
 		rd.include(req, resp);
 	}
 	

@@ -111,15 +111,15 @@ public class MemberDao {
 		
 		try {
 			// 파일삭제
-			if( !vo.getSysFile().equals("") ) {
-				File delFile = new File(MemberFileUploadServlet.path + vo.getDelFile());
-				
-				if(delFile.exists()) delFile.delete();
-			}
+			//if( !vo.getSysFile().equals("") ) {
+			//	File delFile = new File(MemberFileUploadServlet.path + vo.getDelFile());
+			//	
+			//	if(delFile.exists()) delFile.delete();
+			//}
 			
 			// table update
 			conn.setAutoCommit(false);
-			if( !vo.getSysFile().equals("") ) { // 기존 첨부파일이 있는 경우
+			if( !vo.getSysFile().equals("") ) { // 수정할 파일을 선택한 경우
 				String sql = "update member set name    = ?, "
 						   + "                  gender  = ?, "
 						   + "                  phone   = ?, "
@@ -149,6 +149,12 @@ public class MemberDao {
 			
 			int cnt = ps.executeUpdate();
 			if(cnt > 0) {
+				if( !vo.getSysFile().equals("") ) {
+					File delFile = new File(MemberFileUploadServlet.path + vo.getDelFile());
+				
+					if(delFile.exists()) delFile.delete();
+				}
+				
 				conn.commit();
 				msg = "수정 완료😀😀";
 			} else {

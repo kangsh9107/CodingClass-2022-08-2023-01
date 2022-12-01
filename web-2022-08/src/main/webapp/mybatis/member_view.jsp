@@ -12,9 +12,9 @@
 <div id="member">
 	<strong style="font-size: 2rem;">회원관리</strong>
 	<form name="frm" class="frm" method="post">
-		<input type="hidden" name="findStr" value="${pVo.findStr }" autocomplete="off" style="border-radius: 6px; border: 1px solid rgb(151, 188, 98); position: absolute; right: 68px; bottom: 9px; font-family: Gil Sans;"/>
+		<input type="hidden" name="findStr" value="${pVo.findStr }" style="border-radius: 6px; border: 1px solid rgb(151, 188, 98); position: absolute; right: 68px; bottom: 9px; font-family: Gil Sans;"/>
 		<input type="hidden" name="nowPage" value="${pVo.nowPage }"/>
-		<input type="text" name="delFile" value="${bVo.sysFile }"/>
+		<input type="hidden" name="delFile" value="${bVo.sysFile }"/>
 		
 		<span>아이디</span>
 		<input type="text" name="id" value="${bVo.id }"/>
@@ -33,7 +33,7 @@
 		<input type="date" name="mDate" value="${bVo.mDate }"/>
 		<br/>
 		<span>프로필 사진</span>
-		<img src="../upload/${bVo.sysFile }" width="100px" height="150px"/>
+		<img src="../upload/${bVo.sysFile }" width="150px" height="150px"/>
 		<br/>
 		<input type="button" id="btnUpdate" value="수정" class="btn btn-outline-light" style="background-color: rgb(151, 188, 98);"/>
 		<input type="button" id="btnDeleteR" value="삭제" class="btn btn-outline-light" style="background-color: rgb(151, 188, 98);"/>

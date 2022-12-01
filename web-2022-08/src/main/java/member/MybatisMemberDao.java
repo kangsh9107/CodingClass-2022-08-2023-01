@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import mybatis.MyFactory;
+import servlet.MemberFileUploadServlet;
 import servlet.MybatisMemberFileUploadServlet;
 
 public class MybatisMemberDao {
@@ -16,9 +17,9 @@ public class MybatisMemberDao {
 		sqlSession = MyFactory.getFactory().openSession();
 	}
 	
-	public String insert(MemberVo vo) {
+	public String insert(MemberVo bVo) {
 		String msg = "";
-		int cnt = sqlSession.insert("member.insert", vo);
+		int cnt = sqlSession.insert("member.insert", bVo);
 		
 		if(cnt > 0) {
 			sqlSession.commit();
@@ -65,7 +66,6 @@ public class MybatisMemberDao {
 		
 		if(cnt > 0) {
 			sqlSession.commit();
-			System.out.println("Dao : " + MybatisMemberFileUploadServlet.path + delFile);
 			File file = new File(MybatisMemberFileUploadServlet.path + delFile);
 			if(file.exists()) file.delete();
 			msg = "삭제 성공😀😀";
@@ -75,6 +75,27 @@ public class MybatisMemberDao {
 		}
 		
 		//delete 후 바로 select를 해야 하니까 sqlSession.close();를 바로 하면 안된다.
+		return msg;
+	}
+	
+	public String update(MemberVo bVo) {
+		String msg = "";
+		int cnt = sqlSession.update("update.update", bVo);
+
+		if( !bVo.getSysFile().equals("") ) {
+			File delFile = new File(MemberFileUploadServlet.path + bVo.getDelFile());
+			
+			if(delFile.exists()) delFile.delete();
+		}
+		
+		if(cnt > 0) {
+			sqlSession.commit();
+			msg = "수정 성공😀😀";
+		} else {
+			sqlSession.rollback();
+			msg = "수정 오류😢😢";
+		}
+		
 		return msg;
 	}
 

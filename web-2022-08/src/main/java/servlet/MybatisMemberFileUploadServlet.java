@@ -34,12 +34,15 @@ public class MybatisMemberFileUploadServlet extends HttpServlet {
 		case "insert":
 			insert(req, resp);
 			break;
+		case "update":
+			update(req, resp);
+			break;
 		}
 	}
 	
 	public void insert(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Collection<Part> parts = req.getParts();
-		MemberVo vo = new MemberVo();
+		MemberVo bVo = new MemberVo();
 		MybatisPageVo pVo = new MybatisPageVo();
 		pVo.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
 		pVo.setFindStr(req.getParameter("findStr"));
@@ -49,8 +52,8 @@ public class MybatisMemberFileUploadServlet extends HttpServlet {
 				if(p.getSize() > 0) {
 					String sysFile = new Date().getTime() + "-" + p.getSubmittedFileName();
 					String oriFile = p.getSubmittedFileName();
-					vo.setSysFile(sysFile);
-					vo.setOriFile(oriFile);
+					bVo.setSysFile(sysFile);
+					bVo.setOriFile(oriFile);
 					
 					p.write(path + sysFile);
 					p.delete();
@@ -61,32 +64,84 @@ public class MybatisMemberFileUploadServlet extends HttpServlet {
 				
 				switch(tag) {
 				case "id":
-					vo.setId(value);
+					bVo.setId(value);
 					break;
 				case "name":
-					vo.setName(value);
+					bVo.setName(value);
 					break;
 				case "gender":
-					vo.setGender(value);
+					bVo.setGender(value);
 					break;
 				case "phone":
-					vo.setPhone(value);
+					bVo.setPhone(value);
 					break;
 				case "mDate":
-					vo.setmDate(value);
+					bVo.setmDate(value);
 					break;
 				}
 			}
 		}
 		
 		MybatisMemberDao dao = new MybatisMemberDao();
-		String msg = dao.insert(vo);
+		String msg = dao.insert(bVo);
 		List<MemberVo> list = dao.select(pVo);
 		
 		req.setAttribute("msg", msg);
 		req.setAttribute("pVo", pVo);
 		req.setAttribute("list", list);
 		RequestDispatcher rd = req.getRequestDispatcher("mybatis/member_select.jsp");
+		rd.include(req, resp);
+	}
+	
+	public void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Collection<Part> parts = req.getParts();
+		MemberVo bVo = (MemberVo)req.getAttribute("bVo");
+		MybatisPageVo pVo = new MybatisPageVo();
+		pVo.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
+		pVo.setFindStr(req.getParameter("findStr"));
+		
+		for(Part p : parts) {
+			if(p.getHeader("Content-Disposition").contains("filename=")) {
+				if(p.getSize() > 0) {
+					String sysFile = new Date().getTime() + "-" + p.getSubmittedFileName();
+					String oriFile = p.getSubmittedFileName();
+					bVo.setSysFile(sysFile);
+					bVo.setOriFile(oriFile);
+					
+					p.write(path + sysFile);
+					p.delete();
+				}
+			} else {
+				String tag = p.getName();
+				String value = req.getParameter(tag);
+				
+				switch(tag) {
+				case "id":
+					bVo.setId(value);
+					break;
+				case "name":
+					bVo.setName(value);
+					break;
+				case "gender":
+					bVo.setGender(value);
+					break;
+				case "phone":
+					bVo.setPhone(value);
+					break;
+				case "mDate":
+					bVo.setmDate(value);
+					break;
+				}
+			}
+		}
+		
+		MybatisMemberDao dao = new MybatisMemberDao();
+		String msg = dao.update(bVo);
+		
+		req.setAttribute("msg", msg);
+		req.setAttribute("bVo", bVo);
+		req.setAttribute("pVo", pVo);
+		RequestDispatcher rd = req.getRequestDispatcher("mybatis/member_view.jsp");
 		rd.include(req, resp);
 	}
 	

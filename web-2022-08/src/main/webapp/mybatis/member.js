@@ -76,7 +76,7 @@ $('#btnDeleteR').on('click', function() {
 
 view = function(id) {
 	var frm = $('.frm')[0];
-	frm.id.value = id;
+	frm.id.value = id; //쓸모가 없을 줄 알았지만 굉장히 중요한 아이. 클릭한 id를 담아서 form 전송 시 보낼 수 있게 함.
 	var param = $(frm).serialize();
 	$.post('bean.jsp?job=view', param, function(data) {
 		$('.contentInnerKang').html(data);
