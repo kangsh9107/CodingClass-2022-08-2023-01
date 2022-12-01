@@ -12,9 +12,8 @@
 <div id="member">
 	<strong style="font-size: 2rem;">회원관리</strong>
 	<form name="frm" class="frm" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="findStr" autocomplete="off" style="border-radius: 6px; border: 1px solid rgb(151, 188, 98); position: absolute; right: 68px; bottom: 9px; font-family: Gil Sans;"/>
+		<input type="hidden" name="findStr" value="${pVo.findStr }" autocomplete="off" style="border-radius: 6px; border: 1px solid rgb(151, 188, 98); position: absolute; right: 68px; bottom: 9px; font-family: Gil Sans;"/>
 		<input type="hidden" name="nowPage" value="${pVo.nowPage }"/>
-		<input type="hidden" name="id"/>
 		
 		<span>아이디</span>
 		<input type="text" name="id" value="h001"/>
@@ -30,7 +29,7 @@
 		<input type="text" name="phone" value="010-1111-2222"/>
 		<br/>
 		<span>가입일</span>
-		<input type="date" name="mdate"/>
+		<input type="date" name="mDate"/>
 		<br/>
 		<span>프로필 사진</span>
 		<input type="file" name="att"/>

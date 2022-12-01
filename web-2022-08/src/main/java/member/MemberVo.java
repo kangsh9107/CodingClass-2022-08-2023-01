@@ -5,9 +5,14 @@ public class MemberVo {
 	String name    = "";
 	String gender  = "";
 	String phone   = "";
+	String mDate   = "";
 	String sysFile = "";
 	String oriFile = "";
 	String delFile = "";
+	
+	
+	public String getmDate() { return mDate; }
+	public void setmDate(String mDate) { this.mDate = mDate; }
 	
 	public String getId() { return id; }
 	public void setId(String id) { this.id = id; }

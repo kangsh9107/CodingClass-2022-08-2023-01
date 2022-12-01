@@ -21,9 +21,8 @@
 <div id="title">
 	<nav class="bg-success" style="padding: 10px;">
 		<div class="container-fluid" style="padding-left: 3px;">
-			<a href="main.jsp">
-				<img class="navbar-brand" src="mybatisLogo.png" width="130px" height="40px" style="border-radius: 50px; margin-right: 51px;"/>
-			</a>
+			<img class="navbar-brand" src="mybatisLogo.png" width="130px" height="40px" style="border-radius: 50px; margin-right: 51px;"/>
+			<input type="button" id="btnHome" class="btn btn-outline-light" value="HOME" style="font-weight: 600;">
 			<input type="button" id="btnMember" class="btn btn-outline-light" value="회원관리" style="font-weight: 600;">
 			<input type="button" id="btnScore" class="btn btn-outline-light" value="성적관리" style="font-weight: 600;">
 		</div>
