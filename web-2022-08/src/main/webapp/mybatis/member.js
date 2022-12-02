@@ -91,3 +91,36 @@ movePage = function(nowPage) {
 		$('.contentInnerKang').html(data);
 	});
 }
+
+/* member_update.jsp 이미지 미리보기 */
+$('#photo').on('click', function() {
+	$('#fileTest').click();
+});
+
+
+$('#fileTest').on('change', function(ev) {
+	var file = ev.target.files[0];
+	var reader = new FileReader();
+	reader.onload = function(e) {
+		$('#photo').attr('src', e.target.result);
+	}
+	reader.readAsDataURL(file);
+});
+
+
+/*
+ * jqeury로 이벤트를 발생시키면 target과 srcElement의 차이가 있다
+$('#fileTest').on('change', function(ev) {
+	console.log("ok");
+	console.log(ev.target.files[0]);
+	console.log(ev.srcElement.files[0]);
+	 var file = ev.srcElement.files[0];
+	 var reader = new FileReader();
+	 reader.readAsDataURL(file);
+	 reader.onload = function(fev){
+		 var tempImg = new Image();
+		 //tempImg.src = this.result;
+		 //photo.src = tempImg.src;
+	 }
+});
+*/

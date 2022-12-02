@@ -73,3 +73,64 @@
 #member .frm input[type="file"] {
 	margin-bottom: 30px;
 }
+
+
+
+/***** mybatisScore/score_select.jsp *****/
+.scoreNo {
+	display: inline-block;
+	width: 60px;
+}
+
+.scoreSerial {
+	display: inline-block;
+	width: 90px;
+}
+
+.scoreId {
+	display: inline-block;
+	width: 120px;
+}
+
+.scoreSubject {
+	display: inline-block;
+	width: 150px;
+}
+
+.scoreScore {
+	display: inline-block;
+	width: 80px;
+}
+
+.scoremDate {
+	display: inline-block;
+	width: 120px;
+}
+
+/***** mybatisScore/score_insert.jsp *****/
+#score {
+	border: 2px solid rgb(151, 188, 98);
+	padding: 10px;
+}
+
+#score .frm span {
+	display: inline-block;
+	width: 70px;
+	margin-bottom: 10px;
+}
+
+#score .frm span:first-child {
+	margin-top: 30px;
+}
+
+#score .frm input[type="text"] {
+	width: 131px;
+}
+
+#score .frm input[type="date"] {
+	margin-bottom: 30px;
+}
+
+#score .btnScore {
+	width: 101px;
+}

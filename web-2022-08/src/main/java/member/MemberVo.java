@@ -10,7 +10,6 @@ public class MemberVo {
 	String oriFile = "";
 	String delFile = "";
 	
-	
 	public String getmDate() { return mDate; }
 	public void setmDate(String mDate) { this.mDate = mDate; }
 	

@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import mybatis.MyFactory;
-import servlet.MemberFileUploadServlet;
 import servlet.MybatisMemberFileUploadServlet;
 
 public class MybatisMemberDao {
@@ -74,28 +73,23 @@ public class MybatisMemberDao {
 			msg = "삭제 오류😢😢";
 		}
 		
-		//delete 후 바로 select를 해야 하니까 sqlSession.close();를 바로 하면 안된다.
+		//delete 후 바로 select를 할거니까 sqlSession.close();를 바로 하면 안된다.
 		return msg;
 	}
 	
 	public String update(MemberVo bVo) {
 		String msg = "";
-		int cnt = sqlSession.update("update.update", bVo);
-
-		if( !bVo.getSysFile().equals("") ) {
-			File delFile = new File(MemberFileUploadServlet.path + bVo.getDelFile());
-			
-			if(delFile.exists()) delFile.delete();
-		}
+		int cnt = sqlSession.update("member.update", bVo);
 		
 		if(cnt > 0) {
 			sqlSession.commit();
-			msg = "수정 성공😀😀";
+			
 		} else {
 			sqlSession.rollback();
 			msg = "수정 오류😢😢";
 		}
 		
+		//update 후 바로 select를 할거니까 sqlSession.close();를 바로 하면 안된다.
 		return msg;
 	}
 

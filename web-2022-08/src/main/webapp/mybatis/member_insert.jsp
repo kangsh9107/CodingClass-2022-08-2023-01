@@ -10,9 +10,9 @@
 <body>
 
 <div id="member">
-	<strong style="font-size: 2rem;">회원관리</strong>
+	<strong style="font-size: 2rem;">회원관리 Insert</strong>
 	<form name="frm" class="frm" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="findStr" value="${pVo.findStr }" autocomplete="off" style="border-radius: 6px; border: 1px solid rgb(151, 188, 98); position: absolute; right: 68px; bottom: 9px; font-family: Gil Sans;"/>
+		<input type="hidden" name="findStr" value="${pVo.findStr }"/>
 		<input type="hidden" name="nowPage" value="${pVo.nowPage }"/>
 		
 		<span>아이디</span>
@@ -31,8 +31,12 @@
 		<span>가입일</span>
 		<input type="date" name="mDate"/>
 		<br/>
-		<span>프로필 사진</span>
-		<input type="file" name="att"/>
+		<div style=" position: absolute; top: 104px; left: 330px; text-align: center;">
+			<span>프로필 사진</span>
+			<br/>
+			<img id="photo" src="../upload/${bVo.sysFile ne '' ? bVo.sysFile : 'anno1.png' }" width="200px" height="200px" style="border-radius: 100px; box-shadow: gray 8px 8px 8px;"/>
+		</div>
+		<input id="fileTest" type="file" name="att" style="dispaly: none;"/>
 		<br/>
 		<input type="button" id="btnInsertR"  value="저장" class="btn btn-outline-light" style="background-color: rgb(151, 188, 98);"/>
 		<input type="button" id="btnList"  value="취소" class="btn btn-outline-light" style="background-color: rgb(151, 188, 98);"/>

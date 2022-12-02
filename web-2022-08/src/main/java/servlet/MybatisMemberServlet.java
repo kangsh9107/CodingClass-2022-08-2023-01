@@ -76,9 +76,21 @@ public class MybatisMemberServlet extends HttpServlet {
 	}
 	
 	public void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("id");
+		MybatisMemberDao dao = new MybatisMemberDao();
+		MemberVo bVo = dao.view(id);
+		
+		req.setAttribute("bVo", bVo);
 		RequestDispatcher rd = req.getRequestDispatcher("mybatis/member_update.jsp");
 		rd.include(req, resp);
 	}
+	
+	/*
+	public void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		RequestDispatcher rd = req.getRequestDispatcher("mybatis/member_update.jsp");
+		rd.include(req, resp);
+	}
+	*/
 	
 	public void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("id");

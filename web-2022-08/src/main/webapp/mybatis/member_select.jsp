@@ -45,7 +45,7 @@
 	</div>
 </div>
 
-<!-- PageButton -->
+<!-- Page Button -->
 <div class="btn-toolbar" style="justify-content: center; border-top: 2px solid rgb(151, 188, 98); margin-top: 10px; padding-top: 10px;" role="toolbar" aria-label="Toolbar with button groups">
 	<c:if test="${pVo.startPage > 1 }">
 		<div class="btn-group me-2" role="group" aria-label="First group">

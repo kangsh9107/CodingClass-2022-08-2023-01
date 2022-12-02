@@ -1,6 +1,8 @@
 package servlet;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -95,10 +97,8 @@ public class MybatisMemberFileUploadServlet extends HttpServlet {
 	
 	public void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Collection<Part> parts = req.getParts();
-		MemberVo bVo = (MemberVo)req.getAttribute("bVo");
+		MemberVo bVo = new MemberVo();
 		MybatisPageVo pVo = new MybatisPageVo();
-		pVo.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
-		pVo.setFindStr(req.getParameter("findStr"));
 		
 		for(Part p : parts) {
 			if(p.getHeader("Content-Disposition").contains("filename=")) {
@@ -110,38 +110,38 @@ public class MybatisMemberFileUploadServlet extends HttpServlet {
 					
 					p.write(path + sysFile);
 					p.delete();
-				}
-			} else {
-				String tag = p.getName();
-				String value = req.getParameter(tag);
-				
-				switch(tag) {
-				case "id":
-					bVo.setId(value);
-					break;
-				case "name":
-					bVo.setName(value);
-					break;
-				case "gender":
-					bVo.setGender(value);
-					break;
-				case "phone":
-					bVo.setPhone(value);
-					break;
-				case "mDate":
-					bVo.setmDate(value);
-					break;
+					
+					//기존 프로필 사진 파일을 삭제
+					String delFile = req.getParameter("delFile");
+					File file = new File(path + delFile);
+					if(file.exists()) file.delete();
 				}
 			}
 		}
 		
+		bVo.setId(req.getParameter("id"));
+		bVo.setName(req.getParameter("name"));
+		bVo.setPhone(req.getParameter("phone"));
+		bVo.setGender(req.getParameter("gender"));
+		bVo.setmDate(req.getParameter("mDate"));
+		
+		pVo.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
+		pVo.setFindStr(req.getParameter("findStr"));
+		
 		MybatisMemberDao dao = new MybatisMemberDao();
 		String msg = dao.update(bVo);
+		List<MemberVo> list = dao.select(pVo);
 		
-		req.setAttribute("msg", msg);
-		req.setAttribute("bVo", bVo);
+		if( !msg.equals("") ) {
+			PrintWriter out = resp.getWriter();
+			out.print("<script>");
+			out.print("    alert('" + msg + "')");
+			out.print("</script>");
+		}
+		
+		req.setAttribute("list", list);
 		req.setAttribute("pVo", pVo);
-		RequestDispatcher rd = req.getRequestDispatcher("mybatis/member_view.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("mybatis/member_select.jsp");
 		rd.include(req, resp);
 	}
 	

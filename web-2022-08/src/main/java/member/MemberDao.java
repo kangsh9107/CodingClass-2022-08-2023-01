@@ -111,11 +111,11 @@ public class MemberDao {
 		
 		try {
 			// 파일삭제
-			//if( !vo.getSysFile().equals("") ) {
-			//	File delFile = new File(MemberFileUploadServlet.path + vo.getDelFile());
-			//	
-			//	if(delFile.exists()) delFile.delete();
-			//}
+			if( !vo.getSysFile().equals("") ) {
+				File delFile = new File(MemberFileUploadServlet.path + vo.getDelFile());
+				
+				if(delFile.exists()) delFile.delete();
+			}
 			
 			// table update
 			conn.setAutoCommit(false);
