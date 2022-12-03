@@ -11,7 +11,7 @@
 
 <div id="score">
 	<strong style="font-size: 2rem; display: inline-block; margin-bottom: 20px;">성적관리 Insert</strong>
-	<form name="frm" class="frm" method="post" enctype="multipart/form-data">
+	<form name="frm" class="frm" method="post">
 		<input type="hidden" name="findStr" value="${pVo.findStr }"/>
 		<input type="hidden" name="nowPage" value="${pVo.nowPage }"/>
 		<input type="hidden" name="serial"/>
