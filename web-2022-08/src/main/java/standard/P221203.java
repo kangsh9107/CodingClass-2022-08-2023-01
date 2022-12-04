@@ -22,7 +22,7 @@ public class P221203 {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		
+		System.out.println("ok");
 	}
 	
 	public boolean weight(int[] arrTemp) {
