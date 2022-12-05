@@ -110,6 +110,25 @@ public class MemberDao {
 		String msg = "dao update";
 		
 		try {
+
+//			String sql = "";
+//			sql = "update member set name = ?, gender = ?, phone = ? ";
+//			if( !vo.getSysFile().equals("")) {
+//			    sql += ", sysFile = ?, oriFile = ? ";
+//			}
+//			sql += "where id = ?";
+//			ps = conn.prepareStatement(sql);
+//			ps.setString(1, vo.getName());
+//			ps.setString(2, vo.getGender());
+//			ps.setString(3, vo.getPhone());
+//			if( !vo.getSysFile().equals("")) {
+//			    ps.setString(4, vo.getSysFile());
+//			    ps.setString(5, vo.getOriFile());
+//			    ps.setString(6, vo.getId());
+//			} else {
+//			    ps.setString(4, vo.getId());
+//			}
+			
 			// 파일삭제
 			if( !vo.getSysFile().equals("") ) {
 				File delFile = new File(MemberFileUploadServlet.path + vo.getDelFile());
@@ -149,14 +168,14 @@ public class MemberDao {
 			
 			int cnt = ps.executeUpdate();
 			if(cnt > 0) {
-				if( !vo.getSysFile().equals("") ) {
-					File delFile = new File(MemberFileUploadServlet.path + vo.getDelFile());
-				
-					if(delFile.exists()) delFile.delete();
-				}
-				
 				conn.commit();
 				msg = "수정 완료😀😀";
+				
+//				if( !vo.getSysFile().equals("") ) {
+//					File delFile = new File(MemberFileUploadServlet.path + vo.getDelFile());
+//					
+//					if(delFile.exists()) delFile.delete();
+//				}
 			} else {
 				conn.rollback();
 				msg = "수정 오류😢😢";
