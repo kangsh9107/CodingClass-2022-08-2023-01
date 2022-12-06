@@ -13,13 +13,13 @@ public class P221203 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		StringBuilder sb = new StringBuilder();
 		n = Integer.parseInt(st.nextToken());
 		k = Integer.parseInt(st.nextToken());
 		t = Integer.parseInt(st.nextToken());
 		
-		st = new StringTokenizer(br.readLine());
+		visited = new boolean[n];
 		arr = new int[n];
+		st = new StringTokenizer(br.readLine());
 		for(int i=0; i<n; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
@@ -27,19 +27,6 @@ public class P221203 {
 		for(int i=k; i<=n; i++) {
 			combination(arr, visited, 0, n, i);
 		}
-	}
-	
-	static boolean weight(int[] arrTemp) {
-		boolean b = false;
-		int sum = 0;
-		
-		for(int j=0; j<arrTemp.length; j++) {
-			sum += arrTemp[j];
-		}
-		
-		if(sum <= t) b = true;
-		
-		return b;
 	}
 
 	static void combination(int[] arr, boolean[] visited, int start, int n, int r) {
@@ -56,12 +43,23 @@ public class P221203 {
 	}
 	
 	static void print(int[] arr, boolean[] visited, int n) {
+		StringBuilder sb = new StringBuilder();
+		int sum = 0;
+		
 		for(int i=0; i<n; i++) {
 			if(visited[i]) {
-				System.out.println(arr[i] + " ");
+				sum += arr[i];
+				sb.append(arr[i] + " ");
 			}
 		}
-		System.out.println();
+		
+		if(sum <= t) {
+			sum = 0;
+			System.out.println(sb);
+		} else {
+			sum = 0;
+			sb.setLength(0);
+		}
 	}
 	
 }
