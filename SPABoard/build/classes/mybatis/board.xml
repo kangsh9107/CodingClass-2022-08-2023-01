@@ -12,7 +12,7 @@
     <select id="select" parameterType="board.PageVo" resultType="board.BoardVo">
         select sno, id, grp, seq, deep, hit, date_format(nal, '%y-%m-%d') nal,
               (select count(pSno) from boardAtt where pSno=board.sno) attCnt,
-              concat( lpad(' ', deep*3, '&#160;'),
+              concat( lpad('', deep*3, '&#160;'),
                   case
                     when deep>0 then concat('└', subject)
                     else subject
