@@ -3,11 +3,19 @@ package com.example.Spring202208.di_step3;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class Assembler {
+	
+	@Bean public Test getTest() {
+		return new TestTest();
+	}
+
+	@Bean public Sql getMysql() {
+		return new Mysql();
+	}
 
 	@Bean
-	public Sql getSql() {
+	public Sql getMssql() {
 		return new Mssql();
 	}
 	/* 다른 작업을 추가로 하지 않아도 스프링 서버가 실행되면 객체가 만들어진다. */

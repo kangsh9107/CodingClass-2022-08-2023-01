@@ -5,8 +5,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AopConfig.class);
-		AopDao dao = (AopDao)context.getBean("getAopDao");
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AopConfig2.class);
+		AopDao2 dao = (AopDao2)context.getBean("getAopDao2");
 		Logout logout = (Logout)context.getBean("getLogout");
 		
 		logout.run(dao, "select");

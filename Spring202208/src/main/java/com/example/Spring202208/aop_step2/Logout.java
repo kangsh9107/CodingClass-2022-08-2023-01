@@ -1,9 +1,9 @@
 package com.example.Spring202208.aop_step2;
 
 public class Logout {
-	AopDao dao;
+	AopDao2 dao;
 	
-	public void run(AopDao dao, String job) {
+	public void run(AopDao2 dao, String job) {
 		this.dao = dao;
 
 		System.out.println("log.....AopDao.....around1 or before");

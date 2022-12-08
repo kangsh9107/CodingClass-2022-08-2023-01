@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import com.example.Spring202208.member.Member;
 import com.example.Spring202208.member.RegisterMember;
 
-@Configuration
+//@Configuration
 public class AssemblerMember {
 	
 	@Bean
