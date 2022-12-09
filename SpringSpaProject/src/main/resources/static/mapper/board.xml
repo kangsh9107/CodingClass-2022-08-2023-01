@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kang.mybatis.BoardMapper">
+	<select id="select" parameterType="String" resultType="com.kang.board.BoardVo">
+		select id, sno, subject from board
+		where subject like '%${_parameter}%'
+	</select>
+</mapper>

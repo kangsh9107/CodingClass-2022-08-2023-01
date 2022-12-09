@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/* guestbook_select.jsp */
+.guestbook_list {
+	display: flex;
+	flex-direction: column;
+}
+
+.guestbook_items {
+	flex-basis: auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	background-color: #aaa;
+}
+
+.guestbook_btn {
+	flex-basis: 1;
+}
+
+.item {
+	padding: 20px;
+	min-width: 200px;
+}

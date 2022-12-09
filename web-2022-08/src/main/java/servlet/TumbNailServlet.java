@@ -1,5 +1,7 @@
 package servlet;
 
+import java.awt.image.BufferedImage;
+import java.awt.image.renderable.ParameterBlock;
 import java.io.IOException;
 import java.util.Collection;
 
@@ -20,7 +22,7 @@ import jakarta.servlet.http.Part;
 	maxRequestSize    = -1,
 	fileSizeThreshold = 4096
 )
-@WebServlet(urlPatterns = "{/thumnail.do}")
+@WebServlet(urlPatterns = {"/thumnail.do"})
 public class TumbNailServlet extends HttpServlet {
 	String uploadPath = "c:/upload/";
 
