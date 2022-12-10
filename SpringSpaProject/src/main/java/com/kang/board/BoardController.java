@@ -1,22 +1,26 @@
-package com.kang.guestbook;
+package com.kang.board;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-public class GuestbookController {
-
-	@RequestMapping("/guestbook/guestbook_select")
+public class BoardController {
+	
+	@Autowired
+	BoardService service;
+	
+	@RequestMapping("/board/board_select")
 	public ModelAndView select() {
 		ModelAndView mv = new ModelAndView();
-		List<GuestbookVo> list = null;
+		List<BoardVo> list = service.select("1");
 		
 		mv.addObject("list", list);
-		mv.setViewName("guestbook/guestbook_select");
+		mv.setViewName("board/board_select");
 		return mv;
 	}
-	
+
 }

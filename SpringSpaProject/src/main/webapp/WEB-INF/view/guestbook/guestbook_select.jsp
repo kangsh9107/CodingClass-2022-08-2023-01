@@ -17,6 +17,7 @@
 	<div class="guestbook_items">
 		<c:forEach var="i" begin="1" end="4">
 			<div class="item">
+				${i }
 				<form class="frm frm_insert" method="post" enctype="multipart/form-data">
 					<label>작성자</label>
 					<input type="text" name="id" value="hong"/><br/>

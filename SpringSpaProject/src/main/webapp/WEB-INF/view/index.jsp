@@ -54,9 +54,7 @@
 	</div>
 </div>
 <!-- FOOTER -->
-<footer>
-
-</footer>
+<footer></footer>
 
 </body>
 </html>
