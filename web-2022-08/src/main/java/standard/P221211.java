@@ -15,7 +15,7 @@ public class P221211 {
 		String[] report = {"muzi frodo", "apeach frodo", "frodo neo", "muzi neo", "apeach muzi"};
 //		String[] report = {"ryan con", "ryan con", "ryan con", "ryan con"};
 		int k = 2;
-        List<Integer> answer = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         
         //중복 신고 제거
         Set<String> realReport = new HashSet<>();
@@ -42,6 +42,7 @@ public class P221211 {
         for(int i=0; i<id_list.length; i++) {
         	mail.put(id_list[i], 0);
         }
+        
         Collection<String> keys = reported.keySet();
         String temp2;
         for(String key : keys) {
@@ -50,14 +51,24 @@ public class P221211 {
         			st = new StringTokenizer(s);
         			temp1 = st.nextToken();
         			temp2 = st.nextToken();
-        			mail.put(temp1, mail.get(temp2)+1);
+        			
+        			if(key.equals(temp2)) {
+        				mail.put(temp1, mail.get(temp1)+1);
+        			}
         		}
         	}
-        	
-        	
         }
         
-        System.out.println(answer);
+        keys = mail.keySet();
+        for(String id : id_list) {
+        	for(String key : keys) {
+        		if(id.equals(key)) {
+        			list.add(mail.get(id));
+        		}
+        	}
+        }
+        
+        System.out.println(list);
 	}
 
 }
