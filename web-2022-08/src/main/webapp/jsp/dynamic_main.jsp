@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>jsp/dynamic_main</title>
+<style>
+</style>
 </head>
 <body>
 

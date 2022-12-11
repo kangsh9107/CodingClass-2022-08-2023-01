@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>jsp/static_main.jsp</title>
+<style>
+.ex {
+	color: blue;
+}
+</style>
 </head>
 <body>
 
@@ -13,9 +18,10 @@
 <%
 	String v = "메인에서 선언된 변수";
 %>
-<!-- <%//@include file="static_sub.jsp" %> -->
+<%@include file="static_sub.jsp" %>
+
 <hr/>
-<span>위에 표시된 페이지는 정적으로 삽입된 페이지입니다.</span>
+<span id="test2">위에 표시된 페이지는 정적으로 삽입된 페이지입니다.</span>
 
 <h2>메인 페이지 꼬릿말</h2>
 

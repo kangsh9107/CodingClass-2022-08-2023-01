@@ -5,15 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>jsp/dynamic_sub.jsp</title>
+
 </head>
 <body>
 
 <%
 	String url = request.getParameter("irum");
 %>
-<div>
+<div id="test">
 	나의 이름은 "<%=url %>" 입니다.
 </div>
+<%=10 %>
 
 </body>
 </html>
