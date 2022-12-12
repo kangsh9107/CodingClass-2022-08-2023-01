@@ -13,8 +13,10 @@ public class P221211 {
 	public static void main(String[] args) {
 		String[] id_list = {"muzi", "frodo", "apeach", "neo"};
 		String[] report = {"muzi frodo", "apeach frodo", "frodo neo", "muzi neo", "apeach muzi"};
-//		String[] report = {"ryan con", "ryan con", "ryan con", "ryan con"};
 		int k = 2;
+//		String[] id_list = {"con", "ryan"};
+//		String[] report = {"ryan con", "ryan con", "ryan con", "ryan con"};
+//		int k = 3;
         List<Integer> list = new ArrayList<>();
         
         //중복 신고 제거
