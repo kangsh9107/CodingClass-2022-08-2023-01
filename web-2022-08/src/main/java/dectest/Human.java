@@ -6,3 +6,12 @@ public interface Human {
 	public void delete();
 	public void insert();
 }
+
+/*
+public interface Human {
+	public void select();
+	public void update();
+	public void delete();
+	public void insert();
+}
+*/

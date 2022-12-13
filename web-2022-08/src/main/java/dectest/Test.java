@@ -24,4 +24,23 @@ public class Test {
 		t.setStudent(s);
 	}
 	
+	/*
+	public Human getHuman() {
+		Human h = new Member();
+		//Member h = new Member();
+		return h;
+	}
+	
+	public void setStudent(Human h) {
+		...
+	}
+	
+	public static void main(String[] args) {
+		Test t = new Test();
+		Human h = new Student();
+		//Student h = new Student();
+		t.setStudent(h);
+	}
+	 */
+	
 }
