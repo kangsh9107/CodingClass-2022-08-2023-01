@@ -7,9 +7,9 @@ $('#btnHome').on('click', function() {
 });
 
 $('#btnGuestBook').on('click', function() {
-	$('.newGuestbook').load('/guestbook/guestbook_select');
+	$('.sectionInner').load('/guestbook/guestbook_select');
 });
 
 $('#btnBoard').on('click', function() {
-	$('.newBoard').load('/board/board_select'); 
+	$('.sectionInner').load('/board/board_select'); 
 });

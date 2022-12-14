@@ -38,8 +38,8 @@
 <!-- NAV -->
 <div id="title">
 	<nav>
+		<img src="images/logo.png" alt="logo.png" width="100px" height="50px"/>
 		<div class="container-fluid">
-			<img src="images/logo.png" alt="logo.png" width="100px" height="50px"/>
 			<input type="button" id="btnHome" class="btn btn-outline-warning" value="HOME"/>
 			<input type="button" id="btnGuestBook" class="btn btn-outline-warning" value="방명록"/>
 			<input type="button" id="btnBoard" class="btn btn-outline-warning" value="게시판"/>
@@ -49,12 +49,17 @@
 <!-- CONTENT -->
 <div id="sectionWrap">
 	<div class="sectionInner">
-		<div class="newGuestbook">최신 방명록</div>
-		<div class="newBoard">최신 게시글</div>
+		<div class="newContainer">
+			<div class="newGuestbook">최신 방명록</div>
+			<div class="newBoard">최신 게시글</div>
+		</div>
 	</div>
 </div>
 <!-- FOOTER -->
-<footer></footer>
+<footer>
+	<div>Spring SPA Board</div>
+	<div>2022-08</div>
+</footer>
 
 </body>
 </html>

@@ -7,7 +7,7 @@ public class GPageVo {
 	int endPage;
 	int blockSize = 5;
 	int nowPage   = 1;
-	int listSize  = 10;
+	int listSize  = 4;
 	int startNo;
 	int endNo;
 	int sno;
