@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<a href="localhost:8888/web-2022-08/">GET테스트</a>
+<a href="http://localhost:8888/web-2022-08/">GET테스트</a>
 <hr/>
 <!-- 
 <input type="button" id="btn" value="테스트"/>
