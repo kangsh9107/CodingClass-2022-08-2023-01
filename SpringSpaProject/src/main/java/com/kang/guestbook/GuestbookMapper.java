@@ -13,4 +13,5 @@ public interface GuestbookMapper {
 	public int insert(GuestbookVo gVo);
 	public int delete(GuestbookVo gVo);
 	public int update(GuestbookVo gVo);
+	public List<GuestbookVo> guestbook10(GPageVo pVo);
 }

@@ -87,6 +87,11 @@ public class GuestbookDao {
 		
 		return b;
 	}
+	
+	public List<GuestbookVo> guestbook10() {
+		List<GuestbookVo> list = mapper.guestbook10(pVo);
+		return list;
+	}
 
 	public GPageVo getgVo() { return pVo; }
 	

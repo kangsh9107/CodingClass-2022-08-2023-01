@@ -50,8 +50,8 @@
 <div id="sectionWrap">
 	<div class="sectionInner">
 		<div class="newContainer">
-			<div class="newGuestbook">최신 방명록</div>
-			<div class="newBoard">최신 게시글</div>
+			<div class="newGuestbook"></div>
+			<div class="newBoard"></div>
 		</div>
 	</div>
 </div>

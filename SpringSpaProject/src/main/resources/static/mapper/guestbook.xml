@@ -8,7 +8,7 @@
 		where id like '%${findStr}%'
 		or    nal like '%${findStr}%'
 		or    doc like '%${findStr}%'
-		order by nal desc, id asc
+		order by sno desc
 	</select>
 	
 	<select id="list" parameterType="com.kang.guestbook.GPageVo" resultType="com.kang.guestbook.GuestbookVo">
@@ -33,5 +33,11 @@
 		update guestbook set doc=#{doc}
 		where sno=#{sno} and pwd=#{pwd}
 	</update>
+	
+	<select id="guestbook10" resultType="com.kang.guestbook.GuestbookVo">
+		select * from guestbook
+		order by sno desc
+		limit 0, 10
+	</select>
 	
 </mapper>

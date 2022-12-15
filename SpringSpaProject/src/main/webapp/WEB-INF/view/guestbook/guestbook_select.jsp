@@ -14,7 +14,7 @@
 </head>
 <body>
 <!-- CONTENT -->
-<div id="guestbook_list">
+<div id="guestbook_list" style="width: 793px !important; margin: auto;">
 	<!-- 정적삽입 -->
 	<%@include file="guestbook_insert.jsp" %>
 	<!-- SEARCH -->

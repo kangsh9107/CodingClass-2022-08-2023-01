@@ -49,16 +49,23 @@ $('.btnGuestbookSave').on('click', function() {
 });
 
 var docRepository;
+var cnt = 0;
 modifyView = function(frm) {
-	docRepository = frm.doc.value;
-	var div = frm.querySelector('#pwdZone');
-	div.style.visibility = 'visible';
-	var textarea = frm.doc;
-	$(textarea).prop('readOnly', false);
-	$(frm.doc).css({
-		'border': '2px solid blue',
-		'box-sizing': 'border-box'
-	});
+	if(cnt != 0) {
+		alert('한번에 하나의 글만 수정할 수 있습니다.');
+		return;
+	} else {
+		docRepository = frm.doc.value;
+		var div = frm.querySelector('#pwdZone');
+		div.style.visibility = 'visible';
+		var textarea = frm.doc;
+		$(textarea).prop('readOnly', false);
+		$(frm.doc).css({
+			'border': '2px solid blue',
+			'box-sizing': 'border-box'
+		});
+		cnt++;
+	}
 }
 
 modifyCancel = function(frm) {
@@ -70,6 +77,7 @@ modifyCancel = function(frm) {
 	$(frm.doc).css({
 		'border': ''
 	});
+	cnt = 0;
 }
 
 /***** modal box *****/

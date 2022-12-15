@@ -1,7 +1,5 @@
 package com.kang.guestbook;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -75,6 +73,16 @@ public class GuestbookController {
 		boolean b = dao.update(gVo);
 		if( !b ) msg = "수정 오류";
 		return msg;
+	}
+	
+	@RequestMapping("/guestbook/guestbook10")
+	public ModelAndView guestbook10() {
+		ModelAndView mv = new ModelAndView();
+		List<GuestbookVo> list = dao.guestbook10();
+		
+		mv.addObject("list", list);
+		mv.setViewName("guestbook/guestbook_10");
+		return mv;
 	}
 	
 }
