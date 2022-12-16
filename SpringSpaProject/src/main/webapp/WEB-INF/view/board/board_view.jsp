@@ -9,14 +9,12 @@
 <!-- CSS -->
 <link rel="stylesheet" href="css/board.css">
 <!-- JS -->
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script defer src="js/board.js"></script>
 <title>WEB-INF/view/board/board_view.jsp</title>
 </head>
 <body>
 <!-- CONTENT -->
 <div id='board'>
-    <h2>게시판</h2>
     <form class='frm frm_view'>
         <label>작성자</label>
         <input type='text' name='id' value='${bVo.id }'/>

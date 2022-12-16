@@ -23,16 +23,70 @@ view = function(sno) {
 }
 
 $('.btnSelect').on('click', function() {
-	var frm = $('.frm_view')[0];
+	var frm = $('.frm')[0];
 	var param = $(frm).serialize();
 	$('.sectionInner').load('/board/board_select', param);
 });
 
-/*$('.btnDeleteR').on('click', function() {
+$('.btnDeleteR').on('click', function() {
+	var yn = confirm('자료를 삭제하시겠습니까?');
+	if( !yn ) return;
+	
 	var frm = $('.frm_view')[0];
-	var param = 
+	var param = $(frm).serialize();
+	$('.sectionInner').load('/board/board_delete', param);
 });
-*/
+
+$('.btnInsert').on('click', function() {
+	var frm = $('.frm_search2')[0];
+	var param = $(frm).serialize();
+	$.post('/board/board_insert', param, function(data) {
+		$('.sectionInner').html(data);
+	});
+});
+
+$('.btnInsertR').on('click', function() {
+	var frm = $('.frm')[0];
+	var param = new FormData(frm);
+	
+	$.ajax({
+		type: 'POST',
+		url: '/board/board_insertR',
+		contentType: false,
+		processData: false,
+		data: param,
+		dataType: 'html',
+		success: function(data) {
+			$('.sectionInner').html(data);
+		}
+	});
+});
+
+$('.btnUpdate').on('click', function() {
+	var frm = $('.frm')[0];
+	var param = $(frm).serialize();
+	$.post('/board/board_update', param, function(data) {
+		$('.sectionInner').html(data);
+	});
+});
+
+$('.btnUpdateR').on('click', function() {
+	var frm = $('.frm')[0];
+	var param = new FormData(frm);
+	
+	$.ajax({
+		type: 'POST',
+		url: '/board/board_updateR',
+		contentType: false,
+		processData: false,
+		data: param,
+		dataType: 'html',
+		success: function(data) {
+			$('.sectionInner').html(data);
+		}
+	});
+});
+
 /*
  (board = function(){
     var frm = $('.frm')[0];

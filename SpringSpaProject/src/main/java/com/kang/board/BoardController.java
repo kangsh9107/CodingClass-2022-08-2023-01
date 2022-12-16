@@ -37,8 +37,6 @@ public class BoardController {
 	
 	@RequestMapping("/board/board_view")
 	public ModelAndView view(PageVo pVo, BoardVo bVo) {
-		System.out.println(pVo.getSno());
-		System.out.println(bVo.getSno());
 		ModelAndView mv = new ModelAndView();
 		bVo = service.view(pVo, bVo, "up");
 		/* 
@@ -51,6 +49,45 @@ public class BoardController {
 		mv.addObject("pVo", pVo);
 		mv.addObject("bVo", bVo);
 		mv.setViewName("board/board_view");
+		return mv;
+	}
+	
+	@RequestMapping("/board/board_delete")
+	public ModelAndView delete(PageVo pVo, BoardVo bVo) {
+		ModelAndView mv = new ModelAndView();
+		boolean b = service.delete(bVo);
+		
+//		if( !b ) {
+//			PrintWriter out = resp.getWriter();
+//			out.print("<script>alert('fail')</script>");
+//		}
+
+		List<BoardVo> list = service.select(pVo);
+		pVo = service.getpVo();
+		
+		mv.addObject("pVo", pVo);
+		mv.addObject("list", list);
+		mv.setViewName("board/board_select");
+		return mv;
+	}
+	
+	@RequestMapping("/board/board_insert")
+	public ModelAndView insert(PageVo pVo) {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("pVo", pVo);
+		mv.setViewName("/board/board_insert");
+		return mv;
+	}
+	
+	@RequestMapping("/board/board_update")
+	public ModelAndView update(PageVo pVo, BoardVo bVo) {
+		ModelAndView mv = new ModelAndView();
+		bVo = service.view(pVo, bVo, "");
+		
+		mv.addObject("bVo", bVo);
+		mv.addObject("pVo", pVo);
+		mv.setViewName("/board/board_update");
 		return mv;
 	}
 

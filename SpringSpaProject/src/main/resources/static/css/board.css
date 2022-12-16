@@ -47,16 +47,62 @@
     cursor: pointer;
 }
 
-/* 상세보기 -------------------------- */
-#board span.attFile {
-    background: #eee;
-    padding: 3px 5px;
-    border-radius: 4px;
+#board .item2:last-child {
+    border-bottom: 1px solid #ccc;
+    margin: 3px 0;
 }
 
-#board .frm_view>.doc {
-    min-height: 300px;
-    background: #eee;
-    padding: 14px;
+#board .btnZone input {
+    border-radius: 14px;
+    border: 1px solid #bbb;
+    padding: 2px 7px;
+}
+
+/* 상세보기 -------------------------- */
+#board .attFile {
+    background: #ccc;
+    padding: 3px 5px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+#board .frm_view .doc {
+    width: 600px;
+    height: 300px;
+    background: #fff;
+    padding: 10px;
     margin: 10px 0;
+}
+
+/* 입력 ----------------------------- */
+#board .frm_insert .subject {
+    width: 600px;
+}
+
+#board .frm_insert .doc {
+    width: 600px;
+    height: 300px;
+}
+
+/* 수정 ----------------------------- */
+#board .frm_update .subject{
+    width: 600px;
+    
+}
+
+#board .frm_update .doc{
+    width: 600px;
+    height: 300px;
+}
+
+#board .frm_update .delFile {
+    width: auto;
+    display: inline-block;
+    margin: 5px 14px;
+}
+
+input[type="checkbox"]:checked ~ span {
+    text-decoration: line-through;
+    color: #f00;
+    /*box-shadow: 0 0 0 10px orange;*/
 }
