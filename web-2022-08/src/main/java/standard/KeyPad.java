@@ -60,12 +60,12 @@ public class KeyPad {
 				keys.add(1);
 				keys.add(y);
 				
-				int r1 = lt.get(0) - keys.get(0);
-				int r2 = lt.get(1) - keys.get(1);
-				int d1 = (r1*r1) + (r2*r2);
-				r1 = rt.get(0) - keys.get(0);
-				r2 = rt.get(1) - keys.get(1);
-				int d2 = (r1*r1) + (r2*r2);
+				int r1 = Math.abs(lt.get(0) - keys.get(0));
+				int r2 = Math.abs(lt.get(1) - keys.get(1));
+				int d1 = r1 + r2;
+				r1 = Math.abs(rt.get(0) - keys.get(0));
+				r2 = Math.abs(rt.get(1) - keys.get(1));
+				int d2 = r1 + r2;
 				
 				if(d1 < d2) {
 					sb.append("L");
