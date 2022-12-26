@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+p {
+	background-color: #E9967A;
+	height: 500px;
+	width: 500px;
+	display: inline-block;
+}

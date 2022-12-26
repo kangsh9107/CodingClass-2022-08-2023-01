@@ -8,7 +8,7 @@ public class StrangeString {
 		String s1 = "try hello world";
 		System.out.println(ss.solution(s1));
 		
-		String s2 = "a";
+		String s2 = "a   b  c";
 		System.out.println(ss.solution(s2));
 	}
 	
@@ -21,14 +21,11 @@ public class StrangeString {
             temp2 = temp1[i].split("");
             
             for(int j=0; j<temp2.length; j++) {
-                if(j%2 == 0) {
-                    sb.append(temp2[j].toUpperCase());
-                } else {
-                    sb.append(temp2[j].toLowerCase());
-                }
+        		if(j%2 == 0) sb.append(temp2[j].toUpperCase());
+        		else         sb.append(temp2[j].toLowerCase());
             }
             
-            sb.append(" ");
+        	sb.append(" ");
         }
 		
 		return sb.toString().substring(0, sb.length()-1);
