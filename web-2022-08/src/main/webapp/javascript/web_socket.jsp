@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>web_socket.jsp</title>
-<script src='../lib/jquery-3.6.1.min.js'></script>
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 
 <style>
 * {
@@ -41,7 +41,7 @@
 	<input type='button' value='전송' id='btnSend'/>
 </div>
 <script>
-	var webSocket = new WebSocket('ws://192.168.0.11:8888/web-2022-08/chatting'); // 대소문자 구분한다. ws://은 웹소켓을 나타내는 프로토콜.
+	var webSocket = new WebSocket('ws://192.168.219.121:8888/web-2022-08/chatting'); // 대소문자 구분한다. ws://은 웹소켓을 나타내는 프로토콜.
 	
  	webSocket.onopen = function(){
 // 		let rs = document.querySelector('#result');
