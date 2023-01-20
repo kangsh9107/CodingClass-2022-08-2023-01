@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,23 +9,36 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- 소스 다운 -->
-<script src="https://unpkg.com/@yaireo/tagify"></script>
-<!-- 폴리필 (구버젼 브라우저 지원) -->
-<script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
-<link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
- 
-<!-- 해시 태그 정보를 저장할 input 태그. (textarea도 지원) -->
-<input name='basic'>
- 
-<script>
-    const input = document.querySelector('input[name=basic]');
-    let tagify = new Tagify(input); // initialize Tagify
-    
-    // 태그가 추가되면 이벤트 발생
-    tagify.on('add', function() {
-      console.log(tagify.value); // 입력된 태그 정보 객체
-    })
-</script>
+
+<!-- CategoryProducts -->
+<section class="py-5">
+	<div class="container">
+		<div class="row justify-content-center">
+			<c:forEach items="${list }" var="v" varStatus="status">
+				<div class="col-md-5">
+					<div class="card h-100">
+						<!-- Product image 450x300 -->
+						<img class="card-img-top" src="img/${v.productName }.png" alt="${v.productName }.png"/>
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name -->
+								<h5 class="fw-bolder">${v.productName }</h5>
+								<!-- Product price -->
+								₩ <fmt:formatNumber value="${v.price }" pattern="#,###"/>
+							</div>
+						</div>
+						<!-- View -->
+						<div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
+							<div class="text-center">
+								<button class="btn btn-outline-dark" onclick="showCategoryDetail(${pageVo.nowPage }, ${v.serial }, '${pageVo.category }')">View</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
+</section>
+
 </body>
 </html>
