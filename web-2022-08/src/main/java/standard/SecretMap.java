@@ -25,13 +25,15 @@ public class SecretMap {
 		for(int i=0; i<n; i++) {
 			wall1 = String.valueOf(Integer.toString(arr1[i], 2));
 			if(wall1.length() < n) {
-				for(int j=0; j<n-wall1.length(); j++) {
+				int length = n -  wall1.length();
+				for(int j=0; j<length; j++) {
 					wall1 = "0" + wall1;
 				}
 			}
 			wall2 = String.valueOf(Integer.toString(arr2[i], 2));
 			if(wall2.length() < n) {
-				for(int k=0; k<n-wall2.length(); k++) {
+				int length = n - wall2.length();
+				for(int k=0; k<length; k++) {
 					wall2 = "0" + wall2;
 				}
 			}
@@ -39,13 +41,11 @@ public class SecretMap {
 			for(int u=0; u<n; u++) {
 				String[] temp1 = wall1.split("");
 				String[] temp2 = wall2.split("");
-				System.out.println(temp1);
-				System.out.println(temp2);
-//				if(temp1[u].equals("1") || temp2[u].equals("1")) {
-//					sb.append("#");
-//				} else {
-//					sb.append(" ");
-//				}
+				if(temp1[u].equals("1") || temp2[u].equals("1")) {
+					sb.append("#");
+				} else {
+					sb.append(" ");
+				}
 			}
 			
 			answer[i] = sb.toString();
