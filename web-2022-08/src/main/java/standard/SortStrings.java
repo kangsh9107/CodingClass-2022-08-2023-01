@@ -25,6 +25,7 @@ public class SortStrings {
 		}
 		Collections.sort(list);
 		System.out.println(list);
+		System.out.println(answer);
 		
 		return answer;
 	}

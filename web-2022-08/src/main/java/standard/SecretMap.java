@@ -18,7 +18,6 @@ public class SecretMap {
 	
 	public String[] solution(int n, int[] arr1, int[] arr2) {
 		String[] answer = new String[n];
-		
 		String wall1 = "";
 		String wall2 = "";
 		StringBuilder sb = new StringBuilder();
@@ -30,6 +29,7 @@ public class SecretMap {
 					wall1 = "0" + wall1;
 				}
 			}
+			
 			wall2 = String.valueOf(Integer.toString(arr2[i], 2));
 			if(wall2.length() < n) {
 				int length = n - wall2.length();
@@ -41,11 +41,8 @@ public class SecretMap {
 			for(int u=0; u<n; u++) {
 				String[] temp1 = wall1.split("");
 				String[] temp2 = wall2.split("");
-				if(temp1[u].equals("1") || temp2[u].equals("1")) {
-					sb.append("#");
-				} else {
-					sb.append(" ");
-				}
+				if(temp1[u].equals("1") || temp2[u].equals("1")) sb.append("#");
+				else                                             sb.append(" ");
 			}
 			
 			answer[i] = sb.toString();
