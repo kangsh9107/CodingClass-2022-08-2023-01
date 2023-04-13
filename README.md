@@ -3,4 +3,4 @@
 ### 2023년 01월 27일 모범상 수상
 
 ##
-[일자별 진도 정리]()
+[일자별 진도 정리](https://github.com/kangsh9107/CodingClass-2022-08-2023-01/blob/main/%EC%A7%84%EB%8F%84.txt)
