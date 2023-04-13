@@ -1,0 +1,639 @@
+~ 2022-08-17
+CSS, HTML, JavaScript 기초
+
+2022-08-18
+javascript > operation.html
+javascript > logic_test1.html
+javascript > logic_test2.html
+javascript > logic_test3.html
+javascript > tri_operation.html
+javascript > tri_operation2.html
+
+2022-08-19
+javascript > if1.html
+학생정보 입력/조회/수정
+
+2022-08-22
+student-exam > student_exam.css
+student-exam > student_input_form_exam.jsp
+student-exam > student_list_exam.jsp
+student-exam > student_modify_exam.jsp
+javascript > if1.html
+javascript > if2.html
+javascript > if3.html
+javascript > if4.html
+javascript > if5.html
+
+2022-08-23
+javascript > if5.html
+javascript > if6.html
+javascript > switch1.html
+javascript > switch2.html
+javascript > switch3.html
+javascript > for1.html
+javascript > for2.html
+javascript > for3.html
+javascript > for4.html
+
+2022-08-24
+mission > for_mission_teacher.html
+javascript > while1.html
+javascript > forin.html
+javascript > forin2.html
+javascript > forof.html
+javascript > foreach.html
+javascript > eval.html
+mission > num_mission.html
+
+2022-08-25
+mission > num_mission_teacher.html
+javascript > str_function.html
+javascript > str_replace.html
+javascript > func_test1.html
+javascript > func_test2.html
+javascript > func_test3.html
+javascript > func_test4.html
+javascript > func_login.html
+
+2022-08-26
+javascript > func_search_id.html
+javascript > func_anno.html
+javascript > member.html
+javascript > array1.html
+javascript > array2.html
+javascript > array3.html
+javascript > array4.html
+javascript > array_sort.html
+javascript > array_sort_bubble.html
+javascript > array5.html
+
+2022-08-29
+javascript > array_forEach.html
+javascript > array_map.html
+javascript > array_some.html
+javascript > array_filter.html
+javascript > array_reduce.html
+javascript > array_reduce2.html
+mission > array_mission.html
+javascript > tri_dialog.html
+javascript > event_add.html
+javascript > member_control.html
+css > member_control.css
+
+2022-08-30
+javascript > member_control.html
+css > member_control.css
+js > member_control.js
+mission > score_control.html
+mission > score_control.css
+mission > score_control.js
+
+2022-08-31
+mission > score_control.html - *** CRUD ***
+mission > score_control.css
+mission > score_control.js
+mission > score_control_teacher.js
+test > t220831_1 ~ t220831_4 (html, css, js)
+
+2022-09-01
+test-exam > t220831_1_teacher.html
+test-exam > t220831_1_teacher.css
+mission > score_control_teacher.js
+javascript > event_focus.html
+javascript > event_focus2.html - 카페업로드
+javascript > event_mouseover.html
+javascript > event_keyevent.html
+javascript > event_object.html
+javascript > event_cancle.html
+선배들 중에 테트리스 만든 사람들 있었다
+선배들 중에 채팅기능 구현 해본사람 있었다
+피보나치 수열 해보세요
+
+2022-09-02
+javascript > date.html
+javascript > watch.html - 카페업로드
+javascript > random.html
+javascript > win_main.html
+javascript > win_sub.html
+javascript > win_open.html - *** 우편번호 검색 다음 API ***
+javascript > radio.html - 새로고침 눌러도 마지막 선택 저장
+
+2022-09-05
+javascript > checkbox.html - *** 새로고침 눌러도 마지막 선택 저장2 ***
+javascript > select.html
+javascript > date2.html
+javascript > text_file_reader.html
+javascript > image_preview.html - *** 사진파일 1개 미리보기 ***
+javascript > multi_image_preview.html
+
+2022-09-06
+javascript > multi_image_preview.html - *** 사진파일 여러개 미리보기+엑스박스로 취소 ***
+javascript > select_menu.html - 카페업로드
+javascript > object_literal.html
+javascript > object_literal2.html
+
+2022-09-07
+javascript > object_new.html
+javascript > object_function.html
+javascript > score_crud.html - 카페업로드, *** CRUD2 (배열의 키마다 있는 밸류값들을 함수에 한번에 저장) ***
+css > score_crud.css
+js > score_crud.js
+
+2022-09-08
+javascript > tag.html
+javascript > web_socket.jsp - *** 단순 채팅기능+제이쿼리사용 ***
+src/main/java > chatt > WebSocketServer.java
+javascript > json_stringify.html
+
+2022-09-14
+javascript > json_parse.html
+javascript > reg_exp.html - *** 정규식 ***
+index.jsp
+javascript > async_test1.html
+
+2022-09-15
+javascript > web_worker1.js
+javascript > web_worker2.js
+javascript > web_worker3.js
+javascript > web_worker_main.html - 비동기식(멀티 스레드)
+javascript > async_test2.html - await, promise를 사용해 동기식 만들기
+MySQL 설치
+쿼리박스 설치
+
+2022-09-16
+MySQL, 쿼리박스 재설치
+깃허브 > MySQL > select.sql
+깃허브 > MySQL > index_database.sql
+깃허브 > MySQL > create_database.sql
+
+2022-09-19
+정규화에 대해 찾아보세요.
+깃허브 > MySQL > join.sql
+깃허브 > MySQL > subquery.sql
+깃허브 > MySQL > view.sql
+
+2022-09-20
+깃허브 > MySQL > constraints.sql
+깃허브 > MySQL > constraints2.sql
+깃허브 > MySQL > delete.sql
+
+2022-09-21
+깃허브 > MySQL > 내장함수.sql
+깃허브 > MySQL > function.sql
+깃허브 > MySQL > procedure.sql
+
+2022-09-22
+깃허브 > MySQL > if.sql
+깃허브 > MySQL > case.sql
+깃허브 > MySQL > loop.sql
+깃허브 > MySQL > cursor.sql
+
+2022-09-23
+깃허브 > MySQL > cursor.sql
+깃허브 > MySQL > score.sql
+
+2022-09-26
+src/main/java > begin > A
+src/main/java > begin > StringEx
+
+2022-09-27
+src/main/java > begin > StringEx2
+src/main/java > begin > StringEx3
+src/main/java > begin > StringSpeed
+src/main/java > control > IfTest
+src/main/java > control > SwitchTest
+src/main/java > control > WhileTest
+
+2022-09-30
+javascript > test-exam > t220928_1_teacher.html
+javascript > test-exam > t220928_2_teacher.html
+javascript > test-exam > t220928_3_teacher.html, css
+깃허브 > MySQL > t220929_1.sql
+깃허브 > MySQL > t220929_2.sql
+src/main/java > control > WhileTest2
+src/main/java > control > ForTest
+
+2022-10-04
+src/main/java > control > BreakAndContinue
+src/main/java > control > GuGuDan
+src/main/java > control > ForExam
+src/main/java > array > ArrayDeclare
+src/main/java > array > Data
+src/main/java > array > Member
+
+2022-10-05
+src/main/java > array > Member
+src/main/java > array > ObjectArrayTest
+src/main/java > array > Student
+src/main/java > array > StudentArrayTest
+src/main/java > array > ArrayTest4
+src/main/java > array > ArrayCopy
+src/main/java > array > ArraySort
+src/main/java > array > Data2
+
+2022-10-06
+src/main/java > array > Data2
+src/main/java > array > ObjectArraySort
+src/main/java > json > JsonTest
+
+2022-10-07
+src/main/java > json > JavaObjectToJSON
+src/main/java > json > Test
+src/main/java > my > PrivateClass
+src/main/java > my > Test
+src/main/java > my > PackageClass
+src/main/java > your > YourClass
+src/main/java > your > Child
+src/main/java > my > MyFrame
+src/main/java > my > MyFrame2
+
+2022-10-11
+src/main/java > my > MyFrame2
+src/main/java > interface_ex > Member
+src/main/java > interface_ex > AscMember
+src/main/java > interface_ex > Main
+src/main/java > interface_ex > MemberInterface
+src/main/java > interface_ex > AfterMember
+src/main/java > interface_ex > AfterAscMember
+src/main/java > interface_ex > TestRun
+src/main/java > inherit > ParentsClass
+src/main/java > inherit > child
+src/main/java > inherit > FatherInter
+src/main/java > inherit > SuperClass
+src/main/java > inherit > ChildClass
+src/main/java > inherit > SuperInterface1
+src/main/java > inherit > SuperInterface2
+src/main/java > exception_ex > TryTest
+src/main/java > inherit > Data
+src/main/java > inherit > Student
+src/main/java > inherit > StudentTest
+
+2022-10-12
+src/main/java > lang > Member
+src/main/java > lang > CloneTest
+src/main/java > lang > HashCodeObject
+src/main/java > lang > EqualsObject
+src/main/java > lang > StringTokenizerEx
+src/main/java > lang > MathEx
+src/main/java > lang > WrapperEx
+src/main/java > gui > FrameLayout
+
+2022-10-13
+src/main/java > format > FormatEx
+src/main/java > format > DecimalPanel
+src/main/java > format > MessagePanel
+src/main/java > format > SimpleDatePanel
+src/main/java > format > ChoicePanel
+src/main/java > gui > MyInterMain
+src/main/java > gui > MemberInput
+
+2022-10-14
+src/main/java > gui > MyInterMain
+src/main/java > gui > MemberInput
+src/main/java > gui > PatternFrame
+src/main/java > collection > ListEx
+src/main/java > collection > Data
+src/main/java > collection > ListFrame - *** CRUD ***
+
+2022-10-17
+src/main/java > collection > SetEx
+src/main/java > collection > MapEx
+src/main/java > collection > PropertyEx
+src/main/java > collection > SetFrame
+src/main/java > thread > ThreadFrame
+
+2022-10-18
+src/main/java > thread > ThreadEx
+src/main/java > thread > Bank
+src/main/java > thread > SyncEx
+src/main/java > stream > StreamEx
+src/main/java > iostream > MyTextEditor
+src/main/java > iostream > Editor
+
+2022-10-19
+src/main/java > iostream > Data
+src/main/java > iostream > ObjectStreamEx
+src/main/java > iostream > ObjectStreamEx2
+src/main/java > iostream > Score
+src/main/java > gui > MyInterMain - ** MVC **
+src/main/java > gui > MemberSearch
+src/main/java > iostream > MemberDao
+
+2022-10-20
+src/main/java > gui > MemberMain
+src/main/java > gui > MemberInput
+src/main/java > gui > MemberSearch
+src/main/java > iostream > Data
+src/main/java > iostream > MemberDao
+src/main/java > gui > ScoreInput - ** MVC score CRUD **
+src/main/java > gui > ScoreSearch
+src/main/java > iostream > ScoreVo
+src/main/java > iostream > ScoreDao
+src/main/java > iostream > ScoreInterface - ** Interface **
+
+2022-10-21
+src/main/java > jdbc > DBConn - java랑 mysql 연동
+src/main/java > jdbc > Employee - java로 mysql insert, select, update, delete
+
+2022-10-24
+src/main/java > jdbc > Employee - ResultSetMetaData
+src/main/java > gui > SelectBox
+src/main/java > gui > MemberInputDB - database에 저장, btnRadio 동기화
+src/main/java > gui > MemberSearchDB
+src/main/java > jdbc > MemberDto
+src/main/java > jdbc > MemberVo
+
+2022-10-25
+src/main/java > gui > ScoreInputDB
+src/main/java > gui > ScoreSearchDB
+src/main/java > jdbc > ScoreVo
+src/main/java > jdbc > ScoreDto
+
+2022-10-26
+src/main/java > jdbc > ProcedureCall
+src/main/java > jdbc > InsertMemberCall
+src/main/java > jdbc > GetEmailCall
+src/main/java > net > Net1
+src/main/java > net > UrlEx
+
+2022-10-27
+src/main/java > net > TcpServer
+src/main/java > net > TcpClient
+MultiChatt > src/main/java > chatt > MyMultiChattMain - ** 멀티 채팅 (소켓+쓰레드) **
+MultiChatt > src/main/java > chatt > ServerMain
+MultiChatt > src/main/java > chatt > ClientMain
+MultiChatt > src/main/java > chatt > ServerThread
+MultiChatt > src/main/java > chatt > ClientThread
+
+2022-10-28
+MultiChatt > src/main/java > chatt > MyMultiChattMain
+MultiChatt > src/main/java > chatt > ServerMain
+MultiChatt > src/main/java > chatt > ClientMain
+MultiChatt > src/main/java > chatt > ServerThread
+MultiChatt > src/main/java > chatt > ClientThread
+
+2022-10-31
+MultiChatt > src/main/java > chatt > MyMultiChattMain
+MultiChatt > src/main/java > chatt > ServerMain
+MultiChatt > src/main/java > chatt > ClientMain
+MultiChatt > src/main/java > chatt > ServerThread
+MultiChatt > src/main/java > chatt > ClientThread
+web-2022-08 > src > main > webapp > jsp > application.jsp
+web-2022-08 > src > main > webapp > jsp > login.jsp - ** 로그인(session, JDBC) **
+web-2022-08 > src > main > webapp > jsp > logout.jsp
+web-2022-08 > src/main/java > jdbc > login.java
+
+2022-11-01
+web-2022-08 > src > main > webapp > jsp > jsp/dynamic_main.jsp
+web-2022-08 > src > main > webapp > jsp > jsp/dynamic_sub.jsp
+web-2022-08 > src > main > webapp > jsp > jsp/dynamic_sub2.jsp
+web-2022-08 > src > main > webapp > jsp > jsp/static_main.jsp
+web-2022-08 > src > main > webapp > jsp > jsp/static_sub.jsp
+web-2022-08 > src > main > webapp > jsp > jsp/useBean.jsp
+web-2022-08 > src > main > webapp > jsp > jsp/useBean_result.jsp
+web-2022-08 > src/main/java > jsp > BeanTestVo.java
+web-2022-08 > src > main > webapp > jsp > jsp/useBean2.jsp
+web-2022-08 > src > main > webapp > jsp > jsp/useBean2_result.jsp
+web-2022-08 > src/main/java > jsp > BeanTestVo2.java
+web-2022-08 > src > main > webapp > index.jsp
+web-2022-08 > src > main > webapp > temp.html
+web-2022-08 > src > main > webapp > member > login.jsp
+web-2022-08 > src > main > webapp > member > logout.jsp
+web-2022-08 > src > main > webapp > member > login_result.jsp
+
+2022-11-02
+web-2022-08 > src/main/java > student > Page.java
+web-2022-08 > src > main > webapp > js > student.js
+web-2022-08 > src > main > webapp > student > student_input_result.jsp
+web-2022-08 > src/main/java > student > StudentVo.java
+web-2022-08 > src/main/java > student > StudentDao.java
+web-2022-08 > src > main > webapp > index.jsp
+web-2022-08 > src > main > webapp > student-exam > student_list_exam.jsp
+web-2022-08 > src > main > webapp > student > student_input_form.jsp
+
+2022-11-03
+깃허브 > MySQL > student_input_batch.sql
+web-2022-08 > src > main > webapp > student > student_modify_result.jsp
+web-2022-08 > src > main > webapp > student > student_delete_result.jsp
+
+2022-11-04
+web-2022-08 > src/main/java > servlet > TestServlet.java
+web-2022-08 > src > main > webapp > servlet > test_servlet.jsp - ** servlet을 사용한 웹페이지 **
+web-2022-08 > src > main > webapp > servlet > hap.jsp
+web-2022-08 > src/main/java > servlet > Hap.java
+web-2022-08 > src > main > webapp > jstl > el.jsp
+web-2022-08 > src > main > webapp > jstl > scope.jsp
+web-2022-08 > src > main > webapp > jstl > param_scope.jsp
+web-2022-08 > src > main > webapp > jstl > jstl.jsp
+
+2022-11-07
+web-2022-08 > src > main > webapp > jstl > el_oper.jsp
+web-2022-08 > src > main > webapp > jstl > jstl_choose.jsp
+web-2022-08 > src > main > webapp > jstl > jstl_forEach.jsp
+web-2022-08 > src > main > webapp > jstl > jstl_forTokens.jsp
+web-2022-08 > src > main > webapp > jstl > import_main.jsp
+web-2022-08 > src > main > webapp > jstl > import_sub.jsp
+web-2022-08 > src > main > webapp > jstl > formatNumber.jsp
+web-2022-08 > src > main > webapp > jstl > formatDate.jsp
+web-2022-08 > src > main > webapp > jstl > jstl_split.jsp
+web-2022-08 > src > main > webapp > student_backup > student 작업 한 것들 student_backup 폴더에 백업함
+web-2022-08 > src/main/java > student > StudentServlet.java - ** servlet + jstl을 사용한 고도화 **
+web-2022-08 > src > main > webapp > student-exam > student_list_exam.jsp
+
+2022-11-08
+web-2022-08 > src > main > webapp > result.jsp
+
+2022-11-09~2022-11-17
+semi project
+
+2022-11-21
+web-2022-08 > src > main > webapp > ajax > ajax_test.jsp, ajax_test.js - ** Ajax **
+web-2022-08 > src > main > webapp > ajax > data.txt, data.html, data.jsp, data_json.jsp, student_list.jsp, student_form.html
+web-2022-08 > src > main > webapp > ajax > employees_list.jsp, employees_form.html
+
+2022-11-22
+web-2022-08 > src > main > webapp > jsp > file_upload_form.jsp, file_upload_result.jsp - ** jsp 파일업로드 기본 **
+web-2022-08 > src/main/java > servlet > FileUploadServlet.java
+web-2022-08 > src > main > webapp > member > member_control.jsp - ** jsp 파일업로드 응용 **
+web-2022-08 > src > main > webapp > js > member_control.js
+web-2022-08 > src/main/java > servlet > MemberFileUploadServlet.java
+web-2022-08 > src/main/java > member > MemberDao.java, MemberVo.java
+web-2022-08 > src > main > webapp > member > member_insert_result.jsp
+web-2022-08 > src/main/java > servlet > MemberServlet.java
+
+2022-11-23 - ** 파일업로드를 포함한 CRUD **
+web-2022-08 > src > main > webapp > js > member_control.js
+web-2022-08 > src/main/java > servlet > MemberServlet.java
+web-2022-08 > src/main/java > member > MemberDao.java
+web-2022-08 > src/main/java > servlet > MemberFileUploadServlet.java
+
+2022-11-24
+web-2022-08 > src > main > webapp > thumbnail > thumbnail_form.jsp, thumbnail_result.jsp - ** 썸네일 **
+web-2022-08 > src/main/java > servlet > ThumbNailServlet.java
+web-2022-08 > src > main > webapp > mail > mail_form.jsp - ** 메일 보내기 **
+web-2022-08 > src/main/java > servlet > SendNaverServlet.java
+web-2022-08 > src > main > webapp > security > aes_test.jsp - ** 암호화 **
+web-2022-08 > src/main/java > security > AES.java
+
+2022-11-25
+web-2022-08 > src > main > webapp > dom > doc_interface_1.html, doc_interface_2.html
+web-2022-08 > src > main > webapp > dom > getElementsByTagName.html, getElementsByClassName.html, querySelector.html
+web-2022-08 > src > main > webapp > dom > nodetest.html, nodeTestInformation.html
+web-2022-08 > src > main > webapp > dom > getAttribute.html, setAttributeNode.html
+web-2022-08 > src > main > webapp > ajax > ajax_test.jsp, ajax_test.js - ** 노드 동적 추가&삭제 **
+web-2022-08 > src > main > webapp > ajax > theater.jsp, movie.jsp
+
+2022-11-28
+web-2022-08 > src > main > webapp > jquery > jquery_main.jsp
+web-2022-08 > src > main > webapp > js > jquery_main.js
+web-2022-08 > src > main > webapp > jquery > load.jsp, load_test.jsp - ** jQuery load **
+web-2022-08 > src > main > webapp > jquery > gugudan.jsp, gugudan_result.jsp
+web-2022-08 > src > main > webapp > jquery > get.jsp, get_json.jsp, post.jsp, post_result.jsp
+web-2022-08 > src > main > webapp > jquery > customer.jsp, customer_result.jsp
+web-2022-08 > src > main > webapp > jquery > ajax.jsp
+
+2022-11-29
+web-2022-08 > src > main > webapp > jquery > serialize.jsp, serialize_result.jsp
+web-2022-08 > src > main > webapp > jquery > multipart_form.jsp, multipart_result.jsp
+web-2022-08 > src/main/java > servlet > AjaxFileUploadServlet.java
+web-2022-08 > src/main/java > mybatis > config.xml, MyFactory.java, member.xml - ** MyBatis 설정 **
+web-2022-08 > src > main > webapp > mybatis > mybatis_test.jsp
+
+2022-11-30
+web-2022-08 > src/main/java > mybatis > member.xml - ** MyBatis CRUD **
+web-2022-08 > src > main > webapp > mybatis > main.jsp, main.css, main.js
+web-2022-08 > src > main > webapp > mybatis > member_select.jsp, member_insert.jsp, member_update.jsp, member_view.jsp, member.js
+
+2022-12-01
+web-2022-08 > src/main/java > mybatis > member.xml
+web-2022-08 > src/main/java > member > MybatisMemberDao.java, MemberVo.java, MybatisPageVo.java
+web-2022-08 > src/main/java > servlet > MybatisMemberFileUploadServlet.java, MybatisMemberServlet.java
+web-2022-08 > src > main > webapp > mybatis > member.js, bean.jsp, member_select.jsp, member_insert.jsp
+
+2022-12-02~2022-12-04
+web-2022-08 > src > main > webapp > mybatisScore > score_insert.jsp, score_update.jsp, score_select.jsp, score_view.jsp, score.js, score.css, score.jsp
+web-2022-08 > src/main/java > score > ScoreVo.java, ScorePageVo.java, ScoreServlet.java, ScoreDao.java, score.xml
+
+2022-12-05 - ** SPA **
+web-2022-08 > src/main/java > dynamicSql > DynamicDao.java, dynamic.xml, EmployeesVo.java
+SPABoard > src/main/java > board > FileUploadServlet.java
+SPABoard > src/main/java > board > BoardServlet.java
+SPABoard > src/main/java > board > BoardDao.java
+SPABoard > src/main/java > board > BoardVo.java
+SPABoard > src/main/java > board > AttVo.java
+SPABoard > src/main/java > board > PageVo.java
+SPABoard > src/main/java > mybatis > SpaFactory.java
+SPABoard > src/main/java > mybatis > config.xml
+SPABoard > src/main/java > mybatis > board.xml
+SPABoard > src > main > webapp > index.jsp
+SPABoard > src > main > webapp > board > board_main.jsp
+SPABoard > src > main > webapp > board > insert.jsp
+SPABoard > src > main > webapp > board > update.jsp
+SPABoard > src > main > webapp > board > view.jsp
+SPABoard > src > main > webapp > board > select.jsp
+SPABoard > src > main > webapp > board > repl.jsp
+SPABoard > src > main > webapp > js > board.js
+SPABoard > src > main > webapp > js > index.js
+SPABoard > src > main > webapp > css > board.css
+SPABoard > src > main > webapp > css > index.css
+
+2022-12-06
+SPABoard
+
+2022-12-07 - ** Spring Maven 생성 **
+Spring202208 > Java Resources > src/main/java > com.kang.Spring202208 > com.example.Spring202208.di_step1 > Oracle.java, Mssql.java, Mysql.java, Main.java
+(하위 패키지로 만들어도 새로고침하면 나눠진다. 근데 이렇게 안하면 오류 날 수 있다.)
+Spring202208 > Java Resources > src/main/java > com.kang.Spring202208 > com.example.Spring202208.di_step2 > Oracle.java, Mssql.java, Mysql.java, Main.java, Sql.java, Assembler.java
+Spring202208 > Java Resources > src/main/java > com.kang.Spring202208 > com.example.Spring202208.di_step3 > Oracle.java, Mssql.java, Mysql.java, Sql.java, Assembler.java
+Spring202208 > Java Resources > src/main/java > com.kang.Spring202208 > com.example.Spring202208.member > Member.java, RegisterMember.java, GuestMember.java, Main.java, Assembler.java
+Spring202208 > Java Resources > src/main/java > com.kang.Spring202208 > com.example.Spring202208.aop_step1 > AopDao.java, AopConfig.java, Main.java
+Spring202208 > Java Resources > src/main/java > com.kang.Spring202208 > com.example.Spring202208.aop_step2 > AopDao.java, AopConfig.java, Main.java, Logout.java
+Spring202208 > Java Resources > src/main/java > com.kang.Spring202208 > com.example.Spring202208.aop_step3 > AopDao.java, AopConfig.java, Main.java
+
+2022-12-08 - ** Spring DB 연결 **
+Spring202208 > Java Resources > src/main/java > com.kang.Spring202208 > com.example.Spring202208.aop_step3 > AroundTest.java, Main.java, StudentDao.java
+Spring202208 > src > main > webapp > WEB-INF > view > board > board_select.jsp
+Spring202208 > Java Resources > src/main/java > com.kang.Spring202208 > MainController.java, BoardController.java
+Spring202208 > Java Resources > src/main/java > com.kang.Spring202208 > mybatis > BoardMapper.java
+Spring202208 > Java Resources > src/main/java > com.kang.Spring202208 > board > BoardVo.java, BoardService.java
+Spring202208 > Java Resources > src/main/resources > static > mapper > board.xml
+
+2022-12-09 - ** Spring SPA 게시판 **
+SpringSpaProject > Java Resources > src/main/java > com.kang > com.kang.guestbook > GuestbookVo.java, GPageVo.java, GuestbookDao.java, GuestbookService.java, GuestbookController.java, GuestbookMapper.java
+SpringSpaProject > Java Resources > src/main/resources > static > css > guestbook.css, index.css
+SpringSpaProject > Java Resources > src/main/resources > static > js > guestbook.js, index.js
+SpringSpaProject > Java Resources > src/main/resources > static > images > favicon.png
+SpringSpaProject > Java Resources > src/main/resources > static > mapper > guestbook.xml
+SpringSpaProject > src > main > webapp > WEB-INF > view > guestbook > guestbook_select.jsp, guestbook_insert.jsp
+
+2022-12-12
+애플리케이션설계, 인터페이스구현, 서블렛을 이용한 간단한 프로그램설계 시험
+
+2022-12-13
+Spring SPA 게시판 - R, 페이징, 검색
+
+2022-12-14
+Spring SPA 게시판 - 목록, modal box
+
+2022-12-15
+Spring SPA 게시판 - 최신 방명록, 최신 게시물, 상세보기(R), D
+
+2022-12-16
+Spring SPA 게시판 - C, 파일업로드
+
+2022-12-19
+Spring SPA 게시판 - 댓글
+Git GUI 사용법
+
+2022-12-20
+GitHub 토큰, 커밋, 푸시, 풀, 머지
+파이썬 자료형
+
+2022-12-21
+파이썬 문자열 포맷
+
+2022-12-22
+파이썬 리스트, 튜플, 딕셔너리, 셋
+
+2022-12-23
+파이썬 제어문
+
+2022-12-26
+오전 파이썬 함수, 오후 파이널 회의
+
+2022-12-27
+오전 스프링 통합구현 시험, 오후 파이널 회의
+
+2022-12-28
+오전 파이썬 클래스, 예외, 오후 파이널 회의
+
+2022-12-29
+오전 파이썬 파일 읽고 쓰기, 오후 파이널 회의
+
+2023-01-02
+오전 파이썬 mysql연동, 오후 파이널 회의
+
+2023-01-03 ~
+조별 파이널
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
